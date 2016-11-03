@@ -1,41 +1,45 @@
-var express = require('express');
-var path = require('path');
-var httpProxy = require('http-proxy');
 
-var proxy = httpProxy.createProxyServer({
-  changeOrigin: true
-});
-var app = express();
-
-var isProduction = process.env.NODE_ENV === 'production';
-var port = isProduction ? process.env.PORT : 3000;
-var publicPath = path.resolve(__dirname, 'public');
-
-app.use(express.static(publicPath));
-
-
-app.all('/db/*', function (req, res) {
-  proxy.web(req, res, {
-    target: 'DB_URL'
-  });
-});
-
-if (!isProduction) {
-
-  var bundle = require('./server/bundle.js');
-  bundle();
-  app.all('/build/*', function (req, res) {
-    proxy.web(req, res, {
-        target: 'http://localhost:8080'
-    });
-  });
-
+if (process.env.NODE_ENV !== "production") {
+  require('dotenv').config();
 }
 
-proxy.on('error', function(e) {
-  console.log('Could not connect to proxy, please try again...');
-});
+const express                 = require('express');
+// const request                 = require('request');
+const bodyParser              = require('body-parser');
+const path                    = require('path');
+const webpack                 = require('webpack');
+const webpackDevMiddleware    = require('webpack-dev-middleware');
+const webpackHotMiddleware    = require('webpack-hot-middleware');
+const config                  = require('./webpack.config');
+const pg                      = require('pg');
+const dbURL                   = process.env.DATABASE_LINK;
 
-app.listen(port, function () {
-  console.log('Server running on port ' + port);
+
+const app = module.exports = express();
+
+const compiler = webpack(config);
+app.use(webpackDevMiddleware(compiler, {
+    publicPath: config.output.publicPath,
+    stats: {
+      colors: true
+    },
+    noInfo: false
+}))
+
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
+
+app.use(express.static(path.join(__dirname, './public')));
+
+
+// app.use(function(req, res, next) {
+//   res.sendFile(path.join(__dirname, './public/index.html'));
+// });
+
+
+app.listen(process.env.PORT || 8080, function() {
+  console.log('Server started, listening on port:', 8080);
 });

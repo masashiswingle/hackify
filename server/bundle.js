@@ -28,7 +28,7 @@ module.exports = function () {
     quiet: false,
     noInfo: true,
     stats: {
-      colors: true
+      colors: true 
     }
   });
   bundler.listen(8080, 'localhost', function () {

@@ -1,41 +1,44 @@
-var Webpack = require('webpack');
-var path = require('path');
-var nodeModulesPath = path.resolve(__dirname, 'node_modules');
-var buildPath = path.resolve(__dirname, 'public', 'build');
-var mainPath = path.resolve(__dirname, 'app', 'app.jsx');
+const webpack = require('webpack')
+const path = require('path');
 
-var config = {
+const plugins = [
+  new webpack.ProvidePlugin({
+    $: "jquery",
+    jQuery: "jquery",
+    "window.jQuery": "jquery"
+  })
+]
 
-  devtool: 'eval',
+module.exports = {
   entry: [
-    'webpack/hot/dev-server',
-    'webpack-dev-server/client?http://localhost:8080',
-
-    mainPath],
+    './src/index.js'
+  ],
   output: {
-
-    path: buildPath,
-    filename: 'bundle.js',
-    publicPath: '/build/'
+    path: path.join(__dirname, 'public'),
+    filename: 'bundle.js'
+  },
+  externals: {
+    'cheerio': 'window',
+    'react/lib/ExecutionEnvironment': true,
+    'react/lib/ReactContext': true,
   },
   module: {
-
     loaders: [
     {
-      test: /\.js$/,
+      exclude: /node_modules/,
       loader: 'babel',
-      exclude: [nodeModulesPath]
-    },
-
-    {
-      test: /\.css$/,
-      loader: 'style!css'
-    }
-
-    ]
+      query: {
+        presets: ['react', 'es2015', 'stage-1']
+      }
+    }]
   },
-
-  plugins: [new Webpack.HotModuleReplacementPlugin()]
+  resolve: {
+    extensions: ['', '.js', '.jsx']
+  },
+  devServer: {
+    historyApiFallback: true,
+    contentBase: './'
+  },
+  devtool: 'source-map',
+  plugins: plugins
 };
-
-module.exports = config;
