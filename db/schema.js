@@ -1,9 +1,10 @@
-var Sequelize = require('sequelize')
-var database = new Sequelize('soundbear', 'soundbear', '!Gummybear1', {
-	host: 'soundbearserver.database.windows.net',
+var mysql = require('mysql')
+var Sequelize = require('sequelize');
+var database = new Sequelize(process.env.DATABASE_URL || 'mysql://localhost/hackify', {
+  user : 'root',
+  password: '',
 	dialect: 'mysql'
-}
-})
+});
 
 database
   .authenticate()
@@ -23,9 +24,17 @@ database
   	}
   });
 
- User.sync({force: true}).then(function (){
- 	return Songs.create({
- 		songName: 'pineapple pen',
- 		artistName: 'japanese man'
+database
+  .sync({force: true})
+  .then(function (){
+    console.log('Tables created');
+   	return Songs.create({
+ 		  songName: 'pineapple pen',
+ 		  artistName: 'japanese man'
  	});
  });
+
+
+module.exports = {
+  Songs: Songs
+};

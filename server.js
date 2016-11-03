@@ -1,23 +1,23 @@
-
 if (process.env.NODE_ENV !== "production") {
   require('dotenv').config();
 }
 
 const express                 = require('express');
-// const request                 = require('request');
 const bodyParser              = require('body-parser');
 const path                    = require('path');
 const webpack                 = require('webpack');
 const webpackDevMiddleware    = require('webpack-dev-middleware');
 const webpackHotMiddleware    = require('webpack-hot-middleware');
 const config                  = require('./webpack.config');
-const pg                      = require('pg');
 const dbURL                   = process.env.DATABASE_LINK;
 const SpotifyWebApi           = require('spotify-web-api-node');
 const keys                    = require('./config.js');
 
+
 const app = module.exports = express();
+
 const compiler = webpack(config);
+
 app.use(webpackDevMiddleware(compiler, {
     publicPath: config.output.publicPath,
     stats: {
@@ -34,11 +34,11 @@ app.use(bodyParser.urlencoded({
 
 app.use(express.static(path.join(__dirname, './public')));
 
-
 // app.use(function(req, res, next) {
 //   res.sendFile(path.join(__dirname, './public/index.html'));
 // });
 
+<<<<<<< 0ff2143d63fbf41216e2c1e4286a3cf814763cb6
 const spotifyApi = new SpotifyWebApi(keys.spotify);
 
 app.post('/search', function(req, res) {
@@ -52,6 +52,8 @@ app.post('/search', function(req, res) {
     });
 });
 
+=======
+>>>>>>> [add] database set up
 app.listen(process.env.PORT || 8080, function() {
   console.log('Server started, listening on port:', 8080);
 });
