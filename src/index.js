@@ -1,5 +1,3 @@
-//var AppComponent = require('./components/AppComponent.jsx');
-
 import React from 'react';
 import ReactDOM from 'react-dom';
 
