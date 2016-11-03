@@ -17,7 +17,6 @@ const SpotifyWebApi           = require('spotify-web-api-node');
 const keys                    = require('./config.js');
 
 const app = module.exports = express();
-
 const compiler = webpack(config);
 app.use(webpackDevMiddleware(compiler, {
     publicPath: config.output.publicPath,
