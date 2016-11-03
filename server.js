@@ -38,7 +38,6 @@ app.use(express.static(path.join(__dirname, './public')));
 //   res.sendFile(path.join(__dirname, './public/index.html'));
 // });
 
-<<<<<<< 0ff2143d63fbf41216e2c1e4286a3cf814763cb6
 const spotifyApi = new SpotifyWebApi(keys.spotify);
 
 app.post('/search', function(req, res) {
@@ -52,8 +51,7 @@ app.post('/search', function(req, res) {
     });
 });
 
-=======
->>>>>>> [add] database set up
+
 app.listen(process.env.PORT || 8080, function() {
   console.log('Server started, listening on port:', 8080);
 });
