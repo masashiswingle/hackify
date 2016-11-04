@@ -1,4 +1,4 @@
-export const LOG = 'LOG';
+// export const LOG = 'LOG';
 
 export function log(text) {
   return {

@@ -1,8 +1,8 @@
-import { LOG } from './actions';
+// import { LOG } from './actions';
 
 function log(state = {}, action) {
   switch (action.type) {
-    case LOG:
+    case 'LOG':
       return {
         text: action.text
       };
