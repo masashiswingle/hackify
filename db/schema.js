@@ -1,7 +1,6 @@
 var mysql = require('mysql')
 var Sequelize = require('sequelize');
-var database = new Sequelize(process.env.DATABASE_URL || 'mysql://localhost/hackify', {
-  user : 'root',
+var database = new Sequelize(process.env.DATABASE_URL || 'mysql://root@localhost/hackify', {
   password: '',
 	dialect: 'mysql'
 });

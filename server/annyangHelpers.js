@@ -2,7 +2,7 @@ var audio = new Audio();
 
 module.exports = { 
 
-    searchTracks = function(query) {
+    searchTracks: function(query) {
         $.ajax({
             url: 'https://api.spotify.com/v1/search',
             data: {
@@ -18,7 +18,7 @@ module.exports = {
                 }
             }
         });
-    }
+    },
 
     playSong: function (songName, artistName) {
         var query = songName;
