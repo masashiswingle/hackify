@@ -1,32 +1,31 @@
 import React from 'react';
-// import { connect } from 'react-redux';
-// import { log } from '../redux/actions';
+import { connect } from 'react-redux';
+import { switchView } from '../redux/actions';
 
 class App extends React.Component {
 
-
   render() {
-    return (
-      // <div onClick={() => { console.log(this.props); this.props.log('hello2'); }}>
+    if (this.props.view === 'landing') {
+      return (
+        // <div onClick={() => { console.log(this.props); this.props.log('hello2'); }}>
         // { this.props.text }
-      // </div>
-      <div>
-        <h1>SoundBear</h1>
-        <form>
-          <input type="text" />
-          <input type="button" value="Search" onClick="" />
-        </form>
-      </div>
-    );
+        // </div>
+        <div>
+          <h1>SoundBear</h1>
+          <form>
+            <input type="text" />
+            <input type="button" value="Search" onClick={() => { switchView('player'); console.log(this.props); }} />
+          </form>
+        </div>
+      );
+    }
   }
 }
 
-// const mapStateToProps = (state) => {
-//   return {
-//     text: state.text,
-//     value: 2
-//   };
-// };
+const mapStateToProps = (state) => {
+  return {
+    view: state.view
+  };
+};
 
-// export default connect(mapStateToProps, { log: log })(App);
-export default App;
+export default connect(mapStateToProps, { switchView: switchView })(App);

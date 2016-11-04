@@ -1,8 +1,15 @@
-// export const LOG = 'LOG';
+// // export const LOG = 'LOG';
+//
+// export function log(text) {
+//   return {
+//     type: 'LOG',
+//     text
+//   };
+// }
 
-export function log(text) {
+export function switchView(view) {
   return {
-    type: 'LOG',
-    text
+    type: 'SWITCH_VIEW',
+    view
   };
 }
