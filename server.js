@@ -19,12 +19,12 @@ const app = module.exports = express();
 const compiler = webpack(config);
 
 app.use(webpackDevMiddleware(compiler, {
-    publicPath: config.output.publicPath,
-    stats: {
-      colors: true
-    },
-    noInfo: false
-}))
+  publicPath: config.output.publicPath,
+  stats: {
+    colors: true
+  },
+  noInfo: false
+}));
 
 
 app.use(bodyParser.json());
