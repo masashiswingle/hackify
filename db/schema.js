@@ -33,7 +33,6 @@ database
  	});
  });
 
-
 module.exports = {
   Songs: Songs
 };
