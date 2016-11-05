@@ -3,16 +3,36 @@ import { connect } from 'react-redux';
 import { switchView } from '../redux/actions';
 
 class Landing extends Component {
+
+  switchToPlayer() {
+    this.sendSong(document.getElementById('search').value);
+    this.props.switchView('player');
+  }
+
+  sendSong(song) {
+    fetch('/searchSong', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        song: song
+      })
+    }).then((response) => {
+        return response.json();
+      })
+      .then((formattedResponse) => {
+        console.log(formattedResponse);
+      });
+  }
+
   render() {
     return (
-      // <div onClick={() => { console.log(this.props); this.props.log('hello2'); }}>
-      // { this.props.text }
-      // </div>
       <div>
         <h1>SoundBear</h1>
         <form>
-          <input type="text" />
-          <input type="button" value="Search" onClick={() => { this.props.switchView('player'); console.log(this.props); }} />
+          <input id="search" type="text" />
+          <input type="button" value="Search" onClick={ this.switchToPlayer.bind(this) } />
         </form>
       </div>
     );

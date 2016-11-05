@@ -3,13 +3,18 @@ import { connect } from 'react-redux';
 import { switchView } from '../redux/actions';
 
 class Player extends Component {
+
+  switchToLanding() {
+    this.props.switchView('landing');
+  }
+
   render() {
     return (
       <div>
         <h1>SoundBear Jemil</h1>
         <form>
           <input type="text" />
-          <input type="button" value="Search" onClick={() => { this.props.switchView('landing'); console.log(this.props); }} />
+          <input type="button" value="Search" onClick={ this.switchToLanding.bind(this) } />
         </form>
       </div>
     );

@@ -8,9 +8,9 @@ class App extends React.Component {
 
   render() {
     if (this.props.view === 'landing') {
-      return <Landing />
-    } else {
-      return <Player />
+      return <Landing />;
+    } else if (this.props.view === 'player') {
+      return <Player />;
     }
   }
 }
