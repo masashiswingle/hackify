@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { switchView } from '../redux/actions';
+import { ajaxGetSongs } from '../modules/ajax';
 
 class Player extends Component {
   render() {
@@ -8,8 +9,10 @@ class Player extends Component {
       <div>
         <h1>SoundBear Jemil</h1>
         <form>
-          <input type="text" />
-          <input type="button" value="Search" onClick={() => { this.props.switchView('landing'); console.log(this.props); }} />
+          <input className="input" type="text" />
+          <input type="button" value="Search" onClick={() => { console.log(this.props);
+            ajaxGetSongs($('.input').val());
+          }} />
         </form>
       </div>
     );

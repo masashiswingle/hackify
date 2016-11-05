@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { switchView } from '../redux/actions';
 import Landing from './LandingComponent';
 import Player from './PlayerComponent';
 
-class App extends React.Component {
+class App extends Component {
 
   render() {
     if (this.props.view === 'landing') {
