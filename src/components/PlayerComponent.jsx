@@ -7,7 +7,6 @@ class Player extends Component {
 
   switchToLanding() {
     ajaxGetSongs($('.input').val());
-    this.props.switchView('landing');
   }
 
   render() {
