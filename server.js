@@ -51,7 +51,10 @@ app.use(express.static(path.join(__dirname, './public')));
 //     });
 // });
 
-
 app.listen(process.env.PORT || 8080, function() {
   console.log('Server started, listening on port:', 8080);
+});
+
+app.post('/searchSong', (req, res) => {
+  res.send( { poop: 'poop' } );
 });
