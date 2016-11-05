@@ -51,10 +51,26 @@ app.post('/getSongs', function(req, res) {
     });
 });
 
+// app.post('/search', function(req, res) {
+//   // hardcoded to search love for now, later we need to let query = req.body.??
+//   let query = 'love';
+//   spotifyApi.searchTracks(query)
+//     .then(function(data) {
+//       res.send(data.statusCode, data.body);
+//     }, function(err) {
+//       res.send(400, err);
+//     });
+// });
+
 app.listen(process.env.PORT || 8080, function() {
   console.log('Server started, listening on port:', 8080);
 });
 
 app.post('/searchSong', (req, res) => {
-  res.send( { poop: 'poop' } );
+  spotifyApi.searchTracks(req.body.song)
+    .then(function(data) {
+      res.send(data.statusCode, data.body);
+    }, function(err) {
+      res.send(400, err);
+    });
 });

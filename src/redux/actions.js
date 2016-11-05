@@ -1,15 +1,14 @@
-// // export const LOG = 'LOG';
-//
-// export function log(text) {
-//   return {
-//     type: 'LOG',
-//     text
-//   };
-// }
-
-export function switchView(view) {
+export function switchViewToPlayer(view, currentSong) {
   return {
-    type: 'SWITCH_VIEW',
-    view
+    type: 'SWITCH_VIEW_TO_PLAYER',
+    view,
+    currentSong
   };
 }
+
+// export function setCurrentSong(currentSong) {
+//   return {
+//     type: 'SET_CURRENT_SONG',
+//     currentSong
+//   };
+// }

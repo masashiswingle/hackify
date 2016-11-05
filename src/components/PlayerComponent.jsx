@@ -1,21 +1,17 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { switchView } from '../redux/actions';
 import { ajaxGetSongs } from '../modules/ajax';
 
 class Player extends Component {
-
-  switchToLanding() {
-    ajaxGetSongs($('.input').val());
-  }
 
   render() {
     return (
       <div>
         <h1>SoundBear Jemil</h1>
         <form>
-          <input className="input" type="text" />
-          <input type="button" value="Search" onClick={ this.switchToLanding.bind(this) } />
+          <input type="text" />
+          <input type="button" value="Search" />
+          <div> { this.props.currentSong } </div>
         </form>
       </div>
     );
@@ -23,9 +19,11 @@ class Player extends Component {
 }
 
 const mapStateToProps = (state) => {
+  console.log(state);
   return {
-    view: state.view
+    view: state.view,
+    currentSong: state.currentSong
   };
 };
 
-export default connect(mapStateToProps, { switchView: switchView })(Player);
+export default connect(mapStateToProps)(Player);

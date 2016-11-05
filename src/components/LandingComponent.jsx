@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { switchView } from '../redux/actions';
+import { switchViewToPlayer, setCurrentSong } from '../redux/actions';
 import { ajaxGetSongs } from '../modules/ajax';
 
 class Landing extends Component {
@@ -10,13 +10,31 @@ class Landing extends Component {
     this.props.switchView('player');
   }
 
+  searchFromLanding() {
+    fetch('/searchSong', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        song: document.getElementById('search').value
+      })
+    })
+      .then((result) => {
+        return result.json();
+      })
+      .then((response) => {
+        this.props.switchViewToPlayer('player', response.tracks.href);
+      });
+  }
+
   render() {
     return (
       <div>
         <h1>SoundBear</h1>
         <form>
-          <input className="input" type="text" />
-          <input type="button" value="Search" onClick={ this.switchToPlayer.bind(this) } />
+          <input id="search" type="text" />
+          <input type="button" value="Search" onClick={ this.searchFromLanding.bind(this) } />
         </form>
       </div>
     );
@@ -29,4 +47,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, { switchView: switchView })(Landing);
+export default connect(mapStateToProps, { switchViewToPlayer: switchViewToPlayer, setCurrentSong: setCurrentSong })(Landing);

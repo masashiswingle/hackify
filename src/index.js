@@ -4,9 +4,9 @@ import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 
 import App from './components/AppComponent';
-import switchView from './redux/reducers';
+import mainReducer from './redux/reducers';
 
-const store = createStore(switchView, { view: 'landing' });
+const store = createStore(mainReducer, {view: 'landing'});
 
 render(
   <Provider store={store}>
