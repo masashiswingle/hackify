@@ -37,22 +37,7 @@ app.use(express.static(path.join(__dirname, './public')));
 //   res.sendFile(path.join(__dirname, './public/index.html'));
 // });
 
-
-
 app.post('/getSongs', helpers.getSpotifyData);
-//app.get('/youTubeGetSong', helpers.searchYouTube);
-
-
-// app.post('/search', function(req, res) {
-//   // hardcoded to search love for now, later we need to let query = req.body.??
-//   let query = 'love';
-//   spotifyApi.searchTracks(query)
-//     .then(function(data) {
-//       res.send(data.statusCode, data.body);
-//     }, function(err) {
-//       res.send(400, err);
-//     });
-// });
 
 app.listen(process.env.PORT || 8080, function() {
   console.log('Server started, listening on port:', 8080);

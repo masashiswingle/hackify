@@ -13,8 +13,4 @@ module.exports = {
         res.send(400, err);
       });
   }
-
-
- 
-  
 };
