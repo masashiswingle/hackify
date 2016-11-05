@@ -1,27 +1,10 @@
-// import { LOG } from './actions';
-
-// function log(state = {}, action) {
-//   switch (action.type) {
-//     case 'LOG':
-//       return {
-//         text: action.text
-//       };
-//     default:
-//       return state;
-//   }
-// }
-//
-// export default log;
-
-function switchView(state = {}, action) {
+function mainReducer(state = {}, action) {
   switch (action.type) {
-    case 'SWITCH_VIEW':
-      return {
-        view: action.view
-      };
+    case 'SWITCH_VIEW_TO_PLAYER':
+      return { view: action.view, currentSong: action.currentSong };
     default:
       return state;
   }
 }
 
-export default switchView;
+export default mainReducer;
