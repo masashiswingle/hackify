@@ -10,7 +10,7 @@ const store = createStore(mainReducer, {view: 'landing'});
 
 render(
   <Provider store={store}>
-    <App />
+    <App searchYouTube={searchYouTube} API_KEY={YOUTUBE_API_KEY}/>
   </Provider>,
   document.getElementById('app')
 );
