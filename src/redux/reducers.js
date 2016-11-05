@@ -3,6 +3,7 @@ const mainReducer = function (state = {}, action) {
   switch (action.type) {
     case 'SWITCH_VIEW_TO_PLAYER':
       return { view: action.view, currentSong: action.currentSong };
+      break;
     default:
       return state;
   }
