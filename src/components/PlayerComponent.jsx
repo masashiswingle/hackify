@@ -7,7 +7,7 @@ import { youTubeGetSong } from '../modules/ajax';
 class Player extends Component {
 
   searchFromPlayer() {
-    youTubeGetSong({query: $('#searchP').val()});
+    youTubeGetSong($('#searchPlayerComp').val());
   }
 
   // switchToLanding() {
@@ -21,7 +21,7 @@ class Player extends Component {
       <div>
         <h1>SoundBear Jemil</h1>
         <form>
-          <input type="text" id = 'searchP'/>
+          <input type="text" id = 'searchPlayerComp'/>
           <input type="button" value="Search" onClick={ this.searchFromPlayer.bind(this)}  />
 
         </form>
