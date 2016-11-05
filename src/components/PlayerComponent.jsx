@@ -1,12 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { switchView } from '../redux/actions';
 
 class Player extends Component {
-
-  switchToLanding() {
-    this.props.switchView('landing');
-  }
 
   render() {
     return (
@@ -14,7 +9,8 @@ class Player extends Component {
         <h1>SoundBear Jemil</h1>
         <form>
           <input type="text" />
-          <input type="button" value="Search" onClick={ this.switchToLanding.bind(this) } />
+          <input type="button" value="Search" />
+          <div> { this.props.currentSong } </div>
         </form>
       </div>
     );
@@ -22,9 +18,11 @@ class Player extends Component {
 }
 
 const mapStateToProps = (state) => {
+  console.log(state);
   return {
-    view: state.view
+    view: state.view,
+    currentSong: state.currentSong
   };
 };
 
-export default connect(mapStateToProps, { switchView: switchView })(Player);
+export default connect(mapStateToProps)(Player);

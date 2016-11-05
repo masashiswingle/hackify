@@ -1,28 +1,29 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { switchView } from '../redux/actions';
+import { switchViewToPlayer, setCurrentSong } from '../redux/actions';
 
 class Landing extends Component {
 
   switchToPlayer() {
-    this.sendSong(document.getElementById('search').value);
-    this.props.switchView('player');
+    this.props.switchViewToPlayer('player', document.getElementById('search').value);
   }
 
-  sendSong(song) {
+  searchFromLanding() {
     fetch('/searchSong', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        song: song
+        song: document.getElementById('search').value
       })
-    }).then((response) => {
-        return response.json();
+    })
+      .then((result) => {
+        return result.json();
       })
-      .then((formattedResponse) => {
-        console.log(formattedResponse);
+      .then((response) => {
+        // console.log(response.tracks.href);
+        this.props.switchViewToPlayer('player', response.tracks.href);
       });
   }
 
@@ -32,7 +33,7 @@ class Landing extends Component {
         <h1>SoundBear</h1>
         <form>
           <input id="search" type="text" />
-          <input type="button" value="Search" onClick={ this.switchToPlayer.bind(this) } />
+          <input type="button" value="Search" onClick={ this.searchFromLanding.bind(this) } />
         </form>
       </div>
     );
@@ -45,4 +46,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, { switchView: switchView })(Landing);
+export default connect(mapStateToProps, { switchViewToPlayer: switchViewToPlayer, setCurrentSong: setCurrentSong })(Landing);

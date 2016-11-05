@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { switchView } from '../redux/actions';
 import Landing from './LandingComponent';
 import Player from './PlayerComponent';
 
@@ -21,4 +20,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, { switchView: switchView })(App);
+export default connect(mapStateToProps)(App);

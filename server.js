@@ -11,7 +11,7 @@ const webpackHotMiddleware    = require('webpack-hot-middleware');
 const config                  = require('./webpack.config');
 const dbURL                   = process.env.DATABASE_LINK;
 const SpotifyWebApi           = require('spotify-web-api-node');
-// const keys                    = require('./config.js');
+const keys                    = require('./config.js');
 
 
 const app = module.exports = express();
@@ -38,7 +38,7 @@ app.use(express.static(path.join(__dirname, './public')));
 //   res.sendFile(path.join(__dirname, './public/index.html'));
 // });
 
-// const spotifyApi = new SpotifyWebApi(keys.spotify);
+const spotifyApi = new SpotifyWebApi(keys.spotify);
 
 // app.post('/search', function(req, res) {
 //   // hardcoded to search love for now, later we need to let query = req.body.??
@@ -56,5 +56,10 @@ app.listen(process.env.PORT || 8080, function() {
 });
 
 app.post('/searchSong', (req, res) => {
-  res.send( { poop: 'poop' } );
+  spotifyApi.searchTracks(req.body.song)
+    .then(function(data) {
+      res.send(data.statusCode, data.body);
+    }, function(err) {
+      res.send(400, err);
+    });
 });
