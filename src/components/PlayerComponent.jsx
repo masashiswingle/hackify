@@ -23,10 +23,8 @@ class Player extends Component {
         <form>
           <input type="text" id = 'searchPlayerComp'/>
           <input type="button" value="Search" onClick={ this.searchFromPlayer.bind(this)}  />
-
         </form>
         <iframe style={{"display" : "none"}} className="embed-responsive-item" src={`https://www.youtube.com/embed/${this.props.currentSong}?autoplay=1`} allowFullScreen ></iframe>
-
       </div>
     );
   }
