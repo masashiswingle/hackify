@@ -16,10 +16,10 @@ export const ajaxGetSongs = (params) => {
 };
 
 
-export const youTubeGetSong = (params) => {
+export const youTubeGetSong = (query) => {
 
   var request = gapi.client.youtube.search.list({
-    q: params.query,
+    q: query,
     part: 'snippet', 
     maxResults: 5
   });

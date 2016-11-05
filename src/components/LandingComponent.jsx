@@ -8,12 +8,11 @@ class Landing extends Component {
 
   switchToPlayer() {
     ajaxGetSongs($('input').val());
-    youTubeGetSong({query: $('.input').val()});
     this.props.switchView('player');
   }
 
   searchFromLanding() {
-    youTubeGetSong({query: $('#search').val()});
+    youTubeGetSong($('#searchLandingComp').val());
     // fetch('/searchSong', {
     //   method: 'POST',
     //   headers: {
@@ -36,7 +35,7 @@ class Landing extends Component {
       <div>
         <h1>SoundBear</h1>
         <form>
-          <input id="search" type="text" />
+          <input id="searchLandingComp" type="text" />
           <input type="button" value="Search" onClick={ this.searchFromLanding.bind(this) } />
         </form>
       </div>
