@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js",
+    "start": "nodemon server.js",
     "dev": "nodemon server.js",
     "lint": "node ./node_modules/eslint/bin/eslint.js ./src",
     "dev:hot": "webpack-dev-server --hot --inline --progress --colors --watch --display-error-details --display-cached --content-base ./"
@@ -20,6 +20,7 @@
     "react-dom": "^15.3.2",
     "react-redux": "^4.4.5",
     "redux": "^3.6.0",
+    "request": "^2.78.0",
     "sequelize": "^3.24.7",
     "spotify-web-api-node": "^2.3.6"
   },

@@ -10,8 +10,7 @@ const webpackDevMiddleware    = require('webpack-dev-middleware');
 const webpackHotMiddleware    = require('webpack-hot-middleware');
 const config                  = require('./webpack.config');
 const dbURL                   = process.env.DATABASE_LINK;
-const SpotifyWebApi           = require('spotify-web-api-node');
-const keys                    = require('./config.js');
+const helpers                 = require('./server/serverHelpers.js');
 
 
 const app = module.exports = express();
@@ -38,29 +37,7 @@ app.use(express.static(path.join(__dirname, './public')));
 //   res.sendFile(path.join(__dirname, './public/index.html'));
 // });
 
-const spotifyApi = new SpotifyWebApi(keys.spotify);
-
-app.post('/getSongs', function(req, res) {
-  console.log("got here", req.body);
-
-  spotifyApi.searchTracks(req.body.string)
-    .then(function(data) {
-      res.send(data.statusCode, data.body);
-    }, function(err) {
-      res.send(400, err);
-    });
-});
-
-// app.post('/search', function(req, res) {
-//   // hardcoded to search love for now, later we need to let query = req.body.??
-//   let query = 'love';
-//   spotifyApi.searchTracks(query)
-//     .then(function(data) {
-//       res.send(data.statusCode, data.body);
-//     }, function(err) {
-//       res.send(400, err);
-//     });
-// });
+app.post('/getSongs', helpers.getSpotifyData);
 
 app.listen(process.env.PORT || 8080, function() {
   console.log('Server started, listening on port:', 8080);

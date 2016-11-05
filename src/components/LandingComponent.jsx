@@ -2,30 +2,33 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { switchViewToPlayer, setCurrentSong } from '../redux/actions';
 import { ajaxGetSongs } from '../modules/ajax';
+import { youTubeGetSong } from '../modules/ajax';
 
 class Landing extends Component {
 
   switchToPlayer() {
     ajaxGetSongs($('input').val());
+    youTubeGetSong({query: $('.input').val()});
     this.props.switchView('player');
   }
 
   searchFromLanding() {
-    fetch('/searchSong', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        song: document.getElementById('search').value
-      })
-    })
-      .then((result) => {
-        return result.json();
-      })
-      .then((response) => {
-        this.props.switchViewToPlayer('player', response.tracks.href);
-      });
+    youTubeGetSong({query: $('.input').val()});
+    // fetch('/searchSong', {
+    //   method: 'POST',
+    //   headers: {
+    //     'Content-Type': 'application/json'
+    //   },
+    //   body: JSON.stringify({
+    //     song: document.getElementById('search').value
+    //   })
+    // })
+    //   .then((result) => {
+    //     return result.json();
+    //   })
+    //   .then((response) => {
+    //     this.props.switchViewToPlayer('player', response.tracks.href);
+    //   });
   }
 
   render() {
@@ -47,4 +50,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, { switchViewToPlayer: switchViewToPlayer, setCurrentSong: setCurrentSong })(Landing);
+export default connect(mapStateToProps, { switchViewToPlayer: switchViewToPlayer })(Landing);

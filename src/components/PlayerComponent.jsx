@@ -1,8 +1,16 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { ajaxGetSongs } from '../modules/ajax';
+import { youTubeGetSong } from '../modules/ajax';
 
 class Player extends Component {
+
+
+  switchToLanding() {
+    ajaxGetSongs($('.input').val());
+    youTubeGetSong({query: $('.input').val()});
+    this.props.switchView('landing');
+  }
 
   render() {
     return (

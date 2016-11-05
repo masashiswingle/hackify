@@ -7,10 +7,11 @@ import App from './components/AppComponent';
 import mainReducer from './redux/reducers';
 
 const store = createStore(mainReducer, {view: 'landing'});
+setTimeout(function () {console.log(store.getState())}, 5000);
 
 render(
   <Provider store={store}>
-    <App />
+    <App API_KEY={'AIzaSyBTUh9qsB3l0N-vFkyE3U-FEwuuj5CDHBI'}/>
   </Provider>,
   document.getElementById('app')
 );

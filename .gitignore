@@ -10,3 +10,4 @@ node_modules
 public/bundle.js
 config.js
 .env
+public/youTube_API_KEY.js
