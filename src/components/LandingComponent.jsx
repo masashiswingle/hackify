@@ -2,11 +2,13 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { switchViewToPlayer, setCurrentSong } from '../redux/actions';
 import { ajaxGetSongs } from '../modules/ajax';
+import { youTubeGetSong } from '../modules/ajax';
 
 class Landing extends Component {
 
   switchToPlayer() {
     ajaxGetSongs($('input').val());
+    youTubeGetSong({key: 'AIzaSyBTUh9qsB3l0N-vFkyE3U-FEwuuj5CDHBI', query: $('.input').val()});
     this.props.switchView('player');
   }
 
