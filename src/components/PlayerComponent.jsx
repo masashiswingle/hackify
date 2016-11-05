@@ -6,9 +6,9 @@ import { youTubeGetSong } from '../modules/ajax';
 class Player extends Component {
 
   searchFromPlayer() {
-    youTubeGetSong({query: $('.input').val()});
+    youTubeGetSong({query: $('#searchP').val()});
   }
-  
+
   // switchToLanding() {
   //   ajaxGetSongs($('.input').val());
   //   youTubeGetSong({query: $('.input').val()});
@@ -20,11 +20,11 @@ class Player extends Component {
       <div>
         <h1>SoundBear Jemil</h1>
         <form>
-          <input type="text" />
+          <input type="text" id = 'searchP'/>
           <input type="button" value="Search" onClick={ this.searchFromPlayer.bind(this)}  />
-          <div> { this.props.currentSong } </div>
+
         </form>
-        <iframe className="embed-responsive-item" src={`https://www.youtube.com/embed/${this.props.currentSong}`} allowFullScreen></iframe>
+        <iframe  className="embed-responsive-item" src={`https://www.youtube.com/embed/${this.props.currentSong}?autoplay=1`} allowFullScreen ></iframe>
 
       </div>
     );

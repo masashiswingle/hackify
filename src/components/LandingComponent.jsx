@@ -13,7 +13,7 @@ class Landing extends Component {
   }
 
   searchFromLanding() {
-    youTubeGetSong({query: $('.input').val()});
+    youTubeGetSong({query: $('#search').val()});
     // fetch('/searchSong', {
     //   method: 'POST',
     //   headers: {
