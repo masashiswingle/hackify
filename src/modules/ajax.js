@@ -1,4 +1,5 @@
 import $ from 'jquery';
+import { switchViewToPlayer } from '../redux/actions';
 
 export const ajaxGetSongs = (params) => {
   console.log('in ajaxGetSongs');
@@ -23,8 +24,9 @@ export const youTubeGetSong = (params) => {
   });
 
   request.execute(function(response)  {                                                                                    
-    var srchItems = response.result.items; 
-    console.log('inside searchYouTube', srchItems);                   
+    var srchItem = response.result.items[0]; 
+    console.log('inside searchYouTube', srchItem); 
+    switchViewToPlayer('player', srchItem.id.videoId);                 
                       
-  })  
+  });  
 };

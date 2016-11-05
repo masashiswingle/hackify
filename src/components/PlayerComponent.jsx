@@ -8,7 +8,7 @@ class Player extends Component {
 
   switchToLanding() {
     ajaxGetSongs($('.input').val());
-    youTubeGetSong({key: 'AIzaSyBTUh9qsB3l0N-vFkyE3U-FEwuuj5CDHBI', query: $('.input').val()});
+    youTubeGetSong({query: $('.input').val()});
     this.props.switchView('landing');
   }
 
