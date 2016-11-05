@@ -1,29 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { switchView } from '../redux/actions';
+import { ajaxGetSongs } from '../modules/ajax';
 
 class Landing extends Component {
 
   switchToPlayer() {
-    this.sendSong(document.getElementById('search').value);
+    ajaxGetSongs($('input').val());
     this.props.switchView('player');
-  }
-
-  sendSong(song) {
-    fetch('/searchSong', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        song: song
-      })
-    }).then((response) => {
-        return response.json();
-      })
-      .then((formattedResponse) => {
-        console.log(formattedResponse);
-      });
   }
 
   render() {
@@ -31,7 +15,7 @@ class Landing extends Component {
       <div>
         <h1>SoundBear</h1>
         <form>
-          <input id="search" type="text" />
+          <input className="input" type="text" />
           <input type="button" value="Search" onClick={ this.switchToPlayer.bind(this) } />
         </form>
       </div>
