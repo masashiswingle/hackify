@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { switchViewToPlayer, setCurrentSong } from '../redux/actions';
 import { ajaxGetSongs } from '../modules/ajax';
 import { youTubeGetSong } from '../modules/ajax';
+import { annyangCall } from '../annyang';
 
 class Landing extends Component {
 
@@ -34,6 +35,7 @@ class Landing extends Component {
   }
 
   render() {
+    annyangCall();
     return (
       <div>
         <h1>SoundBear</h1>
@@ -41,6 +43,9 @@ class Landing extends Component {
           <input id="searchLandingComp" type="text" />
           <input type="button" value="Search" onClick={ this.searchFromLanding.bind(this) } />
         </form>
+        <div id="conversation"></div>
+
+
       </div>
     );
   }

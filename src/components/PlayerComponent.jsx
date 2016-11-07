@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { ajaxGetSongs } from '../modules/ajax';
 import { youTubeGetSong } from '../modules/ajax';
+import { annyangCall } from '../annyang'
 
 
 class Player extends Component {
@@ -9,6 +10,7 @@ class Player extends Component {
   searchFromPlayer() {
     youTubeGetSong($('#searchPlayerComp').val());
   }
+
 
   componentDidMount() {
     player = new YT.Player('player', {
@@ -33,7 +35,16 @@ class Player extends Component {
     player.loadVideoById(this.props.currentSong);
   }
 
+
+  // switchToLanding() {
+  //   ajaxGetSongs($('.input').val());
+  //   youTubeGetSong({query: $('.input').val()});
+  //   this.props.switchView('landing');
+  // }
+//style={{"display" : "none"}}
+
   render() {
+    annyangCall();
     return (
       <div>
         <h1>SoundBear Jemil</h1>
@@ -41,6 +52,13 @@ class Player extends Component {
           <input type="text" id = 'searchPlayerComp'/>
           <input type="button" value="Search" onClick={ this.searchFromPlayer.bind(this) } />
         </form>
+
+
+        <div>Hello</div>
+
+        <div id="conversation"></div>
+
+
       </div>
     );
   }
