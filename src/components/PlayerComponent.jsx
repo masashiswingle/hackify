@@ -14,8 +14,23 @@ class Player extends Component {
     player = new YT.Player('player', {
       height: '390',
       width: '640',
-      videoId: this.props.currentSong
+      videoId: this.props.currentSong,
+      events: {
+        onReady: onPlayerReady
+      }
     });
+
+    function onPlayerReady(event) {
+      event.target.playVideo();
+    }
+  }
+
+  componentDidUpdate() {
+    this.changeCurrentSong();
+  }
+
+  changeCurrentSong() {
+    player.loadVideoById(this.props.currentSong);
   }
 
   render() {
@@ -26,14 +41,12 @@ class Player extends Component {
           <input type="text" id = 'searchPlayerComp'/>
           <input type="button" value="Search" onClick={ this.searchFromPlayer.bind(this) } />
         </form>
-        <div>Hello</div>
       </div>
     );
   }
 }
 
 const mapStateToProps = (state) => {
-  console.log(state);
   return {
     view: state.view,
     currentSong: state.currentSong
