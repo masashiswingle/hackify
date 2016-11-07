@@ -10,8 +10,12 @@ class Player extends Component {
     youTubeGetSong($('#searchPlayerComp').val());
   }
 
-  pauseCurrentSong() {
-    document.getElementById('song').pauseVideo();
+  componentDidMount() {
+    player = new YT.Player('player', {
+      height: '390',
+      width: '640',
+      videoId: this.props.currentSong
+    });
   }
 
   render() {
@@ -21,9 +25,8 @@ class Player extends Component {
         <form>
           <input type="text" id = 'searchPlayerComp'/>
           <input type="button" value="Search" onClick={ this.searchFromPlayer.bind(this) } />
-          <input type="button" value="pause" onClick={ this.pauseCurrentSong.bind(this) } />
         </form>
-        <iframe id="song" className="embed-responsive-item" src={`https://www.youtube.com/embed/${this.props.currentSong}?autoplay=1`} allowFullScreen ></iframe>
+        <div>Hello</div>
       </div>
     );
   }
