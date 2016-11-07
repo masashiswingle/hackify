@@ -41,7 +41,7 @@ class Landing extends Component {
         <h1>SoundBear</h1>
         <form>
           <input id="searchLandingComp" type="text" />
-          <input type="button" value="Search" onClick={ this.searchFromLanding.bind(this) } />
+          <input type="button" value="Search" onClick={ this.switchToPlayer.bind(this) } />
         </form>
         <div id="conversation"></div>
 
