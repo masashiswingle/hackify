@@ -10,11 +10,13 @@ class Player extends Component {
     youTubeGetSong($('#searchPlayerComp').val());
   }
 
-  // switchToLanding() {
-  //   ajaxGetSongs($('.input').val());
-  //   youTubeGetSong({query: $('.input').val()});
-  //   this.props.switchView('landing');
-  // }
+  componentDidMount() {
+    player = new YT.Player('player', {
+      height: '390',
+      width: '640',
+      videoId: this.props.currentSong
+    });
+  }
 
   render() {
     return (
@@ -22,11 +24,9 @@ class Player extends Component {
         <h1>SoundBear Jemil</h1>
         <form>
           <input type="text" id = 'searchPlayerComp'/>
-          <input type="button" value="Search" onClick={ this.searchFromPlayer.bind(this)}  />
-
+          <input type="button" value="Search" onClick={ this.searchFromPlayer.bind(this) } />
         </form>
-        <iframe style={{"display" : "none"}} className="embed-responsive-item" src={`https://www.youtube.com/embed/${this.props.currentSong}?autoplay=1`} allowFullScreen ></iframe>
-
+        <div>Hello</div>
       </div>
     );
   }
