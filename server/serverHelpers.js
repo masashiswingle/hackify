@@ -18,7 +18,7 @@ module.exports = {
     spotifyApi.searchTracks(req.body.string)
       .then(function(data) {
         var artistId = data.body.tracks.items[0].artists[0].id;
-        return spotifyApi.getArtistTopTracks(artistId, 'GB')
+        return spotifyApi.getArtistTopTracks(artistId, 'US')
           .then(function(tracks) {
             console.log('inside getArtistTopTracks', tracks.body)
             res.send(data.statusCode, tracks.body);

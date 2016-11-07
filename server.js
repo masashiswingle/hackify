@@ -38,6 +38,11 @@ app.use(express.static(path.join(__dirname, './public')));
 // });
 
 app.post('/getSongs', helpers.getSpotifyData);
+app.post('/artistTracks', helpers.getArtistTopTracks);
+app.post('/artistAlbums', helpers.getArtistAlbums);
+app.get('/newReleases', helpers.getNewReleases);
+app.post('/relatedArtists', helpers.getRelatedArtists);
+app.get('/listOfCategories', helpers.getListOfCategories);
 
 app.listen(process.env.PORT || 8080, function() {
   console.log('Server started, listening on port:', 8080);
