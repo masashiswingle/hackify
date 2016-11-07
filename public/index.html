@@ -4,14 +4,16 @@
     
     <meta charset="UTF-8">
     <title>soundbear</title>
-   
+
   </head>
   <body>
     <div id="app"></div>
 
+      <link rel="stylesheet" type="text/css" href="styles/styles.css">
+
       <script type="text/javascript" src="./youTube_API_KEY.js"></script>
 
-      <script type="text/javascript">
+      <!-- <script type="text/javascript">
         function onClientLoad() {
             gapi.client.load('youtube', 'v3', onYouTubeApiLoad);
         }
@@ -19,12 +21,13 @@
             gapi.client.setApiKey(window.youTube);
             console.log('loaded');
         }
-      </script>
+      </script> -->
+
+      
 
       <script src="https://apis.google.com/js/client.js?onload=onClientLoad" type="text/javascript"></script>
 
       <script src="./bundle.js"></script>
-
 
 
   </body>

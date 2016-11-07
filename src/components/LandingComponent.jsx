@@ -13,6 +13,9 @@ class Landing extends Component {
 
   searchFromLanding() {
     youTubeGetSong($('#searchLandingComp').val());
+    // setTimeout(() => {
+    //   document.getElementById('song').pauseVideo();
+    // }, 5000);
     // fetch('/searchSong', {
     //   method: 'POST',
     //   headers: {
