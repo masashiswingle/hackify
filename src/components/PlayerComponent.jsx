@@ -11,20 +11,28 @@ class Player extends Component {
     youTubeGetSong($('#searchPlayerComp').val());
   }
 
-
   componentDidMount() {
     player = new YT.Player('player', {
       height: '390',
       width: '640',
       videoId: this.props.currentSong,
       events: {
-        onReady: onPlayerReady
+        onReady: onPlayerReady,
+        'onStateChange': onPlayerStateChange
       }
     });
 
     function onPlayerReady(event) {
       event.target.playVideo();
     }
+
+    function onPlayerStateChange(event) {
+      if (event.data === 0) {
+        console.log('ended');
+      }
+    }
+
+    console.log(player);
   }
 
   componentDidUpdate() {
@@ -35,13 +43,9 @@ class Player extends Component {
     player.loadVideoById(this.props.currentSong);
   }
 
-
-  // switchToLanding() {
-  //   ajaxGetSongs($('.input').val());
-  //   youTubeGetSong({query: $('.input').val()});
-  //   this.props.switchView('landing');
-  // }
-//style={{"display" : "none"}}
+  queueSong() {
+    player.cueVideoById('RB-RcX5DS5A');
+  }
 
   render() {
     annyangCall();
@@ -51,6 +55,7 @@ class Player extends Component {
         <form>
           <input type="text" id = 'searchPlayerComp'/>
           <input type="button" value="Search" onClick={ this.searchFromPlayer.bind(this) } />
+          <input type="button" value="Queue" onClick={ this.queueSong.bind(this) } />
         </form>
 
 
