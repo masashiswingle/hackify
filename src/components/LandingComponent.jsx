@@ -1,19 +1,18 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { switchViewToPlayer, setCurrentSong } from '../redux/actions';
-import { ajaxGetSongs } from '../modules/ajax';
-import { youTubeGetSong } from '../modules/ajax';
+import * as helpers from '../modules/ajax';
 import { annyangCall } from '../annyang';
 
 class Landing extends Component {
 
   switchToPlayer() {
-    ajaxGetSongs($('input').val());
+    helpers.ajaxGetSongs($('input').val());
     this.props.switchView('player');
   }
 
   searchFromLanding() {
-    youTubeGetSong($('#searchLandingComp').val());
+    helpers.youTubeGetSong($('#searchLandingComp').val());
     // setTimeout(() => {
     //   document.getElementById('song').pauseVideo();
     // }, 5000);
@@ -41,7 +40,7 @@ class Landing extends Component {
         <h1>SoundBear</h1>
         <form>
           <input id="searchLandingComp" type="text" />
-          <input type="button" value="Search" onClick={ this.switchToPlayer.bind(this) } />
+          <input type="button" value="Search" onClick={ this.searchFromLanding.bind(this) } />
         </form>
         <div id="conversation"></div>
 

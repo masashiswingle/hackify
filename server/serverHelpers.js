@@ -42,14 +42,17 @@ module.exports = {
       })
   },
 
+  //AUTHENTICATION REQUIRED FOR THIS CALL
   getNewReleases: function (req, res) {
+    console.log('inside getNewReleases before call');
     spotifyApi.getNewReleases({ limit : 5, offset: 0, country: 'US' })
-      .then(function(tracks) {
-        console.log('inside getNewReleases', tracks.body)
-        res.send(data.statusCode, tracks.body);
+      .then(function(data) {
+        console.log('inside getNewReleases', data.body);
+        res.send(data.statusCode, data.body);
+        done();
         }, function(err) {
-            res.send(400, err);
-      })
+          res.send(400, err);
+      });
   },
 
   getRelatedArtists: function (req, res) {
@@ -66,6 +69,7 @@ module.exports = {
       })
   },
 
+  //AUTHENTICATION REQUIRED FOR THIS CALL
   getListOfCategories: function (req, res) {
     spotifyApi.getCategories({
       limit : 20,
