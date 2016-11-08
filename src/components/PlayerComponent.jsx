@@ -1,32 +1,33 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { ajaxGetSongs } from '../modules/ajax';
-import { youTubeGetSong } from '../modules/ajax';
+import * as helpers from '../modules/ajax';
 import { annyangCall } from '../annyang';
 import { initiateQueue, changeCurrentSong } from '../redux/actions';
 
 class Player extends Component {
 
   searchFromPlayer() {
-    youTubeGetSong($('#searchPlayerComp').val(), (response) => {
+    helpers.youTubeGetSong($('#searchPlayerComp').val(), (response) => {
       this.props.changeCurrentSong(response.items[0].id.videoId);
     });
   }
 
   queueSong() {
-    youTubeGetSong($('#searchPlayerComp').val(), (response) => {
+    helpers.youTubeGetSong($('#searchPlayerComp').val(), (response) => {
       this.props.songQueue.push(response.items[0].id.videoId);
     });
   }
 
   componentDidMount() {
+    console.log(this);
     player = new YT.Player('player', {
       height: '390',
       width: '640',
       videoId: this.props.currentSong,
       events: {
         onReady: onPlayerReady,
-        'onStateChange': onPlayerStateChange
+        'onStateChange': onPlayerStateChange.bind(this)
       }
     });
 
@@ -36,15 +37,17 @@ class Player extends Component {
 
     function onPlayerStateChange(event) {
       if (event.data === 0) {
-        console.log('ended');
-        console.log(player);
+        if (this.props.songQueue.length > 0) {
+          this.props.changeCurrentSong(this.props.songQueue[0]);
+          this.props.songQueue.unshift();
+        }
       }
     }
     this.props.initiateQueue();
   }
 
   componentDidUpdate() {
-    if (player.getVideoDate && player.getVideoData.videoId !== this.props.currentSong) {
+    if (player.getVideoData && player.getVideoData.videoId !== this.props.currentSong) {
       player.cueVideoById(this.props.currentSong);
       player.playVideo();
     }
