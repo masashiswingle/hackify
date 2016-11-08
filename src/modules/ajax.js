@@ -15,12 +15,74 @@ export const ajaxGetSongs = (params) => {
   });
 };
 
+export const artistTracks = (params) => {
+  console.log('in artistTracks');
+  $.ajax({
+    method: "POST",
+    url: '/artistTracks',
+    data: { string: params }
+  })
+  .done(function( data ) {
+    console.log('got from artistTracks', data);
+    return data;
+  });
+};
+
+export const artistAlbums = (params) => {
+  console.log('in artistAlbums');
+  $.ajax({
+    method: "POST",
+    url: '/artistAlbums',
+    data: { string: params }
+  })
+  .done(function( data ) {
+    console.log('got from artistAlbums', data);
+    return data;
+  });
+};
+
+//AUTHENTICATION REQUIRED FOR THIS CALL
+export const newReleases = () => {
+  console.log('in newReleases');
+  $.ajax({
+    method: "GET",
+    url: '/newReleases'
+  })
+  .done(function( data ) {
+    console.log('got from newReleases', data);
+    return data;
+  });
+};
+
+export const relatedArtists = (params) => {
+  console.log('in relatedArtists');
+  $.ajax({
+    method: "POST",
+    url: '/relatedArtists',
+    data: { string: params }
+  })
+  .done(function( data ) {
+    console.log('got from relatedArtists', data);
+    return data;
+  });
+};
+
+//AUTHENTICATION REQUIRED FOR THIS CALL
+export const listOfCategories = () => {
+  console.log('in listOfCategories');
+  $.ajax({
+    method: "GET",
+    url: '/listOfCategories'
+  })
+  .done(function( data ) {
+    console.log('got from listOfCategories', data);
+    return data;
+  });
+};
+
 let srchItem;
-
 export const youTubeGetSong = (query) => {
-
   return new Promise(function (resolve, reject) {
-
       var request = gapi.client.youtube.search.list({
           q: query,
           part: 'snippet', 

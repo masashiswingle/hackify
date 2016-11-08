@@ -1,19 +1,18 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { switchViewToPlayer, setCurrentSong } from '../redux/actions';
-import { ajaxGetSongs } from '../modules/ajax';
-import { youTubeGetSong } from '../modules/ajax';
+import * as helpers from '../modules/ajax';
 import { annyangCall } from '../annyang';
 
 class Landing extends Component {
 
   switchToPlayer() {
-    ajaxGetSongs($('input').val());
+    helpers.ajaxGetSongs($('input').val());
     this.props.switchView('player');
   }
 
   searchFromLanding() {
-    youTubeGetSong($('#searchLandingComp').val());
+    helpers.youTubeGetSong($('#searchLandingComp').val());
     // setTimeout(() => {
     //   document.getElementById('song').pauseVideo();
     // }, 5000);
