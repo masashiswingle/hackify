@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { switchViewToPlayer, setCurrentSong } from '../redux/actions';
 import * as helpers from '../modules/ajax';
+import { switchViewToPlayer } from '../redux/actions';
+import { ajaxGetSongs } from '../modules/ajax';
+// import { youTubeGetSong } from '../modules/ajax';
 import { annyangCall } from '../annyang';
 
 class Landing extends Component {
@@ -12,25 +15,9 @@ class Landing extends Component {
   }
 
   searchFromLanding() {
-    helpers.youTubeGetSong($('#searchLandingComp').val());
-    // setTimeout(() => {
-    //   document.getElementById('song').pauseVideo();
-    // }, 5000);
-    // fetch('/searchSong', {
-    //   method: 'POST',
-    //   headers: {
-    //     'Content-Type': 'application/json'
-    //   },
-    //   body: JSON.stringify({
-    //     song: document.getElementById('search').value
-    //   })
-    // })
-    //   .then((result) => {
-    //     return result.json();
-    //   })
-    //   .then((response) => {
-    //     this.props.switchViewToPlayer('player', response.tracks.href);
-    //   });
+      helpers.youTubeGetSong($('#searchLandingComp').val(), (response) =>{
+        this.props.switchViewToPlayer('player', response.items[0].id.videoId);
+      });
   }
 
   render() {
