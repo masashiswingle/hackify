@@ -4,6 +4,7 @@ import { ajaxGetSongs } from '../modules/ajax';
 import * as helpers from '../modules/ajax';
 import { annyangCall } from '../annyang';
 import { initiateQueue, changeCurrentSong } from '../redux/actions';
+import $ from 'jquery';
 
 class Player extends Component {
 
