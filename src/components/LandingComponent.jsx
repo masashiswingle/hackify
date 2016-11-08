@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { switchViewToPlayer, setCurrentSong } from '../redux/actions';
 import * as helpers from '../modules/ajax';
-import { switchViewToPlayer } from '../redux/actions';
 import { ajaxGetSongs } from '../modules/ajax';
 // import { youTubeGetSong } from '../modules/ajax';
 import { annyangCall } from '../annyang';

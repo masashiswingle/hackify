@@ -8,6 +8,10 @@ import mainReducer from './redux/reducers';
 
 const store = createStore(mainReducer, {view: 'landing'});
 
+setInterval(() => {
+    console.log(store.getState());
+}, 2000);
+
 render(
   <Provider store={store}>
     <App API_KEY={'AIzaSyBTUh9qsB3l0N-vFkyE3U-FEwuuj5CDHBI'}/>

@@ -12,7 +12,7 @@ class Player extends Component {
       this.props.changeCurrentSong(response.items[0].id.videoId);
     });
   }
-  
+
   queueSong() {
     youTubeGetSong($('#searchPlayerComp').val(), (response) => {
       this.props.songQueue.push(response.items[0].id.videoId);
@@ -44,7 +44,7 @@ class Player extends Component {
   }
 
   componentDidUpdate() {
-    if (player.getVideoData.videoId !== this.props.currentSong) {
+    if (player.getVideoDate && player.getVideoData.videoId !== this.props.currentSong) {
       player.cueVideoById(this.props.currentSong);
       player.playVideo();
     }
