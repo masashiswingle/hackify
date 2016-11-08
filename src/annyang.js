@@ -1,11 +1,11 @@
-import { youTubeGetSong } from './modules/ajax';
+import { youTubeGetSongAnnyang } from './modules/ajax';
 import { getSearchItem } from './modules/ajax';
 
 module.exports = {
     annyangCall: function() {
         
         function searchTracks(query) {
-            youTubeGetSong(query)
+            youTubeGetSongAnnyang(query)
               .then(function () {
                 var track = getSearchItem();
                 console.log('in .then', track);

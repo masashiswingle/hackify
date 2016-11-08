@@ -80,7 +80,6 @@ export const listOfCategories = () => {
   });
 };
 
-let srchItem;
 export const youTubeGetSong = (query, callback) => {
 
   var request = gapi.client.youtube.search.list({
@@ -95,6 +94,37 @@ export const youTubeGetSong = (query, callback) => {
       callback(response);
     }
   });
+};
+
+let srchItem;
+export const youTubeGetSongAnnyang = (query) => {
+  return new Promise(function (resolve, reject) {
+      var request = gapi.client.youtube.search.list({
+          q: query,
+          part: 'snippet', 
+          maxResults: 5
+      });
+      request.execute(function(response)  {                                                                                    
+        return new Promise (function (resolve, reject) {
+
+            srchItem = response.result.items[0]; 
+            console.log('inside searchYouTube', srchItem);  
+            store.dispatch({
+              type: 'SWITCH_VIEW_TO_PLAYER',
+              view: 'player', 
+              currentSong: srchItem.id.videoId
+            });  
+
+            resolve();                           
+        })
+        .then(function () {
+          resolve();
+        }) 
+          
+      });
+
+  });
+
 };
 
 export const getSearchItem = () => {
