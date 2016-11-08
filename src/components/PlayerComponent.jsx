@@ -2,15 +2,22 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { ajaxGetSongs } from '../modules/ajax';
 import { youTubeGetSong } from '../modules/ajax';
-import { annyangCall } from '../annyang'
-
+import { annyangCall } from '../annyang';
+import { initiateQueue, changeCurrentSong } from '../redux/actions';
 
 class Player extends Component {
 
   searchFromPlayer() {
-    youTubeGetSong($('#searchPlayerComp').val());
+    youTubeGetSong($('#searchPlayerComp').val(), (response) => {
+      this.props.changeCurrentSong(response.items[0].id.videoId);
+    });
   }
 
+  queueSong() {
+    youTubeGetSong($('#searchPlayerComp').val(), (response) => {
+      this.props.songQueue.push(response.items[0].id.videoId);
+    });
+  }
 
   componentDidMount() {
     player = new YT.Player('player', {
@@ -18,30 +25,30 @@ class Player extends Component {
       width: '640',
       videoId: this.props.currentSong,
       events: {
-        onReady: onPlayerReady
+        onReady: onPlayerReady,
+        'onStateChange': onPlayerStateChange
       }
     });
 
     function onPlayerReady(event) {
       event.target.playVideo();
     }
+
+    function onPlayerStateChange(event) {
+      if (event.data === 0) {
+        console.log('ended');
+        console.log(player);
+      }
+    }
+    this.props.initiateQueue();
   }
 
   componentDidUpdate() {
-    this.changeCurrentSong();
+    if (player.getVideoDate && player.getVideoData.videoId !== this.props.currentSong) {
+      player.cueVideoById(this.props.currentSong);
+      player.playVideo();
+    }
   }
-
-  changeCurrentSong() {
-    player.loadVideoById(this.props.currentSong);
-  }
-
-
-  // switchToLanding() {
-  //   ajaxGetSongs($('.input').val());
-  //   youTubeGetSong({query: $('.input').val()});
-  //   this.props.switchView('landing');
-  // }
-//style={{"display" : "none"}}
 
   render() {
     annyangCall();
@@ -49,16 +56,11 @@ class Player extends Component {
       <div>
         <h1>SoundBear Jemil</h1>
         <form>
-          <input type="text" id = 'searchPlayerComp'/>
+          <input type="text" id="searchPlayerComp" />
           <input type="button" value="Search" onClick={ this.searchFromPlayer.bind(this) } />
+          <input type="button" value="Queue" onClick={ this.queueSong.bind(this) } />
         </form>
-
-
-        <div>Hello</div>
-
         <div id="conversation"></div>
-
-
       </div>
     );
   }
@@ -67,8 +69,9 @@ class Player extends Component {
 const mapStateToProps = (state) => {
   return {
     view: state.view,
-    currentSong: state.currentSong
+    currentSong: state.currentSong,
+    songQueue: state.songQueue
   };
 };
 
-export default connect(mapStateToProps)(Player);
+export default connect(mapStateToProps, { initiateQueue: initiateQueue, changeCurrentSong: changeCurrentSong })(Player);
