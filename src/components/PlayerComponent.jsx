@@ -39,7 +39,7 @@ class Player extends Component {
       if (event.data === 0) {
         if (this.props.songQueue.length > 0) {
           this.props.changeCurrentSong(this.props.songQueue[0]);
-          this.props.songQueue.unshift();
+          this.props.songQueue.shift();
         }
       }
     }
