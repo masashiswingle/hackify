@@ -8,9 +8,9 @@ import mainReducer from './redux/reducers';
 
 const store = createStore(mainReducer, {view: 'landing'});
 
-setInterval(() => {
-    console.log(store.getState());
-}, 2000);
+// setInterval(() => {
+//     console.log(store.getState());
+// }, 2000);
 
 render(
   <Provider store={store}>
