@@ -5,7 +5,9 @@ const mainReducer = function (state = {}, action) {
         ...state,
         view: action.view,
         currentSong: {
-          videoId: action.currentSong
+          videoId: action.currentSong.videoId,
+          title: action.currentSong.title,
+          artwork: action.currentSong.artwork
         }
       };
     case 'INITIATE_QUEUE':

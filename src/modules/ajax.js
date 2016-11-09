@@ -89,7 +89,7 @@ export const youTubeGetSong = (query, callback) => {
   });
 
   request.execute(function(response) {
-    console.log(response);
+    // console.log(response);
     if (callback) {
       callback(response);
     }
@@ -142,7 +142,7 @@ export const youTubeGetSongAnnyang = (query) => {
         return new Promise (function (resolve, reject) {
 
             srchItem = response.result.items[0]; 
-            console.log('inside searchYouTube', srchItem);  
+            // console.log('inside searchYouTube', srchItem);  
             store.dispatch({
               type: 'SWITCH_VIEW_TO_PLAYER',
               view: 'player', 
