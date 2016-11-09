@@ -95,18 +95,22 @@ module.exports = {
                 },
 
                 'add next *song by *artist': function (song, artist) {
+                    recognized('Add next ' + song +' by ' + artist);
                     addToQueue(song, artist);
                 },
 
                 'add next *song': function (song) {
+                    recognized('Add next ' + song);
                     addToQueue(song);
                 },
 
                 'add to queue *song': function (song) {
+                    recognized('Add to queue ' + song);
                     addToQueue(song);
                 },
 
                 'add to queue *song by *artist': function (song, artist) {
+                    recognized('Add to queue ' + song +' by ' + artist);
                     addToQueue(song, artist);
                 },
 
