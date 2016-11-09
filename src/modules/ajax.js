@@ -146,7 +146,11 @@ export const youTubeGetSongAnnyang = (query) => {
             store.dispatch({
               type: 'SWITCH_VIEW_TO_PLAYER',
               view: 'player', 
-              currentSong: srchItem.id.videoId
+              currentSong: {
+                videoId: srchItem.id.videoId,
+                title: srchItem.snippet.title,
+                artwork: srchItem.snippet.thumbnails.default.url
+              }
             });  
 
             resolve();                           
