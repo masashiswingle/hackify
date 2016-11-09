@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import ControlBar from './ControlBarComponent';
 import { ajaxGetSongs } from '../modules/ajax';
 import * as helpers from '../modules/ajax';
 import { annyangCall } from '../annyang';
 import { initiateQueue, changeCurrentSong } from '../redux/actions';
-import ControlBar from './ControlBarComponent';
-import $ from 'jquery';
+// import $ from 'jquery';
 
 class Player extends Component {
 
@@ -65,7 +65,7 @@ class Player extends Component {
           <input type="button" value="Search" onClick={ this.searchFromPlayer.bind(this) } />
           <input type="button" value="Queue" onClick={ this.queueSong.bind(this) } />
         </form>
-        <ControlBar />
+        <ControlBar player={ player } />
         <div id="conversation"></div>
       </div>
     );
