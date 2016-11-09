@@ -4,8 +4,19 @@ import { getSearchItem } from './modules/ajax';
 module.exports = {
     annyangCall: function() {
 
+        // Creates query based on passed parame
+        function createQuery(songName, artistName) {
+            if (artistName) {
+                var query = songName +' by ' + artistName;
+            } else {
+                query = songName + 'song';
+            }
+            return query;
+        };
         
-        function searchTracks(query) {
+        // Finds and plays new song
+        function playSong(songName, artistName) {
+            var query = createQuery(songName, artistName);
             youTubeGetSongAnnyang(query)
               .then(function () {
                 var track = getSearchItem();
@@ -14,14 +25,12 @@ module.exports = {
                 communicateAction('<div>Playing ' + track.snippet.title + '</div><img width="150" src="' + track.snippet.thumbnails.medium.url + '">');
             });
 
-        }
+        };
 
+        // Adds song to queue to be played later
         function addToQueue (songName, artistName) {
             console.log('in addToQueue')
-            var query = songName;
-            if (artistName) {
-                query += songName +' by ' + artistName;
-            }
+            var query = createQuery(songName, artistName);
 
             addSongToQueue(query)
             .then(function () {
@@ -30,32 +39,29 @@ module.exports = {
                 // document.getElementById('conversation').innerHTML = "";
                 communicateAction('<div>Added to queue ' + track.snippet.title + '</div><img width="150" src="' + track.snippet.thumbnails.medium.url + '">');
             });
-        }
+        };
 
-        function playSong(songName, artistName) {
-            var query = songName;
-            if (artistName) {
-                query += songName +' by ' + artistName;
-            }
-
-            searchTracks(query);
-        }
-
+        // Plays next song in queue
         function dequeue () {
             dequeueSong();
-            // communicateAction('<div>Added to queue ' + track.snippet.title + '</div><img width="150" src="' + track.snippet.thumbnails.medium.url + '">');
-        }
+            //logic to show title and thumbnail needed!
+            communicateAction('<div>Playing next song in queue...</div>');
 
+        };
+
+        // Shows messages/warning dialog
         function communicateAction(text) {
             var rec = document.getElementById('conversation');
             rec.innerHTML += '<div class="action">' + text + '</div>';
         }
 
+        // Displays messages with recognized commands
         function recognized(text) {
             var rec = document.getElementById('conversation');
             rec.innerHTML += '<div class="recognized"><div>' + text + '</div></div>';
         }
 
+        // Defines commands
         if (annyang) {
  
             var commands = {
@@ -65,12 +71,10 @@ module.exports = {
 
                 'skip song': function () {
                     dequeue();
-                    recognized('Playing next song in queue...');
                 },
 
                 'play next song': function () {
                     dequeue();
-                    recognized('Playing next song in queue...');
                 },
 
                 'play track *song': function (song) {
@@ -91,22 +95,18 @@ module.exports = {
                 },
 
                 'add next *song by *artist': function (song, artist) {
-                    //recognized('Added next ' + song + ' by ' + artist);
                     addToQueue(song, artist);
                 },
 
                 'add next *song': function (song) {
-                    //recognized('Added next ' + song);
                     addToQueue(song);
                 },
 
                 'add to queue *song': function (song) {
-                    //recognized('Queue ' + song);
                     addToQueue(song);
                 },
 
                 'add to queue *song by *artist': function (song, artist) {
-                    //recognized('Queue ' + song + ' by ' + artist);
                     addToQueue(song, artist);
                 },
 
@@ -116,10 +116,10 @@ module.exports = {
                 }
             };
 
-            // Add our commands to annyang
+            // Adds our commands to annyang
             annyang.addCommands(commands);
 
-            // Start listening
+            // Starts listening
             annyang.start();
         }
 
@@ -128,5 +128,3 @@ module.exports = {
         });
     }
 }
-
-// export default annyangCall;
