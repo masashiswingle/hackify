@@ -10,3 +10,7 @@
  border-color:#cccccc;
 }
 .form-control{width:20%}
+
+#player {
+    display: none;
+}

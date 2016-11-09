@@ -20,7 +20,9 @@ const mainReducer = function (state = {}, action) {
       return {
         ...state,
         currentSong: {
-          videoId: action.currentSong
+          videoId: action.currentSong.videoId,
+          title: action.currentSong.title,
+          artwork: action.currentSong.artwork
         }
       };
     case 'ADD_TO_QUEUE':

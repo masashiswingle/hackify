@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import ControlBar from './ControlBarComponent';
+import Lineup from './LineupComponent';
 import * as helpers from '../modules/ajax';
 import { annyangCall } from '../annyang';
 import { initiateQueue, initiateHistory, changeCurrentSong } from '../redux/actions';
@@ -48,7 +49,7 @@ class Player extends Component {
         }
       }
     }
-    this.props.initiateQueue();
+    // this.props.initiateQueue();
   }
 
   componentDidUpdate() {
@@ -77,8 +78,14 @@ class Player extends Component {
         </div>
 
         <ControlBar player={ player } />
+
+        <br></br>
+
+        <Lineup />
+
+        <br></br>
+
         <div id="conversation"></div>
-         
       </div>
     );
   }
