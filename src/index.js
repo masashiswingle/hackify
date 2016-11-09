@@ -6,11 +6,11 @@ import { createStore } from 'redux';
 import App from './components/AppComponent';
 import mainReducer from './redux/reducers';
 
-const store = createStore(mainReducer, {view: 'landing'});
+const store = createStore(mainReducer, {view: 'landing', songQueue: [], songHistory: []});
 
-setInterval(() => {
-    console.log(store.getState());
-}, 3000);
+// setInterval(() => {
+//     console.log(store.getState());
+// }, 3000);
 
 render(
   <Provider store={store}>
