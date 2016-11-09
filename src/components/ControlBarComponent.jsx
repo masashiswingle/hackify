@@ -2,23 +2,29 @@ import React, { Component } from 'react';
 import $ from 'jquery';
 
 class ControlBar extends Component {
-  playOrPause() {
-    var $btn = $('.play-button');
-    if ($btn.hasClass('on')) {
-      this.play();
-    } else {
-      this.pause();
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      pause: false
     }
+  }
+
+  playOrPause() {
     $('.play-button i').toggle();
-    $btn.toggleClass('on');
+    $('.play-button').toggleClass('on');
   }
 
   play() {
+    this.setState({pause: true});
     this.props.player.playVideo();
+    this.playOrPause();
   }
 
   pause() {
+    this.setState({pause: false});
     this.props.player.pauseVideo();
+    this.playOrPause();
   }
 
   stop() {
@@ -82,9 +88,9 @@ class ControlBar extends Component {
                 <i className="fa fa-fast-backward"></i>
               </div>
 
-              <div className="audio-player-button play-button" onClick={ this.playOrPause.bind(this) }>
-                <i className="fa fa-play"></i>
-                <i className="fa fa-pause"></i>
+              <div className="audio-player-button play-button">
+                <i className="fa fa-play" onClick={ this.play.bind(this) }></i>
+                <i className="fa fa-pause" onClick={ this.pause.bind(this) }></i>
               </div>
 
               <div className="audio-player-button" onClick={ this.stop.bind(this) }>
