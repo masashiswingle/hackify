@@ -1,4 +1,4 @@
-import { youTubeGetSongAnnyang, addSongToQueue, dequeueSong, stopSong } from './modules/ajax';
+import * as helpers from './modules/ajax';
 import { getSearchItem } from './modules/ajax';
 
 
@@ -18,7 +18,7 @@ module.exports = {
         // Finds and plays new song
         function playSong(songName, artistName) {
             var query = createQuery(songName, artistName);
-            youTubeGetSongAnnyang(query)
+            helpers.youTubeGetSongAnnyang(query)
               .then(function () {
                 var track = getSearchItem();
                 console.log('in .then', track);
@@ -33,7 +33,7 @@ module.exports = {
             console.log('in addToQueue')
             var query = createQuery(songName, artistName);
 
-            addSongToQueue(query)
+            helpers.addSongToQueue(query)
             .then(function () {
                 var track = getSearchItem();
                 console.log('in .then of addToQueue', track);
@@ -44,7 +44,7 @@ module.exports = {
 
         // Plays next song in queue
         function dequeue () {
-            dequeueSong();
+            helpers.dequeueSong();
             //logic to show title and thumbnail needed!
             communicateAction('<div>Playing next song in queue...</div>');
 
@@ -67,7 +67,35 @@ module.exports = {
  
             var commands = {
                 'stop': function () {
-                    stopSong();
+                    helpers.pauseSong();
+                },
+
+                'pause': function () {
+                    helpers.pauseSong();
+                },
+
+                'resume': function () {
+                    helpers.resumeSong();
+                },
+
+                'continue': function () {
+                    helpers.resumeSong();
+                },
+
+                'forward': function () {
+                    helpers.forwardSong();
+                },
+
+                'backward': function () {
+                    helpers.backwardSong();
+                },
+
+                'mute': function () {
+                    helpers.muteSong();
+                },
+
+                'mute volume': function () {
+                    helpers.muteSong();
                 },
 
                 'skip song': function () {
