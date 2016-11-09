@@ -147,8 +147,8 @@ module.exports = {
                 },
 
                 ':nomatch': function (message) {
-                    recognized(message);
-                    communicateAction('Sorry, I don\'t understand this action');
+                    // recognized(message);
+                    communicateAction('Sorry, I don\'t understand this action: ' + message);
                 }
             };
 
@@ -160,7 +160,7 @@ module.exports = {
         }
 
         annyang.addCallback('error', function () {
-            communicateAction('error');
+            communicateAction('Oops! Something isn\'t right...');
         });
     }
 }
