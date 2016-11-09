@@ -129,6 +129,30 @@ export const dequeueSong = () => {
             });  
 };
 
+export const stopSong = () => {
+  document.getElementById('player-stop').click();
+};
+
+export const muteSong = () => {
+  document.getElementById('player-volume').click();
+}
+
+export const pauseSong = () => {
+  document.getElementById('player-pause').click();
+}
+
+export const resumeSong = () => {
+  document.getElementById('player-play').click();
+}
+
+export const forwardSong = () => {
+  document.getElementById('player-forward').click();
+}
+
+export const backwardSong = () => {
+  document.getElementById('player-backward').click();
+}
+
 
 let srchItem;
 export const youTubeGetSongAnnyang = (query) => {
@@ -142,7 +166,7 @@ export const youTubeGetSongAnnyang = (query) => {
         return new Promise (function (resolve, reject) {
 
             srchItem = response.result.items[0]; 
-            // console.log('inside searchYouTube', srchItem);  
+            console.log('inside searchYouTube', srchItem);  
             store.dispatch({
               type: 'SWITCH_VIEW_TO_PLAYER',
               view: 'player', 

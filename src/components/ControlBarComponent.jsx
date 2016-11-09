@@ -84,24 +84,24 @@ class ControlBar extends Component {
 
             <div className="audio-player-buttons">
 
-              <div className="audio-player-button" onClick={ this.previous.bind(this) }>
+              <div className="audio-player-button" id='player-backward' onClick={ this.previous.bind(this) }>
                 <i className="fa fa-fast-backward"></i>
               </div>
 
               <div className="audio-player-button play-button">
-                <i className="fa fa-play" onClick={ this.play.bind(this) }></i>
-                <i className="fa fa-pause" onClick={ this.pause.bind(this) }></i>
+                <i className="fa fa-play" id='player-play' onClick={ this.play.bind(this) }></i>
+                <i className="fa fa-pause" id='player-pause' onClick={ this.pause.bind(this) }></i>
               </div>
 
-              <div className="audio-player-button" onClick={ this.stop.bind(this) }>
+              <div className="audio-player-button" id='player-stop' onClick={ this.stop.bind(this) }>
                 <i className="fa fa-stop"></i>
               </div>
 
-              <div className="audio-player-button" onClick={ this.next.bind(this) }>
+              <div className="audio-player-button" id='player-forward'  onClick={ this.next.bind(this) }>
                 <i className="fa fa-fast-forward"></i>
               </div>
 
-              <div className="audio-player-button mute-button" onClick={ this.mute.bind(this) }>
+              <div className="audio-player-button mute-button" id='player-volume' onClick={ this.mute.bind(this) }>
                 <i className="fa fa-volume-off"></i>
               </div>
 

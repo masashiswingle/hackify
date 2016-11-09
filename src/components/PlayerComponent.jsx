@@ -78,6 +78,7 @@ class Player extends Component {
 
         <ControlBar player={ player } />
         <div id="conversation"></div>
+         
       </div>
     );
   }
