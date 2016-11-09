@@ -9,7 +9,8 @@ export function switchViewToPlayer(view, currentSong) {
 export function initiateQueue() {
   return {
     type: 'INITIATE_QUEUE',
-    songQueue: []
+    songQueue: [],
+    songHistory: []
   };
 }
 
