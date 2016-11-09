@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import ControlBar from './ControlBarComponent';
-import { ajaxGetSongs } from '../modules/ajax';
 import * as helpers from '../modules/ajax';
 import { annyangCall } from '../annyang';
 import { initiateQueue, initiateHistory, changeCurrentSong } from '../redux/actions';
+// import $ from 'jquery';
 
 class Player extends Component {
   searchFromPlayer() {
@@ -71,6 +71,7 @@ class Player extends Component {
 }
 
 const mapStateToProps = (state) => {
+  console.log(state);
   return {
     view: state.view,
     currentSong: state.currentSong,

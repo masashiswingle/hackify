@@ -2,15 +2,15 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { switchViewToPlayer } from '../redux/actions';
 import * as helpers from '../modules/ajax';
-import { ajaxGetSongs } from '../modules/ajax';
+import Song from '../modules/Song';
 import { annyangCall } from '../annyang';
 
 class Landing extends Component {
 
   searchFromLanding() {
     helpers.youTubeGetSong($('#searchLandingComp').val(), (response) => {
-      console.log(song);
-      this.props.switchViewToPlayer('player', response.items[0].id.videoId);
+      var song = new Song(response.items[0].id.videoId, response.items[0].snippet.title, response.items[0].snippet.thumbnails.default.url);
+      this.props.switchViewToPlayer('player', song);
     });
   }
 
