@@ -1,21 +1,16 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { switchViewToPlayer, setCurrentSong } from '../redux/actions';
+import { switchViewToPlayer } from '../redux/actions';
 import * as helpers from '../modules/ajax';
 import { ajaxGetSongs } from '../modules/ajax';
 import { annyangCall } from '../annyang';
 
 class Landing extends Component {
 
-  switchToPlayer() {
-    helpers.ajaxGetSongs($('input').val());
-    this.props.switchView('player');
-  }
-
   searchFromLanding() {
-      helpers.youTubeGetSong($('#searchLandingComp').val(), (response) =>{
-        this.props.switchViewToPlayer('player', response.items[0].id.videoId);
-      });
+    helpers.youTubeGetSong($('#searchLandingComp').val(), (response) => {
+      this.props.switchViewToPlayer('player', response.items[0].id.videoId);
+    });
   }
 
   render() {
@@ -28,8 +23,6 @@ class Landing extends Component {
           <input type="button" value="Search" onClick={ this.searchFromLanding.bind(this) } />
         </form>
         <div id="conversation"></div>
-
-
       </div>
     );
   }

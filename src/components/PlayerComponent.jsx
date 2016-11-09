@@ -1,14 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import ControlBar from './ControlBarComponent';
-import { ajaxGetSongs } from '../modules/ajax';
 import * as helpers from '../modules/ajax';
 import { annyangCall } from '../annyang';
-import { initiateQueue, changeCurrentSong } from '../redux/actions';
+import { initiateQueue, initiateHistory, changeCurrentSong } from '../redux/actions';
 // import $ from 'jquery';
 
 class Player extends Component {
-
   searchFromPlayer() {
     helpers.youTubeGetSong($('#searchPlayerComp').val(), (response) => {
       this.props.changeCurrentSong(response.items[0].id.videoId);
@@ -22,11 +20,10 @@ class Player extends Component {
   }
 
   componentDidMount() {
-    console.log(this);
     player = new YT.Player('player', {
       height: '390',
       width: '640',
-      videoId: this.props.currentSong,
+      videoId: this.props.currentSong.videoId,
       events: {
         onReady: onPlayerReady,
         'onStateChange': onPlayerStateChange.bind(this)
@@ -49,7 +46,7 @@ class Player extends Component {
   }
 
   componentDidUpdate() {
-    if (player.getVideoData && player.getVideoData.videoId !== this.props.currentSong) {
+    if (player.getVideoData().videoId !== this.props.currentSong) {
       player.cueVideoById(this.props.currentSong);
       player.playVideo();
     }
