@@ -1,6 +1,7 @@
 import { youTubeGetSongAnnyang, addSongToQueue, dequeueSong } from './modules/ajax';
 import { getSearchItem } from './modules/ajax';
 
+
 module.exports = {
     annyangCall: function() {
 
@@ -81,14 +82,17 @@ module.exports = {
                     recognized('Play track ' + song);
                     playSong(song);
                 },
+
                 'play *song by *artist': function (song, artist) {
                     recognized('Play song ' + song + ' by ' + artist);
                     playSong(song, artist);
                 },
+
                 'play song *song': function (song) {
                     recognized('Play song ' + song);
                     playSong(song);
                 },
+
                 'play *song': function (song) {
                     recognized('Play ' + song);
                     playSong(song);
