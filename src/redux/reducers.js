@@ -4,17 +4,24 @@ const mainReducer = function (state = {}, action) {
       return {
         ...state,
         view: action.view,
-        currentSong: action.currentSong
+        currentSong: {
+          videoId: action.currentSong.videoId,
+          title: action.currentSong.title,
+          artwork: action.currentSong.artwork
+        }
       };
     case 'INITIATE_QUEUE':
       return {
         ...state,
-        songQueue: action.songQueue
+        songQueue: action.songQueue,
+        songHistory: action.songHistory
       };
     case 'CHANGE_CURRENT_SONG':
       return {
         ...state,
-        currentSong: action.currentSong
+        currentSong: {
+          videoId: action.currentSong
+        }
       };
     case 'ADD_TO_QUEUE':
       return {
