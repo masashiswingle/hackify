@@ -1,4 +1,4 @@
-import { youTubeGetSongAnnyang, addSongToQueue, dequeueSong } from './modules/ajax';
+import { youTubeGetSongAnnyang, addSongToQueue, dequeueSong, stopSong } from './modules/ajax';
 import { getSearchItem } from './modules/ajax';
 
 
@@ -67,7 +67,7 @@ module.exports = {
  
             var commands = {
                 'stop': function () {
-                    
+                    stopSong();
                 },
 
                 'skip song': function () {

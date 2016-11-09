@@ -129,6 +129,9 @@ export const dequeueSong = () => {
             });  
 };
 
+export const stopSong = () => {
+  document.getElementById('player-stop').click();
+}
 
 let srchItem;
 export const youTubeGetSongAnnyang = (query) => {

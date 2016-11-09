@@ -93,7 +93,7 @@ class ControlBar extends Component {
                 <i className="fa fa-pause" onClick={ this.pause.bind(this) }></i>
               </div>
 
-              <div className="audio-player-button" onClick={ this.stop.bind(this) }>
+              <div className="audio-player-button" id='player-stop' onClick={ this.stop.bind(this) }>
                 <i className="fa fa-stop"></i>
               </div>
 
