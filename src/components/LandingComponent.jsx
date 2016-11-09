@@ -8,7 +8,7 @@ import { annyangCall } from '../annyang';
 class Landing extends Component {
 
   searchFromLanding() {
-    helpers.youTubeGetSong($('#searchLandingComp').val(), (response) => {
+    helpers.youTubeGetSong($('##srch-term').val(), (response) => {
       var song = new Song(response.items[0].id.videoId, response.items[0].snippet.title, response.items[0].snippet.thumbnails.default.url);
       this.props.switchViewToPlayer('player', song);
     });
@@ -19,10 +19,17 @@ class Landing extends Component {
     return (
       <div>
         <h1>SoundBear</h1>
-        <form>
-          <input id="searchLandingComp" type="text" />
-          <input type="button" value="Search" onClick={ this.searchFromLanding.bind(this) } />
-        </form>
+        <div className="col-md-3">
+          <form className="navbar-form" role="search">
+            <div className="input-group add-on">
+              <input className="form-control" placeholder="Search" name="srch-term" id="srch-term" type="text" />
+              <div className="input-group-btn">
+                <button className="btn btn-default" type="button" onClick={ this.searchFromLanding.bind(this) }><i className="glyphicon glyphicon-search"></i></button>
+              </div>
+            </div>
+          </form>
+        </div>
+
         <div id="conversation"></div>
       </div>
     );
