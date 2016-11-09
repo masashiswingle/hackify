@@ -19,3 +19,16 @@ export function changeCurrentSong(currentSong) {
     currentSong
   };
 }
+
+export function addToQueue(songQueue) {
+  return {
+    type: 'ADD_TO_QUEUE',
+    songQueue
+  };
+}
+
+export function dequeueSong() {
+  return {
+    type: 'DEQUEUE_SONG'
+  };
+}

@@ -7,7 +7,7 @@ import { annyangCall } from '../annyang';
 import { initiateQueue, changeCurrentSong } from '../redux/actions';
 // import $ from 'jquery';
 
-class Player extends Component {
+export class Player extends Component {
 
   searchFromPlayer() {
     helpers.youTubeGetSong($('#searchPlayerComp').val(), (response) => {
@@ -15,8 +15,9 @@ class Player extends Component {
     });
   }
 
-  queueSong() {
-    helpers.youTubeGetSong($('#searchPlayerComp').val(), (response) => {
+  queueSong(string) {
+    console.log('triggered queue');
+    helpers.youTubeGetSong(string = $('#searchPlayerComp').val(), (response) => {
       this.props.songQueue.push(response.items[0].id.videoId);
     });
   }
