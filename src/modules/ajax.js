@@ -166,7 +166,7 @@ export const youTubeGetSongAnnyang = (query) => {
         return new Promise (function (resolve, reject) {
 
             srchItem = response.result.items[0]; 
-            // console.log('inside searchYouTube', srchItem);  
+            console.log('inside searchYouTube', srchItem);  
             store.dispatch({
               type: 'SWITCH_VIEW_TO_PLAYER',
               view: 'player', 

@@ -76,9 +76,9 @@ class Player extends Component {
           <input type="button" value="Queue" onClick={ this.queueSong.bind(this) } />
         </div>
 
-         <div id="conversation"></div>
-         
         <ControlBar player={ player } />
+        <div id="conversation"></div>
+         
       </div>
     );
   }
