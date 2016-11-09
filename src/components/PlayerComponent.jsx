@@ -10,7 +10,8 @@ import Song from '../modules/Song';
 class Player extends Component {
   searchFromPlayer() {
     helpers.youTubeGetSong($('#searchPlayerComp').val(), (response) => {
-      this.props.changeCurrentSong(response.items[0].id.videoId);
+      var searchedSong = new Song(response.items[0].id.videoId, response.items[0].snippet.title, response.items[0].snippet.thumbnails.default.url);
+      this.props.changeCurrentSong(searchedSong);
     });
   }
 
