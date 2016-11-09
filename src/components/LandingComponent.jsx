@@ -8,7 +8,7 @@ import { annyangCall } from '../annyang';
 class Landing extends Component {
 
   searchFromLanding() {
-    helpers.youTubeGetSong($('##srch-term').val(), (response) => {
+    helpers.youTubeGetSong($('#srch-term').val(), (response) => {
       var song = new Song(response.items[0].id.videoId, response.items[0].snippet.title, response.items[0].snippet.thumbnails.default.url);
       this.props.switchViewToPlayer('player', song);
     });
