@@ -16,6 +16,18 @@ const mainReducer = function (state = {}, action) {
         ...state,
         currentSong: action.currentSong
       };
+    case 'ADD_TO_QUEUE':
+      return {
+        ...state,
+        songQueue: [...state.songQueue, action.songQueue]
+      };
+
+    case 'DEQUEUE_SONG':
+      return {
+        ...state,
+        currentSong: state.songQueue[0],
+        songQueue: [...state.songQueue.slice(1)]
+      };
     default:
       return state;
   }

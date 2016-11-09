@@ -96,6 +96,40 @@ export const youTubeGetSong = (query, callback) => {
   });
 };
 
+export const addSongToQueue = (query) => {
+  return new Promise(function (resolve, reject) {
+    var request = gapi.client.youtube.search.list({
+        q: query,
+        part: 'snippet', 
+        maxResults: 5
+    });
+    request.execute(function(response)  {                                                                                    
+      return new Promise (function (resolve, reject) {
+          srchItem = response.result.items[0]; 
+          console.log('inside addSongToQueue', srchItem); 
+          store.dispatch({
+            type: 'ADD_TO_QUEUE',
+            view: 'player', 
+            songQueue: srchItem.id.videoId
+          });  
+          resolve();                           
+      })
+      .then(function () {
+        resolve();
+      }) 
+    });
+  });
+};
+
+export const dequeueSong = () => {
+  console.log('in dequeueSong', store.getState());
+  store.dispatch({
+              type: 'DEQUEUE_SONG',
+              view: 'player'
+            });  
+};
+
+
 let srchItem;
 export const youTubeGetSongAnnyang = (query) => {
   return new Promise(function (resolve, reject) {
