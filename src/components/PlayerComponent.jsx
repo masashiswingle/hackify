@@ -9,7 +9,7 @@ import Song from '../modules/Song';
 
 class Player extends Component {
   searchFromPlayer() {
-    helpers.youTubeGetSong($('#searchPlayerComp').val(), (response) => {
+    helpers.youTubeGetSong($('#srch-term').val(), (response) => {
       var searchedSong = new Song(response.items[0].id.videoId, response.items[0].snippet.title, response.items[0].snippet.thumbnails.default.url);
       this.props.changeCurrentSong(searchedSong);
     });
@@ -17,7 +17,7 @@ class Player extends Component {
 
   queueSong(string) {
     console.log('triggered queue');
-    helpers.youTubeGetSong(string = $('#searchPlayerComp').val(), (response) => {
+    helpers.youTubeGetSong(string = $('#srch-term').val(), (response) => {
       var queuedSong = new Song(response.items[0].id.videoId, response.items[0].snippet.title, response.items[0].snippet.thumbnails.default.url);
       this.props.songQueue.push(queuedSong);
       console.log(this.props);
@@ -63,11 +63,19 @@ class Player extends Component {
     return (
       <div>
         <h1>SoundBear Jemil</h1>
-        <form>
-          <input type="text" id="searchPlayerComp" />
-          <input type="button" value="Search" onClick={ this.searchFromPlayer.bind(this) } />
+
+        <div className="col-md-3">
+          <form className="navbar-form" role="search">
+            <div className="input-group add-on">
+              <input className="form-control" placeholder="Search" name="srch-term" id="srch-term" type="text" />
+              <div className="input-group-btn">
+                <button className="btn btn-default" type="button" onClick={ this.searchFromPlayer.bind(this) } ><i className="glyphicon glyphicon-search"></i></button>
+              </div>
+            </div>
+          </form>
           <input type="button" value="Queue" onClick={ this.queueSong.bind(this) } />
-        </form>
+        </div>
+
         <ControlBar player={ player } />
         <div id="conversation"></div>
       </div>
