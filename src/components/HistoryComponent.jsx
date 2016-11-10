@@ -9,7 +9,7 @@ class History extends Component {
         <div>
           {
             this.props.songHistory.map(function(song) {
-              return <img src={song.artwork}></img>
+              return <img src={ song.artwork }></img>
             })
           }
         </div>
