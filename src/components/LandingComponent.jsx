@@ -20,18 +20,23 @@ class Landing extends Component {
     return (
       <div>
         <a href="/"><img id="logo" src={'/assets/logo.png'}/></a>
-        <h1>SoundBear</h1>
-        <div className="col-md-3">
-          <form className="navbar-form" role="search">
-            <div className="input-group add-on">
-              <input className="form-control" placeholder="Search" name="srch-term" id="srch-term" type="text" />
-              <div className="input-group-btn">
-                <button className="btn btn-default" type="button" onClick={ this.searchFromLanding.bind(this) }><i className="glyphicon glyphicon-search"></i></button>
+        <div className="body">
+          <div className="title">
+            <h1>SoundBear</h1>
+            <p>_______</p>
+            <h3>Hands-free access to your favorite music</h3>
+          </div>
+          <div className="col-md-3">
+            <form className="navbar-form" role="search">
+              <div className="input-group add-on">
+                <input className="form-control" placeholder="Search" name="srch-term" id="srch-term" type="text" />
+                <div className="input-group-btn">
+                  <button className="btn btn-default" type="button" onClick={ this.searchFromLanding.bind(this) }><i className="glyphicon glyphicon-search"></i></button>
+                </div>
               </div>
-            </div>
-          </form>
+            </form>
+          </div>
         </div>
-
         <div id="conversation"></div>
       </div>
     );
