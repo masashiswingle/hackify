@@ -79,7 +79,7 @@ module.exports = {
                 'resume': function () {
                     helpers.resumeSong();
                 },
-
+/////
                 'continue': function () {
                     helpers.resumeSong();
                 },
