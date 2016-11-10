@@ -1,5 +1,5 @@
 import $ from 'jquery';
-import { switchViewToPlayer } from '../redux/actions';
+// import { switchViewToPlayer } from '../redux/actions';
 import store from '../index.js';
 
 // export const ajaxGetSongs = (params) => {
@@ -23,7 +23,7 @@ export const getLyrics = (track, artist) => {
     data: { artist: artist, track: track }
   })
   .done(function( data ) {
-    console.log('got lyrics back', data);
+    // console.log('got lyrics back', data);
     return data;
   })
 };
@@ -129,7 +129,7 @@ export const addSongToQueue = (query) => {
       })
       .then(function () {
         resolve();
-      })
+      });
     });
   });
 };
@@ -148,27 +148,26 @@ export const stopSong = () => {
 
 export const muteSong = () => {
   document.getElementById('player-volume').click();
-}
+};
 
 export const pauseSong = () => {
   document.getElementById('player-pause').click();
-}
+};
 
 export const resumeSong = () => {
   document.getElementById('player-play').click();
-}
+};
 
 export const forwardSong = () => {
   document.getElementById('player-forward').click();
-}
+};
 
 export const backwardSong = () => {
   document.getElementById('player-backward').click();
-}
-
+};
 
 let srchItem;
-export const youTubeGetSongAnnyang = (query) => {
+export const youTubeGetSongAnnyang = (query, songName, artistName) => {
   return new Promise(function (resolve, reject) {
       var request = gapi.client.youtube.search.list({
           q: query,
@@ -186,7 +185,9 @@ export const youTubeGetSongAnnyang = (query) => {
               currentSong: {
                 videoId: srchItem.id.videoId,
                 title: srchItem.snippet.title,
-                artwork: srchItem.snippet.thumbnails.default.url
+                artwork: srchItem.snippet.thumbnails.default.url,
+                songName: songName,
+                artistName: artistName
               }
             });
 

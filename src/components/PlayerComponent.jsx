@@ -94,7 +94,7 @@ class Player extends Component {
 }
 
 const mapStateToProps = (state) => {
-  console.log(state);
+  // console.log(state);
   return {
     view: state.view,
     currentSong: state.currentSong,
