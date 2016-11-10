@@ -4,6 +4,7 @@ import { switchViewToPlayer } from '../redux/actions';
 import * as helpers from '../modules/ajax';
 import Song from '../modules/Song';
 import { annyangCall } from '../annyang';
+// import * from '../assets/logo';
 
 class Landing extends Component {
 
@@ -18,6 +19,7 @@ class Landing extends Component {
     annyangCall();
     return (
       <div>
+        <a href="/"><img id="logo" src={'/assets/logo.png'}/></a>
         <h1>SoundBear</h1>
         <div className="col-md-3">
           <form className="navbar-form" role="search">
