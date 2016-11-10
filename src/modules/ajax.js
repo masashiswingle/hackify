@@ -108,7 +108,7 @@ export const youTubeGetSong = (query, callback) => {
   });
 };
 
-export const addSongToQueue = (query) => {
+export const addSongToQueue = (query, songName, artistName) => {
   return new Promise(function (resolve, reject) {
     var request = gapi.client.youtube.search.list({
         q: query,
@@ -121,8 +121,9 @@ export const addSongToQueue = (query) => {
           console.log('inside addSongToQueue', srchItem);
           store.dispatch({
             type: 'ADD_TO_QUEUE',
-            view: 'player',
-            songQueue: srchItem.id.videoId
+            songQueue: srchItem.id.videoId,
+            title: srchItem.snippet.title,
+            artwork: srchItem.snippet.thumbnails.default.url
           });
           resolve();
       })

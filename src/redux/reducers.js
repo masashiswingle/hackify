@@ -29,28 +29,19 @@ const mainReducer = function (state = {}, action) {
     case 'ADD_TO_QUEUE':
       return {
         ...state,
-        songQueue: [...state.songQueue, action.songQueue]
+        songQueue: [...state.songQueue, { videoId: action.songQueue, title: action.title, artwork: action.artwork}]
       };
     case 'DEQUEUE_SONG':
-      var newState = {
+      return {
         ...state,
         currentSong: state.songQueue[0],
         songQueue: [...state.songQueue.slice(1)]
       };
-      console.log(newState);
-      return newState;
     case 'ADD_TO_HISTORY':
       return {
         ...state,
         songHistory: [...state.songHistory, action.song]
     };
-    case 'ADD_SONG_INFO_TO_STORE':
-      console.log({
-        ...state,
-        currentSong: {
-          artist: action.info.artist
-        }
-      });
     default:
       return state;
   }
