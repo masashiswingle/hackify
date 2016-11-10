@@ -30,13 +30,19 @@ const mainReducer = function (state = {}, action) {
         ...state,
         songQueue: [...state.songQueue, action.songQueue]
       };
-
     case 'DEQUEUE_SONG':
-      return {
+      var newState = {
         ...state,
         currentSong: state.songQueue[0],
         songQueue: [...state.songQueue.slice(1)]
       };
+      console.log(newState);
+      return newState;
+    case 'ADD_TO_HISTORY':
+      return {
+        ...state,
+        songHistory: [...state.songHistory, action.song]
+    };
     default:
       return state;
   }

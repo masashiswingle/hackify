@@ -4,7 +4,7 @@ import ControlBar from './ControlBarComponent';
 import Lineup from './LineupComponent';
 import * as helpers from '../modules/ajax';
 import { annyangCall } from '../annyang';
-import { initiateQueue, initiateHistory, changeCurrentSong, addToQueue, dequeueSong } from '../redux/actions';
+import { initiateQueue, initiateHistory, changeCurrentSong, addToQueue, dequeueSong, addToHistory } from '../redux/actions';
 import Song from '../modules/Song';
 // import $ from 'jquery';
 
@@ -42,9 +42,12 @@ class Player extends Component {
 
     function onPlayerStateChange(event) {
       if (event.data === 0) {
-        this.props.songHistory.unshift(this.props.currentSong);
+        console.log('ended');
+        this.props.addToHistory(this.props.currentSong);
         if (this.props.songQueue.length > 0) {
           this.props.dequeueSong();
+        } else {
+          player.stopVideo();
         }
       }
     }
@@ -101,4 +104,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, { initiateQueue: initiateQueue, changeCurrentSong: changeCurrentSong, addToQueue: addToQueue, dequeueSong: dequeueSong })(Player);
+export default connect(mapStateToProps, { initiateQueue: initiateQueue, changeCurrentSong: changeCurrentSong, addToQueue: addToQueue, dequeueSong: dequeueSong, addToHistory: addToHistory })(Player);
