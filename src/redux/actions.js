@@ -33,3 +33,10 @@ export function dequeueSong() {
     type: 'DEQUEUE_SONG'
   };
 }
+
+export function addToHistory(song) {
+  return {
+    type: 'ADD_TO_HISTORY',
+    song
+  };
+}
