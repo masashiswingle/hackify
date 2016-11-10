@@ -88,3 +88,8 @@
   margin-top: 10px;
   max-width: 60px;
 }
+
+#display-pic {
+  width: 400px;
+  height: 200px;
+}

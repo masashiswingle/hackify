@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import $ from 'jquery';
 
 class ControlBar extends Component {
@@ -74,7 +75,7 @@ class ControlBar extends Component {
 
         <div className='audio-player'>
           <div className="display-panel">
-            <img src={"https://s-media-cache-ak0.pinimg.com/originals/8f/42/f8/8f42f814e0618519261b9cca4404a757.gif"} />
+            <img id="display-pic" src={ this.props.currentSong.artwork } />
           </div>
 
           <div className="control-panel">
@@ -118,4 +119,10 @@ class ControlBar extends Component {
   }
 }
 
-export default ControlBar;
+const mapStateToProps = (state) => {
+  return {
+    currentSong: state.currentSong
+  };
+};
+
+export default connect(mapStateToProps)(ControlBar);
