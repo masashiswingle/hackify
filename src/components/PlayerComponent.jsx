@@ -54,9 +54,11 @@ class Player extends Component {
   }
 
   componentDidUpdate() {
-    if (player.getVideoData() && player.getVideoData().videoId !== this.props.currentSong) {
-      player.cueVideoById(this.props.currentSong);
-      player.playVideo();
+    if (this.props.songHistory[0]) {
+      if (this.props.currentSong.videoId !== this.props.songHistory[0].videoId) {
+        player.cueVideoById(this.props.currentSong);
+        player.playVideo();
+      }
     }
   }
 
@@ -94,7 +96,7 @@ class Player extends Component {
 }
 
 const mapStateToProps = (state) => {
-  // console.log(state);
+  console.log(state);
   return {
     view: state.view,
     currentSong: state.currentSong,

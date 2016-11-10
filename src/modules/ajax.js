@@ -102,7 +102,6 @@ export const youTubeGetSong = (query, callback) => {
   });
 
   request.execute(function(response) {
-    // console.log(response);
     if (callback) {
       callback(response);
     }

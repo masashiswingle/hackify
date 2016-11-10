@@ -34,7 +34,6 @@ module.exports = {
         function addToQueue (songName, artistName) {
             console.log('in addToQueue')
             var query = createQuery(songName, artistName);
-
             helpers.addSongToQueue(query)
             .then(function () {
                 var track = getSearchItem();
