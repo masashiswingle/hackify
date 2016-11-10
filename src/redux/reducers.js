@@ -1,6 +1,7 @@
 const mainReducer = function (state = {}, action) {
   switch (action.type) {
     case 'SWITCH_VIEW_TO_PLAYER':
+      console.log(action);
       return {
         ...state,
         view: action.view,
@@ -43,6 +44,13 @@ const mainReducer = function (state = {}, action) {
         ...state,
         songHistory: [...state.songHistory, action.song]
     };
+    case 'ADD_SONG_INFO_TO_STORE':
+      console.log({
+        ...state,
+        currentSong: {
+          artist: action.info.artist
+        }
+      });
     default:
       return state;
   }

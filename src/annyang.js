@@ -20,7 +20,7 @@ module.exports = {
             var query = createQuery(songName, artistName);
             console.log(songName, artistName);
             getLyrics(songName, artistName);
-            helpers.youTubeGetSongAnnyang(query)
+            helpers.youTubeGetSongAnnyang(query, songName, artistName)
               .then(function () {
                 var track = getSearchItem();
                 console.log('in .then', track);
