@@ -42,7 +42,6 @@ class Player extends Component {
 
     function onPlayerStateChange(event) {
       if (event.data === 0) {
-        console.log('ended');
         this.props.addToHistory(this.props.currentSong);
         if (this.props.songQueue.length > 0) {
           this.props.dequeueSong();
