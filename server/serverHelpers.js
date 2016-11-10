@@ -1,8 +1,9 @@
 const keys = require('../config.js');
 const SpotifyWebApi = require('spotify-web-api-node');
 const spotifyApi = new SpotifyWebApi(keys.spotify);
+const lyr = require('lyrics-fetcher');
 
-module.exports = { 
+module.exports = {
   getSpotifyData: function(req, res) {
     console.log("inside getSpotifyData", req.body);
     spotifyApi.searchTracks(req.body.string)
@@ -82,5 +83,17 @@ module.exports = {
         }, function(err) {
             res.send(400, err);
       })
+  },
+
+  getLyricsDetail: function (req, res) {
+    var artist = req.body.artist;
+    var track = req.body.track;
+    lyr.fetch(artist, track, function (err, lyrics) {
+      console.log(err || lyrics);
+      if (err) {
+        throw err;
+      }
+      res.send(lyrics);
+    });
   }
 };

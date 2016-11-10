@@ -14,7 +14,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "gimme-lyrics": "^0.3.1",
     "jquery": "^3.1.1",
+    "lyrics-fetcher": "^1.0.2",
     "mysql": "^2.12.0",
     "react": "^15.3.2",
     "react-dom": "^15.3.2",

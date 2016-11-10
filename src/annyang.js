@@ -1,6 +1,6 @@
 import * as helpers from './modules/ajax';
 import { getSearchItem } from './modules/ajax';
-
+import { getLyrics } from './modules/ajax';
 
 module.exports = {
     annyangCall: function() {
@@ -14,10 +14,12 @@ module.exports = {
             }
             return query;
         };
-        
+
         // Finds and plays new song
         function playSong(songName, artistName) {
             var query = createQuery(songName, artistName);
+            console.log(songName, artistName);
+            getLyrics(songName, artistName);
             helpers.youTubeGetSongAnnyang(query)
               .then(function () {
                 var track = getSearchItem();
@@ -64,7 +66,7 @@ module.exports = {
 
         // Defines commands
         if (annyang) {
- 
+
             var commands = {
                 'stop': function () {
                     helpers.pauseSong();

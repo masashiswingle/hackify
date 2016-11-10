@@ -15,6 +15,19 @@ import store from '../index.js';
 //   });
 // };
 
+export const getLyrics = (track, artist) => {
+  console.log("in getLyrics", track, artist);
+  $.ajax({
+    method: 'POST',
+    url: '/lyrics',
+    data: { artist: artist, track: track }
+  })
+  .done(function( data ) {
+    console.log('got lyrics back', data);
+    return data;
+  })
+};
+
 export const artistTracks = (params) => {
   console.log('in artistTracks');
   $.ajax({
@@ -84,7 +97,7 @@ export const youTubeGetSong = (query, callback) => {
 
   var request = gapi.client.youtube.search.list({
       q: query,
-      part: 'snippet', 
+      part: 'snippet',
       maxResults: 5
   });
 
@@ -100,23 +113,23 @@ export const addSongToQueue = (query) => {
   return new Promise(function (resolve, reject) {
     var request = gapi.client.youtube.search.list({
         q: query,
-        part: 'snippet', 
+        part: 'snippet',
         maxResults: 5
     });
-    request.execute(function(response)  {                                                                                    
+    request.execute(function(response)  {
       return new Promise (function (resolve, reject) {
-          srchItem = response.result.items[0]; 
-          console.log('inside addSongToQueue', srchItem); 
+          srchItem = response.result.items[0];
+          console.log('inside addSongToQueue', srchItem);
           store.dispatch({
             type: 'ADD_TO_QUEUE',
-            view: 'player', 
+            view: 'player',
             songQueue: srchItem.id.videoId
-          });  
-          resolve();                           
+          });
+          resolve();
       })
       .then(function () {
         resolve();
-      }) 
+      })
     });
   });
 };
@@ -126,7 +139,7 @@ export const dequeueSong = () => {
   store.dispatch({
               type: 'DEQUEUE_SONG',
               view: 'player'
-            });  
+            });
 };
 
 export const stopSong = () => {
@@ -159,30 +172,30 @@ export const youTubeGetSongAnnyang = (query) => {
   return new Promise(function (resolve, reject) {
       var request = gapi.client.youtube.search.list({
           q: query,
-          part: 'snippet', 
+          part: 'snippet',
           maxResults: 5
       });
-      request.execute(function(response)  {                                                                                    
+      request.execute(function(response)  {
         return new Promise (function (resolve, reject) {
 
-            srchItem = response.result.items[0]; 
-            console.log('inside searchYouTube', srchItem);  
+            srchItem = response.result.items[0];
+            console.log('inside searchYouTube', srchItem);
             store.dispatch({
               type: 'SWITCH_VIEW_TO_PLAYER',
-              view: 'player', 
+              view: 'player',
               currentSong: {
                 videoId: srchItem.id.videoId,
                 title: srchItem.snippet.title,
                 artwork: srchItem.snippet.thumbnails.default.url
               }
-            });  
+            });
 
-            resolve();                           
+            resolve();
         })
         .then(function () {
           resolve();
-        }) 
-          
+        })
+
       });
 
   });
