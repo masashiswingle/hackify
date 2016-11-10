@@ -48,7 +48,7 @@ class Player extends Component {
         }
       }
     }
-    // this.props.initiateQueue();
+    this.props.initiateQueue();
   }
 
   componentDidUpdate() {
