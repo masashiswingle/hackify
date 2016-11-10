@@ -13,6 +13,7 @@ const dbURL                   = process.env.DATABASE_LINK;
 const helpers                 = require('./server/serverHelpers.js');
 
 
+
 const app = module.exports = express();
 
 const compiler = webpack(config);
@@ -43,6 +44,7 @@ app.post('/artistAlbums', helpers.getArtistAlbums);
 app.get('/newReleases', helpers.getNewReleases);
 app.post('/relatedArtists', helpers.getRelatedArtists);
 app.get('/listOfCategories', helpers.getListOfCategories);
+app.post('/lyrics', helpers.getLyricsDetail);
 
 app.listen(process.env.PORT || 8080, function() {
   console.log('Server started, listening on port:', 8080);
