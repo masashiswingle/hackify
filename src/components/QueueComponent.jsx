@@ -3,16 +3,20 @@ import { connect } from 'react-redux';
 
 class Queue extends Component {
 
-  log() {
-    console.log(this.props.songQueue.length);
-  }
-
   render() {
-    // if (this.props.songQueue.length > 0) {
+    if (this.props.songQueue.length > 0) {
       return (
-        <div onClick={ this.log.bind(this) } >Queue</div>
+        <div>
+          {
+            this.props.songQueue.map(function(song) {
+              return <img src={song.artwork}></img>
+            })
+          }
+        </div>
       );
-    // }
+    } else {
+      return <div></div>
+    }
   }
 
 }
