@@ -74,6 +74,7 @@ module.exports = {
                 'pause': function () {
                     helpers.pauseSong();
                 },
+                //
 
                 'resume': function () {
                     helpers.resumeSong();
