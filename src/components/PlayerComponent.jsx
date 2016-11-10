@@ -47,7 +47,7 @@ class Player extends Component {
         if (this.props.songQueue.length > 0) {
           this.props.dequeueSong();
         } else {
-          player.stopVideo();
+          this.props.changeCurrentSong('');
         }
       }
     }
@@ -55,7 +55,7 @@ class Player extends Component {
   }
 
   componentDidUpdate() {
-    if (player.getVideoData().videoId !== this.props.currentSong) {
+    if (player.getVideoData() && player.getVideoData().videoId !== this.props.currentSong) {
       player.cueVideoById(this.props.currentSong);
       player.playVideo();
     }
