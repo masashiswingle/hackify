@@ -20,21 +20,29 @@ a:focus, a:hover {
 #soundbear {
   font-weight: bold;
   font-size: 40px;
+  margin-bottom: 0
 }
 
 #description {
   font-family: inherit;
+  margin-bottom: 80px
 }
-
+#mainunderline {
+  margin-left: 1px;
+  margin-bottom: 17px
+}
 .body {
-  height: 550px;
-  background-color: moccasin;
+  height: 500px;
+  background-color: #ffe1bd;
   text-align: center;
   padding-top: 50px;
 }
 
 .title {
   margin-bottom: 60px;
+  margin-top: 70px;
+  text-align: center;
+  vertical-align: middle;
 }
 
 .inline {
@@ -65,9 +73,9 @@ a:focus, a:hover {
 }
 
 .js-trigger-overlay-about:hover {
-  background-color: #d9894f;
+  background-color: #000000;
   color: #ffffff;
-  border-color: #d9894f;
+  border-color: #000000;
 }
 
 .js-trigger-overlay-start {

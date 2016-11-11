@@ -30,21 +30,21 @@ class Landing extends Component {
           </div>
         </div>
 
-        <button className="js-trigger-overlay-about" type="button">About</button>
+        <button className="js-trigger-overlay-about" type="button">about</button>
 
         <hr></hr>
 
 
         <div className="body">
           <div className="title">
-            <h1 id="soundbear">SoundBear</h1>
-            <p>_________</p>
+            <h1 id="soundbear">soundBear</h1>
+            <p id = 'mainunderline'>_________</p>
             <div id="description">
-              <h3>Hands-free access</h3>
-              <h3>to your favorite music</h3>
+              <h4>hands-free access</h4>
+              <h4>to your favorite music</h4>
             </div>
           </div>
-          <button className="js-trigger-overlay-start" onClick = {this.annyang} type="button">Start Listening</button>
+          <button className="js-trigger-overlay-start" onClick = {this.annyang} type="button">start listening</button>
           <img id="siri" src={'/assets/siri.gif'}/>
         </div>
         <div id="conversation"></div>
