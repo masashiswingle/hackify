@@ -74,7 +74,7 @@ class Player extends Component {
         </div>
 
         <button className="js-trigger-overlay-about" type="button">About</button>
-        
+
         <hr></hr>
 
         <br></br>

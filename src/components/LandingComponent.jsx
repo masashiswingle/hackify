@@ -33,9 +33,12 @@ class Landing extends Component {
 
         <div className="body">
           <div className="title">
-            <h1>SoundBear</h1>
-            <p>_______</p>
-            <h3>Hands-free access to your favorite music</h3>
+            <h1 id="soundbear">SoundBear</h1>
+            <p>_________</p>
+            <div id="description">
+              <h3>Hands-free access</h3>
+              <h3>to your favorite music</h3>
+            </div>
           </div>
           <button className="js-trigger-overlay-start" type="button">Start Listening</button>
 
