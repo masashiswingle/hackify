@@ -4,19 +4,36 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "NODE_ENV=test mocha spec/server/*.js -R nyan",
     "start": "nodemon server.js",
+    "build": "webpack",
+    "test:lint": "eslint . --ext .js --ext .jsx --cache",
+    "test:server": "mocha spec/server/*.js -R nyan",
     "dev": "nodemon server.js",
     "lint": "node ./node_modules/eslint/bin/eslint.js ./src",
     "dev:hot": "webpack-dev-server --hot --inline --progress --colors --watch --display-error-details --display-cached --content-base ./"
+  },
+  "babel": {
+    "presets": [
+      "stage-0",
+      "es2015",
+      "react"
+    ]
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "assert": "^1.4.1",
+    "babel-preset-stage-0": "^6.16.0",
+    "babel-register": "^6.18.0",
+    "chai": "^3.5.0",
+    "enzyme": "^2.6.0",
+    "eslint-plugin-import": "^1.16.0",
     "gimme-lyrics": "^0.3.1",
     "jquery": "^3.1.1",
     "lyrics-fetcher": "^1.0.2",
+    "mocha": "^3.1.2",
     "mysql": "^2.12.0",
     "react": "^15.3.2",
     "react-dom": "^15.3.2",
@@ -24,7 +41,9 @@
     "redux": "^3.6.0",
     "request": "^2.78.0",
     "sequelize": "^3.24.7",
-    "spotify-web-api-node": "^2.3.6"
+    "should": "^11.1.1",
+    "spotify-web-api-node": "^2.3.6",
+    "supertest": "^2.0.1"
   },
   "devDependencies": {
     "babel-cli": "^6.18.0",
