@@ -22,7 +22,7 @@ module.exports = {
             getLyrics(songName, artistName);
             helpers.youTubeGetSongAnnyang(query, songName, artistName)
               .then(function () {
-                var track = getSearchItem();
+                var track = helpers.getSearchItem();
                 console.log('in .then', track);
                 document.getElementById('conversation').innerHTML = "";
                 communicateAction('<div>Playing ' + track.snippet.title + '</div><img width="150" src="' + track.snippet.thumbnails.medium.url + '">');

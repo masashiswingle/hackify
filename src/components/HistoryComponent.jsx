@@ -10,7 +10,7 @@ class History extends Component {
           {
             this.props.songHistory.map(function(song, index) {
               if (index < 5) {
-                return <img src={ song.artwork }></img>
+                return <img className="history" src={ song.artwork }></img>
               }
             })
           }
