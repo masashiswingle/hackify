@@ -68,7 +68,7 @@ class Player extends Component {
       <div className="container">
 
         <div className="heading row">
-          <div className="col-md-1 inline">
+          <div className="col-md-1 inline" id='headlogo'>
             <a href="/"><img id="logo" src={'/assets/logo.png'}/><p>soundBear.</p></a>
           </div>
         </div>
