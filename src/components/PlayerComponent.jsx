@@ -98,6 +98,7 @@ class Player extends Component {
         <br></br>
 
         <div id="conversation"></div>
+        <div id="basic_choropleth" style="position: relative; width: 500px; height: 300px;"></div>
 
       </div>
     );
