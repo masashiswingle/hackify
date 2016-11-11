@@ -5,10 +5,10 @@ const lyr = require('lyrics-fetcher');
 
 module.exports = {
   getSpotifyData: function(req, res) {
-    console.log("inside getSpotifyData", req.body);
+    //console.log("inside getSpotifyData", req.body);
     spotifyApi.searchTracks(req.body.string)
       .then(function(data) {
-        console.log('inside spotify server, artists id: ', data.body.tracks.items[0].artists[0].id);
+        //console.log('inside spotify server, artists id: ', data.body.tracks.items[0].artists[0].id);
         res.send(data.statusCode, data.body);
       }, function(err) {
         res.send(400, err);
@@ -21,7 +21,7 @@ module.exports = {
         var artistId = data.body.tracks.items[0].artists[0].id;
         return spotifyApi.getArtistTopTracks(artistId, 'US')
           .then(function(tracks) {
-            console.log('inside getArtistTopTracks', tracks.body)
+            //console.log('inside getArtistTopTracks', tracks.body)
             res.send(data.statusCode, tracks.body);
           }, function(err) {
               res.send(400, err);
@@ -35,7 +35,7 @@ module.exports = {
         var artistId = data.body.tracks.items[0].artists[0].id;
         return spotifyApi.getArtistAlbums(artistId)
           .then(function(albums) {
-            console.log('inside getArtistAlbums', albums.body)
+            //console.log('inside getArtistAlbums', albums.body)
             res.send(data.statusCode, albums.body);
           }, function(err) {
               res.send(400, err);
@@ -45,10 +45,10 @@ module.exports = {
 
   //AUTHENTICATION REQUIRED FOR THIS CALL
   getNewReleases: function (req, res) {
-    console.log('inside getNewReleases before call');
+    //console.log('inside getNewReleases before call');
     spotifyApi.getNewReleases({ limit : 5, offset: 0, country: 'US' })
       .then(function(data) {
-        console.log('inside getNewReleases', data.body);
+        //console.log('inside getNewReleases', data.body);
         res.send(data.statusCode, data.body);
         done();
         }, function(err) {
@@ -62,7 +62,7 @@ module.exports = {
         var artistId = data.body.tracks.items[0].artists[0].id;
         return spotifyApi.getArtistRelatedArtists(artistId)
           .then(function(artists) {
-            console.log('inside getRelatedArtists', artists.body)
+            //console.log('inside getRelatedArtists', artists.body)
             res.send(data.statusCode, artists.body);
           }, function(err) {
               res.send(400, err);
@@ -78,7 +78,7 @@ module.exports = {
       country: 'US'
     })
       .then(function(data) {
-        console.log('inside getNewReleases', data.body)
+        //console.log('inside getNewReleases', data.body)
         res.send(data.statusCode, data.body);
         }, function(err) {
             res.send(400, err);
@@ -89,7 +89,6 @@ module.exports = {
     var artist = req.body.artist;
     var track = req.body.track;
     lyr.fetch(artist, track, function (err, lyrics) {
-      console.log(err || lyrics);
       if (err) {
         throw err;
       }
