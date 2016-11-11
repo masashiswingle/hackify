@@ -24,7 +24,7 @@ module.exports = {
               .then(function () {
                 var track = getSearchItem();
                 console.log('in .then', track);
-                // document.getElementById('conversation').innerHTML = "";
+                document.getElementById('conversation').innerHTML = "";
                 communicateAction('<div>Playing ' + track.snippet.title + '</div><img width="150" src="' + track.snippet.thumbnails.medium.url + '">');
             });
 
