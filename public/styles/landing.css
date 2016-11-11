@@ -1,18 +1,19 @@
-html {
-  background-color: ghostwhite;
-}
 #logo {
   height: 40px;
-  padding-left: 5px;
-  padding-top: 5px;
+  right: 0;
 }
 
-.wholeBody {
-  background-color: ghostwhite;
+p {
+  margin-left: -25px;
 }
+
 .body {
   text-align: center;
   font-family: Myriad Pro Regular;
+}
+.inline {
+  display: inline-block;
+  margin-left: 20px;
 }
 
 .btn-danger {
@@ -21,12 +22,12 @@ html {
 }
 .js-trigger-overlay-about {
   float: right;
-  margin: 0 auto;
+  margin-top: -50px;
   font-size: 2.0rem;
   padding: 1rem 2rem;
-  background-color: #d9894f;
+  background-color: #ffffff;
   border: 1px solid transparent;
-  color: #ffffff;
+  color: #d9894f;
   font-weight: 300;
   -webkit-border-radius: 3px;
   border-radius: 3px;
@@ -36,8 +37,8 @@ html {
 }
 
 .js-trigger-overlay-about:hover {
-  background-color: #ffffff;
-  color: #d9894f;
+  background-color: #d9894f;
+  color: #ffffff;
   border-color: #d9894f;
 }
 

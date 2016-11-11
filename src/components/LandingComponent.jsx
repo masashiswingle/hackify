@@ -18,9 +18,19 @@ class Landing extends Component {
   render() {
     annyangCall();
     return (
-      <div className="wholeBody">
-        <a href="/"><img id="logo" src={'/assets/logo.png'}/></a>
+      <div className="container">
+
+        <div className="heading row">
+          <div className="col-md-1 inline">
+            <a href="/"><img id="logo" src={'/assets/logo.png'}/><p>soundBear.</p></a>
+          </div>
+        </div>
+
         <button className="js-trigger-overlay-about" type="button">About</button>
+
+        <hr></hr>
+
+
         <div className="body">
           <div className="title">
             <h1>SoundBear</h1>

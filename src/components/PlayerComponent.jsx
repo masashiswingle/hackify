@@ -68,17 +68,13 @@ class Player extends Component {
       <div className="container">
 
         <div className="heading row">
-          <div className="col-md-1">
-            <p>soundBear.</p>
-          </div>
-          <div className="col-md-1 col-md-offset-9">
-            <p>Begin</p>
-          </div>
-          <div className="col-md-1">
-            <p>About</p>
+          <div className="col-md-1 inline">
+            <a href="/"><img id="logo" src={'/assets/logo.png'}/><p>soundBear.</p></a>
           </div>
         </div>
 
+        <button className="js-trigger-overlay-about" type="button">About</button>
+        
         <hr></hr>
 
         <br></br>
