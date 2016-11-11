@@ -28,10 +28,12 @@ html, body {
   height: 100px;
   width: auto;
   position: relative;
-  margin-left: -50px;
+  margin-left: -25px;
 }
 
 .history {
   height: 100px;
   width: auto;
+  position: relative;
+  margin-right: -25px;
 }
