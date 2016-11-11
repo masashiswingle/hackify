@@ -1,4 +1,4 @@
-.audio-player {
+/*.audio-player {
   width: 400px;
   margin: 0 auto;
   background-color: #ddddda;
@@ -92,4 +92,9 @@
 #display-pic {
   width: 400px;
   height: 200px;
-}
+}*/
+
+
+/*.audio-player .audio-player-button img .fa-play {
+  display: none;
+}*/
