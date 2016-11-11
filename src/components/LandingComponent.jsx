@@ -4,7 +4,6 @@ import { switchViewToPlayer } from '../redux/actions';
 import * as helpers from '../modules/ajax';
 import Song from '../modules/Song';
 import { annyangCall } from '../annyang';
-// import * from '../assets/logo';
 
 class Landing extends Component {
 
@@ -17,6 +16,7 @@ class Landing extends Component {
   annyang () {
     annyangCall();
     $('#siri').show();
+    $('.js-trigger-overlay-start').hide();
   }
 
   render() {
@@ -45,7 +45,7 @@ class Landing extends Component {
             </div>
           </div>
           <button className="js-trigger-overlay-start" onClick = {this.annyang} type="button">Start Listening</button>
-          <img id="siri" src={'/assets/siri.jpeg'}/>
+          <img id="siri" src={'/assets/siri.gif'}/>
         </div>
         <div id="conversation"></div>
       </div>

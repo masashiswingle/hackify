@@ -3,8 +3,9 @@
   right: 0;
 }
 #siri {
-  height: 50px;
+  height: 100px;
   display: none;
+  margin-top: -20px;
 }
 
 p {
