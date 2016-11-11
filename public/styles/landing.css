@@ -9,6 +9,7 @@
 
 p {
   margin-left: -25px;
+  color: black;
 }
 
 a:focus, a:hover {
@@ -60,6 +61,7 @@ a:focus, a:hover {
   -webkit-transition: all 0.3s ease-in-out;
   -moz-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
+  outline: 0;
 }
 
 .js-trigger-overlay-about:hover {
@@ -81,6 +83,7 @@ a:focus, a:hover {
   -webkit-transition: all 0.3s ease-in-out;
   -moz-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
+  outline: 0;
 }
 
 .js-trigger-overlay-start:hover {
