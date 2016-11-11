@@ -85,17 +85,19 @@ class Player extends Component {
 
         <div className="row">
           <div className="col-md-4 col-md-offset-4">
-            { this.props.currentSong.artistName } - { this.props.currentSong.songName }
+            <p id="currentTrack"> { this.props.currentSong.artistName } - { this.props.currentSong.songName } </p>
           </div>
         </div>
 
         <br></br>
 
-        <ControlBar player={ player } />
+        <Lineup />
 
         <br></br>
 
-        <Lineup />
+        <ControlBar player={ player } />
+
+        <hr></hr>
 
         <br></br>
 
