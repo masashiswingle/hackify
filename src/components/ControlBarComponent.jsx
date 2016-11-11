@@ -47,6 +47,7 @@ class ControlBar extends Component {
   }
 
   volume() {
+
     var currentVolume = $('#volumebar').val();
     this.props.player.setVolume(currentVolume);
   }
@@ -106,9 +107,9 @@ class ControlBar extends Component {
                 <i className="fa fa-volume-off"></i>
               </div>
 
-              <div className="volumeDiv" onChange={ this.volume.bind(this) }>
+              <div className="volumeDiv" id ='volumechangediv' >
                 <i id="volumeIcon" className="fa fa-volume-up"></i>
-                <input type="range" id="volumebar" title="Volume" min="0" max="100" step="1"></input>
+                <input type="range" id="volumebar" onChange={ this.volume.bind(this) } title="Volume" min="0" max="100" step="1"></input>
               </div>
 
             </div>

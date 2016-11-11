@@ -168,6 +168,13 @@ export const backwardSong = () => {
   document.getElementById('player-backward').click();
 };
 
+export const decreaseVolume = () => {
+  var el = document.getElementById('volumebar');
+  el.value='10';
+  el.dispatchEvent(new Event('input', {bubbles: true}));
+
+}
+
 let srchItem;
 export const youTubeGetSongAnnyang = (query, songName, artistName) => {
   return new Promise(function (resolve, reject) {
