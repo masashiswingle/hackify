@@ -8,8 +8,10 @@ class History extends Component {
       return (
         <div>
           {
-            this.props.songHistory.map(function(song) {
-              return <img src={ song.artwork }></img>
+            this.props.songHistory.map(function(song, index) {
+              if (index < 5) {
+                return <img src={ song.artwork }></img>
+              }
             })
           }
         </div>

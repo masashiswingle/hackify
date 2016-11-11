@@ -24,3 +24,13 @@
 #conversation {
   display: none;
 }
+
+#currentTrack {
+  text-align: center;
+  font-size: 18px;
+}
+
+#currentSong {
+  height: 125px;
+  width: auto;
+}
