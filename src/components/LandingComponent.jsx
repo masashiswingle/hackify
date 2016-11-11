@@ -14,9 +14,12 @@ class Landing extends Component {
       this.props.switchViewToPlayer('player', song);
     });
   }
+  annyang () {
+    annyangCall();
+  }
 
   render() {
-    annyangCall();
+    
     return (
       <div className="container">
 
@@ -40,7 +43,7 @@ class Landing extends Component {
               <h3>to your favorite music</h3>
             </div>
           </div>
-          <button className="js-trigger-overlay-start" type="button">Start Listening</button>
+          <button className="js-trigger-overlay-start" onClick = {this.annyang} type="button">Start Listening</button>
 
         </div>
         <div id="conversation"></div>
