@@ -14,3 +14,13 @@
 #player {
   display: none;
 }
+
+.heading {
+  margin-top: 50px;
+  font-size: 20px;
+  font-family: "Helvetica";
+}
+
+#conversation {
+  display: none;
+}

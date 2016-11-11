@@ -65,24 +65,29 @@ class Player extends Component {
   render() {
     annyangCall();
     return (
-      <div>
-        <h1>SoundBear Jemil</h1>
+      <div className="container">
 
-        <div className="col-md-3">
-          <form className="navbar-form" role="search">
-            <div className="input-group add-on">
-              <input className="form-control" placeholder="Search" name="srch-term" id="srch-term" type="text" />
-              <div className="input-group-btn">
-                <button className="btn btn-default" type="button" onClick={ this.searchFromPlayer.bind(this) } ><i className="glyphicon glyphicon-search"></i></button>
-              </div>
-            </div>
-          </form>
-          <input type="button" value="Queue" onClick={ this.queueSong.bind(this) } />
+        <div className="heading row">
+          <div className="col-md-1">
+            <p>soundBear.</p>
+          </div>
+          <div className="col-md-1 col-md-offset-9">
+            <p>Begin</p>
+          </div>
+          <div className="col-md-1">
+            <p>About</p>
+          </div>
         </div>
+
+        <hr></hr>
 
         <br></br>
 
-        <div> { this.props.currentSong.artistName } - { this.props.currentSong.songName } </div>
+        <div className="row">
+          <div className="col-md-4 col-md-offset-4">
+            { this.props.currentSong.artistName } - { this.props.currentSong.songName }
+          </div>
+        </div>
 
         <br></br>
 
