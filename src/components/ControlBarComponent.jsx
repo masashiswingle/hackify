@@ -84,7 +84,8 @@ class ControlBar extends Component {
             <div className="audio-player-buttons">
 
               <div className="audio-player-button" id='player-backward' onClick={ this.previous.bind(this) }>
-                <i className="fa fa-fast-backward"></i>
+                {/* <i className="fa fa-fast-backward"></i> */}
+                <img id="fastForward" src={'/assets/fastForward.png'}/>
               </div>
 
               <div className="audio-player-button play-button">
