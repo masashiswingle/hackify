@@ -67,6 +67,14 @@ module.exports = {
         if (annyang) {
 
             var commands = {
+                'sound': function () {
+                    helpers.decreaseVolume();
+                },
+
+                'sound bear': function () {
+                    helpers.decreaseVolume();
+                },
+
                 'stop': function () {
                     helpers.pauseSong();
                 },
