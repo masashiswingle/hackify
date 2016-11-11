@@ -24,3 +24,8 @@
 #conversation {
   display: none;
 }
+
+#currentTrack {
+  text-align: center;
+  font-size: 18px;
+}
