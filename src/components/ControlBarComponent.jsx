@@ -75,9 +75,6 @@ class ControlBar extends Component {
       <div id="controlDiv">
 
         <div className='audio-player'>
-          <div className="display-panel">
-            <img id="display-pic" src={ this.props.currentSong.artwork } />
-          </div>
 
           <div className="control-panel">
             <div className="progress-wrap" onClick={ this.progress.bind(this) }>

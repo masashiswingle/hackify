@@ -23,3 +23,15 @@ html, body {
   height: 125px;
   width: auto;
 }
+
+.queue {
+  height: 100px;
+  width: auto;
+  position: relative;
+  margin-left: -50px;
+}
+
+.history {
+  height: 100px;
+  width: auto;
+}

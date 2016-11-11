@@ -2,18 +2,20 @@ import $ from 'jquery';
 // import { switchViewToPlayer } from '../redux/actions';
 import store from '../index.js';
 
-// export const ajaxGetSongs = (params) => {
-//   console.log('in ajaxGetSongs');
-//   $.ajax({
-//     method: "POST",
-//     url: '/getSongs',
-//     data: { string: params }
-//   })
-//   .done(function( data ) {
-//     console.log('got from ajaxGetSongs', data);
-//     return data;
-//   });
-// };
+export const spotifyGetSongs = (params) => {
+  return new Promise ((resolve, reject) => {
+    // console.log('in spotifyGetSongs');
+    $.ajax({
+      method: "POST",
+      url: '/getSongs',
+      data: { string: params }
+    })
+    .done(function( data ) {
+      // console.log('got from spotifyGetSongs', data);
+      resolve(data);
+    });
+  });
+};
 
 export const getLyrics = (track, artist) => {
   console.log("in getLyrics", track, artist);
@@ -116,22 +118,30 @@ export const addSongToQueue = (query, songName, artistName) => {
         maxResults: 5
     });
     request.execute(function(response)  {
+
       return new Promise (function (resolve, reject) {
-          srchItem = response.result.items[0];
-          console.log('inside addSongToQueue', srchItem);
-          store.dispatch({
-            type: 'ADD_TO_QUEUE',
-            songQueue: srchItem.id.videoId,
-            title: srchItem.snippet.title,
-            artwork: srchItem.snippet.thumbnails.default.url,
-            songName: songName,
-            artistName: artistName
-          });
+
+        spotifyGetSongs(songName + ' ' + artistName)
+          .then(function(songs) {
+            var spotifyArtwork = songs.tracks.items[0].album.images[1].url;
+            srchItem = response.result.items[0];
+            console.log('inside addSongToQueue', srchItem);
+            store.dispatch({
+              type: 'ADD_TO_QUEUE',
+              songQueue: srchItem.id.videoId,
+              title: srchItem.snippet.title,
+              artwork: spotifyArtwork,
+              songName: songName,
+              artistName: artistName
+            });
+          })
+
           resolve();
       })
       .then(function () {
         resolve();
       });
+
     });
   });
 };
@@ -177,39 +187,44 @@ export const decreaseVolume = () => {
 
 let srchItem;
 export const youTubeGetSongAnnyang = (query, songName, artistName) => {
-  return new Promise(function (resolve, reject) {
-      var request = gapi.client.youtube.search.list({
-          q: query,
-          part: 'snippet',
-          maxResults: 5
-      });
-      request.execute(function(response)  {
-        return new Promise (function (resolve, reject) {
+  return new Promise((resolve, reject) => {
+
+    var request = gapi.client.youtube.search.list({
+      q: query,
+      part: 'snippet',
+      maxResults: 5
+    });
+
+    request.execute((response) => {
+
+      return new Promise((resolve, reject) => {
+
+        spotifyGetSongs(songName + ' ' + artistName)
+          .then(function(songs) {
+            var spotifyArtwork = songs.tracks.items[0].album.images[1].url;
 
             srchItem = response.result.items[0];
-            console.log('inside searchYouTube', srchItem);
+            // console.log('inside searchYouTube', srchItem);
             store.dispatch({
               type: 'SWITCH_VIEW_TO_PLAYER',
               view: 'player',
               currentSong: {
                 videoId: srchItem.id.videoId,
                 title: srchItem.snippet.title,
-                artwork: srchItem.snippet.thumbnails.default.url,
+                artwork: spotifyArtwork,
                 songName: songName,
                 artistName: artistName
               }
             });
+          });
 
-            resolve();
-        })
-        .then(function () {
-          resolve();
-        })
 
+        resolve();
+      }).then(() => {
+        resolve();
       });
-
+    });
   });
-
 };
 
 export const getSearchItem = () => {
