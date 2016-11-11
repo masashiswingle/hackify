@@ -4,13 +4,24 @@ require('babel-register')({
 
 const should = require('should');
 const _ = require('lodash');
-const mainReducers = require('../../src/redux/reducers');
+const mainReducer = require('../../src/redux/reducers').default;
 
 describe('Reducers-', () => {
-  const { mainReducer } = mainReducers;
   describe('SWITCH_VIEW_TO_PLAYER', () => {
     it('mainReducer: Should return new view', () => {
-      mainReducer({}, 'SWITCH_VIEW_TO_PLAYER').view.should.equal('player');
+      var testData = {
+        type: 'SWITCH_VIEW_TO_PLAYER',
+        view: 'player',
+        currentSong: {
+          videoId: 'YQHsXMglC9A',
+          title: 'Adele - Hello',
+          artwork: 'https://i.scdn.co/image/f71517e8919892273de8d8677e42cdcf1b976aa7',
+          songName: 'Hello',
+          artistName: 'Adele'
+        }
+      };
+      mainReducer({}, testData).view.should.equal('player');
     });
   });
 });
+
