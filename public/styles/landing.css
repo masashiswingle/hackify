@@ -7,10 +7,31 @@ p {
   margin-left: -25px;
 }
 
-.body {
-  text-align: center;
-  font-family: Myriad Pro Regular;
+a:focus, a:hover {
+  text-decoration: none;
 }
+
+#soundbear {
+  font-weight: bold;
+  font-size: 40px;
+}
+
+#description {
+  font-family: inherit;
+}
+
+.body {
+  height: 550px;
+  font-family: "Helvetica";
+  background-color: moccasin;
+  text-align: center;
+  padding-top: 50px;
+}
+
+.title {
+  margin-bottom: 60px;
+}
+
 .inline {
   display: inline-block;
   margin-left: 20px;
@@ -28,6 +49,7 @@ p {
   background-color: #ffffff;
   border: 1px solid transparent;
   color: #d9894f;
+  border-color: #d9894f;
   font-weight: 300;
   -webkit-border-radius: 3px;
   border-radius: 3px;
@@ -46,12 +68,12 @@ p {
   margin: 0 auto;
   font-size: 2.0rem;
   padding: 1rem 2rem;
-  background-color: #d9894f;
+  background-color: black;
   border: 1px solid transparent;
   color: #ffffff;
   font-weight: 300;
   -webkit-border-radius: 3px;
-  border-radius: 3px;
+  border-radius: 50px;
   -webkit-transition: all 0.3s ease-in-out;
   -moz-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
