@@ -80,6 +80,12 @@ class Player extends Component {
           <input type="button" value="Queue" onClick={ this.queueSong.bind(this) } />
         </div>
 
+        <br></br>
+
+        <div> { this.props.currentSong.artistName } - { this.props.currentSong.songName } </div>
+
+        <br></br>
+
         <ControlBar player={ player } />
 
         <br></br>
