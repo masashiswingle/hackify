@@ -1,5 +1,5 @@
 {
-  "name": "backbonebear",
+  "name": "soundbead",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
@@ -9,29 +9,21 @@
     "build": "webpack",
     "test:lint": "eslint . --ext .js --ext .jsx --cache",
     "test:server": "mocha spec/server/*.js -R nyan",
-    "dev": "nodemon server.js",
+    "test:client": "mocha spec/client/reducers.js --compilers js:babel-register",
     "lint": "node ./node_modules/eslint/bin/eslint.js ./src",
     "dev:hot": "webpack-dev-server --hot --inline --progress --colors --watch --display-error-details --display-cached --content-base ./"
   },
-  "babel": {
-    "presets": [
-      "stage-0",
-      "es2015",
-      "react"
-    ]
-  },
   "keywords": [],
-  "author": "",
   "license": "ISC",
   "dependencies": {
     "assert": "^1.4.1",
-    "babel-preset-stage-0": "^6.16.0",
-    "babel-register": "^6.18.0",
     "chai": "^3.5.0",
     "enzyme": "^2.6.0",
     "eslint-plugin-import": "^1.16.0",
     "gimme-lyrics": "^0.3.1",
     "jquery": "^3.1.1",
+    "jsdom": "^9.8.3",
+    "lodash": "^4.16.6",
     "lyrics-fetcher": "^1.0.2",
     "mocha": "^3.1.2",
     "mysql": "^2.12.0",
@@ -51,7 +43,9 @@
     "babel-loader": "^6.2.7",
     "babel-preset-es2015": "^6.18.0",
     "babel-preset-react": "^6.16.0",
+    "babel-preset-stage-0": "^6.16.0",
     "babel-preset-stage-1": "^6.16.0",
+    "babel-register": "^6.18.0",
     "body-parser": "^1.15.2",
     "dotenv": "^2.0.0",
     "ejs": "^2.5.2",
