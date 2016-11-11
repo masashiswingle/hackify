@@ -12,7 +12,7 @@ class Lineup extends Component {
           <History />
         </div>
         <div className="col-md-2">
-          <img src={ this.props.currentSong.artwork } ></img>
+          <img id="currentSong" src={ this.props.currentSong.artwork } ></img>
         </div>
         <div className="col-md-5">
           <Queue />
