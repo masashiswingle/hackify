@@ -123,7 +123,9 @@ export const addSongToQueue = (query, songName, artistName) => {
             type: 'ADD_TO_QUEUE',
             songQueue: srchItem.id.videoId,
             title: srchItem.snippet.title,
-            artwork: srchItem.snippet.thumbnails.default.url
+            artwork: srchItem.snippet.thumbnails.default.url,
+            songName: songName,
+            artistName: artistName
           });
           resolve();
       })

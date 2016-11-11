@@ -32,8 +32,8 @@ module.exports = {
 
         // Adds song to queue to be played later
         function addToQueue (songName, artistName) {
-            console.log('in addToQueue')
             var query = createQuery(songName, artistName);
+            console.log('in addToQueue', songName, artistName)
             helpers.addSongToQueue(query, songName, artistName)
             .then(function () {
                 var track = getSearchItem();
@@ -137,14 +137,14 @@ module.exports = {
                     addToQueue(song);
                 },
 
-                'add to queue *song': function (song) {
-                    recognized('Add to queue ' + song);
-                    addToQueue(song);
-                },
-
                 'add to queue *song by *artist': function (song, artist) {
                     recognized('Add to queue ' + song +' by ' + artist);
                     addToQueue(song, artist);
+                },
+
+                'add to queue *song': function (song) {
+                    recognized('Add to queue ' + song);
+                    addToQueue(song);
                 },
 
                 ':nomatch': function (message) {
