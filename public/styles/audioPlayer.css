@@ -138,7 +138,11 @@
   float: right;
 }
 
-#playlist, #worldMap, #audacity, #uncheck, #tournament, #fastBackward, #player-play, #player-pause, #stop, #fastForward, #unmute, #mute {
+#playlist, #worldMap, #audacity, #uncheck, #tournament {
   height: 40px;
   width: 40px;
+}
+#fastBackward, #player-play, #player-pause, #stop, #fastForward, #unmute, #mute {
+  height: 30px;
+  width: 30px;
 }
