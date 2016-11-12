@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import Nav from './NavComponent';
 import $ from 'jquery';
 
 class ControlBar extends Component {
@@ -112,6 +113,7 @@ class ControlBar extends Component {
           <div className="progress-bar"></div>
         </div>
 
+        <Nav />
       </div>
     );
   }
