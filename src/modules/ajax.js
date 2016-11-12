@@ -127,7 +127,14 @@ export const addSongToQueue = (query, songName, artistName) => {
 
         spotifyGetSongs(songName + ' ' + artistName)
           .then(function(songs) {
-            var spotifyArtwork = songs.tracks.items[0].album.images[1].url;
+            var spotifyArtwork, countriesArr;
+            if (songs) {
+              spotifyArtwork = songs.tracks.items[0].album.images[1].url;
+              countriesArr = songs.tracks.items[0].available_markets;
+            } else {
+              spotifyArtwork = 'http://static.tumblr.com/qmraazf/ps5mjrmim/unknown-album.png';
+              countriesArr = ['US'];
+            }
             srchItem = response.result.items[0];
             // console.log('inside addSongToQueue', srchItem);
             store.dispatch({
@@ -137,7 +144,7 @@ export const addSongToQueue = (query, songName, artistName) => {
               artwork: spotifyArtwork,
               songName: songName,
               artistName: artistName,
-              countries: songs.tracks.items[0].available_markets
+              countries: countriesArr
             });
           })
 
@@ -208,7 +215,7 @@ export const youTubeGetSongAnnyang = (query, songName, artistName) => {
         spotifyGetSongs(songName + ' ' + artistName)
           .then(function(songs) {
             console.log(songs);
-            var spotifyArtwork
+            var spotifyArtwork;
             if (songs) {
               spotifyArtwork = songs.tracks.items[0].album.images[1].url;
               countriesArr = songs.tracks.items[0].available_markets;

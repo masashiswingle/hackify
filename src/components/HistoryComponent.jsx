@@ -15,7 +15,7 @@ class History extends Component {
           {
             reverseSongHistory.map(function(song, index) {
               if (song) {
-                return <img className="history" src={ song.artwork }></img>
+                return <img className="history available" src={ song.artwork }></img>
               } else {
                 return <img className="history" src="http://www.polyvore.com/cgi/img-thing?.out=jpg&size=l&tid=16295283"></img>
               }
