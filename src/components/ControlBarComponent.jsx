@@ -44,22 +44,22 @@ class ControlBar extends Component {
     // this.props.player.previousVideo();
   }
 
-  // muteOrUnmute() {
-  //   this.props.player.isMuted() ? player.mute() : player.unMute();
-  // }
+  muteOrUnmute() {
+    this.props.player.isMuted() ? player.unMute() : player.mute();
+  }
 
   mute() {
     this.setState({mute: true});
-    $('#mute').hide();
-    $('#unmute').show();
+    $('#unmute').hide();
+    $('#mute').show();
     $('#volumebar').hide();
     this.props.player.mute();
   }
 
   unMute() {
     this.setState({mute: false});
-    $('#mute').show();
-    $('#unmute').hide();
+    $('#unmute').show();
+    $('#mute').hide();
     $('#volumebar').show();
     this.props.player.unMute();
   }
@@ -80,6 +80,7 @@ class ControlBar extends Component {
   }
 
   componentDidMount() {
+    this.muteOrUnmute.bind(this);
     var that = this;
     setInterval(function () {
       var percentage = that.props.player.getCurrentTime() / that.props.player.getDuration();
