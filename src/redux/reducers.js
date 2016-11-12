@@ -11,7 +11,6 @@ const mainReducer = function (state = {}, action) {
           songName: action.currentSong.songName,
           artistName: action.currentSong.artistName,
           countries: action.currentSong.countries
-
         }
       };
     case 'INITIATE_QUEUE':
