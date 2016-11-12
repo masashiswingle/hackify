@@ -217,7 +217,9 @@ export const youTubeGetSongAnnyang = (query, songName, artistName) => {
                 artwork: spotifyArtwork,
                 songName: songName,
                 artistName: artistName,
-                countries: songs.tracks.items[0].available_markets
+                countries: countriesArr,
+                request: 'playNow'
+
               }
             });
           });

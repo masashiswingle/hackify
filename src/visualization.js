@@ -1,9 +1,9 @@
 import { getCountries } from './modules/ajax';
 import { convertCountryCode } from './encoder';
 
-const map = function () {
-    var array = getCountries();
-
+const map = function (array) {
+    //var array = getCountries();
+    console.log(array)
     // Convert codes received from Spotify to aplha3 format, recognizable by Maps
     var convertedCodes = [];
     for (var alpha2 of array) {

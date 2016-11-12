@@ -25,14 +25,15 @@ const mainReducer = function (state = {}, action) {
         currentSong: {
           videoId: action.currentSong.videoId,
           title: action.currentSong.title,
-          artwork: action.currentSong.artwork
+          artwork: action.currentSong.artwork,
+          countries: action.currentSong.countries
         }
       };
     case 'ADD_TO_QUEUE':
       console.log(action);
       return {
         ...state,
-        songQueue: [...state.songQueue, { videoId: action.songQueue, title: action.title, artwork: action.artwork, songName: action.songName, artistName: action.artistName }]
+        songQueue: [...state.songQueue, { videoId: action.songQueue, title: action.title, artwork: action.artwork, songName: action.songName, artistName: action.artistName, countries: action.countries }]
       };
     case 'DEQUEUE_SONG':
       return {

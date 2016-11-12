@@ -27,7 +27,7 @@ class Player extends Component {
   }
 
   componentDidMount() {
-    map();
+    map(this.props.currentSong.countries);
     player = new YT.Player('player', {
       height: '390',
       width: '640',
@@ -56,11 +56,14 @@ class Player extends Component {
   }
 
   componentDidUpdate() {
+   document.getElementById("basic_choropleth").innerHTML = '';
+    map(this.props.currentSong.countries);
     console.log('props, ', this.props.currentSong.videoId);
     console.log('player, ', player.getVideoData().video_id)
     if (this.props.currentSong.videoId !== player.getVideoData().video_id) {
       player.cueVideoById(this.props.currentSong.videoId);
       player.playVideo();
+
     }
   }
 
