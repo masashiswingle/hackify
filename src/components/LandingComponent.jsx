@@ -4,7 +4,7 @@ import { switchViewToPlayer } from '../redux/actions';
 import * as helpers from '../modules/ajax';
 import Song from '../modules/Song';
 import { annyangCall } from '../annyang';
-import tree  from '../visualization/artists-tree';
+import { tree }  from '../visualization/artists-tree';
 
 class Landing extends Component {
 
@@ -20,9 +20,8 @@ class Landing extends Component {
     $('.js-trigger-overlay-start').hide();
   }
     componentDidMount() {
-      tree();
-
-      tree().resizeOverlay();
+     var returnResult = tree();
+      returnResult.resizeOverlay();
 
 
       var artist = {
@@ -60,7 +59,7 @@ class Landing extends Component {
         }
 
       
-        tree().setRoot(artist);
+        returnResult.setRoot(artist);
       
 
        // console.log('yo', tree().getAllArtists());
