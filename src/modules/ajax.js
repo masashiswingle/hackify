@@ -11,8 +11,12 @@ export const spotifyGetSongs = (params) => {
       data: { string: params }
     })
     .done(function( data ) {
-       console.log('got from spotifyGetSongs', data);
-      resolve(data);
+      console.log('got from spotifyGetSongs', data);
+      if (data.tracks.items.length > 0) {
+        resolve(data);
+      } else {
+        resolve(null);
+      }
     });
   });
 };
@@ -203,10 +207,16 @@ export const youTubeGetSongAnnyang = (query, songName, artistName) => {
 
         spotifyGetSongs(songName + ' ' + artistName)
           .then(function(songs) {
-            var spotifyArtwork = songs.tracks.items[0].album.images[1].url;
-
+            console.log(songs);
+            var spotifyArtwork
+            if (songs) {
+              spotifyArtwork = songs.tracks.items[0].album.images[1].url;
+              countriesArr = songs.tracks.items[0].available_markets;
+            } else {
+              spotifyArtwork = 'http://static.tumblr.com/qmraazf/ps5mjrmim/unknown-album.png';
+              countriesArr = ['US'];
+            }
             srchItem = response.result.items[0];
-            countriesArr = songs.tracks.items[0].available_markets;
             // console.log('inside searchYouTube', srchItem);
             store.dispatch({
               type: 'SWITCH_VIEW_TO_PLAYER',
