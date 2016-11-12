@@ -6,6 +6,7 @@ import * as helpers from '../modules/ajax';
 import { annyangCall } from '../annyang';
 import { initiateQueue, initiateHistory, changeCurrentSong, addToQueue, dequeueSong, addToHistory } from '../redux/actions';
 import Song from '../modules/Song';
+import map from '../visualization'
 // import $ from 'jquery';
 
 class Player extends Component {
@@ -26,6 +27,7 @@ class Player extends Component {
   }
 
   componentDidMount() {
+    map();
     player = new YT.Player('player', {
       height: '390',
       width: '640',
@@ -98,6 +100,7 @@ class Player extends Component {
         <br></br>
 
         <div id="conversation"></div>
+        <div id="basic_choropleth" style={{"position": "relative", "width": "500px", "height": "300px"}}></div>
 
       </div>
     );

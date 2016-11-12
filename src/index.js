@@ -15,6 +15,7 @@ const store = createStore(mainReducer, {view: 'landing', songQueue: [], songHist
 render(
   <Provider store={store}>
     <App API_KEY={'AIzaSyBTUh9qsB3l0N-vFkyE3U-FEwuuj5CDHBI'}/>
+    
   </Provider>,
   document.getElementById('app')
 );
