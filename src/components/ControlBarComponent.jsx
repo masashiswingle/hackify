@@ -13,24 +13,24 @@ class ControlBar extends Component {
     }
   }
 
-  playOrPause() {
-    $('.play-button img').toggle();
-    $('.play-button').toggleClass('on');
-  }
-
   play() {
-    this.setState({pause: true});
+    this.setState({pause: false});
+    $('.fa-play').hide();
+    $('.fa-pause').show();
     this.props.player.playVideo();
-    this.playOrPause();
   }
 
   pause() {
-    this.setState({pause: false});
+    this.setState({pause: true});
+    $('.fa-play').show();
+    $('.fa-pause').hide();
     this.props.player.pauseVideo();
-    this.playOrPause();
   }
 
   stop() {
+    this.setState({pause: true});
+    $('.fa-play').show();
+    $('.fa-pause').hide();
     this.props.player.stopVideo();
   }
 
@@ -93,8 +93,8 @@ class ControlBar extends Component {
           <img className="buttons" id="fastBackward" src={'/assets/fastBackward.png'} onClick={ this.previous.bind(this) } />
 
           <div className="play-button buttons">
-            <img className="fa-play" id="player-play" src={'/assets/play.png'} onClick={ this.play.bind(this) } />
-            <img className="fa-pause" id='player-pause' src={'/assets/pause.png'} onClick={ this.pause.bind(this) } />
+            <img className="fa-play" id="player-play" src={'/assets/play.png'} onClick={ this.state.pause ? this.play.bind(this) : this.pause.bind(this) } />
+            <img className="fa-pause" id='player-pause' src={'/assets/pause.png'} onClick={ this.state.pause ? this.play.bind(this) : this.pause.bind(this) } />
           </div>
 
           <img className="buttons" id="stop" src={'/assets/stop.png'} onClick={ this.stop.bind(this) } />
