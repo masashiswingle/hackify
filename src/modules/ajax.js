@@ -183,12 +183,24 @@ export const backwardSong = () => {
   document.getElementById('player-backward').click();
 };
 
+export const increaseVolume = (previousVolume) => {
+  var el = document.getElementById('volumebar');
+  el.value=previousVolume;
+  el.dispatchEvent(new Event('input', {bubbles: true}));
+}
+
 export const decreaseVolume = () => {
   var el = document.getElementById('volumebar');
+  var previousVolume = el.value;
+  console.log(previousVolume)
   el.value='10';
   el.dispatchEvent(new Event('input', {bubbles: true}));
 
+  setTimeout(function () {
+    increaseVolume(previousVolume) }, 4000);
 }
+
+
 
 let srchItem;
 let countriesArr;
