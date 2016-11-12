@@ -23,7 +23,6 @@ class Lineup extends Component {
 }
 
 const mapStateToProps = (state) => {
-  // console.log(state);
   return {
     currentSong: state.currentSong
   };

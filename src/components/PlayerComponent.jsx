@@ -58,8 +58,6 @@ class Player extends Component {
   componentDidUpdate() {
    document.getElementById("basic_choropleth").innerHTML = '';
     map(this.props.currentSong.countries);
-    console.log('props, ', this.props.currentSong.videoId);
-    console.log('player, ', player.getVideoData().video_id)
     if (this.props.currentSong.videoId !== player.getVideoData().video_id) {
       player.cueVideoById(this.props.currentSong.videoId);
       player.playVideo();
