@@ -21,7 +21,7 @@ export const spotifyGetSongs = (params) => {
   });
 };
 
-export const getLyrics = (track, artist) => {
+export const getLyrics = (track, artist, cb) => {
   console.log("in getLyrics", track, artist);
   $.ajax({
     method: 'POST',
@@ -30,7 +30,8 @@ export const getLyrics = (track, artist) => {
   })
   .done(function( data ) {
     // console.log('got lyrics back', data);
-    return data;
+    cb(data);
+    // return data;
   })
 };
 
