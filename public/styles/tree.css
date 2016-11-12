@@ -2,28 +2,18 @@
   cursor: pointer;
 }
 
-.node circle {
-  fill: #fff;
-  stroke: black;
-  stroke-width: 2px;
-}
-
 .node text {
-  font-size:15px;
+  font-size: 12px;
 }
 
 .link {
   fill: none;
-  stroke: #ccc;
-  stroke-width: 1.5px;
+  stroke: #ffe1bd;
+  stroke-width: 1px;
 }
 
 .templink {
   fill: none;
   stroke: red;
   stroke-width: 3px;
-}
-
-.overlay{
-  background-color:#FFFFFF;
 }
