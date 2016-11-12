@@ -44,16 +44,13 @@ module.exports = {
   },
 
   getArtistInfo: function (req, res) {
-    spotifyApi.searchTracks(req.body.string)
+    spotifyApi.searchTracks(req.body.id)
       .then(function(data) {
-        var artistId = data.body.tracks.items[0].artists[0].id;
-        return spotifyApi.getArtist(artistId)
-          .then(function(info) {
-            res.send(data.statusCode, info.body);
-          }, function(err) {
-              res.send(400, err);
-          })
-      })
+        console.log('got from getArtistInfo', data);
+        res.send(data.statusCode, data.body);
+      }, function(err) {
+        console.error(err);
+      });
   },
 
   //AUTHENTICATION REQUIRED FOR THIS CALL

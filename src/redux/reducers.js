@@ -10,6 +10,7 @@ const mainReducer = function (state = {}, action) {
           artwork: action.currentSong.artwork,
           songName: action.currentSong.songName,
           artistName: action.currentSong.artistName,
+          artistId: action.currentSong.artistId,
           countries: action.currentSong.countries
         }
       };
@@ -26,6 +27,7 @@ const mainReducer = function (state = {}, action) {
           videoId: action.currentSong.videoId,
           title: action.currentSong.title,
           artwork: action.currentSong.artwork,
+          artistId: action.currentSong.artistId,
           countries: action.currentSong.countries
         }
       };
@@ -33,7 +35,7 @@ const mainReducer = function (state = {}, action) {
       console.log(action);
       return {
         ...state,
-        songQueue: [...state.songQueue, { videoId: action.songQueue, title: action.title, artwork: action.artwork, songName: action.songName, artistName: action.artistName, countries: action.countries }]
+        songQueue: [...state.songQueue, { videoId: action.songQueue, title: action.title, artwork: action.artwork, songName: action.songName, artistName: action.artistName, artistId: action.artistId, countries: action.countries }]
       };
     case 'DEQUEUE_SONG':
       return {

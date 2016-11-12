@@ -48,6 +48,19 @@ export const artistTracks = (params) => {
   });
 };
 
+export const artistInfo = (id) => {
+  console.log('in artistTracks');
+  $.ajax({
+    method: "POST",
+    url: '/artistInfo',
+    data: { id: id }
+  })
+  .done(function( data ) {
+    console.log('got from artistInfo', data);
+    return data;
+  });
+};
+
 export const artistAlbums = (params) => {
   console.log('in artistAlbums');
   $.ajax({
@@ -141,6 +154,7 @@ export const addSongToQueue = (query, songName, artistName) => {
               countriesArr = ['US'];
             }
             srchItem = response.result.items[0];
+            artistId = songs.tracks.items[0].artists[0].id;
             // console.log('inside addSongToQueue', srchItem);
             store.dispatch({
               type: 'ADD_TO_QUEUE',
@@ -150,6 +164,9 @@ export const addSongToQueue = (query, songName, artistName) => {
               songName: songName,
               artistName: artistName,
               countries: countriesArr
+              artistId: artistId,
+
+
             });
           })
 
@@ -236,6 +253,7 @@ export const youTubeGetSongAnnyang = (query, songName, artistName) => {
             if (songs) {
               spotifyArtwork = songs.tracks.items[0].album.images[1].url;
               countriesArr = songs.tracks.items[0].available_markets;
+              artistId = songs.tracks.items[0].artists[0].id;
             } else {
               spotifyArtwork = 'http://static.tumblr.com/qmraazf/ps5mjrmim/unknown-album.png';
               countriesArr = ['US'];
@@ -251,6 +269,7 @@ export const youTubeGetSongAnnyang = (query, songName, artistName) => {
                 artwork: spotifyArtwork,
                 songName: songName,
                 artistName: artistName,
+                artistId: artistId,
                 countries: countriesArr,
                 request: 'playNow'
               }
