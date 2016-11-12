@@ -27,7 +27,6 @@ module.exports = {
                 document.getElementById('conversation').innerHTML = "";
                 communicateAction('<div>Playing ' + track.snippet.title + '</div><img width="150" src="' + track.snippet.thumbnails.medium.url + '">');
             });
-
         };
 
         // Adds song to queue to be played later
