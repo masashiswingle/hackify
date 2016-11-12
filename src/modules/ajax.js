@@ -217,11 +217,7 @@ export const youTubeGetSongAnnyang = (query, songName, artistName) => {
                 artwork: spotifyArtwork,
                 songName: songName,
                 artistName: artistName,
-<<<<<<< HEAD
                 countries: songs.tracks.items[0].available_markets
-=======
-                request: 'playNow'
->>>>>>> feature
               }
             });
           });
@@ -242,4 +238,3 @@ export const getSearchItem = () => {
 export const getCountries = () => {
   return countriesArr;
 };
-
