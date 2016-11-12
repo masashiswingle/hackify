@@ -18,12 +18,12 @@ module.exports = {
         // Finds and plays new song
         function playSong(songName, artistName) {
             var query = createQuery(songName, artistName);
-            console.log(songName, artistName);
+            // console.log(songName, artistName);
             getLyrics(songName, artistName);
             helpers.youTubeGetSongAnnyang(query, songName, artistName)
               .then(function () {
                 var track = helpers.getSearchItem();
-                console.log('in .then', track);
+                // console.log('in .then', track);
                 document.getElementById('conversation').innerHTML = "";
                 communicateAction('<div>Playing ' + track.snippet.title + '</div><img width="150" src="' + track.snippet.thumbnails.medium.url + '">');
             });
@@ -33,11 +33,11 @@ module.exports = {
         // Adds song to queue to be played later
         function addToQueue (songName, artistName) {
             var query = createQuery(songName, artistName);
-            console.log('in addToQueue', songName, artistName)
+            // console.log('in addToQueue', songName, artistName)
             helpers.addSongToQueue(query, songName, artistName)
             .then(function () {
                 var track = getSearchItem();
-                console.log('in .then of addToQueue', track);
+                // console.log('in .then of addToQueue', track);
                 // document.getElementById('conversation').innerHTML = "";
                 communicateAction('<div>Added to queue ' + track.snippet.title + '</div><img width="150" src="' + track.snippet.thumbnails.medium.url + '">');
             });

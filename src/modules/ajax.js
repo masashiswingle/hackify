@@ -125,14 +125,15 @@ export const addSongToQueue = (query, songName, artistName) => {
           .then(function(songs) {
             var spotifyArtwork = songs.tracks.items[0].album.images[1].url;
             srchItem = response.result.items[0];
-            console.log('inside addSongToQueue', srchItem);
+            // console.log('inside addSongToQueue', srchItem);
             store.dispatch({
               type: 'ADD_TO_QUEUE',
               songQueue: srchItem.id.videoId,
               title: srchItem.snippet.title,
               artwork: spotifyArtwork,
               songName: songName,
-              artistName: artistName
+              artistName: artistName,
+              request: 'queue'
             });
           })
 
@@ -147,7 +148,7 @@ export const addSongToQueue = (query, songName, artistName) => {
 };
 
 export const dequeueSong = () => {
-  console.log('in dequeueSong', store.getState());
+  // console.log('in dequeueSong', store.getState());
   store.dispatch({
               type: 'DEQUEUE_SONG',
               view: 'player'
@@ -213,7 +214,8 @@ export const youTubeGetSongAnnyang = (query, songName, artistName) => {
                 title: srchItem.snippet.title,
                 artwork: spotifyArtwork,
                 songName: songName,
-                artistName: artistName
+                artistName: artistName,
+                request: 'playNow'
               }
             });
           });

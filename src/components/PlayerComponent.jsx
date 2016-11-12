@@ -17,11 +17,11 @@ class Player extends Component {
   }
 
   queueSong(string) {
-    console.log('triggered queue');
+    // console.log('triggered queue');
     helpers.youTubeGetSong(string = $('#srch-term').val(), (response) => {
       var queuedSong = new Song(response.items[0].id.videoId, response.items[0].snippet.title, response.items[0].snippet.thumbnails.default.url);
       this.props.addToQueue(queuedSong);
-      console.log(this.props);
+      // console.log(this.props);
     });
   }
 
@@ -54,11 +54,11 @@ class Player extends Component {
   }
 
   componentDidUpdate() {
-    if (this.props.songHistory[0]) {
-      if (this.props.currentSong.videoId !== this.props.songHistory[0].videoId) {
-        player.cueVideoById(this.props.currentSong);
-        player.playVideo();
-      }
+    console.log('props, ', this.props.currentSong.videoId);
+    console.log('player, ', player.getVideoData().video_id)
+    if (this.props.currentSong.videoId !== player.getVideoData().video_id) {
+      player.cueVideoById(this.props.currentSong.videoId);
+      player.playVideo();
     }
   }
 
@@ -105,7 +105,7 @@ class Player extends Component {
 }
 
 const mapStateToProps = (state) => {
-  console.log(state);
+  // console.log(state);
   return {
     view: state.view,
     currentSong: state.currentSong,
