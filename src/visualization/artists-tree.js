@@ -3,17 +3,20 @@ import { getSearchItem, relatedTree } from './../modules/ajax';
 module.exports = { 
 
     tree: function() {
-        // Misc. variables
+
         var i = 0;
         var duration = 750;
         var root;
+
         var existingArtists = [];
+        var lastSelected;
+
+        // Assign each image its own clippath
         var clipPathId = 0;
 
+        // Define size of the display window
         var viewerWidth = $(window).width();
         var viewerHeight = $(window).height();
-
-        var lastSelected;
 
         var tree = d3.layout.tree()
             .size([viewerHeight, viewerWidth]);
@@ -23,17 +26,20 @@ module.exports = {
                 return [d.y, d.x];
             });
 
-
+        // Make the tree zoomable
         function zoom() {
             svgGroup.attr("transform", "translate(" + d3.event.translate + ")scale(" + d3.event.scale + ")");
         };
-
+      
+        // Call zoom function on zoom event 
+          // Set lower and upper bound on scale sensitivity
         var zoomListener = d3.behavior.zoom().scaleExtent([0.1, 3]).on("zoom", zoom);
 
         var baseSvg = d3.select("#tree-container").append("svg")
             .attr("width", viewerWidth)
             .attr("height", viewerHeight)
             .attr("class", "overlay")
+            // Attach zoom listener
             .call(zoomListener);
 
     
@@ -47,6 +53,7 @@ module.exports = {
             }
         };
 
+        // Center node when clicked so that it will not get lost
         function centerNode(source) {
             lastSelected = source;
             var scale = zoomListener.scale();
@@ -127,9 +134,9 @@ module.exports = {
         };
 
         function chooseImage (images) {
-            var minSize = 64;
+            var fixedSize = 64;
             images.forEach(function (image) {
-                if (image && image.width > minSize && image.width > 64) {
+                if (image && image.width > fixedSize && image.width > 64) {
                     return image.url;
                 }
             });
@@ -155,7 +162,7 @@ module.exports = {
             var newHeight = d3.max(levelWidth) * 100;
             tree = tree.size([newHeight, viewerWidth]);
 
-            // Compute the new tree layout.
+            // Compute new tree layout
             var nodes = tree.nodes(root).reverse();
             var links = tree.links(nodes);
 
@@ -165,11 +172,13 @@ module.exports = {
 
             });
 
+            // Update nodes
             var node = svgGroup.selectAll("g.node")
                 .data(nodes, function(d) {
                     return d.id || (d.id = ++i);
                 });
-     
+
+            // Enter new nodes at the parent's previous position
             var nodeEnter = node.enter().append("g")
                 .attr("class", "node")
                 .attr("transform", function(d) {
@@ -317,14 +326,14 @@ module.exports = {
                 })
                 .remove();
 
-            // Stash the old positions for transition
+            // Stash old positions for transition
             nodes.forEach(function(d) {
                 d.x0 = d.x;
                 d.y0 = d.y;
             });
-            
         };
 
+        // Append a group which holds all nodes
         var svgGroup = baseSvg.append("g");
 
         return {
