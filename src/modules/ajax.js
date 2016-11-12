@@ -219,7 +219,6 @@ export const youTubeGetSongAnnyang = (query, songName, artistName) => {
                 artistName: artistName,
                 countries: countriesArr,
                 request: 'playNow'
-
               }
             });
           });
