@@ -1,17 +1,40 @@
-import { getSearchItem, relatedArtists } from './../modules/ajax';
+import { getSearchItem, relatedTree } from './../modules/ajax';
 
-function initRootWithArtist(artist) {
-    tree.setRoot(artist);
-}
+function getSuitableImage(images) {
+        var minSize = 64;
+        // if (images.length === 0) {
+        //     return 'img/spotify.jpeg';
+        // }
+        images.forEach(function (image) {
+            if (image && image.width > minSize && image.width > 64) {
+                return image.url;
+            }
+        });
+
+        return images[images.length - 1].url;
+    }
+
+ function createAutoCompleteDiv(artist) {
+        if (!artist) {
+            return;
+        }
+        var val = '<div class="autocomplete-item">' +
+            '<div class="artist-icon-container">' +
+            '<img src="' + getSuitableImage(artist.images) + '" class="circular artist-icon" />' +
+            '<div class="artist-label">' + artist.name + '</div>' +
+            '</div>' +
+            '</div>';
+        return val;
+    }
 
 
-const tree = (function() {
-
+const tree = function() {
+console.log('called')
     // Misc. variables
     var i = 0;
     var duration = 750;
     var root;
-    var rightPaneWidth = 350;
+
 
     var exploredArtistIds = [];
 
@@ -19,7 +42,7 @@ const tree = (function() {
     var clipPathId = 0;
 
     // size of the diagram
-    var viewerWidth = $(window).width() - rightPaneWidth;
+    var viewerWidth = $(window).width() ;
     var viewerHeight = $(window).height();
 
     var lastExpandedNode;
@@ -47,9 +70,12 @@ const tree = (function() {
         .attr("height", viewerHeight)
         .attr("class", "overlay")
         .call(zoomListener);
+        
+console.log('svg', d3.select("#tree-container"))
 
     function updateWindow(){
-        viewerWidth = $(window).width() - rightPaneWidth;
+        console.log('updateWindow called')
+        viewerWidth = $(window).width();
         viewerHeight = $(window).height();
         baseSvg.attr("width", viewerWidth).attr("height", viewerHeight);
         if (lastExpandedNode) {
@@ -75,6 +101,9 @@ const tree = (function() {
     function setChildrenAndUpdateForArtist(node) {
         var artists;
         relatedTree(node.artist.id, exploredArtistIds).then(function(artists) {
+
+            console.log('in setChildrenAndUpdateForArtist, artists: ', artists)
+
             if (!node.children) {
                 node.children = []
             }
@@ -90,6 +119,7 @@ const tree = (function() {
                 exploredArtistIds.push(artist.id);
 
             });
+            console.log('node', node)
             update(node);
             centerNode(node);
         });
@@ -169,9 +199,7 @@ const tree = (function() {
         } else {
             if (isArtist(d)) {
                 setChildrenAndUpdateForArtist(d);
-            } else if (isGenre(d)) {
-                setChildrenAndUpdateForGenre(d);
-            }
+            } 
         }
         return d;
     }
@@ -181,6 +209,8 @@ const tree = (function() {
     }
 
     function update(source) {
+       
+
         var levelWidth = [1];
         var childCount = function(level, n) {
             if (n.children && n.children.length > 0) {
@@ -204,6 +234,7 @@ const tree = (function() {
         // Set widths between levels
         nodes.forEach(function(d) {
              d.y = (d.depth * 220);
+
         });
 
         // Update the nodes…
@@ -211,7 +242,7 @@ const tree = (function() {
             .data(nodes, function(d) {
                 return d.id || (d.id = ++i);
             });
-
+ 
         // Enter any new nodes at the parent's previous position.
         var nodeEnter = node.enter().append("g")
             // .call(dragListener)
@@ -219,21 +250,13 @@ const tree = (function() {
             .attr("transform", function(d) {
                 return "translate(" + source.y0 + "," + source.x0 + ")";
             })
-            .on("mouseover", function(d) {
-                if ('artist' in d) {
-                    AE.getInfo(d.artist);
-                }
-            })
-            .on("mouseout", function(d) {
-                if ('artist' in d) {
-                    AE.getInfoCancel();
-                }
-            })
+
             .on('click', click);
 
         nodeEnter.append("circle")
             .attr("r", 32)
             .style("fill", function(d) {
+
                 return d._children ? "black" : "#fff";
             });
 
@@ -248,10 +271,8 @@ const tree = (function() {
         nodeEnter.append("image")
             .attr("xlink:href", function(d) {
                 if (isArtist(d)) {
-                  return AE.getSuitableImage(d.artist.images);
-                } else {
-                  return 'img/spotify.jpeg';
-                }
+                  return getSuitableImage(d.artist.images);;
+                } 
             })
             .attr("x", "-32px")
             .attr("y", "-32px")
@@ -301,10 +322,9 @@ const tree = (function() {
             })
             .text(function(d) {
                 if (isArtist(d)) {
+
                     return d.artist.name;
-                } else if (isGenre(d)){
-                    return "Genre:" + AE.toTitleCase(d.genre.name);
-                }
+                } 
 
             })
             .style("fill-opacity", 0);
@@ -379,6 +399,7 @@ const tree = (function() {
             d.x0 = d.x;
             d.y0 = d.y;
         });
+        console.log('hit last line')
     }
 
     // Append a group which holds all nodes and which the zoom Listener can act upon.
@@ -456,17 +477,9 @@ const tree = (function() {
             update(root);
             centerNode(root);
             click(root)
+            console.log('setRoot called', root )
         },
 
-        "setRootGenre" : function(genreName) {
-            exploredArtistIds = []
-            root = initWithGenre(genreName);
-            root.x0 = viewerHeight / 2;
-            root.y0 = 0;
-            update(root);
-            centerNode(root);
-            click(root);
-        },
 
         "getRoot": function() {
             return serializeTree();
@@ -503,5 +516,8 @@ const tree = (function() {
         }
     }
 
-})();
-// export default tree;
+}();
+
+
+
+export default tree;

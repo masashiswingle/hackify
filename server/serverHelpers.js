@@ -70,20 +70,24 @@ module.exports = {
       })
   },
 
-  getRelated: function(d) {
-        return new Promise(function (resolve, reject) {
-            return currentApi.getArtistRelatedArtists(d.artistId).then(function (data) {
+  getRelated: function(req, res) {
+    console.log('getRelated', req.body)
 
-                data.artists.sort(function (a, b) {
+        return new Promise(function (resolve, reject) {
+            return spotifyApi.getArtistRelatedArtists(req.body.artistId).then(function (data) {
+
+                data.body.artists.sort(function (a, b) {
                     return b.popularity - a.popularity;
                 });
-                if (!repeatArtists) {
-                    data.artists = data.artists.filter(function (artist) {
-                        return d.excludeList.indexOf(artist.id) === -1;
+                
+                    data.body.artists = data.body.artists.filter(function (artist) {
+                        return req.body.excludeList.indexOf(artist.id) === -1;
                     });
-                }
+              
+               
 
-                resolve(data.artists.slice(0, numberOfArtistsToShow));
+                res.send(data.body.artists.slice(0, 10));
+                resolve(data.body.artists.slice(0, 10));
             });
         });
     },

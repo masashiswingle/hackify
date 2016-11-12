@@ -89,15 +89,18 @@ export const relatedArtists = (params) => {
 
 
 export const relatedTree = (artistId, excludeList) => {
-  console.log('in relatedTree');
-  $.ajax({
-    method: "POST",
-    url: '/artistsTree',
-    data: { artistId: artistId, excludeList: excludeList}
-  })
-  .done(function( data ) {
-    console.log('got from relatedTree', data);
-    return data;
+  return new Promise(function (resolve, reject) {
+    console.log('in relatedTree');
+    $.ajax({
+      method: "POST",
+      url: '/artistsTree',
+      data: { artistId: artistId, excludeList: excludeList}
+    })
+    .done(function( data ) {
+      console.log('got from relatedTree', data);
+      resolve(data);
+      //return data;
+    });
   });
 };
 
