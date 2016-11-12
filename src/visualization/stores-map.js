@@ -14,7 +14,7 @@ const map = function (array) {
     // Create data object to be drawn on map
     var data = {};
     for (var alpha3 of convertedCodes) {
-      data[alpha3] = { fillKey: "authorHasTraveledTo" }
+      data[alpha3] = { fillKey: "startColor" }
     }
 
     var basic_choropleth = new Datamap({
@@ -22,7 +22,7 @@ const map = function (array) {
     projection: 'mercator',
     fills: {
       defaultFill: "#000000",
-      authorHasTraveledTo: "#ffe1bd"
+      startColor: "#ffe1bd"
     },
     data: data
   });
