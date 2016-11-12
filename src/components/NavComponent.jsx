@@ -4,12 +4,12 @@ import { connect } from 'react-redux';
 class Nav extends Component {
   render() {
     return(
-      <div>
-        <img id="playlist" src={'/assets/playlist.png'} />
-        <img id="playlist" src={'/assets/worldMap.png'} />
-        <img id="playlist" src={'/assets/audacity.png'} />
-        <img id="playlist" src={'/assets/uncheck.png'} />
-        <img id="playlist" src={'/assets/tournament.png'} />
+      <div className="navlist">
+        <img className="nav" id="playlist" src={'/assets/playlist.png'} />
+        <img className="nav" id="worldMap" src={'/assets/worldMap.png'} />
+        <img className="nav" id="audacity" src={'/assets/audacity.png'} />
+        <img className="nav" id="uncheck" src={'/assets/uncheck.png'} />
+        <img className="nav" id="tournament" src={'/assets/tournament.png'} />
       </div>
     );
   }
