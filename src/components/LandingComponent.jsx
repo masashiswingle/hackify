@@ -4,7 +4,7 @@ import { switchViewToPlayer } from '../redux/actions';
 import * as helpers from '../modules/ajax';
 import Song from '../modules/Song';
 import { annyangCall } from '../annyang';
-import  tree  from '../visualization/artists-tree';
+import tree  from '../visualization/artists-tree';
 
 class Landing extends Component {
 
@@ -20,8 +20,9 @@ class Landing extends Component {
     $('.js-trigger-overlay-start').hide();
   }
     componentDidMount() {
+      tree();
 
-      tree.resizeOverlay();
+      tree().resizeOverlay();
 
 
       var artist = {
@@ -58,12 +59,11 @@ class Landing extends Component {
           "uri" : "spotify:artist:0OdUWJ0sBjDrqHygGUXeCF"
         }
 
-      const initRootWithArtist = function (artist) {
-        console.log('initRootWithArtist called')
-        tree.setRoot(artist);
-      }(artist);
+      
+        tree().setRoot(artist);
+      
 
-        console.log('yo', tree.getAllArtists());
+       // console.log('yo', tree().getAllArtists());
 
     }
 
@@ -83,7 +83,7 @@ class Landing extends Component {
         <hr></hr>
 
         <div id ='tree-container'></div>
-        
+
         <div className="body">
           <div className="title">
             <h1 id="soundbear">soundBear</h1>

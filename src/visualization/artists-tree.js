@@ -70,7 +70,7 @@ console.log('called')
         .attr("height", viewerHeight)
         .attr("class", "overlay")
         .call(zoomListener);
-        
+
 console.log('svg', d3.select("#tree-container"))
 
     function updateWindow(){
@@ -516,7 +516,7 @@ console.log('svg', d3.select("#tree-container"))
         }
     }
 
-}();
+};
 
 
 
