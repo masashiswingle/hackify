@@ -95,7 +95,7 @@
 }*/
 
 
-.audio-player-button img.fa-play {
+.play-button img.fa-play {
   display: none;
 }
 
@@ -125,6 +125,15 @@
   border-radius: 25px;
 }
 
-.audio-player-buttons {
+.controlDiv{
+  text-align: center;
+}
+
+.buttons {
   display: inline;
+  margin: 30px;
+}
+
+.volumeDiv {
+  float: right;
 }

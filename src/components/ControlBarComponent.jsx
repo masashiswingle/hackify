@@ -87,24 +87,24 @@ class ControlBar extends Component {
 
   render() {
     return(
-      <div id="controlDiv">
+      <div className="controlDiv">
 
         <div className="audio-player-buttons">
-          <img id="fastBackward" src={'/assets/fastBackward.png'} onClick={ this.previous.bind(this) } />
+          <img className="buttons" id="fastBackward" src={'/assets/fastBackward.png'} onClick={ this.previous.bind(this) } />
 
-          <div className="audio-player-button play-button">
-            <img className="fa fa-play" id="player-play" src={'/assets/play.png'} onClick={ this.play.bind(this) } />
-            <img className="fa fa-pause" id='player-pause' src={'/assets/pause.png'} onClick={ this.pause.bind(this) } />
+          <div className="play-button buttons">
+            <img className="fa-play" id="player-play" src={'/assets/play.png'} onClick={ this.play.bind(this) } />
+            <img className="fa-pause" id='player-pause' src={'/assets/pause.png'} onClick={ this.pause.bind(this) } />
           </div>
 
-          <img id="stop" src={'/assets/stop.png'} onClick={ this.stop.bind(this) } />
+          <img className="buttons" id="stop" src={'/assets/stop.png'} onClick={ this.stop.bind(this) } />
 
-          <img id="fastForward" src={'/assets/fastForward.png'} onClick={ this.next.bind(this) } />
+          <img className="buttons" id="fastForward" src={'/assets/fastForward.png'} onClick={ this.next.bind(this) } />
 
 
-          <div className="volumeDiv">
-            <img id="unmute" src={'/assets/unmute.png'} onClick={ this.unMute.bind(this) } />
-            <img id="mute" src={'/assets/mute.png'} onClick={ this.mute.bind(this) } />
+          <div className="volumeDiv buttons">
+            <img className="buttons" id="unmute" src={'/assets/unmute.png'} onClick={ this.unMute.bind(this) } />
+            <img className="buttons" id="mute" src={'/assets/mute.png'} onClick={ this.mute.bind(this) } />
             <input type="range" id="volumebar" onChange={ this.volume.bind(this) } title="Volume" min="0" max="100" step="1"></input>
           </div>
         </div>
