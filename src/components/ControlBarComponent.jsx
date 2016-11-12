@@ -7,24 +7,23 @@ class ControlBar extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      pause: false
+      pause: false,
+      mute: false
     }
   }
 
   playOrPause() {
-    $('.play-button').toggle();
+    $('.play-button img').toggle();
     $('.play-button').toggleClass('on');
   }
 
   play() {
-    console.log("hi");
     this.setState({pause: true});
     this.props.player.playVideo();
     this.playOrPause();
   }
 
   pause() {
-    console.log("hello");
     this.setState({pause: false});
     this.props.player.pauseVideo();
     this.playOrPause();
@@ -44,12 +43,25 @@ class ControlBar extends Component {
     // this.props.player.previousVideo();
   }
 
+  onOrOff() {
+    $('.volumeDiv img').toggle();
+    $('.volumeDiv').toggleClass('on');
+  }
+
   mute() {
-    this.props.player.isMuted() ? player.unMute() : player.mute();
+    // this.props.player.isMuted() ? player.unMute() : player.mute();
+    this.setState({mute: true});
+    this.props.player.mute();
+    this.onOrOff();
+  }
+
+  unMute() {
+    this.setState({mute: false});
+    this.props.player.unMute();
+    this.onOrOff();
   }
 
   volume() {
-
     var currentVolume = $('#volumebar').val();
     this.props.player.setVolume(currentVolume);
   }
@@ -75,11 +87,31 @@ class ControlBar extends Component {
   render() {
     return(
       <div id="controlDiv">
-        <img id="fastBackward" src={'/assets/fastBackward.png'} onClick={ this.previous.bind(this) } />
-        <div className="playOrPause-button">
-          <img id="player-play" src={'/assets/play.png'} onClick={ this.play.bind(this) } />
-          <img id="player-pause" src={'/assets/pause.png'} onClick={ this.pause.bind(this) } />
+
+        <div className="audio-player-buttons">
+          <img id="fastBackward" src={'/assets/fastBackward.png'} onClick={ this.previous.bind(this) } />
+
+          <div className="audio-player-button play-button">
+            <img className="fa fa-play" id="player-play" src={'/assets/play.png'} onClick={ this.play.bind(this) } />
+            <img className="fa fa-pause" id='player-pause' src={'/assets/pause.png'} onClick={ this.pause.bind(this) } />
+          </div>
+
+          <img id="stop" src={'/assets/stop.png'} onClick={ this.stop.bind(this) } />
+
+          <img id="fastForward" src={'/assets/fastForward.png'} onClick={ this.next.bind(this) } />
+
+
+          <div className="volumeDiv">
+            <img id="unmute" src={'/assets/unmute.png'} onClick={ this.unMute.bind(this) } />
+            <img id="mute" src={'/assets/mute.png'} onClick={ this.mute.bind(this) } />
+            <input type="range" id="volumebar" onChange={ this.volume.bind(this) } title="Volume" min="0" max="100" step="1"></input>
+          </div>
         </div>
+
+        <div className="progress-wrap" onClick={ this.progress.bind(this) }>
+          <div className="progress-bar"></div>
+        </div>
+
       </div>
     );
   }
