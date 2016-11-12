@@ -11,7 +11,7 @@ export const spotifyGetSongs = (params) => {
       data: { string: params }
     })
     .done(function( data ) {
-      // console.log('got from spotifyGetSongs', data);
+       console.log('got from spotifyGetSongs', data);
       resolve(data);
     });
   });
@@ -132,7 +132,8 @@ export const addSongToQueue = (query, songName, artistName) => {
               title: srchItem.snippet.title,
               artwork: spotifyArtwork,
               songName: songName,
-              artistName: artistName
+              artistName: artistName,
+              countries: songs.tracks.items[0].available_markets
             });
           })
 
@@ -186,6 +187,7 @@ export const decreaseVolume = () => {
 }
 
 let srchItem;
+let countriesArr;
 export const youTubeGetSongAnnyang = (query, songName, artistName) => {
   return new Promise((resolve, reject) => {
 
@@ -204,6 +206,7 @@ export const youTubeGetSongAnnyang = (query, songName, artistName) => {
             var spotifyArtwork = songs.tracks.items[0].album.images[1].url;
 
             srchItem = response.result.items[0];
+            countriesArr = songs.tracks.items[0].available_markets;
             // console.log('inside searchYouTube', srchItem);
             store.dispatch({
               type: 'SWITCH_VIEW_TO_PLAYER',
@@ -213,7 +216,8 @@ export const youTubeGetSongAnnyang = (query, songName, artistName) => {
                 title: srchItem.snippet.title,
                 artwork: spotifyArtwork,
                 songName: songName,
-                artistName: artistName
+                artistName: artistName,
+                countries: songs.tracks.items[0].available_markets
               }
             });
           });
@@ -230,3 +234,8 @@ export const youTubeGetSongAnnyang = (query, songName, artistName) => {
 export const getSearchItem = () => {
   return srchItem;
 };
+
+export const getCountries = () => {
+  return countriesArr;
+};
+

@@ -1,35 +1,45 @@
+import { getCountries } from './modules/ajax';
+import { convertCountryCode } from './encoder';
+
 const map = function () {
-  console.log('here', document.getElementById("basic_choropleth"))
+    var array = getCountries();
+
+    // Convert codes received from Spotify to aplha3 format, recognizable by Maps
+    var convertedCodes = [];
+    for (var alpha2 of array) {
+      convertedCodes.push(convertCountryCode[alpha2]);
+    }
+    console.log('inside map, converted array: ', convertedCodes);
+
+    // Create data object to be drawn on map
+    var data = {};
+    for (var alpha3 of convertedCodes) {
+      data[alpha3] = { fillKey: "authorHasTraveledTo" }
+    }
 
     var basic_choropleth = new Datamap({
     element: document.getElementById("basic_choropleth"),
     projection: 'mercator',
     fills: {
-      defaultFill: "#ABDDA4",
-      authorHasTraveledTo: "#fa0fa0"
+      defaultFill: "#000000",
+      authorHasTraveledTo: "#ffe1bd"
     },
-    data: {
-      USA: { fillKey: "authorHasTraveledTo" },
-      JPN: { fillKey: "authorHasTraveledTo" },
-      ITA: { fillKey: "authorHasTraveledTo" },
-      CRI: { fillKey: "authorHasTraveledTo" },
-      KOR: { fillKey: "authorHasTraveledTo" },
-      DEU: { fillKey: "authorHasTraveledTo" },
-    }
+    data: data
   });
 
   var colors = d3.scale.category10();
 
+  var randomColoring = {}
+  var step = [10, 50, 100];
+
+
   window.setInterval(function() {
-    basic_choropleth.updateChoropleth({
-      USA: colors(Math.random() * 10),
-      RUS: colors(Math.random() * 100),
-      AUS: { fillKey: 'authorHasTraveledTo' },
-      BRA: colors(Math.random() * 50),
-      CAN: colors(Math.random() * 50),
-      ZAF: colors(Math.random() * 50),
-      IND: colors(Math.random() * 50),
-    });
+    for (var elem of convertedCodes) {
+      var random = Math.floor(Math.random() * 2);
+      randomColoring[elem] = colors(Math.random() * step[random]);
+    }
+
+    basic_choropleth.updateChoropleth(randomColoring);
   }, 2000);
 }
 

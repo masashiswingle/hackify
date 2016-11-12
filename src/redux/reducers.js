@@ -9,7 +9,9 @@ const mainReducer = function (state = {}, action) {
           title: action.currentSong.title,
           artwork: action.currentSong.artwork,
           songName: action.currentSong.songName,
-          artistName: action.currentSong.artistName
+          artistName: action.currentSong.artistName,
+          countries: action.currentSong.countries
+
         }
       };
     case 'INITIATE_QUEUE':
