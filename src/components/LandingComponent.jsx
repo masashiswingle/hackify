@@ -48,8 +48,6 @@ class Landing extends Component {
           <img id="siri" src={'/assets/siri.gif'}/>
         </div>
         <div id="conversation"></div>
-
-        
       </div>
     );
   }
