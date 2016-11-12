@@ -43,6 +43,19 @@ module.exports = {
       })
   },
 
+  getArtistInfo: function (req, res) {
+    spotifyApi.searchTracks(req.body.string)
+      .then(function(data) {
+        var artistId = data.body.tracks.items[0].artists[0].id;
+        return spotifyApi.getArtist(artistId)
+          .then(function(info) {
+            res.send(data.statusCode, info.body);
+          }, function(err) {
+              res.send(400, err);
+          })
+      })
+  },
+
   //AUTHENTICATION REQUIRED FOR THIS CALL
   getNewReleases: function (req, res) {
     //console.log('inside getNewReleases before call');

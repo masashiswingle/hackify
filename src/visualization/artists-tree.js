@@ -41,7 +41,6 @@ module.exports = {
             .attr("class", "overlay")
             // Attach zoom listener
             .call(zoomListener);
-
     
         function updateWindow() {
             console.log('updateWindow called')
