@@ -74,19 +74,6 @@ export const newReleases = () => {
   });
 };
 
-export const relatedArtists = (params) => {
-  console.log('in relatedArtists');
-  $.ajax({
-    method: "POST",
-    url: '/relatedArtists',
-    data: { string: params }
-  })
-  .done(function( data ) {
-    console.log('got from relatedArtists', data);
-    return data;
-  });
-};
-
 
 export const relatedTree = (artistId, excludeList) => {
   return new Promise(function (resolve, reject) {

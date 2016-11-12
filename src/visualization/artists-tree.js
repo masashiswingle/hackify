@@ -1,29 +1,5 @@
 import { getSearchItem, relatedTree } from './../modules/ajax';
 
-const getSuitableImage = function (images) {
-    var minSize = 64;
-    images.forEach(function (image) {
-        if (image && image.width > minSize && image.width > 64) {
-            return image.url;
-        }
-    });
-    return images[images.length - 1].url;
-};
-
-const createAutoCompleteDiv = function (artist) {
-    if (!artist) {
-        return;
-    }
-    var val = '<div class="autocomplete-item">' +
-        '<div class="artist-icon-container">' +
-        '<img src="' + getSuitableImage(artist.images) + '" class="circular artist-icon" />' +
-        '<div class="artist-label">' + artist.name + '</div>' +
-        '</div>' +
-        '</div>';
-    return val;
-};
-
-
 module.exports = { 
 
     tree: function() {
@@ -31,13 +7,13 @@ module.exports = {
         var i = 0;
         var duration = 750;
         var root;
-        var exploredArtistIds = [];
+        var existingArtists = [];
         var clipPathId = 0;
 
         var viewerWidth = $(window).width();
         var viewerHeight = $(window).height();
 
-        var lastExpandedNode;
+        var lastSelected;
 
         var tree = d3.layout.tree()
             .size([viewerHeight, viewerWidth]);
@@ -50,9 +26,9 @@ module.exports = {
 
         function zoom() {
             svgGroup.attr("transform", "translate(" + d3.event.translate + ")scale(" + d3.event.scale + ")");
-        }
-        var zoomListener = d3.behavior.zoom().scaleExtent([0.1, 3]).on("zoom", zoom);
+        };
 
+        var zoomListener = d3.behavior.zoom().scaleExtent([0.1, 3]).on("zoom", zoom);
 
         var baseSvg = d3.select("#tree-container").append("svg")
             .attr("width", viewerWidth)
@@ -61,18 +37,18 @@ module.exports = {
             .call(zoomListener);
 
     
-        function updateWindow(){
+        function updateWindow() {
             console.log('updateWindow called')
             viewerWidth = $(window).width();
             viewerHeight = $(window).height();
             baseSvg.attr("width", viewerWidth).attr("height", viewerHeight);
-            if (lastExpandedNode) {
-                centerNode(lastExpandedNode);
+            if (lastSelected) {
+                centerNode(lastSelected);
             }
         };
 
         function centerNode(source) {
-            lastExpandedNode = source;
+            lastSelected = source;
             var scale = zoomListener.scale();
             var x = -source.y0;
             var y = -source.x0;
@@ -87,7 +63,7 @@ module.exports = {
 
         function updateInfo(node) {
             var artists;
-            relatedTree(node.artist.id, exploredArtistIds).then(function(artists) {
+            relatedTree(node.artist.id, existingArtists).then(function(artists) {
                 if (!node.children) {
                     node.children = []
                 }
@@ -99,17 +75,16 @@ module.exports = {
                             'children': null
                         }
                     )
-                    exploredArtistIds.push(artist.id);
+                    existingArtists.push(artist.id);
 
                 });
-                console.log('node', node)
-                update(node);
+                updateLevels(node);
                 centerNode(node);
             });
         };
 
-        function initWithArtist(artist) {
-            exploredArtistIds.push(artist.id);
+        function initializeArtists(artist) {
+            existingArtists.push(artist.id);
             return {
                 'artist' : artist,
                 'children': null,
@@ -126,22 +101,18 @@ module.exports = {
                     removeExpandedId(node);
                 });
             }
-            var indexToRem = exploredArtistIds.indexOf(d.artist.id);
-            exploredArtistIds.splice(indexToRem, 1);
-        };
-
-        function removeChildrenFromExplored(d) {
-            d.children.forEach(function(node) {
-                removeExpandedId(node);
-            });
+            var indexToRem = existingArtists.indexOf(d.artist.id);
+            existingArtists.splice(indexToRem, 1);
         };
 
         // Toggle children function
-        function toggleChildren(d) {
+        function toggleData(d) {
             if (d.children) {
-                removeChildrenFromExplored(d);
+                d.children.forEach(function(node) {
+                  removeExpandedId(node);
+                });
                 d.children = null;
-                update(d);
+                updateLevels(d);
                 centerNode(d);
             } else {
                 if (isArtist(d)) {
@@ -149,19 +120,30 @@ module.exports = {
                 } 
             }
             return d;
-        }
+        };
 
         function click(d) {
-            d = toggleChildren(d);
-        }
+            d = toggleData(d);
+        };
 
-        function update(source) {
+        function chooseImage (images) {
+            var minSize = 64;
+            images.forEach(function (image) {
+                if (image && image.width > minSize && image.width > 64) {
+                    return image.url;
+                }
+            });
+            return images[images.length - 1].url;
+        };
+
+        function updateLevels (source) {
            
             var levelWidth = [1];
             var childCount = function(level, n) {
                 if (n.children && n.children.length > 0) {
-                    if (levelWidth.length <= level + 1) levelWidth.push(0);
-
+                    if (levelWidth.length <= level + 1) { 
+                      levelWidth.push(0);
+                    }
                     levelWidth[level + 1] += n.children.length;
                     n.children.forEach(function(d) {
                         childCount(level + 1, d);
@@ -212,7 +194,7 @@ module.exports = {
             nodeEnter.append("image")
                 .attr("xlink:href", function(d) {
                     if (isArtist(d)) {
-                      return getSuitableImage(d.artist.images);;
+                      return chooseImage(d.artist.images);;
                     } 
                 })
                 .attr("x", "-32px")
@@ -345,49 +327,20 @@ module.exports = {
 
         var svgGroup = baseSvg.append("g");
 
-        function initWithData(from, to) {
-            if (from.artist) {
-                to.artist = from.artist;
-                exploredArtistIds.push(to.artist.id);
-            }
-            if (from.genre) {
-                to.genre = from.genre;
-            }
-
-            if (from.children) {
-                to.children = []
-                from.children.forEach(function(child) {
-                    var obj = {}
-                    initWithData(child, obj);
-                    to.children.push(obj);
-                })
-            }
-
-            if (to.children && to.children.length > 0) {
-                //console.log(to.artist.name);
-                //update(root);
-            }
-
-        };
-
         return {
-            "setRoot" : function(artist) {
-              exploredArtistIds = []
-              root = initWithArtist(artist);
+            setRoot: function(artist) {
+              existingArtists = []
+              root = initializeArtists(artist);
               root.x0 = viewerHeight / 2;
               root.y0 = 0;
-              update(root);
+              updateLevels(root);
               centerNode(root);
               click(root)
-              console.log('setRoot called', root )
             },
 
-            "resizeOverlay" : function() {
+            resizeOverlay: function() {
               updateWindow();
             }
         };
-
     }
 };
-
-//export default tree;

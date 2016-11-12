@@ -56,23 +56,7 @@ module.exports = {
       });
   },
 
-  getRelatedArtists: function (req, res) {
-    spotifyApi.searchTracks(req.body.string)
-      .then(function(data) {
-        var artistId = data.body.tracks.items[0].artists[0].id;
-        return spotifyApi.getArtistRelatedArtists(artistId)
-          .then(function(artists) {
-            //console.log('inside getRelatedArtists', artists.body)
-            res.send(data.statusCode, artists.body);
-          }, function(err) {
-              res.send(400, err);
-          })
-      })
-  },
-
   getRelated: function(req, res) {
-    console.log('getRelated', req.body)
-
         return new Promise(function (resolve, reject) {
             return spotifyApi.getArtistRelatedArtists(req.body.artistId).then(function (data) {
 
@@ -83,9 +67,6 @@ module.exports = {
                     data.body.artists = data.body.artists.filter(function (artist) {
                         return req.body.excludeList.indexOf(artist.id) === -1;
                     });
-              
-               
-
                 res.send(data.body.artists.slice(0, 10));
                 resolve(data.body.artists.slice(0, 10));
             });
