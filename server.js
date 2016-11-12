@@ -44,6 +44,7 @@ app.post('/artistTracks', helpers.getArtistTopTracks);
 app.post('/artistAlbums', helpers.getArtistAlbums);
 app.post('/relatedArtists', helpers.getRelatedArtists);
 app.post('/lyrics', helpers.getLyricsDetail);
+app.post('/artistsTree', helpers.getRelated);
 
 // Authentication required for further routes:
 app.get('/listOfCategories', helpers.getListOfCategories);

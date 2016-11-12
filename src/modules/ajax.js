@@ -87,6 +87,20 @@ export const relatedArtists = (params) => {
   });
 };
 
+
+export const relatedTree = (artistId, excludeList) => {
+  console.log('in relatedTree');
+  $.ajax({
+    method: "POST",
+    url: '/artistsTree',
+    data: { artistId: artistId, excludeList: excludeList}
+  })
+  .done(function( data ) {
+    console.log('got from relatedTree', data);
+    return data;
+  });
+};
+
 //AUTHENTICATION REQUIRED FOR THIS CALL
 export const listOfCategories = () => {
   console.log('in listOfCategories');
