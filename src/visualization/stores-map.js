@@ -1,4 +1,4 @@
-import { getCountries } from './modules/ajax';
+import { getCountries } from '../modules/ajax';
 import { convertCountryCode } from './encoder';
 
 const map = function (array) {
