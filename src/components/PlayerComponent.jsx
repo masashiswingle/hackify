@@ -27,7 +27,7 @@ class Player extends Component {
   }
 
   componentDidMount() {
-    map(this.props.currentSong.countries);
+    // map(this.props.currentSong.countries);
     player = new YT.Player('player', {
       height: '390',
       width: '640',
@@ -56,8 +56,8 @@ class Player extends Component {
   }
 
   componentDidUpdate() {
-   document.getElementById("basic_choropleth").innerHTML = '';
-    map(this.props.currentSong.countries);
+  //  document.getElementById("basic_choropleth").innerHTML = '';
+    // map(this.props.currentSong.countries);
     if (this.props.currentSong.videoId !== player.getVideoData().video_id) {
       player.cueVideoById(this.props.currentSong.videoId);
       player.playVideo();
@@ -101,7 +101,6 @@ class Player extends Component {
         <br></br>
 
         <div id="conversation"></div>
-        <div id="basic_choropleth" style={{"position": "relative", "width": "500px", "height": "300px"}}></div>
       </div>
     );
   }
