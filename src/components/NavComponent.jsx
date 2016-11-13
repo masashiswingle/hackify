@@ -10,7 +10,7 @@ class Nav extends Component {
     super(props);
     this.state = {
       lyrics: null,
-      showMap: false
+      showMap: true
     }
   }
 
@@ -26,8 +26,10 @@ class Nav extends Component {
   }
 
   displayMap() {
-    map(this.props.currentSong.countries);
-    this.setState({showMap: !this.state.showMap});
+    this.setState({showMap: false});
+    if (this.state.showMap) {
+      map(this.props.currentSong.countries);
+    }
   }
 
   render() {
@@ -39,7 +41,10 @@ class Nav extends Component {
         <img className="nav" id="uncheck" src={'/assets/uncheck.png'} />
         <img className="nav" id="tournament" src={'/assets/tournament.png'} />
         <Lyrics lyrics={this.state.lyrics} />
-        <Map />
+
+        <div id="map">
+          <Map />
+        </div>
       </div>
     );
   }
