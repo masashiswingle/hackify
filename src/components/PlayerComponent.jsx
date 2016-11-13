@@ -6,6 +6,7 @@ import * as helpers from '../modules/ajax';
 import { annyangCall } from '../annyang';
 import { initiateQueue, initiateHistory, changeCurrentSong, addToQueue, dequeueSong, addToHistory } from '../redux/actions';
 import Song from '../modules/Song';
+import map from '../visualization/map';
 
 class Player extends Component {
   searchFromPlayer() {

@@ -49,15 +49,17 @@ export const artistTracks = (params) => {
 };
 
 export const artistInfo = (id) => {
-  console.log('in artistTracks');
-  $.ajax({
-    method: "POST",
-    url: '/artistInfo',
-    data: { id: id }
-  })
-  .done(function( data ) {
-    console.log('got from artistInfo', data);
-    return data;
+  return new Promise(function (resolve, reject) {
+    $.ajax({
+      method: "POST",
+      url: '/artistInfo',
+      data: { id: id }
+    })
+    .done(function( data ) {
+      console.log('got from artistInfo', data);
+      resolve(data);
+      // return data;
+    });
   });
 };
 
@@ -145,7 +147,7 @@ export const addSongToQueue = (query, songName, artistName) => {
 
         spotifyGetSongs(songName + ' ' + artistName)
           .then(function(songs) {
-            var spotifyArtwork, countriesArr;
+            var spotifyArtwork, countriesArr, artistId;
             if (songs) {
               spotifyArtwork = songs.tracks.items[0].album.images[1].url;
               countriesArr = songs.tracks.items[0].available_markets;
@@ -163,7 +165,7 @@ export const addSongToQueue = (query, songName, artistName) => {
               artwork: spotifyArtwork,
               songName: songName,
               artistName: artistName,
-              countries: countriesArr
+              countries: countriesArr,
               artistId: artistId,
 
 
@@ -250,6 +252,7 @@ export const youTubeGetSongAnnyang = (query, songName, artistName) => {
           .then(function(songs) {
             console.log(songs);
             var spotifyArtwork;
+            var artistId;
             if (songs) {
               spotifyArtwork = songs.tracks.items[0].album.images[1].url;
               countriesArr = songs.tracks.items[0].available_markets;
@@ -257,6 +260,7 @@ export const youTubeGetSongAnnyang = (query, songName, artistName) => {
             } else {
               spotifyArtwork = 'http://static.tumblr.com/qmraazf/ps5mjrmim/unknown-album.png';
               countriesArr = ['US'];
+              artistId = '1';
             }
             srchItem = response.result.items[0];
             // console.log('inside searchYouTube', srchItem);
