@@ -40,3 +40,17 @@ export function addToHistory(song) {
     song
   };
 }
+
+export function modifyQueue(newQueue) {
+  return {
+    type: 'MODIFY_QUEUE',
+    newQueue
+  };
+}
+
+export function modifyHistory(newHistory) {
+  return {
+    type: 'MODIFY_HISTORY',
+    newHistory
+  };
+}

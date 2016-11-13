@@ -1,7 +1,18 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { changeCurrentSong, modifyQueue } from '../redux/actions';
 
 class Queue extends Component {
+
+  selectSongFromQueue(song) {
+    var newQueue = this.props.songQueue.filter(function(origSong) {
+      if (origSong.videoId !== song.videoId) {
+        return origSong;
+      }
+    });
+    this.props.modifyQueue(newQueue);
+    this.props.changeCurrentSong(song);
+  }
 
   render() {
     if (this.props.songQueue.length > 0) {
@@ -10,9 +21,9 @@ class Queue extends Component {
           {
             this.props.songQueue.map(function(song, index) {
               if (index < 5) {
-                return <img className="queue available" style={{ zIndex: 0 - index }} src={ song.artwork }></img>
+                return <img className="queue available" style={{ zIndex: index }} onClick={ () => { this.selectSongFromQueue(song)} } src={ song.artwork }></img>
               }
-            })
+            }, this)
           }
         </div>
       );
@@ -29,4 +40,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps)(Queue);
+export default connect(mapStateToProps, { changeCurrentSong: changeCurrentSong, modifyQueue: modifyQueue })(Queue);
