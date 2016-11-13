@@ -45,7 +45,18 @@ const mainReducer = function (state = {}, action) {
       return {
         ...state,
         songHistory: [...state.songHistory, action.song]
-    };
+      };
+    case 'MODIFY_QUEUE':
+      return {
+        ...state,
+        songQueue: action.newQueue
+      };
+    case 'MODIFY_HISTORY':
+      console.log(action);
+      return {
+        ...state,
+        songHistory: action.newHistory
+      };
     default:
       return state;
   }
