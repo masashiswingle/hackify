@@ -65,9 +65,10 @@ module.exports = {
             y = y * scale + viewerHeight / 2;
 
             // Center the root on the top of the window
-            if (firstcall === 2) {
+            if (firstcall < 4) {
               x = 0;
               y = 100;
+              firstcall+=1;
             }
 
             d3.select('#tree-container g').transition()
