@@ -21,12 +21,15 @@ const mainReducer = function (state = {}, action) {
         songHistory: action.songHistory
       };
     case 'CHANGE_CURRENT_SONG':
+      console.log(action.currentSong);
       return {
         ...state,
         currentSong: {
           videoId: action.currentSong.videoId,
           title: action.currentSong.title,
           artwork: action.currentSong.artwork,
+          songName: action.currentSong.songName,
+          artistName: action.currentSong.artistName,
           artistId: action.currentSong.artistId,
           countries: action.currentSong.countries
         }
