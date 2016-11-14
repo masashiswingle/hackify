@@ -38,8 +38,23 @@
   margin: 30px;
 }
 
+.audio-player-buttons {
+  position: relative;
+  height: 150px;
+}
+
 .volumeDiv {
-  float: right;
+  display: block;
+  width: 200px;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+#volumebar {
+  display: inline;
+  width: 70px;
+  margin-left: -10px;
 }
 
 #playlist, #worldMap, #audacity, #uncheck, #tournament {

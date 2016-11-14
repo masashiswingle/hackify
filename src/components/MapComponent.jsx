@@ -6,6 +6,11 @@ class Map extends Component {
   constructor(props) {
     super(props);
   }
+
+  componentDidMount() {
+    map(this.props.currentSong.countries);
+  }
+
   render() {
     return(
       <div id="basic_choropleth" style={{"position": "relative", "width": "500px", "height": "300px"}}></div>
@@ -15,7 +20,7 @@ class Map extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    songQueue: state.songQueue
+    currentSong: state.currentSong
   };
 };
 

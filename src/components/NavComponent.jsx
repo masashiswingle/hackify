@@ -2,50 +2,60 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Lyrics from './LyricsComponent';
 import Map from './MapComponent';
+import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import { getLyrics } from '../modules/ajax';
-import map from '../visualization';
+
 
 class Nav extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      lyrics: null,
-      showMap: true
-    }
+    this.state = { lyrics: "Searching...", lyricsDone: false }
+
   }
 
-  displayLyrics() {
-    var that = this;
-    getLyrics(this.props.currentSong.songName, this.props.currentSong.artistName, function(data) {
-      that.setState({lyrics: data});
-    });
+  handleSelect(index, last) {
   }
 
   componentDidMount() {
     this.displayLyrics();
   }
 
-  displayMap() {
-    this.setState({showMap: false});
-    if (this.state.showMap) {
-      map(this.props.currentSong.countries);
-    }
+  displayLyrics() {
+    if (this.state.lyricsDone) { return }
+    var that = this;
+    getLyrics(this.props.currentSong.songName, this.props.currentSong.artistName, function(data) {
+      that.setState({ lyrics: data, lyricsDone: true });
+    });
   }
 
   render() {
     return(
-      <div className="navlist">
-        <img className="nav" id="playlist" src={'/assets/playlist.png'} onClick={ this.displayLyrics.bind(this) } />
-        <img className="nav" id="worldMap" src={'/assets/worldMap.png'} onClick={ this.displayMap.bind(this) }/>
-        <img className="nav" id="audacity" src={'/assets/audacity.png'} />
-        <img className="nav" id="uncheck" src={'/assets/uncheck.png'} />
-        <img className="nav" id="tournament" src={'/assets/tournament.png'} />
-        <Lyrics lyrics={this.state.lyrics} />
+      <Tabs onSelect={this.handleSelect.bind(this)} selectedIndex={0}>
 
-        <div id="map">
-          <Map />
-        </div>
-      </div>
+          <TabList className="navlist">
+            <Tab >
+              <img className="nav" id="playlist" src={'/assets/playlist.png'} />
+            </Tab>
+            <Tab >
+              <img className="nav" id="worldMap" src={'/assets/worldMap.png'} />
+            </Tab>
+            <Tab>
+              <img className="nav" id="audacity" src={'/assets/audacity.png'} />
+            </Tab>
+            <Tab>
+              <img className="nav" id="uncheck" src={'/assets/uncheck.png'} />
+            </Tab>
+            <Tab>
+              <img className="nav" id="tournament" src={'/assets/tournament.png'} />
+            </Tab>
+          </TabList>
+
+          <TabPanel><Lyrics lyrics={this.state.lyrics}/></TabPanel>
+          <TabPanel><Map /></TabPanel>
+          <TabPanel></TabPanel>
+          <TabPanel></TabPanel>
+          <TabPanel></TabPanel>
+      </Tabs>
     );
   }
 }
