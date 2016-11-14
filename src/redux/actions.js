@@ -49,6 +49,7 @@ export function modifyQueue(newQueue) {
 }
 
 export function modifyHistory(newHistory) {
+  console.log(newHistory);
   return {
     type: 'MODIFY_HISTORY',
     newHistory
