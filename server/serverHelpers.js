@@ -74,7 +74,7 @@ module.exports = {
                 data.body.artists.sort(function (a, b) {
                     return b.popularity - a.popularity;
                 });
-                
+
                     data.body.artists = data.body.artists.filter(function (artist) {
                         return req.body.excludeList.indexOf(artist.id) === -1;
                     });
