@@ -49,6 +49,7 @@ export const artistTracks = (params) => {
 };
 
 export const artistInfo = (id) => {
+  console.log('inside artistInfo', id)
   return new Promise(function (resolve, reject) {
     $.ajax({
       method: "POST",

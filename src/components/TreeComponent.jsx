@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import tree from '../visualization/artists-tree';
+import { tree } from '../visualization/artists-tree';
 import { artistInfo } from '../modules/ajax';
 
 class Tree extends Component {
@@ -11,8 +11,7 @@ class Tree extends Component {
   updateTree () {
       var returnResult = tree();
       returnResult.resizeOverlay();
-
-      artistInfo(this.currentSong.artistId)
+      artistInfo(this.props.currentSong.artistId)
         .then(function (info) {
           returnResult.setRoot(info);
         });
