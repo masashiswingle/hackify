@@ -5,8 +5,6 @@ import Lyrics from './LyricsComponent';
 import Map from './MapComponent';
 import Tree from './TreeComponent';
 
-
-
 class Nav extends Component {
   constructor(props) {
     super(props);

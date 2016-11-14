@@ -5,7 +5,7 @@ import { getLyrics } from '../modules/ajax';
 class Lyrics extends Component {
   constructor(props) {
     super(props);
-    this.state = { lyrics: "Searching...", lyricsDone: false }
+    this.state = { lyrics: "Searching...", videoId: this.props.currentSong.videoId }
   }
 
   componentDidMount() {
@@ -13,16 +13,15 @@ class Lyrics extends Component {
   }
 
   componentDidUpdate() {
-    this.displayLyrics();
+    if (this.props.currentSong.videoId !== this.state.videoId) {
+      this.displayLyrics();
+    }
   }
 
   displayLyrics() {
-    if (this.state.lyricsDone) {
-      return;
-    }
     var that = this;
     getLyrics(this.props.currentSong.songName, this.props.currentSong.artistName, function(data) {
-      that.setState({ lyrics: data, lyricsDone: true });
+      that.setState({ lyrics: data, videoId: that.props.currentSong.videoId });
     });
   }
 
