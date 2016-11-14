@@ -21,7 +21,6 @@ const mainReducer = function (state = {}, action) {
         songHistory: action.songHistory
       };
     case 'CHANGE_CURRENT_SONG':
-      console.log(action.currentSong);
       return {
         ...state,
         currentSong: {
@@ -35,7 +34,6 @@ const mainReducer = function (state = {}, action) {
         }
       };
     case 'ADD_TO_QUEUE':
-      console.log(action);
       return {
         ...state,
         songQueue: [...state.songQueue, { videoId: action.songQueue, title: action.title, artwork: action.artwork, songName: action.songName, artistName: action.artistName, artistId: action.artistId, countries: action.countries }]
@@ -57,7 +55,6 @@ const mainReducer = function (state = {}, action) {
         songQueue: action.newQueue
       };
     case 'MODIFY_HISTORY':
-      console.log(action);
       return {
         ...state,
         songHistory: action.newHistory
