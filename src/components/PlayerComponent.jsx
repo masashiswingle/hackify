@@ -55,6 +55,7 @@ class Player extends Component {
   }
 
   componentDidUpdate() {
+
     if (this.props.currentSong.videoId !== player.getVideoData().video_id) {
       player.cueVideoById(this.props.currentSong.videoId);
       player.playVideo();
