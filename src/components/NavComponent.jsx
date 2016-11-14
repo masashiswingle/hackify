@@ -5,6 +5,8 @@ import Map from './MapComponent';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import { getLyrics } from '../modules/ajax';
 
+import map from '../visualization/map';
+
 
 class Nav extends Component {
   constructor(props) {
@@ -20,16 +22,19 @@ class Nav extends Component {
     this.displayLyrics();
   }
 
+
   displayLyrics() {
     if (this.state.lyricsDone) { return }
     var that = this;
     getLyrics(this.props.currentSong.songName, this.props.currentSong.artistName, function(data) {
       that.setState({ lyrics: data, lyricsDone: true });
     });
+
   }
 
   render() {
     return(
+
       <Tabs onSelect={this.handleSelect.bind(this)} selectedIndex={0}>
 
           <TabList className="navlist">
@@ -56,6 +61,7 @@ class Nav extends Component {
           <TabPanel></TabPanel>
           <TabPanel></TabPanel>
       </Tabs>
+
     );
   }
 }

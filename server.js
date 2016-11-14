@@ -42,8 +42,9 @@ app.use(express.static(path.join(__dirname, './public')));
 app.post('/getSongs', helpers.getSpotifyData);
 app.post('/artistTracks', helpers.getArtistTopTracks);
 app.post('/artistAlbums', helpers.getArtistAlbums);
-app.post('/relatedArtists', helpers.getRelatedArtists);
 app.post('/lyrics', helpers.getLyricsDetail);
+app.post('/artistsTree', helpers.getRelated);
+app.post('/artistInfo', helpers.getArtistInfo);
 
 // Authentication required for further routes:
 app.get('/listOfCategories', helpers.getListOfCategories);

@@ -6,8 +6,7 @@ import * as helpers from '../modules/ajax';
 import { annyangCall } from '../annyang';
 import { initiateQueue, initiateHistory, changeCurrentSong, addToQueue, dequeueSong, addToHistory } from '../redux/actions';
 import Song from '../modules/Song';
-import map from '../visualization'
-
+import map from '../visualization/map';
 
 class Player extends Component {
   searchFromPlayer() {
@@ -58,6 +57,8 @@ class Player extends Component {
   componentDidUpdate() {
   //  document.getElementById("basic_choropleth").innerHTML = '';
     // map(this.props.currentSong.countries);
+   document.getElementById("basic_choropleth").innerHTML = '';
+    map(this.props.currentSong.countries);
     if (this.props.currentSong.videoId !== player.getVideoData().video_id) {
       player.cueVideoById(this.props.currentSong.videoId);
       player.playVideo();

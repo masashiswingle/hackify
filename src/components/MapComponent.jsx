@@ -1,15 +1,17 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import map from '../visualization';
+import map from '../visualization/map';
 
 class Map extends Component {
   constructor(props) {
     super(props);
   }
 
+
   componentDidMount() {
     map(this.props.currentSong.countries);
   }
+
 
   render() {
     return(
