@@ -69,7 +69,8 @@ module.exports = {
 
         function updateInfo(node) {
             var artists;
-            relatedTree(node.artist.id, existingArtists).then(function(artists) {
+            relatedTree(node.artist.id, existingArtists)
+            .then(function(artists) {
                 if (!node.children) {
                     node.children = []
                 }
@@ -128,9 +129,12 @@ module.exports = {
             return d;
         };
 
+
+
         function click(d) {
             d = toggleData(d);
         };
+
 
         function chooseImage (images) {
             var fixedSize = 64;
@@ -253,15 +257,25 @@ module.exports = {
                 .attr("text-anchor", function(d) {
                     return "middle";
                 })
-                .text(function(d) {
+                .html(function(d) {
                     if (isArtist(d)) {
-                        if (d.artist.name.length > 12) {
+                        // for long names
+                        if (d.artist.name.length > 12 && d.artist.name.indexOf(' ') === -1) {
                           return d.artist.name.slice(0,10) + '...';
-                        } else  {
-                            return d.artist.name;
+
+                        //for long first and last names
+                        } else if (d.artist.name.length > 12 && d.artist.name.indexOf(' ') !== -1 && d.artist.name.split(' ')[0] !== 'The'){
+                          var splitted = d.artist.name.split(' ');
+                          return splitted[0] + ' ' + splitted[1].slice(0, 1) + '.';
+
+                        //for band names that start with The
+                        } else if (d.artist.name.length > 12 && d.artist.name.indexOf(' ') !== -1 && d.artist.name.split(' ')[0] === 'The') {
+                            return d.artist.name.slice(0,10) + '...';
+                  
+                        } else {
+                          return d.artist.name;
                         }
                     } 
-
                 })
                 .style("fill-opacity", 0);
 
