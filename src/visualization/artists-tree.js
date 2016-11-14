@@ -63,7 +63,8 @@ module.exports = {
             var x = -source.x0;
             x = x * scale + viewerWidth / 2;
             y = y * scale + viewerHeight / 2;
-            
+
+            // Center the root on the top of the window
             if (firstcall === 2) {
               x = 0;
               y = 100;
@@ -266,7 +267,7 @@ module.exports = {
                 .attr("text-anchor", function(d) {
                     return "middle";
                 })
-                .html(function(d) {
+                .text(function(d) {
                     if (isArtist(d)) {
                         // for long names
                         if (d.artist.name.length > 12 && d.artist.name.indexOf(' ') === -1) {
@@ -372,7 +373,7 @@ module.exports = {
               updateLevels(root);
               centerNode(root);
               click(root);
-              firstcall =2;
+              firstcall = 2;
             },
 
             resizeOverlay: function() {
