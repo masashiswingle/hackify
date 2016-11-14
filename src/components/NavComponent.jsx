@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import Lyrics from './LyricsComponent';
 import Map from './MapComponent';
 import Tree from './TreeComponent';
-import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
-import { getLyrics } from '../modules/ajax';
 
-import map from '../visualization/map';
 
 
 class Nav extends Component {
