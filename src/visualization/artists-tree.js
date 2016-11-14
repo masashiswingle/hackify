@@ -23,7 +23,7 @@ module.exports = {
 
         var diagonal = d3.svg.diagonal()
             .projection(function(d) {
-                return [d.y, d.x];
+                return [d.x, d.y];
             });
 
         // Make the tree zoomable
@@ -56,8 +56,8 @@ module.exports = {
         function centerNode(source) {
             lastSelected = source;
             var scale = zoomListener.scale();
-            var x = -source.y0;
-            var y = -source.x0;
+            var y = -source.y0;
+            var x = -source.x0;
             x = x * scale + viewerWidth / 2;
             y = y * scale + viewerHeight / 2;
             d3.select('#tree-container g').transition()
@@ -167,7 +167,7 @@ module.exports = {
 
             // Set widths between levels
             nodes.forEach(function(d) {
-                 d.y = (d.depth * 220);
+                 d.y = (d.depth * 200);
 
             });
 
@@ -181,9 +181,11 @@ module.exports = {
             var nodeEnter = node.enter().append("g")
                 .attr("class", "node")
                 .attr("transform", function(d) {
-                    return "translate(" + source.y0 + "," + source.x0 + ")";
+                    return "translate(" + source.x0 + "," + source.y0 + ")";
                 })
                 .on('click', click);
+
+
 
             nodeEnter.append("circle")
                 .attr("r", 32)
@@ -243,18 +245,21 @@ module.exports = {
                   })
 
             nodeEnter.append("text")
-                .attr("x", function(d) {
-                    return 40;
+                .attr("y", function(d) {
+                    return 45;
                 })
-                .attr("dy", ".35em")
+                .attr("dx", ".35em")
                 .attr('class', 'nodeText')
                 .attr("text-anchor", function(d) {
-                    return "start";
+                    return "middle";
                 })
                 .text(function(d) {
                     if (isArtist(d)) {
-
-                        return d.artist.name;
+                        if (d.artist.name.length > 12) {
+                          return d.artist.name.slice(0,10) + '...';
+                        } else  {
+                            return d.artist.name;
+                        }
                     } 
 
                 })
@@ -264,7 +269,7 @@ module.exports = {
             var nodeUpdate = node.transition()
                 .duration(duration)
                 .attr("transform", function(d) {
-                    return "translate(" + d.y + "," + d.x + ")";
+                    return "translate(" + d.x + "," + d.y + ")";
                 });
 
             // Fade the text 
@@ -275,7 +280,7 @@ module.exports = {
             var nodeExit = node.exit().transition()
                 .duration(duration)
                 .attr("transform", function(d) {
-                    return "translate(" + source.y + "," + source.x + ")";
+                    return "translate(" + source.x + "," + source.y + ")";
                 })
                 .remove();
 
