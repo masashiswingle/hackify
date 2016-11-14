@@ -15,8 +15,8 @@ module.exports = {
         var clipPathId = 0;
 
         // Define size of the display window
-        var viewerWidth = $(window).width();
-        var viewerHeight = $(window).height();
+        var viewerWidth = 1000;
+        var viewerHeight = 1000;
 
         var tree = d3.layout.tree()
             .size([viewerHeight, viewerWidth]);
@@ -44,8 +44,8 @@ module.exports = {
     
         function updateWindow() {
             console.log('updateWindow called')
-            viewerWidth = $(window).width();
-            viewerHeight = $(window).height();
+            viewerWidth = 1000;
+            viewerHeight = 1000;
             baseSvg.attr("width", viewerWidth).attr("height", viewerHeight);
             if (lastSelected) {
                 centerNode(lastSelected);

@@ -15,7 +15,7 @@ class Map extends Component {
 
   render() {
     return(
-      <div id="basic_choropleth" style={{"position": "relative", "width": "500px", "height": "300px"}}></div>
+      <div id="basic_choropleth"></div>
     );
   }
 }
