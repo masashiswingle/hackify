@@ -44,7 +44,8 @@ module.exports = {
   },
 
   getArtistInfo: function (req, res) {
-    spotifyApi.searchTracks(req.body.id)
+    console.log('getArtistInfo', req.body.id)
+    spotifyApi.getArtist(req.body.id)
       .then(function(data) {
         console.log('got from getArtistInfo', data);
         res.send(data.statusCode, data.body);

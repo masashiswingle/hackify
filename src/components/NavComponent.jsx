@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Lyrics from './LyricsComponent';
 import Map from './MapComponent';
+import Tree from './TreeComponent';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import { getLyrics } from '../modules/ajax';
 
@@ -59,7 +60,7 @@ class Nav extends Component {
           <TabPanel><Map /></TabPanel>
           <TabPanel></TabPanel>
           <TabPanel></TabPanel>
-          <TabPanel></TabPanel>
+          <TabPanel><Tree /></TabPanel>
       </Tabs>
 
     );
