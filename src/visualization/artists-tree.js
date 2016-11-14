@@ -269,16 +269,16 @@ module.exports = {
                 })
                 .text(function(d) {
                     if (isArtist(d)) {
-                        // for long names
+                        // For long names
                         if (d.artist.name.length > 12 && d.artist.name.indexOf(' ') === -1) {
                           return d.artist.name.slice(0,10) + '...';
 
-                        //for long first and last names
+                        // For long first and last names
                         } else if (d.artist.name.length > 12 && d.artist.name.indexOf(' ') !== -1 && d.artist.name.split(' ')[0] !== 'The'){
                           var splitted = d.artist.name.split(' ');
                           return splitted[0] + ' ' + splitted[1].slice(0, 1) + '.';
 
-                        //for band names that start with The
+                        // For band names that start with The
                         } else if (d.artist.name.length > 12 && d.artist.name.indexOf(' ') !== -1 && d.artist.name.split(' ')[0] === 'The') {
                             return d.artist.name.slice(0,10) + '...';
                   
