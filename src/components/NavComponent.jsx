@@ -12,31 +12,17 @@ import map from '../visualization/map';
 class Nav extends Component {
   constructor(props) {
     super(props);
-    this.state = { lyrics: "Searching...", lyricsDone: false }
-
   }
 
   handleSelect(index, last) {
+    console.log("current tab is ", index, "and last tab was ", last);
   }
 
-  componentDidMount() {
-    this.displayLyrics();
-  }
-
-
-  displayLyrics() {
-    if (this.state.lyricsDone) { return }
-    var that = this;
-    getLyrics(this.props.currentSong.songName, this.props.currentSong.artistName, function(data) {
-      that.setState({ lyrics: data, lyricsDone: true });
-    });
-
-  }
 
   render() {
     return(
 
-      <Tabs onSelect={this.handleSelect.bind(this)} selectedIndex={0}>
+      <Tabs onSelect={this.handleSelect.bind(this)} selectedIndex={this.index}>
 
           <TabList className="navlist">
             <Tab >
@@ -56,7 +42,7 @@ class Nav extends Component {
             </Tab>
           </TabList>
 
-          <TabPanel><Lyrics lyrics={this.state.lyrics}/></TabPanel>
+          <TabPanel><Lyrics /></TabPanel>
           <TabPanel><Map /></TabPanel>
           <TabPanel></TabPanel>
           <TabPanel></TabPanel>
