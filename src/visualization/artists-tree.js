@@ -53,13 +53,22 @@ module.exports = {
         };
 
         // Center node when clicked so that it will not get lost
+        var firstcall = 1;
         function centerNode(source) {
+
             lastSelected = source;
             var scale = zoomListener.scale();
+
             var y = -source.y0;
             var x = -source.x0;
             x = x * scale + viewerWidth / 2;
             y = y * scale + viewerHeight / 2;
+            
+            if (firstcall === 2) {
+              x = 0;
+              y = 100;
+            }
+
             d3.select('#tree-container g').transition()
                 .duration(duration)
                 .attr("transform", "translate(" + x + "," + y + ")scale(" + scale + ")");
@@ -362,7 +371,8 @@ module.exports = {
               root.y0 = 0;
               updateLevels(root);
               centerNode(root);
-              click(root)
+              click(root);
+              firstcall =2;
             },
 
             resizeOverlay: function() {
