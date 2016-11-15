@@ -1,7 +1,9 @@
-var names = ['Temazepam', 'Guaifenesin', 'Salicylic Acid', 'Fluoride', 'Zinc Oxide', 'Acetaminophen'];
-var data = [23, 34, 67, 93, 56, 100];
-var dataSet = anychart.data.set(data);
-var palette = anychart.palettes.distinctColors().colors(['#64b5f6', '#1976d2', '#ef6c00', '#ffd54f', '#455a64', '#96a6a6', '#dd2c00', '#00838f', '#00bfa5', '#ffa000']);
+// var names = ['Temazepam', 'Guaifenesin', 'Salicylic Acid', 'Fluoride', 'Zinc Oxide', 'Acetaminophen'];
+// var data = [23, 34, 67, 93, 56, 100];
+var data = [];
+var names = [];
+var dataSet;
+var palette = anychart.palettes.distinctColors().colors(['#FFE1BD', '#E2C8A8', '#C6AF93', '#AA967E', '#8D7D69', '#716454', '#554B3F', '#38322A', '#1C1915', '#000000']);
 //var gauge;
 
 var makeBarWithBar = function(gauge, radius, i, width, without_stroke){
@@ -9,7 +11,7 @@ var makeBarWithBar = function(gauge, radius, i, width, without_stroke){
     if (without_stroke) {
 stroke = null;
 gauge.label(i)
-.text(names[i] + ', <span style="">' + data[i] + '%</span>')// color: #7c868e
+.text(i+1 +'. ' + names[i])// color: #7c868e
     .useHtml(true);
 gauge.label(i)
     .hAlign('center')
@@ -22,15 +24,41 @@ gauge.label(i)
     }
 console.log(data, dataSet)
     gauge.bar(i).dataIndex(i).radius(radius).width(width).fill(palette.colorAt(i)).stroke(null).zIndex(5);
-    gauge.bar(i + 100).dataIndex(5).radius(radius).width(width).fill('#F5F4F4').stroke(stroke).zIndex(4);
+    gauge.bar(i + 100).dataIndex(0).radius(radius).width(width).fill('#F5F4F4').stroke(stroke).zIndex(4);
     return gauge.bar(i)
 };
 
 
-var fu = function() {
-    console.log(data)
+var fu = function(songs) {
+
+    console.log('in fu', songs)
+    var storage = [];
+    for (var i = 0; i < 5; i++ ) {
+        storage.push({'popularity': songs.tracks[i].popularity, 'name': songs.tracks[i].name})
+    }
+    console.log('storage', storage)
+
+    function sortByKey(array, key) {
+        return array.sort(function(a, b) {
+            var x = a[key]; var y = b[key];
+            return ((x > y) ? -1 : ((x < y) ? 1 : 0));
+        });
+    }
+
+    storage = sortByKey(storage, 'popularity');
+    console.log('sorted', storage)
+
+    for (var j = 0; j < 5; j++) {
+        names.push(storage[j].name);
+        data.push(storage[j].popularity);
+    }
+
+
+    dataSet = anychart.data.set(data);
+
+
    var gauge = anychart.circularGauge();
-    console.log(gauge)
+
     gauge.data(dataSet);
     gauge.fill('#fff')
 .stroke(null)
@@ -41,7 +69,7 @@ var fu = function() {
     var axis = gauge.axis().radius(100).width(1).fill(null);
     axis.scale()
 .minimum(0)
-.maximum(100)
+.maximum(Math.max.apply(null, data))
 .ticks({interval: 1})
 .minorTicks({interval: 1});
     axis.labels().enabled(false);
@@ -53,16 +81,21 @@ var fu = function() {
     makeBarWithBar(gauge, 60, 2, 17, true);
     makeBarWithBar(gauge, 40, 3, 17, true);
     makeBarWithBar(gauge, 20, 4, 17, true);
+    // makeBarWithBar(gauge, 50, 5, 10, true);
+    // makeBarWithBar(gauge, 40, 6, 10, true);
+    // makeBarWithBar(gauge, 30, 7, 10, true);
+    // makeBarWithBar(gauge, 20, 8, 10, true);
+    // makeBarWithBar(gauge, 10, 9, 10, true);
+
 
     gauge.title(true);
-    gauge.title().text('Medicine manufacturing progress' +
-'<br/><span style="color:#929292; font-size: 12px;">(ACME CORPORATION)</span>').useHtml(true);
+    gauge.title().text('Top songs for ' + songs.tracks[0].artists[0].name + ':').useHtml(true);
     gauge.title()
 .hAlign('center')
 .padding(0)
 .margin([0, 0, 20, 0]);
 
-    gauge.container('chart');
+    gauge.container('track');
     gauge.draw();
 
     
