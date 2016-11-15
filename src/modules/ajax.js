@@ -184,7 +184,11 @@ export const addSongToQueue = (query, songName, artistName) => {
 };
 
 export const dequeueSong = () => {
-  // console.log('in dequeueSong', store.getState());
+  var currentSong = store.getState().currentSong;
+  store.dispatch({
+              type: 'ADD_TO_HISTORY',
+              song: currentSong
+  });
   store.dispatch({
               type: 'DEQUEUE_SONG',
               view: 'player'
