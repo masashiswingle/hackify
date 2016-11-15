@@ -27,7 +27,7 @@ class Lyrics extends Component {
 
   render() {
     return(
-      <div>{this.state.lyrics}</div>
+      <pre id="lyrics">{this.state.lyrics}</pre>
     )
   }
 }
