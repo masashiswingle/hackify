@@ -4,6 +4,7 @@ import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import Lyrics from './LyricsComponent';
 import Map from './MapComponent';
 import Tree from './TreeComponent';
+import Track from './TrackComponent';
 
 class Nav extends Component {
   constructor(props) {
@@ -40,7 +41,7 @@ class Nav extends Component {
 
           <TabPanel><Lyrics /></TabPanel>
           <TabPanel><Map /></TabPanel>
-          <TabPanel></TabPanel>
+          <TabPanel><Track /></TabPanel>
           <TabPanel></TabPanel>
           <TabPanel><Tree /></TabPanel>
       </Tabs>

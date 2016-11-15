@@ -1,6 +1,7 @@
 import * as helpers from './modules/ajax';
 import { getSearchItem } from './modules/ajax';
-import { getLyrics } from './modules/ajax';
+// import { getLyrics } from './modules/ajax';
+// import { artistTracks } from './modules/ajax';
 import { addToHistory } from './redux/actions';
 
 module.exports = {
@@ -20,7 +21,7 @@ module.exports = {
         function playSong(songName, artistName) {
             var query = createQuery(songName, artistName);
             // console.log(songName, artistName);
-            // getLyrics(songName, artistName);
+            // artistTracks(artistName);
             helpers.youTubeGetSongAnnyang(query, songName, artistName)
               .then(function () {
                 var track = helpers.getSearchItem();
