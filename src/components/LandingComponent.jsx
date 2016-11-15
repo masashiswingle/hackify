@@ -8,6 +8,7 @@ import { tree }  from '../visualization/artists-tree';
 import LandingFeature from './LandingFeatureComponent';
 import Git from './GitComponent';
 
+
 class Landing extends Component {
 
   searchFromLanding() {
@@ -21,6 +22,8 @@ class Landing extends Component {
     $('#siri').show();
     $('.js-trigger-overlay-start').hide();
   }
+
+
 
   render() {
 
@@ -55,6 +58,7 @@ class Landing extends Component {
         <hr></hr>
 
         <Git />
+
       </div>
     );
   }
