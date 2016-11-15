@@ -1,34 +1,34 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { artistTracks } from '../modules/ajax';
+import { artistAlbums } from '../modules/ajax';
 
-class Track extends Component {
+class Album extends Component {
   constructor(props) {
     super(props);
-    this.state = { tracks: "Searching...", videoId: this.props.currentSong.videoId }
+    this.state = { album: "Searching...", videoId: this.props.currentSong.videoId }
   }
 
   componentDidMount() {
-    this.displayTracks();
+    this.displayAlbums();
   }
 
   componentDidUpdate() {
     if (this.props.currentSong.videoId !== this.state.videoId) {
-      this.displayTracks();
+      this.displayAlbums();
     }
   }
 
-  displayTracks() {
+  displayAlbums() {
     var that = this;
-    artistTracks(this.props.currentSong.artistName, function(data) {
+    artistAlbums(this.props.currentSong.artistName, function(data) {
       console.log("here is my data", data);
-      that.setState({ tracks: data, videoId: that.props.currentSong.videoId });
+      that.setState({ album: data, videoId: that.props.currentSong.videoId });
     });
   }
 
   render() {
     return(
-      <div id ='track'></div>
+      <div id ='album'></div>
     );
   }
 }
@@ -39,4 +39,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps)(Track);
+export default connect(mapStateToProps)(Album);

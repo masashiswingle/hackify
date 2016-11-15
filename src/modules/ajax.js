@@ -63,16 +63,16 @@ export const artistInfo = (id) => {
   });
 };
 
-export const artistAlbums = (params) => {
+export const artistAlbums = (artist, cb) => {
   console.log('in artistAlbums');
   $.ajax({
     method: "POST",
     url: '/artistAlbums',
-    data: { string: params }
+    data: { string: artist }
   })
   .done(function( data ) {
-    console.log('got from artistAlbums', data);
-    return data;
+    // console.log('got from artistAlbums', data);
+    cb(data);
   });
 };
 
