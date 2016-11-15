@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Draggable, Droppable } from 'react-drag-and-drop';
 import Nav from './NavComponent';
-import { addToHistory, dequeueSong, changeCurrentSong, playPrevious } from '../redux/actions';
+import { addToHistory, dequeueSong, changeCurrentSong, playPrevious, removeFromHistory } from '../redux/actions';
 import $ from 'jquery';
 
 class ControlBar extends Component {
@@ -83,6 +84,10 @@ class ControlBar extends Component {
     this.props.player.seekTo(newTime);
   }
 
+  onDrop(songId) {
+    this.props.removeFromHistory(songId);
+  }
+
   componentDidMount() {
     this.muteOrUnmute.bind(this);
     var that = this;
@@ -94,7 +99,7 @@ class ControlBar extends Component {
 
   render() {
     return(
-      <div className="controlDiv">
+      <div className="row controlDiv">
 
         <div className="audio-player-buttons">
           <img className="buttons" id="fastBackward" src={'/assets/fastBackward.png'} onClick={ this.previous.bind(this) } />
@@ -108,6 +113,9 @@ class ControlBar extends Component {
 
           <img className="buttons" id="fastForward" src={'/assets/fastForward.png'} onClick={ this.next.bind(this) } />
 
+          <Droppable id="trash" types={ ['song'] } onDrop={ this.onDrop.bind(this) }>
+            <img id="trashImg" src="https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-ios7-trash-outline-128.png"></img>
+          </Droppable>
 
           <div className="volumeDiv buttons">
             <img className="buttons" id="unmute" src={'/assets/unmute.png'} onClick={ this.state.mute ? this.unMute.bind(this) : this.mute.bind(this) } />
@@ -115,6 +123,8 @@ class ControlBar extends Component {
             <input type="range" id="volumebar" onChange={ this.volume.bind(this) } title="Volume" min="0" max="100" step="1"></input>
           </div>
         </div>
+
+        <br></br>
 
         <div className="progress-wrap" onClick={ this.progress.bind(this) }>
           <div className="progress-bar"></div>
@@ -133,4 +143,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, { addToHistory: addToHistory, dequeueSong: dequeueSong, changeCurrentSong: changeCurrentSong, playPrevious: playPrevious })(ControlBar);
+export default connect(mapStateToProps, { addToHistory: addToHistory, dequeueSong: dequeueSong, changeCurrentSong: changeCurrentSong, playPrevious: playPrevious, removeFromHistory: removeFromHistory })(ControlBar);
