@@ -1,3 +1,5 @@
+import _ from 'lodash';
+
 const mainReducer = function (state = {}, action) {
   switch (action.type) {
     case 'SWITCH_VIEW_TO_PLAYER':
@@ -59,6 +61,12 @@ const mainReducer = function (state = {}, action) {
         ...state,
         songHistory: action.newHistory
       };
+    case 'PLAY_PREVIOUS':
+      var deepEqualState = _.cloneDeep(state);
+      deepEqualState.songQueue.unshift(deepEqualState.currentSong);
+      deepEqualState.currentSong = deepEqualState.songHistory.pop();
+      console.log(deepEqualState);
+      return deepEqualState;
     default:
       return state;
   }

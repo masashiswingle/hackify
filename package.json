@@ -24,7 +24,7 @@
     "gimme-lyrics": "^0.3.1",
     "jquery": "^3.1.1",
     "jsdom": "^9.8.3",
-    "lodash": "^4.16.6",
+    "lodash": "^4.17.0",
     "lyrics-fetcher": "^1.0.2",
     "mocha": "^3.1.2",
     "mysql": "^2.12.0",

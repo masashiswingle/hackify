@@ -14,8 +14,13 @@ class History extends Component {
     this.props.changeCurrentSong(song);
   }
 
+  componentDidUpdate() {
+    console.log(this.props.songHistory);
+  }
+
   render() {
     var reverseSongHistory = [null, null, null, null, null];
+    console.log(this.props.songHistory);
     for (var i = 0; i < this.props.songHistory.length; i++) {
       reverseSongHistory.push(this.props.songHistory[i]);
     }
@@ -40,7 +45,7 @@ class History extends Component {
 }
 
 const mapStateToProps = (state) => {
-  // console.log(state);
+  console.log(state);
   return {
     songHistory: state.songHistory
   };
