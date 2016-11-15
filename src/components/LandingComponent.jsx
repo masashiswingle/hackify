@@ -6,6 +6,7 @@ import Song from '../modules/Song';
 import { annyangCall } from '../annyang';
 import { tree }  from '../visualization/artists-tree';
 import LandingFeature from './LandingFeatureComponent';
+import Git from './GitComponent';
 
 class Landing extends Component {
 
@@ -50,6 +51,10 @@ class Landing extends Component {
         </div>
         <div id="conversation"></div>
         <LandingFeature />
+
+        <hr></hr>
+
+        <Git />
       </div>
     );
   }
