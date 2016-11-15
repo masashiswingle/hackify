@@ -49,23 +49,16 @@ class ControlBar extends Component {
   }
 
   muteOrUnmute() {
-    this.props.player.isMuted() ? player.unMute() : player.mute();
-  }
-
-  mute() {
-    this.setState({mute: true});
-    $('#unmute').hide();
-    $('#mute').show();
-    $('#volumebar').hide();
-    this.props.player.mute();
-  }
-
-  unMute() {
-    this.setState({mute: false});
-    $('#unmute').show();
-    $('#mute').hide();
-    $('#volumebar').show();
-    this.props.player.unMute();
+    if (this.props.player.isMuted()) {
+      this.props.player.unMute();
+      this.setState({mute: false});
+      $('#volumebar').val(50);
+      this.props.player.setVolume(50);
+    } else {
+      this.props.player.mute();
+      $('#volumebar').val(0);
+    }
+    $('.mute-control').toggle();
   }
 
   volume() {
@@ -110,8 +103,8 @@ class ControlBar extends Component {
 
 
           <div className="volumeDiv buttons">
-            <img className="buttons" id="unmute" src={'/assets/unmute.png'} onClick={ this.state.mute ? this.unMute.bind(this) : this.mute.bind(this) } />
-            <img className="buttons" id="mute" src={'/assets/mute.png'} onClick={ this.state.mute ? this.unMute.bind(this) : this.mute.bind(this) } />
+            <img className="buttons mute-control" id="unmute" src={'/assets/unmute.png'} onClick={ this.muteOrUnmute.bind(this) } />
+            <img className="buttons mute-control" id="mute" src={'/assets/mute.png'} onClick={  this.muteOrUnmute.bind(this) } />
             <input type="range" id="volumebar" onChange={ this.volume.bind(this) } title="Volume" min="0" max="100" step="1"></input>
           </div>
         </div>

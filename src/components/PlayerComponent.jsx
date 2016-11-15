@@ -39,6 +39,7 @@ class Player extends Component {
 
     function onPlayerReady(event) {
       event.target.playVideo();
+      event.target.unMute();
     }
 
     function onPlayerStateChange(event) {
