@@ -116,6 +116,10 @@ module.exports = {
                     dequeue();
                 },
 
+                'play previous song': function () {
+                    helpers.playPrevious();
+                },
+
                 'play track *song': function (song) {
                     recognized('Play track ' + song);
                     playSong(song);
