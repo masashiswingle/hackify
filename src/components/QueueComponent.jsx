@@ -15,10 +15,6 @@ class Queue extends Component {
     this.props.changeCurrentSong(song);
   }
 
-  // onDrop(data) {
-  //   console.log(data);
-  // }
-
   render() {
     if (this.props.songQueue.length > 0) {
       return (
