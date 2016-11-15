@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { artistTracks } from '../modules/ajax';
-import  fu  from '../visualization/top-chart';
+import  processData  from '../visualization/top-chart';
 
 class Track extends Component {
   constructor(props) {
@@ -15,12 +15,7 @@ class Track extends Component {
 
 
   componentDidMount() {
-
     this.displayTracks();
-    console.log('trying', this.state.tracks)
-    // anychart.onDocumentReady(function() {
-    //     fu();
-    // });
   }
 
   componentDidUpdate() {
@@ -33,15 +28,13 @@ class Track extends Component {
   displayTracks() {
     var that = this;
     artistTracks(this.props.currentSong.artistName, function(data) {
-      console.log("here is my data", data);
-      fu(data);
+      processData(data);
       that.setState({ tracks: data, videoId: that.props.currentSong.videoId });
     });
   }
 
   render() {
     return(
-             
       <div id ='track' style={{height: '600px'}}></div>
     );
   }
