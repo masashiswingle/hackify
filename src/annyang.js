@@ -1,6 +1,7 @@
 import * as helpers from './modules/ajax';
 import { getSearchItem } from './modules/ajax';
 import { getLyrics } from './modules/ajax';
+import { addToHistory } from './redux/actions';
 
 module.exports = {
     annyangCall: function() {
@@ -44,10 +45,10 @@ module.exports = {
 
         // Plays next song in queue
         function dequeue () {
+
             helpers.dequeueSong();
             //logic to show title and thumbnail needed!
             communicateAction('<div>Playing next song in queue...</div>');
-
         };
 
         // Shows messages/warning dialog
