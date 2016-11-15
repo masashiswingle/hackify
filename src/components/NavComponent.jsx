@@ -5,6 +5,7 @@ import Lyrics from './LyricsComponent';
 import Map from './MapComponent';
 import Tree from './TreeComponent';
 import Track from './TrackComponent';
+import Album from './AlbumComponent';
 
 class Nav extends Component {
   constructor(props) {
@@ -42,7 +43,7 @@ class Nav extends Component {
           <TabPanel><Lyrics /></TabPanel>
           <TabPanel><Map /></TabPanel>
           <TabPanel><Track /></TabPanel>
-          <TabPanel></TabPanel>
+          <TabPanel><Album /></TabPanel>
           <TabPanel><Tree /></TabPanel>
       </Tabs>
 
