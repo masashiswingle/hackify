@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Nav from './NavComponent';
+import { addToHistory, dequeueSong, changeCurrentSong } from '../redux/actions';
 import $ from 'jquery';
 
 class ControlBar extends Component {
@@ -36,7 +37,12 @@ class ControlBar extends Component {
 
   next() {
     console.log("hello next");
-    // this.props.player.nextVideo();
+    this.props.addToHistory(this.props.currentSong);
+    if (this.props.songQueue.length > 0) {
+      this.props.dequeueSong();
+    } else {
+      this.props.changeCurrentSong('');
+    }
   }
 
   previous() {
@@ -124,8 +130,9 @@ class ControlBar extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    currentSong: state.currentSong
+    currentSong: state.currentSong,
+    songQueue: state.songQueue
   };
 };
 
-export default connect(mapStateToProps)(ControlBar);
+export default connect(mapStateToProps, { addToHistory: addToHistory, dequeueSong: dequeueSong, changeCurrentSong: changeCurrentSong })(ControlBar);

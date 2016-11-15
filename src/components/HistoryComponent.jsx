@@ -26,9 +26,9 @@ class History extends Component {
           reverseSongHistory.map(function(song, index) {
             if (index >= reverseLength - 5) {
               if (song) {
-                return <img className="history available" onMouseOver={ () => { console.log('suhh') } } onClick={ () => { this.selectSongFromQueue(song)} } src={ song.artwork }></img>
+                return <img key={ index } className="history available" onMouseOver={ () => { console.log('suhh') } } onClick={ () => { this.selectSongFromQueue(song)} } src={ song.artwork }></img>
               } else {
-                return <img className="history" src="http://www.polyvore.com/cgi/img-thing?.out=jpg&size=l&tid=16295283"></img>
+                return <img key={ index } className="history" src="http://www.polyvore.com/cgi/img-thing?.out=jpg&size=l&tid=16295283"></img>
               }
             }
           }, this)
