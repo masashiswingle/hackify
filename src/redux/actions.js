@@ -60,3 +60,10 @@ export function playPrevious() {
     type: 'PLAY_PREVIOUS'
   };
 }
+
+export function removeFromHistory(songId) {
+  return {
+    type: 'REMOVE_FROM_HISTORY',
+    songId
+  };
+}

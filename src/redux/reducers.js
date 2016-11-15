@@ -65,6 +65,15 @@ const mainReducer = function (state = {}, action) {
       var deepEqualState = _.cloneDeep(state);
       deepEqualState.songQueue.unshift(deepEqualState.currentSong);
       deepEqualState.currentSong = deepEqualState.songHistory.pop();
+      return deepEqualState;
+    case 'REMOVE_FROM_HISTORY':
+      var deepEqualState = _.cloneDeep(state);
+      var newQueue = deepEqualState.songQueue.filter(function(song) {
+        if (song.videoId !== action.songId.song) {
+          return song;
+        }
+      });
+      deepEqualState.songQueue = newQueue;
       console.log(deepEqualState);
       return deepEqualState;
     default:

@@ -25,10 +25,19 @@ html, body {
 }
 
 .queue {
-  height: 100px;
-  width: auto;
+  display: inline-block;
   position: relative;
   margin-left: -25px;
+}
+
+.songImage {
+  height: 100px;
+  width: auto;
+}
+
+#trashImg {
+  height: 35px;
+  width: auto;
 }
 
 .history {

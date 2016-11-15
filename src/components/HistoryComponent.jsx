@@ -14,10 +14,6 @@ class History extends Component {
     this.props.changeCurrentSong(song);
   }
 
-  componentDidUpdate() {
-    console.log(this.props.songHistory);
-  }
-
   render() {
     var reverseSongHistory = [null, null, null, null, null];
     console.log(this.props.songHistory);
