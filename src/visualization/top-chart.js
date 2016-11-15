@@ -28,6 +28,7 @@ console.log(data, dataSet)
 
 
 var fu = function() {
+    console.log(data)
    var gauge = anychart.circularGauge();
     console.log(gauge)
     gauge.data(dataSet);

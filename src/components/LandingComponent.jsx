@@ -23,8 +23,6 @@ class Landing extends Component {
     $('.js-trigger-overlay-start').hide();
   }
 
-
-
   render() {
 
     return (
