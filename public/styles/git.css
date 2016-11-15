@@ -1,0 +1,18 @@
+#team {
+  text-align: center;
+}
+
+.gitPic {
+  height: 168px;
+  border-radius: 50%;
+}
+
+.git {
+  text-align: center;
+  height: 500px;
+  background-color: #ffe1bd;
+}
+
+.footer {
+  text-align: center;
+}
