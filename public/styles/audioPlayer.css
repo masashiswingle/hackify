@@ -2,10 +2,13 @@
   display: none;
 }
 
-.volumeDiv img#unmute {
+.volumeDiv img#mute {
   display: none;
 }
 
+.volumeDiv:hover #volumebar {
+  visibility: visible;
+}
 
 .progress-wrap {
   display: block;
@@ -53,6 +56,7 @@
 
 #volumebar {
   display: inline;
+  visibility: hidden;
   width: 70px;
   margin-left: -10px;
 }
