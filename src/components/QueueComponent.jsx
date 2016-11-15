@@ -21,7 +21,7 @@ class Queue extends Component {
           {
             this.props.songQueue.map(function(song, index) {
               if (index < 5) {
-                return <img className="queue available" style={{ zIndex: index }} onClick={ () => { this.selectSongFromQueue(song)} } src={ song.artwork }></img>
+                return <img key={ index } className="queue available" style={{ zIndex: index }} onClick={ () => { this.selectSongFromQueue(song)} } src={ song.artwork }></img>
               }
             }, this)
           }
