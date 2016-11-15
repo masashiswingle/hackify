@@ -31,20 +31,19 @@ export const getLyrics = (track, artist, cb) => {
   .done(function( data ) {
     // console.log('got lyrics back', data);
     cb(data);
-    // return data;
   })
 };
 
-export const artistTracks = (params) => {
+export const artistTracks = (artist, cb) => {
   console.log('in artistTracks');
   $.ajax({
     method: "POST",
     url: '/artistTracks',
-    data: { string: params }
+    data: { string: artist }
   })
   .done(function( data ) {
-    console.log('got from artistTracks', data);
-    return data;
+    // console.log('got from artistTracks', data);
+    cb(data);
   });
 };
 
