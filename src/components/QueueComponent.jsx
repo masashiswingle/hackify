@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Draggable, Droppable } from 'react-drag-and-drop';
 import { changeCurrentSong, modifyQueue } from '../redux/actions';
 
 class Queue extends Component {
@@ -14,17 +15,27 @@ class Queue extends Component {
     this.props.changeCurrentSong(song);
   }
 
+  // onDrop(data) {
+  //   console.log(data);
+  // }
+
   render() {
     if (this.props.songQueue.length > 0) {
       return (
         <div>
-          {
-            this.props.songQueue.map(function(song, index) {
-              if (index < 5) {
-                return <img key={ index } className="queue available" style={{ zIndex: index }} onClick={ () => { this.selectSongFromQueue(song)} } src={ song.artwork }></img>
-              }
-            }, this)
-          }
+          <div>
+            {
+              this.props.songQueue.map(function(song, index) {
+                if (index < 5) {
+                  return (
+                    <Draggable type="song" data={ song.videoId } key={ index } className="queue available" style={{ zIndex: index }}>
+                      <img className="songImage" src={ song.artwork } onClick={ () => { this.selectSongFromQueue(song)} }></img>
+                    </Draggable>
+                  );
+                }
+              }, this)
+            }
+          </div>
         </div>
       );
     } else {
