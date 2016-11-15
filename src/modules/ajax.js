@@ -300,3 +300,13 @@ export const getSearchItem = () => {
 export const getCountries = () => {
   return countriesArr;
 };
+
+export const playPrevious = () => {
+  store.dispatch({
+    type: 'PLAY_PREVIOUS'
+  });
+};
+
+
+
+

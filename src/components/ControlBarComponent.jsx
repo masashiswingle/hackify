@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Nav from './NavComponent';
-import { addToHistory, dequeueSong, changeCurrentSong } from '../redux/actions';
+import { addToHistory, dequeueSong, changeCurrentSong, playPrevious } from '../redux/actions';
 import $ from 'jquery';
 
 class ControlBar extends Component {
@@ -36,7 +36,6 @@ class ControlBar extends Component {
   }
 
   next() {
-    console.log("hello next");
     this.props.addToHistory(this.props.currentSong);
     if (this.props.songQueue.length > 0) {
       this.props.dequeueSong();
@@ -46,8 +45,7 @@ class ControlBar extends Component {
   }
 
   previous() {
-    console.log("Hello previous");
-    // this.props.player.previousVideo();
+    this.props.playPrevious();
   }
 
   muteOrUnmute() {
@@ -135,4 +133,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, { addToHistory: addToHistory, dequeueSong: dequeueSong, changeCurrentSong: changeCurrentSong })(ControlBar);
+export default connect(mapStateToProps, { addToHistory: addToHistory, dequeueSong: dequeueSong, changeCurrentSong: changeCurrentSong, playPrevious: playPrevious })(ControlBar);
