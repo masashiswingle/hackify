@@ -1,17 +1,16 @@
 import $ from 'jquery';
-// import { switchViewToPlayer } from '../redux/actions';
-import store from '../index.js';
+import store from '../index';
 
 export const spotifyGetSongs = (params) => {
-  return new Promise ((resolve, reject) => {
+  return new Promise((resolve, reject) => {
     // console.log('in spotifyGetSongs');
     $.ajax({
-      method: "POST",
+      method: 'POST',
       url: '/getSongs',
       data: { string: params }
     })
-    .done(function( data ) {
-      console.log('got from spotifyGetSongs', data);
+    .done((data) => {
+      // console.log('got from spotifyGetSongs', data);
       if (data.tracks.items.length > 0) {
         resolve(data);
       } else {
@@ -22,55 +21,54 @@ export const spotifyGetSongs = (params) => {
 };
 
 export const getLyrics = (track, artist, cb) => {
-  console.log("in getLyrics", track, artist);
+  // console.log('in getLyrics', track, artist);
   $.ajax({
     method: 'POST',
     url: '/lyrics',
     data: { artist: artist, track: track }
   })
-  .done(function( data ) {
+  .done((data) => {
     // console.log('got lyrics back', data);
     cb(data);
-  })
+  });
 };
 
 export const artistTracks = (artist, cb) => {
-  console.log('in artistTracks');
+  // console.log('in artistTracks');
   $.ajax({
-    method: "POST",
+    method: 'POST',
     url: '/artistTracks',
     data: { string: artist }
   })
-  .done(function( data ) {
+  .done((data) => {
     // console.log('got from artistTracks', data);
     cb(data);
   });
 };
 
 export const artistInfo = (id) => {
-  console.log('inside artistInfo', id)
-  return new Promise(function (resolve, reject) {
+  // console.log('inside artistInfo', id);
+  return new Promise((resolve, reject) => {
     $.ajax({
-      method: "POST",
+      method: 'POST',
       url: '/artistInfo',
       data: { id: id }
     })
-    .done(function( data ) {
-      console.log('got from artistInfo', data);
+    .done((data) => {
+      // console.log('got from artistInfo', data);
       resolve(data);
-      // return data;
     });
   });
 };
 
 export const artistAlbums = (artist, cb) => {
-  console.log('in artistAlbums');
+  // console.log('in artistAlbums');
   $.ajax({
-    method: "POST",
+    method: 'POST',
     url: '/artistAlbums',
     data: { string: artist }
   })
-  .done(function( data ) {
+  .done((data) => {
     // console.log('got from artistAlbums', data);
     cb(data);
   });
@@ -78,76 +76,78 @@ export const artistAlbums = (artist, cb) => {
 
 //AUTHENTICATION REQUIRED FOR THIS CALL
 export const newReleases = () => {
-  console.log('in newReleases');
+  // console.log('in newReleases');
   $.ajax({
-    method: "GET",
+    method: 'GET',
     url: '/newReleases'
   })
-  .done(function( data ) {
-    console.log('got from newReleases', data);
+  .done((data) => {
+    // console.log('got from newReleases', data);
     return data;
   });
 };
 
 
 export const relatedTree = (artistId, excludeList) => {
-  return new Promise(function (resolve, reject) {
-    console.log('in relatedTree');
+  return new Promise((resolve, reject) => {
+    // console.log('in relatedTree');
     $.ajax({
-      method: "POST",
+      method: 'POST',
       url: '/artistsTree',
       data: { artistId: artistId, excludeList: excludeList}
     })
-    .done(function( data ) {
-      console.log('got from relatedTree', data);
+    .done((data) => {
+      // console.log('got from relatedTree', data);
       resolve(data);
-      //return data;
     });
   });
 };
 
 //AUTHENTICATION REQUIRED FOR THIS CALL
 export const listOfCategories = () => {
-  console.log('in listOfCategories');
+  // console.log('in listOfCategories');
   $.ajax({
-    method: "GET",
+    method: 'GET',
     url: '/listOfCategories'
   })
-  .done(function( data ) {
-    console.log('got from listOfCategories', data);
+  .done((data) => {
+    // console.log('got from listOfCategories', data);
     return data;
   });
 };
 
 export const youTubeGetSong = (query, callback) => {
-
-  var request = gapi.client.youtube.search.list({
-      q: query,
-      part: 'snippet',
-      maxResults: 5
+  const request = gapi.client.youtube.search.list({
+    q: query,
+    part: 'snippet',
+    maxResults: 5
   });
 
-  request.execute(function(response) {
+  request.execute((response) => {
     if (callback) {
       callback(response);
     }
   });
 };
 
-export const addSongToQueue = (query, songName, artistName) => {
-  return new Promise(function (resolve, reject) {
-    var request = gapi.client.youtube.search.list({
-        q: query,
-        part: 'snippet',
-        maxResults: 5
-    });
-    request.execute(function(response)  {
+let srchItem;
+let countriesArr;
+let spotifyArtwork;
+let artistId;
 
-      return new Promise (function (resolve, reject) {
+export const addSongToQueue = (query, songName, artistName) => {
+  return new Promise((resolve, reject) => {
+    const request = gapi.client.youtube.search.list({
+      q: query,
+      part: 'snippet',
+      maxResults: 5
+    });
+    request.execute((response) => {
+
+      return new Promise ((resolve, reject) => {
 
         spotifyGetSongs(songName + ' ' + artistName)
-          .then(function(songs) {
-            var spotifyArtwork, countriesArr, artistId;
+          .then((songs) => {
             if (songs) {
               spotifyArtwork = songs.tracks.items[0].album.images[1].url;
               countriesArr = songs.tracks.items[0].available_markets;
@@ -167,31 +167,27 @@ export const addSongToQueue = (query, songName, artistName) => {
               artistName: artistName,
               countries: countriesArr,
               artistId: artistId,
-
-
             });
-          })
-
-          resolve();
+          });
+        resolve();
       })
-      .then(function () {
+      .then(() => {
         resolve();
       });
-
     });
   });
 };
 
 export const dequeueSong = () => {
-  var currentSong = store.getState().currentSong;
+  const currentSong = store.getState().currentSong;
   store.dispatch({
-              type: 'ADD_TO_HISTORY',
-              song: currentSong
+    type: 'ADD_TO_HISTORY',
+    song: currentSong
   });
   store.dispatch({
-              type: 'DEQUEUE_SONG',
-              view: 'player'
-            });
+    type: 'DEQUEUE_SONG',
+    view: 'player'
+  });
 };
 
 export const stopSong = () => {
@@ -235,10 +231,6 @@ export const decreaseVolume = () => {
     increaseVolume(previousVolume) }, 4000);
 }
 
-
-
-let srchItem;
-let countriesArr;
 export const youTubeGetSongAnnyang = (query, songName, artistName) => {
   return new Promise((resolve, reject) => {
 
@@ -255,8 +247,6 @@ export const youTubeGetSongAnnyang = (query, songName, artistName) => {
         spotifyGetSongs(songName + ' ' + artistName)
           .then(function(songs) {
             console.log(songs);
-            var spotifyArtwork;
-            var artistId;
             if (songs) {
               spotifyArtwork = songs.tracks.items[0].album.images[1].url;
               countriesArr = songs.tracks.items[0].available_markets;
@@ -306,7 +296,3 @@ export const playPrevious = () => {
     type: 'PLAY_PREVIOUS'
   });
 };
-
-
-
-

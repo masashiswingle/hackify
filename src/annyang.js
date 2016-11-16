@@ -1,9 +1,4 @@
 import * as helpers from './modules/ajax';
-import { getSearchItem } from './modules/ajax';
-// import { getLyrics } from './modules/ajax';
-// import { artistTracks } from './modules/ajax';
-// import { artistAlbums } from './modules/ajax';
-import { addToHistory } from './redux/actions';
 
 module.exports = {
     annyangCall: function() {
@@ -25,6 +20,7 @@ module.exports = {
               .then(function () {
                 var track = helpers.getSearchItem();111
                 document.getElementById('conversation').innerHTML = "";
+                // communicateAction('<div>Playing ' + track.snippet.title + '</div><img width="150" src="' + track.snippet.thumbnails.medium.url + '">');
             });
         };
 
@@ -109,6 +105,10 @@ module.exports = {
 
                 'play previous song': function () {
                     helpers.playPrevious();
+                },
+
+                'restart song': function() {
+                    helpers.restartSong();
                 },
 
                 'play track *song': function (song) {
