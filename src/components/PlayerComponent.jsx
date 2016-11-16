@@ -72,7 +72,6 @@ class Player extends Component {
     annyangCall();
     return (
       <div className="container">
-
         <div className="player">
           <div className="heading row">
             <div className="col-md-1 inline" id='headlogo'>
@@ -97,6 +96,7 @@ class Player extends Component {
         </div>
 
         <br></br>
+        <br></br>
 
         <Lineup />
 
@@ -105,6 +105,7 @@ class Player extends Component {
         <ControlBar player={ player } />
 
         <hr></hr>
+
         <br></br>
         <div id="conversation"></div>
 
@@ -124,6 +125,10 @@ class Player extends Component {
             </div>
           </div>
         </div>
+        
+        <br></br>
+        
+        <div id="conversation"></div>
       </div>
     );
   }

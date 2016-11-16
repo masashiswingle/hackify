@@ -38,6 +38,10 @@ html, body {
   cursor: pointer;
 }
 
+.centerFont {
+  text-align: center;
+}
+
 #info {
   height: 25px;
   width: auto;
