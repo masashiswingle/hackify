@@ -37,12 +37,14 @@ class Album extends Component {
     return(
       <div>
         {this.state.album.map(function(album, index){
-          return (
-            <div key={index}>
-              <img src={album.images[1].url}></img>
-              <div>{album.name}</div>
-            </div>
-          );
+          if (album.album_type === "album") {
+            return (
+              <div key={index}>
+                <img src={album.images[1].url}></img>
+                <div>{album.name}</div>
+              </div>
+            );
+          }
         }, this)}
       </div>
     );
