@@ -11,12 +11,14 @@
 }
 
 #siri {
-  height: 100px;
+  height: 80px;
   display: none;
-  margin-top: -20px;
+  margin-top: -5px;
 }
 #help {
   display: none;
+  font-size: 18px;
+  font-style: italic;
 }
 
 #spinner{
