@@ -5,25 +5,3 @@
 .landingpic {
   max-width: 100%;
 }
-
-.learnmore {
-  margin: 0 auto;
-  font-size: 2.0rem;
-  padding: 1rem 2rem;
-  background-color: #ffffff;
-  border: 1px solid #d9894f;
-  color: #d9894f;
-  font-weight: 300;
-  -webkit-border-radius: 3px;
-  border-radius: 50px;
-  -webkit-transition: all 0.3s ease-in-out;
-  -moz-transition: all 0.3s ease-in-out;
-  transition: all 0.3s ease-in-out;
-  outline: 0;
-}
-
-.learnmore:hover {
-  background-color: black;
-  color: #d9894f;
-  border-color: #d9894f;
-}
