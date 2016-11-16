@@ -21,6 +21,7 @@ class Landing extends Component {
   annyang () {
     annyangCall();
     $('#siri').show();
+    $('#help').show();
     $('.js-trigger-overlay-start').hide();
   }
 
@@ -50,7 +51,7 @@ class Landing extends Component {
           </div>
           <button className="js-trigger-overlay-start" onClick = {this.annyang} type="button">start listening</button>
           <img id="siri" src={'/assets/siri.gif'}/>
-          <div id="conversation"></div>
+          <div id="help">e.g. "play Hello by Adele"</div>
         </div>
   
         <div id="landingFeature">
