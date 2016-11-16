@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { artistTracks } from '../modules/ajax';
+import  * as chart  from '../visualization/top-chart';
 
 class Track extends Component {
   constructor(props) {
@@ -13,7 +14,10 @@ class Track extends Component {
   }
 
   componentDidUpdate() {
-    if (this.props.currentSong.videoId !== this.state.videoId) {
+    if (!this.props.currentSong.videoId) {
+      document.getElementById("track").innerHTML = 'Sorry, we were unable to find popular songs...';
+    } else if (this.props.currentSong.videoId !== chart.getId()) {
+      document.getElementById("track").innerHTML = "";
       this.displayTracks();
     }
   }
@@ -21,14 +25,14 @@ class Track extends Component {
   displayTracks() {
     var that = this;
     artistTracks(this.props.currentSong.artistName, function(data) {
-      console.log("here is my data", data);
+      chart.processData(data, that.state.videoId);
       that.setState({ tracks: data, videoId: that.props.currentSong.videoId });
     });
   }
 
   render() {
     return(
-      <div id ='track'></div>
+      <div id ='track' style={{height: '600px'}}></div>
     );
   }
 }

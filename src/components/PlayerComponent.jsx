@@ -26,6 +26,7 @@ class Player extends Component {
   }
 
   componentDidMount() {
+
     // map(this.props.currentSong.countries);
     player = new YT.Player('player', {
       height: '390',

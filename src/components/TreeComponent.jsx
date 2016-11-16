@@ -6,6 +6,7 @@ import { artistInfo } from '../modules/ajax';
 class Tree extends Component {
   constructor(props) {
     super(props);
+    this.state = { artistId: this.props.currentSong.artistId }
   }
 
   updateTree () {
@@ -22,7 +23,12 @@ class Tree extends Component {
   }
 
   componentDidUpdate() {
+    if (!this.props.currentSong.artistId) {
+      document.getElementById('tree-container').innerHTML = 'Sorry, we were unable to find related artists...';
+    } else {
+      document.getElementById('tree-container').innerHTML = '';
       this.updateTree();
+    }
   }
 
   render() {
