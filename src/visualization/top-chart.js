@@ -27,8 +27,11 @@ console.log(data, dataSet)
 
 
 var processData = function(songs) {
-
+    console.log('in processData', songs)
     var storage = [];
+    names = [];
+    data = [];
+    dataSet = [];
     for (var i = 0; i < 5; i++ ) {
         storage.push({'popularity': songs.tracks[i].popularity, 'name': songs.tracks[i].name})
     }
