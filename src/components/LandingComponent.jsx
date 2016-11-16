@@ -50,8 +50,9 @@ class Landing extends Component {
           </div>
           <button className="js-trigger-overlay-start" onClick = {this.annyang} type="button">start listening</button>
           <img id="siri" src={'/assets/siri.gif'}/>
+          <div id="conversation"></div>
         </div>
-        <div id="conversation"></div>
+  
         <div id="landingFeature">
           <LandingFeature />
         </div>

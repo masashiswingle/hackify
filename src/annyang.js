@@ -21,48 +21,48 @@ module.exports = {
         // Finds and plays new song
         function playSong(songName, artistName) {
             var query = createQuery(songName, artistName);
-            // console.log(songName, artistName);
-            // artistAlbums(artistName);
             helpers.youTubeGetSongAnnyang(query, songName, artistName)
               .then(function () {
-                var track = helpers.getSearchItem();
-                // console.log('in .then', track);
+                var track = helpers.getSearchItem();111
                 document.getElementById('conversation').innerHTML = "";
-                communicateAction('<div>Playing ' + track.snippet.title + '</div><img width="150" src="' + track.snippet.thumbnails.medium.url + '">');
             });
         };
 
         // Adds song to queue to be played later
         function addToQueue (songName, artistName) {
             var query = createQuery(songName, artistName);
-            // console.log('in addToQueue', songName, artistName)
             helpers.addSongToQueue(query, songName, artistName)
             .then(function () {
                 var track = getSearchItem();
-                // console.log('in .then of addToQueue', track);
-                // document.getElementById('conversation').innerHTML = "";
-                communicateAction('<div>Added to queue ' + track.snippet.title + '</div><img width="150" src="' + track.snippet.thumbnails.medium.url + '">');
             });
         };
 
         // Plays next song in queue
         function dequeue () {
-
             helpers.dequeueSong();
-            //logic to show title and thumbnail needed!
             communicateAction('<div>Playing next song in queue...</div>');
         };
 
         // Shows messages/warning dialog
         function communicateAction(text) {
             var rec = document.getElementById('conversation');
-            rec.innerHTML += '<div class="action">' + text + '</div>';
+            if (rec) {
+              rec.innerHTML = '<div class="action">' + text + '</div>';
+            } else {
+              var recP = document.getElementById('conversationPlayer');
+              recP.innerHTML = '<div class="action">' + text + '</div>';
+            }
         }
 
         // Displays messages with recognized commands
         function recognized(text) {
             var rec = document.getElementById('conversation');
-            rec.innerHTML += '<div class="recognized"><div>' + text + '</div></div>';
+            if (rec) {
+              rec.innerHTML = '<div class="recognized"><div>' + text + '</div></div>';
+            } else {
+              var recP = document.getElementById('conversationPlayer');
+              recP.innerHTML = '<div class="recognized"><div>' +"Recognized: " +"'" + text + "'" + '</div></div>';
+            }
         }
 
         // Defines commands
@@ -84,12 +84,11 @@ module.exports = {
                 'pause': function () {
                     helpers.pauseSong();
                 },
-                //
 
                 'resume': function () {
                     helpers.resumeSong();
                 },
-/////
+
                 'continue': function () {
                     helpers.resumeSong();
                 },
