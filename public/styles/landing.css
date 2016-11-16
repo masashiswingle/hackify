@@ -5,17 +5,21 @@
   position: relative;
 }
 
-
 #logo {
   height: 40px;
   right: 0;
 }
+
 #siri {
   height: 100px;
   display: none;
   margin-top: -20px;
 }
 #help {
+  display: none;
+}
+
+#spinner{
   display: none;
 }
 

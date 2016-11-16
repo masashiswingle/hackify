@@ -14,6 +14,7 @@ class Landing extends Component {
 
   searchFromLanding() {
     helpers.youTubeGetSong($('#srch-term').val(), (response) => {
+      // $('#spinner').show();
       var song = new Song(response.items[0].id.videoId, response.items[0].snippet.title, response.items[0].snippet.thumbnails.default.url);
       this.props.switchViewToPlayer('player', song);
     });
@@ -32,7 +33,7 @@ class Landing extends Component {
 
         <div className="heading row" >
           <div className="col-md-1 inline" id='headlogo'>
-            <a href="/"><img id="logo" src={'/assets/logo.png'}/><p >soundBear.</p></a>
+            <a href="/"><img id="logo" src={'/assets/logo.png'}/><p>soundBear.</p></a>
           </div>
         </div>
 
@@ -43,7 +44,7 @@ class Landing extends Component {
         <div className="body">
           <div className="title">
             <h1 id="soundbear">soundBear</h1>
-            <p id = 'mainunderline'>_________</p>
+            <p id="mainunderline">_________</p>
             <div id="description">
               <h4>hands-free access</h4>
               <h4>to your favorite music</h4>
@@ -52,8 +53,9 @@ class Landing extends Component {
           <button className="js-trigger-overlay-start" onClick = {this.annyang} type="button">start listening</button>
           <img id="siri" src={'/assets/siri.gif'}/>
           <div id="help">e.g. "play Hello by Adele"</div>
+          <img id="spinner" src={'/assets/spinner.gif'}/>
         </div>
-  
+
         <div id="landingFeature">
           <LandingFeature />
         </div>
