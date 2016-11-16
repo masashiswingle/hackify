@@ -9,6 +9,17 @@
   border-radius: 50%;
 }
 
+.gitdiv {
+  cursor: pointer;
+}
+
+.gitdiv:hover .gitPic{
+  -moz-box-shadow: 0 0 20px #adadad;
+  -webkit-box-shadow: 0 0 20px #adadad;
+  box-shadow: 0 0 20px #adadad; 
+  height: 168.5px;
+}
+
 .git {
   margin-top: 100px;
   text-align: center;
