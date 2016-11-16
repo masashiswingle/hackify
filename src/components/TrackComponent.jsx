@@ -19,10 +19,9 @@ class Track extends Component {
   }
 
   componentDidUpdate() {
-
-
-    console.log('updated', this.props.currentSong.videoId, this.state.videoId)
-    if (this.props.currentSong.videoId !== chart.getId()) {
+    if (!this.props.currentSong.videoId) {
+      document.getElementById("track").innerHTML = 'Sorry, we were unable to find popular songs...';
+    } else if (this.props.currentSong.videoId !== chart.getId()) {
       document.getElementById("track").innerHTML = "";
       this.displayTracks();
     }
@@ -31,9 +30,7 @@ class Track extends Component {
   displayTracks() {
     var that = this;
     artistTracks(this.props.currentSong.artistName, function(data) {
-
       chart.processData(data, that.state.videoId);
-
       that.setState({ tracks: data, videoId: that.props.currentSong.videoId });
     });
   }
