@@ -25,9 +25,13 @@ console.log(data, dataSet)
     return gauge.bar(i)
 };
 
+var vidId;
+module.exports = {
 
-var processData = function(songs) {
+
+ processData: function(songs, id) {
     console.log('in processData', songs)
+    vidId = id;
     var storage = [];
     names = [];
     data = [];
@@ -86,6 +90,11 @@ var processData = function(songs) {
       .margin([0, 0, 20, 0]);
     gauge.container('track');
     gauge.draw();
-};
+},
+getId: function () {
+  return vidId;
+}
 
-export default processData;
+}
+
+// export default processData;

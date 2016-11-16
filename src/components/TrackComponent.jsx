@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { artistTracks } from '../modules/ajax';
-import  processData  from '../visualization/top-chart';
+import  * as chart  from '../visualization/top-chart';
 
 class Track extends Component {
   constructor(props) {
@@ -19,8 +19,11 @@ class Track extends Component {
   }
 
   componentDidUpdate() {
-    console.log('updated', this.state.tracks)
-    if (this.props.currentSong.videoId !== this.state.videoId) {
+
+
+    console.log('updated', this.props.currentSong.videoId, this.state.videoId)
+    if (this.props.currentSong.videoId !== chart.getId()) {
+      document.getElementById("track").innerHTML = "";
       this.displayTracks();
     }
   }
@@ -28,7 +31,9 @@ class Track extends Component {
   displayTracks() {
     var that = this;
     artistTracks(this.props.currentSong.artistName, function(data) {
-      processData(data);
+
+      chart.processData(data, that.state.videoId);
+
       that.setState({ tracks: data, videoId: that.props.currentSong.videoId });
     });
   }
