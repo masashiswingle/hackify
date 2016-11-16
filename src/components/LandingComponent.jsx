@@ -7,6 +7,7 @@ import { annyangCall } from '../annyang';
 import { tree }  from '../visualization/artists-tree';
 import LandingFeature from './LandingFeatureComponent';
 import Git from './GitComponent';
+import Scrollchor from 'react-scrollchor';
 
 
 class Landing extends Component {
@@ -34,7 +35,7 @@ class Landing extends Component {
           </div>
         </div>
 
-        <button className="js-trigger-overlay-about" type="button">about</button>
+        <Scrollchor to="landingFeature" className="nav-link"><button className="js-trigger-overlay-about" type="button">about</button></Scrollchor>
 
         <hr></hr>
 
@@ -51,7 +52,10 @@ class Landing extends Component {
           <img id="siri" src={'/assets/siri.gif'}/>
         </div>
         <div id="conversation"></div>
-        <LandingFeature />
+        <div id="landingFeature">
+          <LandingFeature />
+        </div>
+
 
         <hr></hr>
 
