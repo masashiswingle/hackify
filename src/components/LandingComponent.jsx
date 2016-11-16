@@ -57,7 +57,7 @@ class Landing extends Component {
         </div>
 
 
-        <hr></hr>
+        <br/>
 
         <Git />
 

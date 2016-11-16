@@ -62,6 +62,11 @@ a:focus, a:hover {
   margin-left: 20px;
 }
 
+
+.text-mainunderline {
+  margin-bottom: 25px;
+}
+
 .btn-danger {
   background-color: #d9894f;
   border-color: #d9894f;
