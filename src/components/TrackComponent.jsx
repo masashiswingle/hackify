@@ -9,11 +9,6 @@ class Track extends Component {
     this.state = { tracks: "Searching...", videoId: this.props.currentSong.videoId }
   }
 
-  //  shouldComponentUpdate() {
-  //   return false;
-  // }
-
-
   componentDidMount() {
     this.displayTracks();
   }
