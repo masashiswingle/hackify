@@ -5,3 +5,7 @@
 .nav {
   margin: 30px 30px;
 }
+
+#conversationPlayer {
+  height: 50px;
+}

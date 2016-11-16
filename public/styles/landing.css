@@ -15,6 +15,9 @@
   display: none;
   margin-top: -20px;
 }
+#help {
+  display: none;
+}
 
 p {
   margin-left: -25px;

@@ -119,6 +119,8 @@ class ControlBar extends Component {
 
         <br></br>
 
+        <div id="conversationPlayer"></div>
+        
         <div className="progress-wrap" onClick={ this.progress.bind(this) }>
           <div className="progress-bar"></div>
         </div>

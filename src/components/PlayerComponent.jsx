@@ -86,7 +86,7 @@ class Player extends Component {
             <p id="currentTrack"> { this.props.currentSong.artistName } - { this.props.currentSong.songName } </p>
           </div>
         </div>
-
+        
         <br></br>
 
         <Lineup />
@@ -95,11 +95,12 @@ class Player extends Component {
 
         <ControlBar player={ player } />
 
+        
+
         <hr></hr>
 
         <br></br>
 
-        <div id="conversation"></div>
       </div>
     );
   }

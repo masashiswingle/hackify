@@ -21,49 +21,39 @@ module.exports = {
         // Finds and plays new song
         function playSong(songName, artistName) {
             var query = createQuery(songName, artistName);
-            // console.log(songName, artistName);
-            // artistAlbums(artistName);
             helpers.youTubeGetSongAnnyang(query, songName, artistName)
               .then(function () {
-                var track = helpers.getSearchItem();
-                // console.log('in .then', track);
+                var track = helpers.getSearchItem();111
                 document.getElementById('conversation').innerHTML = "";
-                communicateAction('<div>Playing ' + track.snippet.title + '</div><img width="150" src="' + track.snippet.thumbnails.medium.url + '">');
             });
         };
 
         // Adds song to queue to be played later
         function addToQueue (songName, artistName) {
             var query = createQuery(songName, artistName);
-            // console.log('in addToQueue', songName, artistName)
             helpers.addSongToQueue(query, songName, artistName)
             .then(function () {
                 var track = getSearchItem();
-                // console.log('in .then of addToQueue', track);
-                // document.getElementById('conversation').innerHTML = "";
-                communicateAction('<div>Added to queue ' + track.snippet.title + '</div><img width="150" src="' + track.snippet.thumbnails.medium.url + '">');
             });
         };
 
         // Plays next song in queue
         function dequeue () {
-
             helpers.dequeueSong();
-            //logic to show title and thumbnail needed!
             communicateAction('<div>Playing next song in queue...</div>');
         };
 
         // Shows messages/warning dialog
         function communicateAction(text) {
-            var rec = document.getElementById('conversation');
-            rec.innerHTML += '<div class="action">' + text + '</div>';
+            var recP = document.getElementById('conversationPlayer');
+            if (recP) {
+              recP.innerHTML = 'Recognized: '+"'"+ text + "'";
+              setTimeout(function () {
+                document.getElementById('conversationPlayer').innerHTML = '';
+              },4000);
+            }
         }
 
-        // Displays messages with recognized commands
-        function recognized(text) {
-            var rec = document.getElementById('conversation');
-            rec.innerHTML += '<div class="recognized"><div>' + text + '</div></div>';
-        }
 
         // Defines commands
         if (annyang) {
@@ -84,12 +74,11 @@ module.exports = {
                 'pause': function () {
                     helpers.pauseSong();
                 },
-                //
 
                 'resume': function () {
                     helpers.resumeSong();
                 },
-/////
+
                 'continue': function () {
                     helpers.resumeSong();
                 },
@@ -123,47 +112,47 @@ module.exports = {
                 },
 
                 'play track *song': function (song) {
-                    recognized('Play track ' + song);
+                    communicateAction('Play track ' + song);
                     playSong(song);
                 },
 
                 'play *song by *artist': function (song, artist) {
-                    recognized('Play song ' + song + ' by ' + artist);
+                    communicateAction('Play song ' + song + ' by ' + artist);
                     playSong(song, artist);
                 },
 
                 'play song *song': function (song) {
-                    recognized('Play song ' + song);
+                    communicateAction('Play song ' + song);
                     playSong(song);
                 },
 
                 'play *song': function (song) {
-                    recognized('Play ' + song);
+                    communicateAction('Play ' + song);
                     playSong(song);
                 },
 
                 'add next *song by *artist': function (song, artist) {
-                    recognized('Add next ' + song +' by ' + artist);
+                    communicateAction('Add next ' + song +' by ' + artist);
                     addToQueue(song, artist);
                 },
 
                 'add next *song': function (song) {
-                    recognized('Add next ' + song);
+                    communicateAction('Add next ' + song);
                     addToQueue(song);
                 },
 
                 'add to queue *song by *artist': function (song, artist) {
-                    recognized('Add to queue ' + song +' by ' + artist);
+                    communicateAction('Add to queue ' + song +' by ' + artist);
                     addToQueue(song, artist);
                 },
 
                 'add to queue *song': function (song) {
-                    recognized('Add to queue ' + song);
+                    communicateAction('Add to queue ' + song);
                     addToQueue(song);
                 },
 
                 ':nomatch': function (message) {
-                    // recognized(message);
+                    // communicateAction(message);
                     communicateAction('Sorry, I don\'t understand this action: ' + message);
                 }
             };

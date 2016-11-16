@@ -9,7 +9,7 @@ class Git extends Component {
 
           <br></br><br></br>
 
-          <h2 id="team">best team</h2>
+          <h1 id="team">best team</h1>
 
           <br></br><br></br>
 
