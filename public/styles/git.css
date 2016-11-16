@@ -1,5 +1,7 @@
 #team {
   text-align: center;
+  margin-bottom: 50px;
+  font-size: 50px;
 }
 
 .gitPic {
@@ -10,20 +12,22 @@
 .git {
   margin-top: 100px;
   text-align: center;
-  height: 600px;
+  height: 550px;
   background-color: #ffe1bd;
- 
-
-    overflow: hidden;
-    width: 500%;
-     margin-left: -200%; 
+  overflow: hidden;
+  width: 500%;
+  margin-left: -200%; 
 }
 
 .footer {
   text-align: center;
+  margin-top: 10px;
+  font-size: 16px
+
 }
 
 .inner {
-   width: 20%;
-    margin: 0 auto; 
+  width: 20%;
+  margin: 0 auto; 
 }
+

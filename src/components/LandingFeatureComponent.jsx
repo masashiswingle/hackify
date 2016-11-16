@@ -9,7 +9,7 @@ class LandingFeature extends Component {
 
         <br></br><br></br>
 
-        <h1 id="getStart">How to get started?</h1>
+        <h1 id="getStart">how to get started?</h1>
 
         <br></br><br></br>
 
@@ -20,7 +20,7 @@ class LandingFeature extends Component {
           <div className="col-sm-6 col-md-6 col-lg-6">
             <h3>real-time</h3>
             <h2>interaction</h2>
-            <h4>_________</h4>
+            <h4 className='text-mainunderline'>_________</h4>
             <h4>Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah</h4>
             <button className="learnmore" type="button">learn more</button>
           </div>
@@ -33,7 +33,7 @@ class LandingFeature extends Component {
           <div className="col-sm-6 col-md-6 col-lg-6">
             <h3>variety of</h3>
             <h2>commands</h2>
-            <h4>_________</h4>
+            <h4 className='text-mainunderline'>_________</h4>
             <h4>Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah</h4>
             <button className="learnmore" type="button">learn more</button>
           </div>
@@ -52,7 +52,7 @@ class LandingFeature extends Component {
           <div className="col-sm-6 col-md-6 col-lg-6">
             <h3>ask Bear for any</h3>
             <h2>information</h2>
-            <h4>_________</h4>
+            <h4 className='text-mainunderline'>_________</h4>
             <h4>Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah</h4>
             <button className="learnmore" type="button">learn more</button>
           </div>
