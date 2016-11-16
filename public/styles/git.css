@@ -8,11 +8,22 @@
 }
 
 .git {
+  margin-top: 100px;
   text-align: center;
-  height: 500px;
+  height: 600px;
   background-color: #ffe1bd;
+ 
+
+    overflow: hidden;
+    width: 500%;
+     margin-left: -200%; 
 }
 
 .footer {
   text-align: center;
+}
+
+.inner {
+   width: 20%;
+    margin: 0 auto; 
 }

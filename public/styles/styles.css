@@ -1,5 +1,7 @@
 html, body {
   font-family: "Droid Sans", Calibri, sans-serif;
+  overflow-x: hidden;
+
 }
 #player {
   display: none;

@@ -9,26 +9,30 @@ class Git extends Component {
 
           <br></br><br></br>
 
-          <h1 id="team">Best Team</h1>
+          <h1 id="team">best team</h1>
 
           <br></br><br></br>
 
-          <div className="row">
+          <div className="row inner">
             <div className="col-sm-3 col-md-3 col-lg-3">
               <a href="https://github.com/alina7091"><img className="gitPic" src={'/assets/alinaGit.jpeg'}/></a>
-              <h2>Alina Lobastova</h2>
+              <h2>alina lobastova</h2>
+               <p id = 'mainunderline'>_________</p>
             </div>
             <div className="col-sm-3 col-md-3 col-lg-3">
               <a href="https://github.com/jemilezzet"><img className="gitPic" src={'/assets/jemilGit.jpeg'}/></a>
-              <h2>Jemil Ezzet</h2>
+              <h2>jemil ezzet</h2>
+              <p id = 'mainunderline'>_________</p>
             </div>
             <div className="col-sm-3 col-md-3 col-lg-3">
               <a href="https://github.com/joannexin"><img className="gitPic" src={'/assets/joanneGit.jpeg'}/></a>
-              <h2>Joanne Xin</h2>
+              <h2>joanne xin</h2>
+              <p id = 'mainunderline'>_________</p>
             </div>
             <div className="col-sm-3 col-md-3 col-lg-3">
               <a href="https://github.com/masashiswingle"><img className="gitPic" src={'/assets/masashiGit.jpeg'}/></a>
-              <h2>Masashi Swingle</h2>
+              <h2>masashi swingle</h2>
+              <p id = 'mainunderline'>_________</p>
             </div>
           </div>
 
