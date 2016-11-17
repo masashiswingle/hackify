@@ -9,17 +9,17 @@ class Tree extends Component {
     this.state = { artistId: this.props.currentSong.artistId }
   }
 
-  updateTree () {
-      var returnResult = tree();
-      returnResult.resizeOverlay();
-      artistInfo(this.props.currentSong.artistId)
-        .then(function (info) {
-          returnResult.setRoot(info);
-        });
+  displayTree() {
+    var returnResult = tree();
+    returnResult.resizeOverlay();
+    artistInfo(this.props.currentSong.artistId)
+      .then(function (info) {
+        returnResult.setRoot(info);
+      });
   }
 
   componentDidMount() {
-      this.updateTree();
+      this.displayTree();
   }
 
   componentDidUpdate() {
