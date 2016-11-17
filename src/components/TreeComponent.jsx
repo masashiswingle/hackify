@@ -12,28 +12,32 @@ class Tree extends Component {
   displayTree() {
     var returnResult = tree();
     returnResult.resizeOverlay();
-    artistInfo(this.props.currentSong.artistId)
+    if (this.props.currentSong.artistId.length === 1) {
+      $('#tree-container').html('Sorry, we were unable to find related artists...');
+    } else {
+      artistInfo(this.props.currentSong.artistId)
       .then(function (info) {
         returnResult.setRoot(info);
       });
+    }
   }
 
   componentDidMount() {
-      this.displayTree();
+    this.displayTree();
   }
 
   componentDidUpdate() {
-    if (!this.props.currentSong.artistId) {
-      document.getElementById('tree-container').innerHTML = 'Sorry, we were unable to find related artists...';
+    if (this.props.currentSong.artistId.length === 1) {
+      $('#tree-container').html('Sorry, we were unable to find related artists...');
     } else {
-      document.getElementById('tree-container').innerHTML = '';
-      this.updateTree();
+      $('#tree-container').html('');
+      this.displayTree();
     }
   }
 
   render() {
     return(
-      <div id ='tree-container'></div>
+      <div id="tree-container"></div>
     );
   }
 }
