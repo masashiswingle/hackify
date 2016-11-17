@@ -55,12 +55,10 @@ class Player extends Component {
 
   displayCommands() {
     $('.player').css('filter', 'blur(2px)');
-    $('#commands').css('display', 'block');
   }
 
   displayPlayer() {
     $('.player').css('filter', 'blur(0px)');
-    $('#commands').css('display', 'none');
   }
 
   componentDidUpdate() {
@@ -74,6 +72,7 @@ class Player extends Component {
     annyangCall();
     return (
       <div className="container">
+
         <div className="player">
           <div className="heading row">
             <div className="col-md-1 inline" id='headlogo'>
@@ -89,7 +88,7 @@ class Player extends Component {
 
           <div className="row">
             <div className="col-md-4">
-              <img id="info" src="http://www.tonfly.com/images/defaults/info.png"></img>
+              <img id="info" onClick={ this.displayCommands.bind(this) } data-toggle="modal" data-target="#commandModal" src="http://www.tonfly.com/images/defaults/info.png"></img>
             </div>
             <div className="col-md-4">
               <p id="currentTrack"> { this.props.currentSong.artistName } - { this.props.currentSong.songName } </p>
@@ -106,9 +105,25 @@ class Player extends Component {
         <ControlBar player={ player } />
 
         <hr></hr>
-
         <br></br>
         <div id="conversation"></div>
+
+        <div className="modal fade" id="commandModal" data-backdrop="static">
+          <div className="modal-dialog" role="document">
+            <div className="modal-content">
+              <h4 className="centerAlign">Available Commands</h4>
+              <img id="closeModal" onClick={ this.displayPlayer.bind(this) } data-dismiss="modal" src="https://cdn3.iconfinder.com/data/icons/virtual-notebook/16/button_close-128.png"></img>
+              <br></br>
+              <br></br>
+              <p className="actions"> Play Song <i className="commands"> "Play Hello by Adele" </i></p>
+              <p className="actions"> Add To Queue <i className="commands"> "Add to queue Sweet Virgina by The Rolling Stones" </i></p>
+              <p className="actions"> Next <i className="commands"> "Play next song" </i></p>
+              <p className="actions"> Previous <i className="commands"> "Play previous song" </i></p>
+              <br></br>
+              <br></br>
+            </div>
+          </div>
+        </div>
       </div>
     );
   }
