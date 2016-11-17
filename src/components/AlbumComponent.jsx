@@ -5,7 +5,7 @@ import { artistAlbums } from '../modules/ajax';
 class Album extends Component {
   constructor(props) {
     super(props);
-    this.state = { album: "Searching...", videoId: this.props.currentSong.videoId }
+    this.state = { album: [], videoId: this.props.currentSong.videoId }
   }
 
   componentDidMount() {
@@ -21,14 +21,41 @@ class Album extends Component {
   displayAlbums() {
     var that = this;
     artistAlbums(this.props.currentSong.artistName, function(data) {
-      console.log("here is my data", data);
-      that.setState({ album: data, videoId: that.props.currentSong.videoId });
+      var obj = {};
+      for (var i = 0; i < data.items.length; i++) {
+        var item = data.items[i].name;
+        if (!obj[item]) {
+          obj[item] = data.items[i];
+        }
+      }
+      var uniqAlbumsName = Object.keys(obj);
+      var uniqAlbums = [];
+      for (var i = 0; i < uniqAlbumsName.length; i++) {
+        uniqAlbums.push(obj[uniqAlbumsName[i]]);
+      }
+      that.setState({ album: uniqAlbums, videoId: that.props.currentSong.videoId });
     });
   }
 
   render() {
+    if(this.state.album.length === 0) {
+      return (
+        <div>Loading...</div>
+      )
+    }
     return(
-      <div id ='album'></div>
+      <div className="rows">
+        {this.state.album.map(function(album, index){
+          if (album.album_type === "album") {
+            return (
+              <div className="col-sm-3 col-md-3 col-lg-3" key={index}>
+                <img id="albumImg" src={album.images[1].url}></img>
+                <div id="albumName">{album.name}</div>
+              </div>
+            );
+          }
+        }, this)}
+      </div>
     );
   }
 }

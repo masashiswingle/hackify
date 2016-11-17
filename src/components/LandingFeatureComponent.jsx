@@ -22,7 +22,6 @@ class LandingFeature extends Component {
             <h2>interaction</h2>
             <h4 className='text-mainunderline'>_________</h4>
             <h4>Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah</h4>
-            <button className="learnmore" type="button">learn more</button>
           </div>
         </div>
 
@@ -35,7 +34,6 @@ class LandingFeature extends Component {
             <h2>commands</h2>
             <h4 className='text-mainunderline'>_________</h4>
             <h4>Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah</h4>
-            <button className="learnmore" type="button">learn more</button>
           </div>
           <div className="col-sm-6 col-md-6 col-lg-6">
             <img className="landingpic" id="sound" src={'/assets/sound.jpg'}/>
@@ -54,7 +52,6 @@ class LandingFeature extends Component {
             <h2>information</h2>
             <h4 className='text-mainunderline'>_________</h4>
             <h4>Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah</h4>
-            <button className="learnmore" type="button">learn more</button>
           </div>
         </div>
 
