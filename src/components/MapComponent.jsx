@@ -8,20 +8,18 @@ class Map extends Component {
     this.state = { countries: this.props.currentSong.countries }
   }
 
-
   componentDidMount() {
-    map(this.props.currentSong.countries);
-  }
-
-  componentDidUpdate () {
-    if (!this.props.currentSong.countries) {
-      document.getElementById("basic_choropleth").innerHTML = 'Sorry, we were unable to find available countries...';
+    if (this.props.currentSong.countries.length === 0) {
+      $('#basic_choropleth').html('Sorry, we were unable to find related countries...');
     } else {
-      document.getElementById("basic_choropleth").innerHTML = "";
       map(this.props.currentSong.countries);
     }
   }
 
+  componentDidUpdate () {
+    $('#basic_choropleth').html('');
+    map(this.props.currentSong.countries);
+  }
 
   render() {
     return(
