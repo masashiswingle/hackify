@@ -8,6 +8,13 @@ class Lyrics extends Component {
     this.state = { lyrics: "Searching...", videoId: this.props.currentSong.videoId }
   }
 
+  displayLyrics() {
+    var that = this;
+    getLyrics(this.props.currentSong.songName, this.props.currentSong.artistName, function(data) {
+      that.setState({ lyrics: data, videoId: that.props.currentSong.videoId });
+    });
+  }
+
   componentDidMount() {
     this.displayLyrics();
   }
@@ -16,13 +23,6 @@ class Lyrics extends Component {
     if (this.props.currentSong.videoId !== this.state.videoId) {
       this.displayLyrics();
     }
-  }
-
-  displayLyrics() {
-    var that = this;
-    getLyrics(this.props.currentSong.songName, this.props.currentSong.artistName, function(data) {
-      that.setState({ lyrics: data, videoId: that.props.currentSong.videoId });
-    });
   }
 
   render() {

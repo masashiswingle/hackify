@@ -127,7 +127,7 @@ class Player extends Component {
         <hr></hr>
 
         <br></br>
-        <div id="conversation"></div>
+
 
         <div className="modal fade" id="commandModal" data-backdrop="static">
           <div className="modal-dialog" role="document">
@@ -154,7 +154,7 @@ class Player extends Component {
 
         <br></br>
 
-        <div id="conversation"></div>
+
       </div>
     );
   }

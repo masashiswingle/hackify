@@ -12,15 +12,10 @@ class Nav extends Component {
     super(props);
   }
 
-  handleSelect(index, last) {
-    console.log("current tab is ", index, "and last tab was ", last);
-  }
-
-
   render() {
     return(
 
-      <Tabs className="navTabs" onSelect={this.handleSelect.bind(this)} selectedIndex={this.index}>
+      <Tabs className="navTabs" selectedIndex={this.index}>
 
           <TabList className="navlist">
             <Tab >
@@ -45,6 +40,7 @@ class Nav extends Component {
           <TabPanel><Track /></TabPanel>
           <TabPanel><Album /></TabPanel>
           <TabPanel><Tree /></TabPanel>
+
       </Tabs>
 
     );

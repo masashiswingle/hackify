@@ -9,31 +9,31 @@ class Tree extends Component {
     this.state = { artistId: this.props.currentSong.artistId }
   }
 
-  updateTree () {
-      var returnResult = tree();
-      returnResult.resizeOverlay();
+  displayTree() {
+    var returnResult = tree();
+    returnResult.resizeOverlay();
+    if (this.props.currentSong.artistId.length === 1) {
+      $('#tree-container').html('Sorry, we were unable to find related artists...');
+    } else {
       artistInfo(this.props.currentSong.artistId)
-        .then(function (info) {
-          returnResult.setRoot(info);
-        });
+      .then(function (info) {
+        returnResult.setRoot(info);
+      });
+    }
   }
 
   componentDidMount() {
-      this.updateTree();
+    this.displayTree();
   }
 
   componentDidUpdate() {
-    if (!this.props.currentSong.artistId) {
-      document.getElementById('tree-container').innerHTML = 'Sorry, we were unable to find related artists...';
-    } else {
-      document.getElementById('tree-container').innerHTML = '';
-      this.updateTree();
-    }
+    $('#tree-container').html('');
+    this.displayTree();
   }
 
   render() {
     return(
-      <div id ='tree-container'></div>
+      <div id="tree-container"></div>
     );
   }
 }
