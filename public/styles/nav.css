@@ -1,9 +1,15 @@
 .navlist {
   text-align: center;
+
 }
+.react-tabs [role=tab] {
+  margin-top: 10px
+}
+
 
 .nav {
   margin: 30px 30px;
+
 }
 
 #conversationPlayer {
