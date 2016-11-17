@@ -74,7 +74,6 @@ const mainReducer = function (state = {}, action) {
         }
       });
       deepEqualState.songQueue = newQueue;
-      console.log(deepEqualState);
       return deepEqualState;
     default:
       return state;

@@ -1,8 +1,56 @@
 html, body {
   font-family: "Open Sans", Calibri, sans-serif;
   overflow-x: hidden;
-
 }
+
+.modal-backdrop {
+  opacity:0 !important;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.modal-dialog {
+  position: relative;
+  top: 100px;
+}
+
+.centerAlign {
+  text-align: center;
+}
+
+#closeModal {
+  height: 15px;
+  width: auto;
+  float: right;
+  margin-top: -25px;
+  margin-right: 10px;
+}
+
+.actions {
+  margin-left: 25px;
+}
+
+.commands {
+  float: right;
+  margin-right: 15px;
+}
+
+#closeModal:hover {
+  cursor: pointer;
+}
+
+.centerFont {
+  text-align: center;
+}
+
+#info {
+  height: 25px;
+  width: auto;
+}
+
+#info:hover {
+  cursor: pointer;
+}
+
 #player {
   display: none;
 }
