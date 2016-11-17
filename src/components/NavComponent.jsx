@@ -36,7 +36,7 @@ class Nav extends Component {
           </TabList>
 
           <TabPanel><Lyrics /></TabPanel>
-          <TabPanel><Map /></TabPanel>
+          <TabPanel></TabPanel>
           <TabPanel><Track /></TabPanel>
           <TabPanel><Album /></TabPanel>
           <TabPanel><Tree /></TabPanel>
