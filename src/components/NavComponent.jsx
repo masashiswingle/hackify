@@ -20,7 +20,7 @@ class Nav extends Component {
   render() {
     return(
 
-      <Tabs onSelect={this.handleSelect.bind(this)} selectedIndex={this.index}>
+      <Tabs class = 'navTabs' onSelect={this.handleSelect.bind(this)} selectedIndex={this.index}>
 
           <TabList className="navlist">
             <Tab >
