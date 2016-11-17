@@ -45,7 +45,7 @@ class LandingFeature extends Component {
 
         <div className="row">
           <div className="col-sm-6 col-md-6 col-lg-6">
-            <img className="landingpic" id="info" src={'/assets/info.jpg'}/>
+            <img className="landingpic" id="infoIcon" src={'/assets/info.jpg'}/>
           </div>
           <div className="col-sm-6 col-md-6 col-lg-6">
             <h3>ask Bear for any</h3>
