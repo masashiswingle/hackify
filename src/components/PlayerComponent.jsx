@@ -10,6 +10,14 @@ import map from '../visualization/map';
 import $ from 'jquery';
 
 class Player extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      infoClicked: false
+    };
+  }
+
   searchFromPlayer() {
     helpers.youTubeGetSong($('#srch-term').val(), (response) => {
       var searchedSong = new Song(response.items[0].id.videoId, response.items[0].snippet.title, response.items[0].snippet.thumbnails.default.url);
@@ -51,10 +59,20 @@ class Player extends Component {
       }
     }
     this.props.initiateQueue();
+
+    setInterval(() => {
+      if (!this.state.infoClicked) {
+        $('#info').fadeOut(500);
+        $('#info').fadeIn(500);
+      }
+    }, 1000);
   }
 
   displayCommands() {
     $('.player').css('filter', 'blur(2px)');
+    this.setState({
+      infoClicked: true
+    });
   }
 
   displayPlayer() {
@@ -112,7 +130,7 @@ class Player extends Component {
         <div className="modal fade" id="commandModal" data-backdrop="static">
           <div className="modal-dialog" role="document">
             <div className="modal-content">
-              <h4 className="centerAlign">Available Commands</h4>
+              <h4 className="centerAlign">Voice Commands</h4>
               <img id="closeModal" onClick={ this.displayPlayer.bind(this) } data-dismiss="modal" src="https://cdn3.iconfinder.com/data/icons/virtual-notebook/16/button_close-128.png"></img>
               <br></br>
               <br></br>
@@ -120,6 +138,12 @@ class Player extends Component {
               <p className="actions"> Add To Queue <i className="commands"> "Add to queue Sweet Virgina by The Rolling Stones" </i></p>
               <p className="actions"> Next <i className="commands"> "Play next song" </i></p>
               <p className="actions"> Previous <i className="commands"> "Play previous song" </i></p>
+              <p className="actions"> Pause <i className="commands"> "Stop" </i></p>
+              <p className="actions"> Resume <i className="commands"> "Continue" </i></p>
+              <br></br>
+              <h4 className="centerAlign">Other Functionalities</h4>
+              <p className="actions"> Click on any song in queue or history to play </p>
+              <p className="actions"> Remove songs from queue by dragging to trash </p>
               <br></br>
               <br></br>
             </div>
