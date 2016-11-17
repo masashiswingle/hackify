@@ -21,27 +21,36 @@ class Album extends Component {
   displayAlbums() {
     var that = this;
     artistAlbums(this.props.currentSong.artistName, function(data) {
-      console.log("here is my data", data);
-      that.setState({ album: data.items, videoId: that.props.currentSong.videoId });
-      console.log("here is the arr", that.state.album);
+      var obj = {};
+      for (var i = 0; i < data.items.length; i++) {
+        var item = data.items[i].name;
+        if (!obj[item]) {
+          obj[item] = data.items[i];
+        }
+      }
+      var uniqAlbumsName = Object.keys(obj);
+      var uniqAlbums = [];
+      for (var i = 0; i < uniqAlbumsName.length; i++) {
+        uniqAlbums.push(obj[uniqAlbumsName[i]]);
+      }
+      that.setState({ album: uniqAlbums, videoId: that.props.currentSong.videoId });
     });
   }
 
   render() {
-    console.log("please show something", this.state.album);
     if(this.state.album.length === 0) {
       return (
         <div>Loading...</div>
       )
     }
     return(
-      <div>
+      <div className="rows">
         {this.state.album.map(function(album, index){
           if (album.album_type === "album") {
             return (
-              <div key={index}>
-                <img src={album.images[1].url}></img>
-                <div>{album.name}</div>
+              <div className="col-sm-3 col-md-3 col-lg-3" key={index}>
+                <img id="albumImg" src={album.images[1].url}></img>
+                <div id="albumName">{album.name}</div>
               </div>
             );
           }

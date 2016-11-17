@@ -1,0 +1,8 @@
+#albumImg {
+  height: 150px;
+  border-radius: 5px;
+}
+
+#albumName {
+  font-size: 16px;
+}
