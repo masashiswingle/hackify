@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { artistAlbums } from '../modules/ajax';
+import Map from './MapComponent';
 
 class Album extends Component {
   constructor(props) {
@@ -44,17 +45,20 @@ class Album extends Component {
       )
     }
     return(
-      <div className="rows">
+      <div className ="row">
+       <div className ="col-xs-12 col-md-8"><Map/></div>
+       <div className ="col-xs-6 col-md-4">
         {this.state.album.map(function(album, index){
           if (album.album_type === "album") {
             return (
-              <div className="col-sm-3 col-md-3 col-lg-3" key={index}>
+              <div className = 'eachAlbum' key={index}>
                 <img id="albumImg" src={album.images[1].url}></img>
                 <div id="albumName">{album.name}</div>
               </div>
             );
           }
         }, this)}
+      </div>
       </div>
     );
   }

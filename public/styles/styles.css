@@ -110,3 +110,10 @@ html, body {
 .available:hover {
   cursor: pointer;
 }
+
+.datamap {
+  width: 90%;
+  height: 100%;
+  float:left;
+}
+
