@@ -40,7 +40,7 @@ class Album extends Component {
   render() {
     if(this.state.album.length === 0) {
       return (
-        <div>Loading...</div>
+        <div>Sorry, we were unable to find related albums...</div>
       )
     }
     return(
