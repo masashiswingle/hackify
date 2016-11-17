@@ -134,6 +134,7 @@ let srchItem;
 let countriesArr;
 let spotifyArtwork;
 let artistId;
+let albumName;
 
 export const addSongToQueue = (query, songName, artistName) => {
   return new Promise((resolve, reject) => {
@@ -150,9 +151,11 @@ export const addSongToQueue = (query, songName, artistName) => {
           .then((songs) => {
             if (songs) {
               spotifyArtwork = songs.tracks.items[0].album.images[1].url;
+              albumName = songs.tracks.items[0].album.name;
               countriesArr = songs.tracks.items[0].available_markets;
             } else {
               spotifyArtwork = 'http://static.tumblr.com/qmraazf/ps5mjrmim/unknown-album.png';
+              albumName = null;
               countriesArr = ['US'];
             }
             srchItem = response.result.items[0];
@@ -163,6 +166,7 @@ export const addSongToQueue = (query, songName, artistName) => {
               songQueue: srchItem.id.videoId,
               title: srchItem.snippet.title,
               artwork: spotifyArtwork,
+              albumName: albumName,
               songName: songName,
               artistName: artistName,
               countries: countriesArr,
@@ -249,10 +253,12 @@ export const youTubeGetSongAnnyang = (query, songName, artistName) => {
             console.log(songs);
             if (songs) {
               spotifyArtwork = songs.tracks.items[0].album.images[1].url;
+              albumName = songs.tracks.items[0].album.name;
               countriesArr = songs.tracks.items[0].available_markets;
               artistId = songs.tracks.items[0].artists[0].id;
             } else {
               spotifyArtwork = 'http://static.tumblr.com/qmraazf/ps5mjrmim/unknown-album.png';
+              albumName = null;
               countriesArr = ['US'];
               artistId = '1';
             }
@@ -265,6 +271,7 @@ export const youTubeGetSongAnnyang = (query, songName, artistName) => {
                 videoId: srchItem.id.videoId,
                 title: srchItem.snippet.title,
                 artwork: spotifyArtwork,
+                albumName: albumName,
                 songName: songName,
                 artistName: artistName,
                 artistId: artistId,

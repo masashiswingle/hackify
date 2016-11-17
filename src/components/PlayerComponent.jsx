@@ -110,6 +110,7 @@ class Player extends Component {
             </div>
             <div className="col-md-4">
               <p id="currentTrack"> { this.props.currentSong.artistName } - { this.props.currentSong.songName } </p>
+              <p id="currentTrack"> { this.props.currentSong.albumName } </p>
             </div>
           </div>
         </div>
@@ -160,6 +161,7 @@ class Player extends Component {
 }
 
 const mapStateToProps = (state) => {
+  console.log(state);
   return {
     view: state.view,
     currentSong: state.currentSong,
