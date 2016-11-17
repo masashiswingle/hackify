@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { artistAlbums } from '../modules/ajax';
+import { albumInfo } from '../modules/ajax';
+
+import Map from './MapComponent';
 
 class Album extends Component {
   constructor(props) {
@@ -20,6 +23,8 @@ class Album extends Component {
 
   displayAlbums() {
     var that = this;
+    var uniqAlbums;
+    var newAlbumList
     artistAlbums(this.props.currentSong.artistName, function(data) {
       var obj = {};
       for (var i = 0; i < data.items.length; i++) {
@@ -28,13 +33,28 @@ class Album extends Component {
           obj[item] = data.items[i];
         }
       }
+
       var uniqAlbumsName = Object.keys(obj);
-      var uniqAlbums = [];
+      uniqAlbums = [];
       for (var i = 0; i < uniqAlbumsName.length; i++) {
         uniqAlbums.push(obj[uniqAlbumsName[i]]);
       }
-      that.setState({ album: uniqAlbums, videoId: that.props.currentSong.videoId });
+
+      var listOfAlbumIds = [];
+      newAlbumList = [];
+      for (var i = 0; i<uniqAlbums.length; i++) {
+        listOfAlbumIds.push(uniqAlbums[i].id);
+      }
+      albumInfo(listOfAlbumIds).then(function (data) {
+        console.log(data.albums)
+        for (var j = 0; j<data.albums.length; j++) {
+          newAlbumList.push(data.albums[j])
+        }
+      that.setState({ album: newAlbumList, videoId: that.props.currentSong.videoId });
+      });
+
     });
+
   }
 
   render() {
@@ -44,17 +64,31 @@ class Album extends Component {
       )
     }
     return(
-      <div className="rows">
+      <div className ="row">
+        <div className ="col-xs-12 col-md-8">
+        <div className='mapHeader'>Available Spotify Markets</div>
+          <Map/>
+        </div>
+       <div className ="col-xs-6 col-md-4">
+        <div className='albumsHeader'>Artist's Albums</div>
         {this.state.album.map(function(album, index){
           if (album.album_type === "album") {
+                        console.log('alb', album)
             return (
-              <div className="col-sm-3 col-md-3 col-lg-3" key={index}>
+              <div className = 'eachAlbum' key={index}>
+                <br/>
                 <img id="albumImg" src={album.images[1].url}></img>
                 <div id="albumName">{album.name}</div>
+                <div id="albumTracks">{album.tracks.total} tracks</div>
+                <div id="albumRelease"><p>Release date: </p>{album.release_date}</div>
+                <div id="albumCopyright">{album.copyrights[0].text}</div>
+                <br/>
+
               </div>
             );
           }
         }, this)}
+      </div>
       </div>
     );
   }

@@ -35,7 +35,7 @@ module.exports = {
         var artistId = data.body.tracks.items[0].artists[0].id;
         return spotifyApi.getArtistAlbums(artistId)
           .then(function(albums) {
-            //console.log('inside getArtistAlbums', albums.body)
+            console.log('inside getArtistAlbums', albums.body)
             res.send(data.statusCode, albums.body);
           }, function(err) {
               res.send(400, err);
@@ -48,6 +48,17 @@ module.exports = {
     spotifyApi.getArtist(req.body.id)
       .then(function(data) {
         console.log('got from getArtistInfo', data);
+        res.send(data.statusCode, data.body);
+      }, function(err) {
+        console.error(err);
+      });
+  },
+
+  getAlbumInfo: function (req, res) {
+    console.log('getArtistInfo', req.body.id)
+    spotifyApi.getAlbums([req.body.id])
+      .then(function(data) {
+        console.log('got from getAlbumInfo', data);
         res.send(data.statusCode, data.body);
       }, function(err) {
         console.error(err);

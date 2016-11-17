@@ -46,6 +46,22 @@ export const artistTracks = (artist, cb) => {
   });
 };
 
+export const albumInfo = (id) => {
+  // console.log('inside artistInfo', id);
+  return new Promise((resolve, reject) => {
+    $.ajax({
+      method: 'POST',
+      url: '/albumInfo',
+      data: { id: id }
+    })
+    .done((data) => {
+      // console.log('got from artistInfo', data);
+      resolve(data);
+    });
+  });
+};
+
+
 export const artistInfo = (id) => {
   // console.log('inside artistInfo', id);
   return new Promise((resolve, reject) => {
