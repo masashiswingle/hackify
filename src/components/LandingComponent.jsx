@@ -12,14 +12,6 @@ import Scrollchor from 'react-scrollchor';
 
 class Landing extends Component {
 
-  // searchFromLanding() {
-  //   helpers.youTubeGetSong($('#srch-term').val(), (response) => {
-  //     // $('#spinner').show();
-  //     // debugger
-  //     var song = new Song(response.items[0].id.videoId, response.items[0].snippet.title, response.items[0].snippet.thumbnails.default.url);
-  //     this.props.switchViewToPlayer('player', song);
-  //   });
-  // }
   annyang () {
     annyangCall();
     $('#siri').show();

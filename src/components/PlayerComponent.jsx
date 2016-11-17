@@ -81,7 +81,10 @@ class Player extends Component {
   }
 
   componentDidUpdate() {
+    console.log(this.props.currentSong.videoId);
+    console.log(player.getVideoData().video_id);
     if (this.props.currentSong.videoId !== player.getVideoData().video_id) {
+      debugger
       player.cueVideoById(this.props.currentSong.videoId);
       player.playVideo();
     }
