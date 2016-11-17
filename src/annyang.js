@@ -15,10 +15,11 @@ module.exports = {
 
         // Finds and plays new song
         function playSong(songName, artistName) {
+          $('.spinner-toggle').toggle();
             var query = createQuery(songName, artistName);
             helpers.youTubeGetSongAnnyang(query, songName, artistName)
               .then(function () {
-                var track = helpers.getSearchItem();111
+                var track = helpers.getSearchItem();
                 document.getElementById('conversation').innerHTML = "";
                 // communicateAction('<div>Playing ' + track.snippet.title + '</div><img width="150" src="' + track.snippet.thumbnails.medium.url + '">');
             });

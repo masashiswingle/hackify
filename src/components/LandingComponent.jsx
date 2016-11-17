@@ -12,13 +12,14 @@ import Scrollchor from 'react-scrollchor';
 
 class Landing extends Component {
 
-  searchFromLanding() {
-    helpers.youTubeGetSong($('#srch-term').val(), (response) => {
-      // $('#spinner').show();
-      var song = new Song(response.items[0].id.videoId, response.items[0].snippet.title, response.items[0].snippet.thumbnails.default.url);
-      this.props.switchViewToPlayer('player', song);
-    });
-  }
+  // searchFromLanding() {
+  //   helpers.youTubeGetSong($('#srch-term').val(), (response) => {
+  //     // $('#spinner').show();
+  //     // debugger
+  //     var song = new Song(response.items[0].id.videoId, response.items[0].snippet.title, response.items[0].snippet.thumbnails.default.url);
+  //     this.props.switchViewToPlayer('player', song);
+  //   });
+  // }
   annyang () {
     annyangCall();
     $('#siri').show();
@@ -51,9 +52,9 @@ class Landing extends Component {
             </div>
           </div>
           <button className="js-trigger-overlay-start" onClick = {this.annyang} type="button">start listening</button>
-          <img id="siri" src={'/assets/siri.gif'}/>
-          <div id="help">e.g. "play Hello by Adele"</div>
-          <img id="spinner" src={'/assets/spinner.gif'}/>
+          <img id="siri" className="spinner-toggle" src={'/assets/siri.gif'}/>
+          <div id="help" className="spinner-toggle">e.g. "play Hello by Adele"</div>
+          <img id="spinner" className="spinner-toggle" src={'/assets/spinner.gif'}/>
         </div>
 
         <div id="landingFeature">
