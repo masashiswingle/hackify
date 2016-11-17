@@ -8,6 +8,7 @@ import { initiateQueue, initiateHistory, changeCurrentSong, addToQueue, dequeueS
 import Song from '../modules/Song';
 import map from '../visualization/map';
 import $ from 'jquery';
+import Scrollchor from 'react-scrollchor';
 
 class Player extends Component {
   searchFromPlayer() {
@@ -79,7 +80,7 @@ class Player extends Component {
             </div>
           </div>
 
-          <button className="js-trigger-overlay-about" type="button">about</button>
+          <Scrollchor to="navbar" className="nav-link"><button className="js-trigger-overlay-about" type="button">about</button></Scrollchor>
 
           <hr></hr>
 
@@ -125,9 +126,9 @@ class Player extends Component {
             </div>
           </div>
         </div>
-        
+
         <br></br>
-        
+
         <div id="conversation"></div>
       </div>
     );

@@ -4,6 +4,7 @@ import { Draggable, Droppable } from 'react-drag-and-drop';
 import Nav from './NavComponent';
 import { addToHistory, dequeueSong, changeCurrentSong, playPrevious, removeFromHistory } from '../redux/actions';
 import $ from 'jquery';
+import Scrollchor from 'react-scrollchor';
 
 class ControlBar extends Component {
 
@@ -120,12 +121,16 @@ class ControlBar extends Component {
         <br></br>
 
         <div id="conversationPlayer"></div>
-        
+
         <div className="progress-wrap" onClick={ this.progress.bind(this) }>
           <div className="progress-bar"></div>
         </div>
+
         <br></br>
-        <Nav />
+
+        <div id="navbar">
+          <Nav />
+        </div>
       </div>
     );
   }
