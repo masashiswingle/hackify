@@ -27,12 +27,8 @@ class Tree extends Component {
   }
 
   componentDidUpdate() {
-    if (this.props.currentSong.artistId.length === 1) {
-      $('#tree-container').html('Sorry, we were unable to find related artists...');
-    } else {
-      $('#tree-container').html('');
-      this.displayTree();
-    }
+    $('#tree-container').html('');
+    this.displayTree();
   }
 
   render() {
