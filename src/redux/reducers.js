@@ -10,6 +10,7 @@ const mainReducer = function (state = {}, action) {
           videoId: action.currentSong.videoId,
           title: action.currentSong.title,
           artwork: action.currentSong.artwork,
+          albumName: action.currentSong.albumName,
           songName: action.currentSong.songName,
           artistName: action.currentSong.artistName,
           artistId: action.currentSong.artistId,
@@ -29,6 +30,7 @@ const mainReducer = function (state = {}, action) {
           videoId: action.currentSong.videoId,
           title: action.currentSong.title,
           artwork: action.currentSong.artwork,
+          albumName: action.currentSong.albumName,
           songName: action.currentSong.songName,
           artistName: action.currentSong.artistName,
           artistId: action.currentSong.artistId,
@@ -38,7 +40,7 @@ const mainReducer = function (state = {}, action) {
     case 'ADD_TO_QUEUE':
       return {
         ...state,
-        songQueue: [...state.songQueue, { videoId: action.songQueue, title: action.title, artwork: action.artwork, songName: action.songName, artistName: action.artistName, artistId: action.artistId, countries: action.countries }]
+        songQueue: [...state.songQueue, { videoId: action.songQueue, title: action.title, artwork: action.artwork, albumName: action.albumName, songName: action.songName, artistName: action.artistName, artistId: action.artistId, countries: action.countries }]
       };
     case 'DEQUEUE_SONG':
       return {
