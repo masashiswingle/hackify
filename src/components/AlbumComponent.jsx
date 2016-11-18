@@ -65,12 +65,13 @@ class Album extends Component {
     }
     return(
       <div className ="row">
-        <div className ="col-xs-12 col-md-8">
+        <div className ="col-xs-12 col-md-6">
         <div className='mapHeader'>Available Spotify Markets</div>
           <Map/>
         </div>
-       <div className ="col-xs-6 col-md-4">
-        <div className='albumsHeader'>Artist's Albums</div>
+       <div className ="col-xs-6 col-md-5">
+
+          <div className='albumsHeader'>Artist's Albums</div>
         <div className= 'genAlbums'>
           {this.state.album.map(function(album, index){
             if (album.album_type === "album") {
@@ -79,10 +80,15 @@ class Album extends Component {
                 <div className = 'eachAlbum' key={index}>
                   <br/>
                   <img id="albumImg" src={album.images[1].url}></img>
-                  <div id="albumName">{album.name}</div>
-                  <div id="albumTracks">{album.tracks.total} tracks</div>
-                  <div id="albumRelease"><p>Release date: </p>{album.release_date}</div>
-                  <div id="albumCopyright">{album.copyrights[0].text}</div>
+                  <div className='description'>
+                    <div id="albumName">{album.name}</div>
+                    <br/>
+                    <div id="albumTracks">{album.tracks.total} tracks</div>
+                    <br/>
+                    <div id="albumRelease"><p>Release date: </p>{album.release_date}</div>
+                    <br/>
+                    <div id="albumCopyright">{album.copyrights[0].text}</div>
+                  </div>
                   <br/>
 
                 </div>
