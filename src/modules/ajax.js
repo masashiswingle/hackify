@@ -132,6 +132,18 @@ export const listOfCategories = () => {
   });
 };
 
+export const getMostPopular = () => {
+  console.log('in getMostPopular');
+  $.ajax({
+    method: 'GET',
+    url: '/mostPopular'
+  })
+  .done((data) => {
+    console.log('got from getMostPopular', data);
+    return data;
+  });
+};
+
 export const youTubeGetSong = (query, callback) => {
   const request = gapi.client.youtube.search.list({
     q: query,

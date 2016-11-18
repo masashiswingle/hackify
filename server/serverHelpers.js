@@ -32,6 +32,11 @@ module.exports = {
       });
   },
 
+  getMostPopular: function(req, res) {
+    console.log("I am here");
+    
+  },
+
   getArtistTopTracks: function (req, res) {
     spotifyApi.searchTracks(req.body.string)
       .then(function(data) {
