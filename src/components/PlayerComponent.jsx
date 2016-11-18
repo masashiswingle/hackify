@@ -135,7 +135,7 @@ class Player extends Component {
         <div className="modal fade" id="commandModal" data-backdrop="static">
           <div className="modal-dialog" role="document">
             <div className="modal-content">
-              <h4 className="centerAlign">Voice Commands</h4>
+              <h4 className="centerAlign"><b> Voice Commands </b></h4>
               <img id="closeModal" onClick={ this.displayPlayer.bind(this) } data-dismiss="modal" src="https://cdn3.iconfinder.com/data/icons/virtual-notebook/16/button_close-128.png"></img>
               <br></br>
               <br></br>
@@ -146,7 +146,9 @@ class Player extends Component {
               <p className="actions"> Pause <i className="commands"> "Stop" </i></p>
               <p className="actions"> Resume <i className="commands"> "Continue" </i></p>
               <br></br>
-              <h4 className="centerAlign">Other Functionalities</h4>
+              <h4 className="centerAlign"><b> Other Functionalities </b></h4>
+              <br></br>
+              <br></br>
               <p className="actions"> Click on any song in queue or history to play </p>
               <p className="actions"> Remove songs from queue by dragging to trash </p>
               <br></br>

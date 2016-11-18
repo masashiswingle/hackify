@@ -15,6 +15,7 @@ html, body {
 
 .centerAlign {
   text-align: center;
+  color: #d9894f;
 }
 
 #closeModal {
@@ -43,7 +44,7 @@ html, body {
 }
 
 #info {
-  height: 25px;
+  height: 35px;
   width: auto;
 }
 
