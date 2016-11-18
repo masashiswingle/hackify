@@ -99,6 +99,10 @@ a:focus, a:hover {
   outline: 0;
 }
 
+.commands {
+  margin-right: 100px;
+}
+
 .js-trigger-overlay-about:hover {
   background-color: #000000;
   color: #ffffff;
