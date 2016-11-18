@@ -71,23 +71,25 @@ class Album extends Component {
         </div>
        <div className ="col-xs-6 col-md-4">
         <div className='albumsHeader'>Artist's Albums</div>
-        {this.state.album.map(function(album, index){
-          if (album.album_type === "album") {
-                        console.log('alb', album)
-            return (
-              <div className = 'eachAlbum' key={index}>
-                <br/>
-                <img id="albumImg" src={album.images[1].url}></img>
-                <div id="albumName">{album.name}</div>
-                <div id="albumTracks">{album.tracks.total} tracks</div>
-                <div id="albumRelease"><p>Release date: </p>{album.release_date}</div>
-                <div id="albumCopyright">{album.copyrights[0].text}</div>
-                <br/>
+        <div className= 'genAlbums'>
+          {this.state.album.map(function(album, index){
+            if (album.album_type === "album") {
+                          console.log('alb', album)
+              return (
+                <div className = 'eachAlbum' key={index}>
+                  <br/>
+                  <img id="albumImg" src={album.images[1].url}></img>
+                  <div id="albumName">{album.name}</div>
+                  <div id="albumTracks">{album.tracks.total} tracks</div>
+                  <div id="albumRelease"><p>Release date: </p>{album.release_date}</div>
+                  <div id="albumCopyright">{album.copyrights[0].text}</div>
+                  <br/>
 
-              </div>
-            );
-          }
-        }, this)}
+                </div>
+              );
+            }
+          }, this)}
+        </div>
       </div>
       </div>
     );

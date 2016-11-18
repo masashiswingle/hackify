@@ -22,7 +22,7 @@ class Nav extends Component {
               <img className="nav" id="playlist" src={'/assets/playlist.png'} />
             </Tab>
             <Tab >
-              <img className="nav" id="worldMap" src={'/assets/worldMap.png'} />
+              <img className="nav" id="worldMap" src={'/assets/heart.png'} />
             </Tab>
             <Tab>
               <img className="nav" id="audacity" src={'/assets/audacity.png'} />
