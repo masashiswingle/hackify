@@ -39,11 +39,22 @@ module.exports = {
       communicateAction('<div>Playing next song in queue...</div>');
     };
 
-    // Shows messages/warning dialog
+    // Shows messages dialog
     function communicateAction(text) {
       var recP = document.getElementById('conversationPlayer');
       if (recP) {
         recP.innerHTML = 'Recognized: '+"'"+ text + "'";
+        setTimeout(function () {
+          document.getElementById('conversationPlayer').innerHTML = '';
+        },4000);
+      }
+    };
+
+    //Show warnings dialog
+    function errorMessage(text) {
+      var recP = document.getElementById('conversationPlayer');
+      if (recP) {
+        recP.innerHTML = text;
         setTimeout(function () {
           document.getElementById('conversationPlayer').innerHTML = '';
         },4000);
@@ -153,7 +164,7 @@ module.exports = {
 
         ':nomatch': function (message) {
             // communicateAction(message);
-          communicateAction('Sorry, I don\'t understand this action: ' + message);
+          errorMessage('Sorry, I don\'t understand this action: ' + message);
         }
       };
 
@@ -165,7 +176,7 @@ module.exports = {
     }
 
     annyang.addCallback('error', function () {
-      communicateAction('Oops! Something isn\'t right...');
+      errorMessage('Oops! Something isn\'t right...');
     });
   }
 }
