@@ -14,6 +14,10 @@ module.exports = {
         // console.log('songName: ', data.body.tracks.items[0].name);
         // var artistName = data.body.tracks.items[0].artists[0].name;
         // var songName = data.body.tracks.items[0].name;
+        Songs.create({
+          songName: data.body.tracks.items[0].name,
+          artistName: data.body.tracks.items[0].artists[0].name
+        })
         res.send(data.statusCode, data.body);
       }, function(err) {
         res.send(400, err);

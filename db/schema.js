@@ -27,11 +27,10 @@ database
   .sync({force: false})
   .then(function (){
     console.log('Tables created');
-   	return Songs.create({
- 		  songName: 'Hello',
- 		  artistName: 'Joanne'
- 	});
- });
+ })
+  .catch(function(err) {
+    console.log(err);
+  })
 
 module.exports = {
   Songs: Songs
