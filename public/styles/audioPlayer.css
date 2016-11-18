@@ -49,11 +49,11 @@
 }
 
 .volumeDiv {
-  display: block;
+  display: inline-block;
   width: 200px;
   position: absolute;
   right: 0;
-  top: 0;
+  bottom: 25px;
 }
 
 #volumebar {
