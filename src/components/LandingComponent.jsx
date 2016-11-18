@@ -29,7 +29,7 @@ class Landing extends Component {
             <a href="/"><img id="logo" src={'/assets/logo.png'}/><p>soundBear.</p></a>
           </div>
         </div>
-
+        
         <Scrollchor to="landingFeature" className="nav-link"><button className="js-trigger-overlay-about" type="button">about</button></Scrollchor>
 
         <hr></hr>
