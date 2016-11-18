@@ -132,15 +132,15 @@ export const listOfCategories = () => {
   });
 };
 
-export const getMostPopular = () => {
-  console.log('in getMostPopular');
+export const getMostPopular = (cb) => {
+  // console.log('in getMostPopular');
   $.ajax({
     method: 'GET',
     url: '/mostPopular'
   })
   .done((data) => {
     console.log('got from getMostPopular', data);
-    return data;
+    cb(data);
   });
 };
 

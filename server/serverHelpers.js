@@ -33,8 +33,14 @@ module.exports = {
   },
 
   getMostPopular: function(req, res) {
-    console.log("I am here");
-    
+    Songs.findAll({ limit: 10, order: 'views DESC' })
+      .then(function(data) {
+        res.status(200);
+        res.send(data);
+      })
+      .catch(function(err) {
+        console.log(err);
+      });
   },
 
   getArtistTopTracks: function (req, res) {
