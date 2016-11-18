@@ -2,13 +2,18 @@ const keys = require('../config.js');
 const SpotifyWebApi = require('spotify-web-api-node');
 const spotifyApi = new SpotifyWebApi(keys.spotify);
 const lyr = require('lyrics-fetcher');
+var Sequelize = require('sequelize');
+var Songs = require('../db/schema').Songs;
 
 module.exports = {
   getSpotifyData: function(req, res) {
     //console.log("inside getSpotifyData", req.body);
     spotifyApi.searchTracks(req.body.string)
       .then(function(data) {
-        //console.log('inside spotify server, artists id: ', data.body.tracks.items[0].artists[0].id);
+        // console.log('artistName: ', data.body.tracks.items[0].artists[0].name);
+        // console.log('songName: ', data.body.tracks.items[0].name);
+        // var artistName = data.body.tracks.items[0].artists[0].name;
+        // var songName = data.body.tracks.items[0].name;
         res.send(data.statusCode, data.body);
       }, function(err) {
         res.send(400, err);
