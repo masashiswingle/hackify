@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import Lyrics from './LyricsComponent';
-import Map from './MapComponent';
+import MostPopular from './MostPopularComponent';
 import Tree from './TreeComponent';
 import Track from './TrackComponent';
 import Album from './AlbumComponent';
@@ -36,7 +36,7 @@ class Nav extends Component {
           </TabList>
 
           <TabPanel><Lyrics /></TabPanel>
-          <TabPanel></TabPanel>
+          <TabPanel><MostPopular /></TabPanel>
           <TabPanel><Track /></TabPanel>
           <TabPanel><Album /></TabPanel>
           <TabPanel><Tree /></TabPanel>

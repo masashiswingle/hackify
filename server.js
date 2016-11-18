@@ -11,6 +11,9 @@ const webpackHotMiddleware    = require('webpack-hot-middleware');
 const config                  = require('./webpack.config');
 const dbURL                   = process.env.DATABASE_LINK;
 const helpers                 = require('./server/serverHelpers.js');
+const Models                  = require('./db/schema.js');
+const Sequelize               = require('sequelize');
+
 
 
 
@@ -46,6 +49,7 @@ app.post('/lyrics', helpers.getLyricsDetail);
 app.post('/artistsTree', helpers.getRelated);
 app.post('/artistInfo', helpers.getArtistInfo);
 app.post('/albumInfo', helpers.getAlbumInfo);
+app.get('/mostPopular', helpers.getMostPopular);
 
 // Authentication required for further routes:
 app.get('/listOfCategories', helpers.getListOfCategories);

@@ -2,16 +2,44 @@ const keys = require('../config.js');
 const SpotifyWebApi = require('spotify-web-api-node');
 const spotifyApi = new SpotifyWebApi(keys.spotify);
 const lyr = require('lyrics-fetcher');
+var Sequelize = require('sequelize');
+var Songs = require('../db/schema').Songs;
 
 module.exports = {
   getSpotifyData: function(req, res) {
-    //console.log("inside getSpotifyData", req.body);
     spotifyApi.searchTracks(req.body.string)
       .then(function(data) {
-        //console.log('inside spotify server, artists id: ', data.body.tracks.items[0].artists[0].id);
+        var name = data.body.tracks.items[0].name;
+        var artist = data.body.tracks.items[0].artists[0].name;
+
+
+        Songs.find({ where: { songName: name, artistName: artist } })
+          .then(function (song) {
+            if (song) {
+              var newViews = song.dataValues.views + 1;
+              song.update({ views: newViews });
+            } else {
+              Songs.create({
+                songName: name,
+                artistName: artist,
+                views: 1
+              })
+            }
+          })
         res.send(data.statusCode, data.body);
       }, function(err) {
         res.send(400, err);
+      });
+  },
+
+  getMostPopular: function(req, res) {
+    Songs.findAll({ limit: 10, order: 'views DESC' })
+      .then(function(data) {
+        res.status(200);
+        res.send(data);
+      })
+      .catch(function(err) {
+        console.log(err);
       });
   },
 
