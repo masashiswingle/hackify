@@ -20,7 +20,10 @@ database
   	},
   	artistName: {
   		type: Sequelize.STRING
-  	}
+  	},
+    views: {
+      type: Sequelize.INTEGER
+    }
   });
 
 database

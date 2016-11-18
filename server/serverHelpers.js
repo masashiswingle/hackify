@@ -7,17 +7,25 @@ var Songs = require('../db/schema').Songs;
 
 module.exports = {
   getSpotifyData: function(req, res) {
-    //console.log("inside getSpotifyData", req.body);
     spotifyApi.searchTracks(req.body.string)
       .then(function(data) {
-        // console.log('artistName: ', data.body.tracks.items[0].artists[0].name);
-        // console.log('songName: ', data.body.tracks.items[0].name);
-        // var artistName = data.body.tracks.items[0].artists[0].name;
-        // var songName = data.body.tracks.items[0].name;
-        Songs.create({
-          songName: data.body.tracks.items[0].name,
-          artistName: data.body.tracks.items[0].artists[0].name
-        })
+        var name = data.body.tracks.items[0].name;
+        var artist = data.body.tracks.items[0].artists[0].name;
+
+
+        Songs.find({ where: { songName: name, artistName: artist } })
+          .then(function (song) {
+            if (song) {
+              var newViews = song.dataValues.views + 1;
+              song.update({ views: newViews });
+            } else {
+              Songs.create({
+                songName: name,
+                artistName: artist,
+                views: 1
+              })
+            }
+          })
         res.send(data.statusCode, data.body);
       }, function(err) {
         res.send(400, err);
