@@ -99,7 +99,7 @@ class Player extends Component {
               <a href="/"><img id="logo" src={'/assets/logo.png'}/><p>soundBear.</p></a>
             </div>
           </div>
-
+          <button className="js-trigger-overlay-about commands" type="button">Commands</button>
           <Scrollchor to="navbar" className="nav-link"><button className="js-trigger-overlay-about" type="button">about</button></Scrollchor>
 
           <hr></hr>
