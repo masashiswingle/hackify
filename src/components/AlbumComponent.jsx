@@ -87,7 +87,7 @@ class Album extends Component {
                     <br/>
                     <div id="albumRelease"><p>Release date: </p>{album.release_date}</div>
                     <br/>
-                    <div id="albumCopyright">{album.copyrights[0].text.slice(0, 110)}</div>
+                    <div id="albumCopyright">{album.copyrights[0].text.slice(0, 110).replace(/\w+[.!?]?$/, '')}</div>
                   </div>
                   <br/>
 
