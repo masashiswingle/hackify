@@ -88,7 +88,14 @@ class ControlBar extends Component {
     setInterval(function () {
       var percentage = that.props.player.getCurrentTime() / that.props.player.getDuration();
       $('.progress-bar').css("width", percentage * 100 + "%")
-    }, 1000)
+    }, 1000);
+  }
+
+  componentDidUpdate() {
+    if (this.props.player.getVideoData().video_id !== this.props.currentSong.videoId) {
+      $('.fa-play').hide();
+      $('.fa-pause').show();
+    }
   }
 
   render() {
@@ -143,7 +150,8 @@ class ControlBar extends Component {
 const mapStateToProps = (state) => {
   return {
     currentSong: state.currentSong,
-    songQueue: state.songQueue
+    songQueue: state.songQueue,
+    restartSong: state.restartSong
   };
 };
 

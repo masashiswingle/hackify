@@ -82,11 +82,13 @@ class Player extends Component {
   }
 
   componentDidUpdate() {
-    console.log(this.props);
+    // console.log(this.props);
     if (this.props.restartSong) {
       player.stopVideo();
       this.props.toggleRestartToFalse();
       player.playVideo();
+      $('.fa-play').hide();
+      $('.fa-pause').show();
     }
     if (this.props.currentSong.videoId !== player.getVideoData().video_id) {
       player.cueVideoById(this.props.currentSong.videoId);
