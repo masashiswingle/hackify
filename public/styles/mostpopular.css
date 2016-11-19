@@ -1,32 +1,11 @@
-/*.champions {
-  display: -webkit-box;
+.songName {
+  text-align: left;
 }
 
-.mostPopularSong {
-  margin-right: 50px;
-}*/
-
-.mostPlayedSongs {
-  display: inline-block;
-  margin-left: 15px;
+.artistName {
+  text-align: left;
 }
 
-/*.marquee {
-  display: inline-block;
-    width: 1140px;
-    margin: 0 auto;
-    overflow: hidden;
-    white-space: nowrap;
-    box-sizing: border-box;
-    animation: marquee 20s linear infinite;
+.views {
+  text-align: left;
 }
-
-.marquee:hover {
-    animation-play-state: paused
-}
-
-
-@keyframes marquee {
-    0%   { text-indent: 100% }
-    100% { text-indent: -50% } // depending on text length...
-}*/
