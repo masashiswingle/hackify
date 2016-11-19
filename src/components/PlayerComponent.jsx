@@ -104,7 +104,7 @@ class Player extends Component {
               <a href="/"><img id="logo" src={'/assets/logo.png'}/><p>soundBear.</p></a>
             </div>
           </div>
-          <button className="js-trigger-overlay-about commands" onClick={ this.displayCommands.bind(this) } data-toggle="modal" data-target="#commandModal" type="button">commands</button>
+          <button className="js-trigger-overlay-about commandsBar" onClick={ this.displayCommands.bind(this) } data-toggle="modal" data-target="#commandModal" type="button">commands</button>
           <Scrollchor to="navbar" className="nav-link"><button className="js-trigger-overlay-about" type="button">about</button></Scrollchor>
 
           <hr></hr>
@@ -140,6 +140,7 @@ class Player extends Component {
               <img id="closeModal" onClick={ this.displayPlayer.bind(this) } data-dismiss="modal" src="https://cdn3.iconfinder.com/data/icons/virtual-notebook/16/button_close-128.png"></img>
               <br></br>
               <br></br>
+              <p className="actions head"> What you want to do <p className="commands head"> What you need to say </p></p>
               <p className="actions"> Play Song <i className="commands"> "Play Hello by Adele" </i></p>
               <p className="actions"> Add To Queue <i className="commands"> "Add to queue Sweet Virgina by The Rolling Stones" </i></p>
               <p className="actions"> Next <i className="commands"> "Play next song" </i></p>
@@ -148,7 +149,6 @@ class Player extends Component {
               <p className="actions"> Resume <i className="commands"> "Continue" </i></p>
               <br></br>
               <h4 className="centerAlign"><b> Other Functionalities </b></h4>
-              <br></br>
               <br></br>
               <p className="actions"> Click on any song in queue or history to play </p>
               <p className="actions"> Remove songs from queue by dragging to trash </p>

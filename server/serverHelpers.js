@@ -60,7 +60,6 @@ module.exports = {
         var artistId = data.body.tracks.items[0].artists[0].id;
         return spotifyApi.getArtistAlbums(artistId)
           .then(function(albums) {
-            //console.log('inside getArtistAlbums', albums.body)
             res.send(data.statusCode, albums.body);
           }, function(err) {
               res.send(400, err);

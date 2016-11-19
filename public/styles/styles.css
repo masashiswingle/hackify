@@ -30,11 +30,10 @@ html, body {
   margin-left: 25px;
 }
 
-.commands {
+.commandsBar {
   float: right;
-  /*margin-right: 25px;*/
+  margin-right: 120px
 }
-
 #closeModal:hover {
   cursor: pointer;
 }
@@ -115,6 +114,12 @@ html, body {
 
 .available:hover {
   cursor: pointer;
+}
+
+.head {
+  font-weight: bold;
+  font-size: 14px;
+  margin-bottom: 15px
 }
 
 
