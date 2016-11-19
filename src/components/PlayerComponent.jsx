@@ -82,11 +82,13 @@ class Player extends Component {
   }
 
   componentDidUpdate() {
-    console.log(this.props);
+    // console.log(this.props);
     if (this.props.restartSong) {
       player.stopVideo();
       this.props.toggleRestartToFalse();
       player.playVideo();
+      $('.fa-play').hide();
+      $('.fa-pause').show();
     }
     if (this.props.currentSong.videoId !== player.getVideoData().video_id) {
       player.cueVideoById(this.props.currentSong.videoId);
@@ -140,7 +142,7 @@ class Player extends Component {
               <h4 className="centerAlign"><b> Voice Commands </b></h4>
               <img id="closeModal" onClick={ this.displayPlayer.bind(this) } data-dismiss="modal" src="https://cdn3.iconfinder.com/data/icons/virtual-notebook/16/button_close-128.png"></img>
               <br></br>
-              <table class="table">
+              <table className="table">
                 <thead>
                   <tr className='eachRow heading'>
                     <th className="col-xs-2 heading">What you want to do:</th>
