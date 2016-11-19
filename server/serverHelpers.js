@@ -26,7 +26,7 @@ module.exports = {
               })
             }
           })
-          console.log('hello', data.body.tracks.items[0])
+          //console.log('hello', data.statusCode, data.body.tracks.items[0])
         // res.send(data.statusCode, data.body);
         res.status(data.statusCode).send(data.body);
       }, function(err) {
@@ -51,8 +51,8 @@ module.exports = {
         var artistId = data.body.tracks.items[0].artists[0].id;
         return spotifyApi.getArtistTopTracks(artistId, 'US')
           .then(function(tracks) {
-            console.log('inside getArtistTopTracks', tracks.body)
-            res.send(data.statusCode, tracks.body);
+            //console.log('inside getArtistTopTracks', tracks.body)
+        res.status(tracks.statusCode).send(tracks.body);
           }, function(err) {
               res.send(400, err);
           })
@@ -65,7 +65,7 @@ module.exports = {
         var artistId = data.body.tracks.items[0].artists[0].id;
         return spotifyApi.getArtistAlbums(artistId)
           .then(function(albums) {
-            console.log('inside getArtistAlbums', albums.body)
+            //console.log('inside getArtistAlbums', albums.body)
             res.send(data.statusCode, albums.body);
           }, function(err) {
               res.send(400, err);
@@ -88,7 +88,7 @@ module.exports = {
     console.log('getArtistInfo', req.body.id)
     spotifyApi.getAlbums([req.body.id])
       .then(function(data) {
-        console.log('got from getAlbumInfo', data);
+        //console.log('got from getAlbumInfo', data);
         res.send(data.statusCode, data.body);
       }, function(err) {
         console.error(err);

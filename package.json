@@ -4,12 +4,12 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "test": "NODE_ENV=test mocha spec/server/*.js -R nyan",
+    "test": "NODE_ENV=test mocha --timeout 15000 spec/server/*.js -R nyan",
     "start": "nodemon server.js",
     "build": "webpack",
     "test:lint": "eslint . --ext .js --ext .jsx --cache",
-    "test:server": "mocha spec/server/*.js -R nyan",
-    "test:client": "mocha spec/client/reducers.js -R nyan --compilers js:babel-register",
+    "test:server": "mocha --timeout 15000 spec/server/*.js -R nyan",
+    "test:client": "mocha --timeout 15000 spec/client/reducers.js -R nyan --compilers js:babel-register",
     "lint": "node ./node_modules/eslint/bin/eslint.js ./src",
     "dev:hot": "webpack-dev-server --hot --inline --progress --colors --watch --display-error-details --display-cached --content-base ./"
   },

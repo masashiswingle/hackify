@@ -22,7 +22,7 @@ describe('Requesting audio data', () => {
       .expect(200)
       .end((err, res) => {
         if (err) return done(err);
-             console.log('hello spec', data.body)
+             //console.log('hello spec', res.body.tracks.items[0].artists[0].id)
         res.body.tracks.items[0].artists[0].id.should.be.type('string');
         done();
       });
