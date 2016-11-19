@@ -6,24 +6,12 @@ const should = require('should');
 const _ = require('lodash');
 const mainReducer = require('../../src/redux/reducers').default;
 
+let data = require('./data.js');
 
 describe('Reducers-', () => {
   describe('SWITCH_VIEW_TO_PLAYER', () => {
-    let testData = {
-      type: 'SWITCH_VIEW_TO_PLAYER',
-      view: 'player',
-      currentSong: {
-        videoId: 'YQHsXMglC9A',
-        title: 'Adele - Hello',
-        artwork: 'https://i.scdn.co/image/f71517e8919892273de8d8677e42cdcf1b976aa7',
-        songName: 'Hello',
-        artistName: 'Adele',
-        artistId: '4dpARuHxo51G3z768sgnrY',
-        countries: ["AR","BO","BR","CL","CO","CR","DO","EC","GT","HN","MX","NI","PA","PE","PY","SV","US","UY"]
-      }
-    };
     it('mainReducer: Should return new view', () => {
-      mainReducer({}, testData).view.should.equal('player');
+      mainReducer({}, data.switchView).view.should.equal('player');
     });
   });
 
@@ -47,21 +35,7 @@ describe('Reducers-', () => {
   });
 
     describe('CHANGE_CURRENT_SONG', () => {
-    let oldData = {
-      type: 'SWITCH_VIEW_TO_PLAYER',
-      view: 'player',
-      currentSong: {
-        videoId: 'YQHsXMglC9A',
-        title: 'Adele - Hello',
-        artwork: 'https://i.scdn.co/image/f71517e8919892273de8d8677e42cdcf1b976aa7',
-        albumName: "Adele",
-        songName: 'Hello',
-        artistName: 'Adele',
-        artistId: '4dpARuHxo51G3z768sgnrY',
-        countries: ["AR","BO","BR","CL","CO","CR","DO","EC","GT","HN","MX","NI","PA","PE","PY","SV","US","UY"]
-      }
-    };
-    let newData = {
+    let newDataChange = {
       type: 'CHANGE_CURRENT_SONG',
       view: 'player',
       currentSong: {
@@ -76,165 +50,54 @@ describe('Reducers-', () => {
       }
     };
     it('mainReducer: Should change current song', () => {
-      let state = mainReducer({}, oldData);
-      mainReducer({}, oldData).currentSong.artistName.should.equal('Adele');
-      mainReducer(state, newData).currentSong.artistName.should.equal('Hozier');
+      let state = mainReducer({}, data.switchView);
+      mainReducer({}, data.switchView).currentSong.artistName.should.equal('Adele');
+      mainReducer(state, newDataChange).currentSong.artistName.should.equal('Hozier');
     });
   });
 
   describe('ADD_TO_QUEUE', () => {
-    let oldData = {
-      type: 'SWITCH_VIEW_TO_PLAYER',
-      view: 'player',
-      currentSong: {
-        videoId: 'YQHsXMglC9A',
-        title: 'Adele - Hello',
-        artwork: 'https://i.scdn.co/image/f71517e8919892273de8d8677e42cdcf1b976aa7',
-        albumName: "Adele",
-        songName: 'Hello',
-        artistName: 'Adele',
-        artistId: '4dpARuHxo51G3z768sgnrY',
-        countries: ["AR","BO","BR","CL","CO","CR","DO","EC","GT","HN","MX","NI","PA","PE","PY","SV","US","UY"]
-      }
-    };
-    let queue = {
-      type: 'INITIATE_QUEUE',
-      songQueue: [],
-      songHistory: []
-    };
-    let newData = {
-      type: 'ADD_TO_QUEUE',
-      view: 'player',
-      videoId: "Jn6-TItCazo",
-      title: "Arctic Monkeys - Arabella (Official Audio)",
-      artwork: "https://i.scdn.co/image/10c7b4705032bc99da2d32ec2751ab3fdd64ca5f",
-      albumName: "AM",
-      songName: "Arabella",
-      artistName: "Arctic Monkeys",
-      artistId: "7Ln80lUS6He07XvHI8qqHH",
-      countries: ["US"]
-    };
     it('mainReducer: Should add new song to queue', () => {
-      let state =  mainReducer({}, oldData);
-      mainReducer({}, oldData).currentSong.artistName.should.equal('Adele');
+      let state =  mainReducer({}, data.switchView);
+      mainReducer({}, data.switchView).currentSong.artistName.should.equal('Adele');
 
-      let initiated = mainReducer(state, queue);
-      mainReducer(initiated, newData).songQueue[0].artistName.should.equal('Arctic Monkeys');
+      let initiated = mainReducer(state, data.queue);
+      mainReducer(initiated, data.newData).songQueue[0].artistName.should.equal('Arctic Monkeys');
     });
   });
 
   describe('DEQUEUE_SONG', () => {
-    let oldData = {
-      type: 'SWITCH_VIEW_TO_PLAYER',
-      view: 'player',
-      currentSong: {
-        videoId: 'YQHsXMglC9A',
-        title: 'Adele - Hello',
-        artwork: 'https://i.scdn.co/image/f71517e8919892273de8d8677e42cdcf1b976aa7',
-        albumName: "Adele",
-        songName: 'Hello',
-        artistName: 'Adele',
-        artistId: '4dpARuHxo51G3z768sgnrY',
-        countries: ["AR","BO","BR","CL","CO","CR","DO","EC","GT","HN","MX","NI","PA","PE","PY","SV","US","UY"]
-      }
-    };
-    let queue = {
-      type: 'INITIATE_QUEUE',
-      songQueue: [],
-      songHistory: []
-    };
-    let newData = {
-      type: 'ADD_TO_QUEUE',
-      videoId: "Jn6-TItCazo",
-      title: "Arctic Monkeys - Arabella (Official Audio)",
-      artwork: "https://i.scdn.co/image/10c7b4705032bc99da2d32ec2751ab3fdd64ca5f",
-      albumName: "AM",
-      songName: "Arabella",
-      artistName: "Arctic Monkeys",
-      artistId: "7Ln80lUS6He07XvHI8qqHH",
-      countries: ["US"]
-    };
     let actionDequeue = {
       type: 'DEQUEUE_SONG'
     };
     it('mainReducer: Should set current song when dequeued', () => {
-      let state =  mainReducer({}, oldData);
-      mainReducer({}, oldData).currentSong.artistName.should.equal('Adele');
+      let state =  mainReducer({}, data.switchView);
+      mainReducer({}, data.switchView).currentSong.artistName.should.equal('Adele');
 
-      let initiated = mainReducer(state, queue);
-      mainReducer(initiated, newData).songQueue[0].artistName.should.equal('Arctic Monkeys');
+      let initiated = mainReducer(state, data.queue);
+      mainReducer(initiated, data.newData).songQueue[0].artistName.should.equal('Arctic Monkeys');
 
-      let dequeued = mainReducer(initiated, newData);
+      let dequeued = mainReducer(initiated, data.newData);
       mainReducer(dequeued, actionDequeue).currentSong.artistName.should.equal('Arctic Monkeys');
     });
   });
 
   describe('ADD_TO_HISTORY', () => {
-    let oldData = {
-      type: 'SWITCH_VIEW_TO_PLAYER',
-      view: 'player',
-      currentSong: {
-        videoId: 'YQHsXMglC9A',
-        title: 'Adele - Hello',
-        artwork: 'https://i.scdn.co/image/f71517e8919892273de8d8677e42cdcf1b976aa7',
-        albumName: "Adele",
-        songName: 'Hello',
-        artistName: 'Adele',
-        artistId: '4dpARuHxo51G3z768sgnrY',
-        countries: ["AR","BO","BR","CL","CO","CR","DO","EC","GT","HN","MX","NI","PA","PE","PY","SV","US","UY"]
-      }
-    };
-    let queue = {
-      type: 'INITIATE_QUEUE',
-      songQueue: [],
-      songHistory: []
-    };
     let actionHistory = {
       type: 'ADD_TO_HISTORY',
-      song: oldData.currentSong
+      song: data.switchView.currentSong
     };
     it('mainReducer: Should add current song to history when played', () => {
-      let state =  mainReducer({}, oldData);
-      mainReducer({}, oldData).currentSong.artistName.should.equal('Adele');
+      let state =  mainReducer({}, data.switchView);
+      mainReducer({}, data.switchView).currentSong.artistName.should.equal('Adele');
 
-      let initiated = mainReducer(state, queue);
+      let initiated = mainReducer(state, data.queue);
       mainReducer(initiated, actionHistory).songHistory[0].artistName.should.equal('Adele');
       mainReducer(initiated, actionHistory).currentSong.artistName.should.not.be.ok;
     });
   });
 
   describe('MODIFY_QUEUE', () => {
-    let oldData = {
-      type: 'SWITCH_VIEW_TO_PLAYER',
-      view: 'player',
-      currentSong: {
-        videoId: 'YQHsXMglC9A',
-        title: 'Adele - Hello',
-        artwork: 'https://i.scdn.co/image/f71517e8919892273de8d8677e42cdcf1b976aa7',
-        albumName: "Adele",
-        songName: 'Hello',
-        artistName: 'Adele',
-        artistId: '4dpARuHxo51G3z768sgnrY',
-        countries: ["AR","BO","BR","CL","CO","CR","DO","EC","GT","HN","MX","NI","PA","PE","PY","SV","US","UY"]
-      }
-    };
-    let queue = {
-      type: 'INITIATE_QUEUE',
-      songQueue: [],
-      songHistory: []
-    };
-    let newData = {
-      type: 'ADD_TO_QUEUE',
-      view: 'player',
-      videoId: "Jn6-TItCazo",
-      title: "Arctic Monkeys - Arabella (Official Audio)",
-      artwork: "https://i.scdn.co/image/10c7b4705032bc99da2d32ec2751ab3fdd64ca5f",
-      albumName: "AM",
-      songName: "Arabella",
-      artistName: "Arctic Monkeys",
-      artistId: "7Ln80lUS6He07XvHI8qqHH",
-      countries: ["US"]
-    };
     let newQueue = {
       type: 'ADD_TO_QUEUE',
       view: 'player',
@@ -264,45 +127,26 @@ describe('Reducers-', () => {
       }]
     };
 
-
     it('mainReducer: Should remove chosen song from queue', () => {
-      let state =  mainReducer({}, oldData);
-      mainReducer({}, oldData).currentSong.artistName.should.equal('Adele');
+      let state =  mainReducer({}, data.switchView);
+      mainReducer({}, data.switchView).currentSong.artistName.should.equal('Adele');
 
-      let initiated = mainReducer(state, queue);
-      mainReducer(initiated, newData).songQueue[0].artistName.should.equal('Arctic Monkeys');
+      let initiated = mainReducer(state, data.queue);
+      mainReducer(initiated, data.newData).songQueue[0].artistName.should.equal('Arctic Monkeys');
 
-      let newQueueCreated = mainReducer(initiated, newData);
+      let newQueueCreated = mainReducer(initiated, data.newData);
       mainReducer(newQueueCreated, newQueue).songQueue[1].artistName.should.equal('Adele');
 
       let modified = mainReducer(newQueueCreated, newQueue);
       mainReducer(modified, modifiedQueue).songQueue[0].artistName.should.not.equal('Arctic Monkeys');
+      mainReducer(modified, modifiedQueue).songQueue.length.should.equal(1);
     });
   });
 
   describe('MODIFY_HISTORY', () => {
-    let oldData = {
-      type: 'SWITCH_VIEW_TO_PLAYER',
-      view: 'player',
-      currentSong: {
-        videoId: 'YQHsXMglC9A',
-        title: 'Adele - Hello',
-        artwork: 'https://i.scdn.co/image/f71517e8919892273de8d8677e42cdcf1b976aa7',
-        albumName: "Adele",
-        songName: 'Hello',
-        artistName: 'Adele',
-        artistId: '4dpARuHxo51G3z768sgnrY',
-        countries: ["AR","BO","BR","CL","CO","CR","DO","EC","GT","HN","MX","NI","PA","PE","PY","SV","US","UY"]
-      }
-    };
-    let queue = {
-      type: 'INITIATE_QUEUE',
-      songQueue: [],
-      songHistory: []
-    };
     let actionHistory = {
       type: 'ADD_TO_HISTORY',
-      song: oldData.currentSong
+      song: data.switchView.currentSong
     };
 
     let modifiedHistory = {
@@ -311,10 +155,10 @@ describe('Reducers-', () => {
     };
 
     it('mainReducer: Should remove chosen song from history', () => {
-      let state =  mainReducer({}, oldData);
-      mainReducer({}, oldData).currentSong.artistName.should.equal('Adele');
+      let state =  mainReducer({}, data.switchView);
+      mainReducer({}, data.switchView).currentSong.artistName.should.equal('Adele');
 
-      let initiated = mainReducer(state, queue);
+      let initiated = mainReducer(state, data.queue);
       mainReducer(initiated, actionHistory).songHistory[0].artistName.should.equal('Adele');
       mainReducer(initiated, actionHistory).currentSong.artistName.should.not.be.ok;
 
@@ -324,37 +168,19 @@ describe('Reducers-', () => {
   });
 
   describe('PLAY_PREVIOUS', () => {
-    let oldData = {
-      type: 'SWITCH_VIEW_TO_PLAYER',
-      view: 'player',
-      currentSong: {
-        videoId: 'YQHsXMglC9A',
-        title: 'Adele - Hello',
-        artwork: 'https://i.scdn.co/image/f71517e8919892273de8d8677e42cdcf1b976aa7',
-        albumName: "Adele",
-        songName: 'Hello',
-        artistName: 'Adele',
-        artistId: '4dpARuHxo51G3z768sgnrY',
-        countries: ["AR","BO","BR","CL","CO","CR","DO","EC","GT","HN","MX","NI","PA","PE","PY","SV","US","UY"]
-      }
-    };
-    let queue = {
-      type: 'INITIATE_QUEUE',
-      songQueue: [],
-      songHistory: []
-    };
     let actionHistory = {
       type: 'ADD_TO_HISTORY',
-      song: oldData.currentSong
+      song: data.switchView.currentSong
     };
     let action = {
       type: 'PLAY_PREVIOUS'
-    }
-    it('mainReducer: Should play previous song', () => {
-      let state =  mainReducer({}, oldData);
-      mainReducer({}, oldData).currentSong.artistName.should.equal('Adele');
+    };
 
-      let initiated = mainReducer(state, queue);
+    it('mainReducer: Should play previous song', () => {
+      let state =  mainReducer({}, data.switchView);
+      mainReducer({}, data.switchView).currentSong.artistName.should.equal('Adele');
+
+      let initiated = mainReducer(state, data.queue);
       mainReducer(initiated, actionHistory).songHistory[0].artistName.should.equal('Adele');
       mainReducer(initiated, actionHistory).currentSong.artistName.should.not.be.ok;
 
