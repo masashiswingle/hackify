@@ -2,15 +2,6 @@
   display: none;
 }
 
-.volumeDiv img#mute {
-  display: none;
-}
-
-.volumeDiv:hover #volumebar {
-  visibility: visible;
-  bottom: 20px;
-}
-
 .progress-wrap {
   margin: 0 auto;
   display: block;
@@ -59,11 +50,24 @@
   position: relative;
 }
 
+.volumeDiv img#mute {
+  display: none;
+}
+
 #volumebar {
   display: inline;
   visibility: hidden;
+  opacity:0;
+  transition:visibility 0s linear 0.5s,opacity 0.5s linear;
   width: 70px;
   margin-left: -10px;
+}
+
+.volumeDiv:hover #volumebar {
+  visibility: visible;
+  opacity:1;
+  transition-delay:0s;
+  bottom: 20px;
 }
 
 #playlist, #worldMap, #audacity, #uncheck, #tournament {
