@@ -16,18 +16,6 @@ class Queue extends Component {
     this.props.changeCurrentSong(song);
   }
 
-  animateTrash() {
-    $('#trashImg').animate({
-      height: '50px',
-      width: 'auto'
-    }, 500);
-    setTimeout(() => {
-      console.log('hello');
-      $('#trashImg').height(25);
-      $('#trashImg').width('auto');
-    }, 5000);
-  }
-
   render() {
     if (this.props.songQueue.length > 0) {
       return (
@@ -37,7 +25,7 @@ class Queue extends Component {
               this.props.songQueue.map(function(song, index) {
                 if (index < 5) {
                   return (
-                    <Draggable type="song" data={ song.videoId } onDrag={ this.animateTrash.bind(this) } key={ index } className="queue available" style={{ zIndex: index }}>
+                    <Draggable type="song" data={ song.videoId } key={ index } className="queue available" style={{ zIndex: index }}>
                       <img className="songImage" src={ song.artwork } onClick={ () => { this.selectSongFromQueue(song)} } ></img>
                     </Draggable>
                   );

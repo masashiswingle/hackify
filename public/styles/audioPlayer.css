@@ -8,6 +8,7 @@
 
 .volumeDiv:hover #volumebar {
   visibility: visible;
+  bottom: 20px;
 }
 
 .progress-wrap {
@@ -38,6 +39,11 @@
   text-align: center;
 }
 
+.controlBar {
+  margin-top: -35px;
+  text-align: center;
+}
+
 .buttons {
   display: inline;
   margin: 30px;
@@ -50,10 +56,7 @@
 
 .volumeDiv {
   display: inline-block;
-  width: 200px;
-  position: absolute;
-  right: 0;
-  bottom: 25px;
+  position: relative;
 }
 
 #volumebar {
