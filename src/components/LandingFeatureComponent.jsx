@@ -21,7 +21,7 @@ class LandingFeature extends Component {
             <h3>real-time</h3>
             <h2>interaction</h2>
             <h4 className='text-mainunderline'>_________</h4>
-            <h4>Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah</h4>
+            <h4> Just click on the start listening button and say "PLAY" song "BY" artist  </h4>
           </div>
         </div>
 
@@ -33,7 +33,24 @@ class LandingFeature extends Component {
             <h3>variety of</h3>
             <h2>commands</h2>
             <h4 className='text-mainunderline'>_________</h4>
-            <h4>Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah</h4>
+            <h4>Voice Commands
+
+Play Song "Play Hello by Adele"
+
+Add To Queue "Add to queue Sweet Virgina by The Rolling Stones"
+
+Next "Play next song"
+
+Previous "Play previous song"
+
+Pause "Stop"
+
+Resume "Continue"
+
+
+Click on any song in queue or history to play
+
+Remove songs from queue by dragging to trash</h4>
           </div>
           <div className="col-sm-6 col-md-6 col-lg-6">
             <img className="landingpic" id="sound" src={'/assets/sound.jpg'}/>
