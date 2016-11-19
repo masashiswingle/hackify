@@ -22,7 +22,7 @@ describe('Requesting audio data', () => {
       .expect(200)
       .end((err, res) => {
         if (err) return done(err);
-             console.log('hello spec', data.body)
+             //console.log('hello spec', res.body.tracks.items[0].artists[0].id)
         res.body.tracks.items[0].artists[0].id.should.be.type('string');
         done();
       });
@@ -60,20 +60,52 @@ describe('Requesting audio data', () => {
     });
   });
 
-  xdescribe('Related Artists', () => {
+  describe('Related Artists', () => {
     it('should respond with array of related artists', (done) => {
-      server.post('/relatedArtists')
+      server.post('/artistsTree')
       .send({
-        string: 'lady gaga poker face'
+        artistId: '4dpARuHxo51G3z768sgnrY',
+        excludeList: ['2FXC3k01G6Gw61bmprjgqS']
       })
       .expect(200)
       .end((err, res) => {
         if (err) return done(err);
-        res.body.artists[0].popularity.should.be.a.Number;
+        res.body[0].popularity.should.be.a.Number;
         done();
       });
     });
   });
+
+  describe('Artist Info', () => {
+    it('should respond with object containing artist info', (done) => {
+      server.post('/artistInfo')
+      .send({
+        id: '4dpARuHxo51G3z768sgnrY'
+      })
+      .expect(200)
+      .end((err, res) => {
+        if (err) return done(err);
+        res.body.images.should.be.an.instanceOf(Array);
+        done();
+      });
+    });
+  });
+
+  describe('Album Info', () => {
+    it('should respond with object containing album info', (done) => {
+      server.post('/albumInfo')
+      .send({
+        id: '0sNOF9WDwhWunNAHPD3Baj'
+      })
+      .expect(200)
+      .end((err, res) => {
+        if (err) return done(err);
+        res.body.albums[0].album_type.should.be.type('string');
+        done();
+      });
+    });
+  });
+
 
   describe('Lyrics', () => {
     it('should respond with array of related artists', (done) => {
