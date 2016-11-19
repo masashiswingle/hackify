@@ -329,7 +329,15 @@ export const getCountries = () => {
 };
 
 export const playPrevious = () => {
+  if (store.getState().songHistory.length > 0) {
+    store.dispatch({
+      type: 'PLAY_PREVIOUS'
+    });
+  }
+};
+
+export const restartSong = () => {
   store.dispatch({
-    type: 'PLAY_PREVIOUS'
+    type: 'RESTART_SONG'
   });
 };

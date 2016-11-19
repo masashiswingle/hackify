@@ -1,6 +1,7 @@
 import _ from 'lodash';
 
 const mainReducer = function (state = {}, action) {
+  var deepEqualState = _.cloneDeep(state);
   switch (action.type) {
     case 'SWITCH_VIEW_TO_PLAYER':
       return {
@@ -64,18 +65,22 @@ const mainReducer = function (state = {}, action) {
         songHistory: action.newHistory
       };
     case 'PLAY_PREVIOUS':
-      var deepEqualState = _.cloneDeep(state);
       deepEqualState.songQueue.unshift(deepEqualState.currentSong);
       deepEqualState.currentSong = deepEqualState.songHistory.pop();
       return deepEqualState;
     case 'REMOVE_FROM_HISTORY':
-      var deepEqualState = _.cloneDeep(state);
       var newQueue = deepEqualState.songQueue.filter(function(song) {
         if (song.videoId !== action.songId.song) {
           return song;
         }
       });
       deepEqualState.songQueue = newQueue;
+      return deepEqualState;
+    case 'RESTART_SONG':
+      deepEqualState.restartSong = true;
+      return deepEqualState;
+    case 'RESTART_TO_FALSE':
+      deepEqualState.restartSong = false;
       return deepEqualState;
     default:
       return state;
