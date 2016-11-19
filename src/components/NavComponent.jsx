@@ -20,6 +20,7 @@ class Nav extends Component {
           <TabList className="navlist">
             <Tab >
               <img className="nav" id="playlist" src={'/assets/playlist.png'} />
+              <p id="navlyrics">Lyrics</p>
             </Tab>
             <Tab >
               <img className="nav" id="worldMap" src={'/assets/heart.png'} />

@@ -1,11 +1,6 @@
 .navlist {
   text-align: center;
-
 }
-.react-tabs [role=tab] {
-  margin-top: 10px
-}
-
 
 .nav {
   margin: 30px 30px;
@@ -14,4 +9,27 @@
 #conversationPlayer {
   height: 50px;
   margin-top: -40px;
+}
+
+#navlyrics {
+  display: none;
+}
+
+#playlist:hover #navlyrics {
+  display: block;
+}
+
+.react-tabs [role=tablist] {
+  border-bottom: 3px solid #ffe1bd;
+}
+
+.react-tabs [role=tab] {
+  border: 3px solid transparent;
+  border-bottom: none;
+  bottom: -3px;
+  margin-top: 10px
+}
+
+.react-tabs [role=tab][aria-selected=true] {
+  border-color: #ffe1bd;
 }
