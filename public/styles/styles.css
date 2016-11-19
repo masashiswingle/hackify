@@ -27,7 +27,7 @@ html, body {
 }
 
 .actions {
-  margin-left: 25px;
+  margin-left: 15px;
 }
 
 .commandsBar {
@@ -123,6 +123,27 @@ html, body {
   font-weight: bold;
   font-size: 14px;
   margin-bottom: 15px
+}
+tr.eachRow > td {
+  padding-bottom: 1em;
+}
+
+tr.first > td {
+  padding-top: 1em;
+}
+
+.descript {
+  font-style: italic;
+}
+
+.funchead{
+    margin-bottom: 0px;
+    margin-top: 20px;
+}
+
+.heading {
+    font-weight: bold;
+  font-size: 14px;
 }
 
 
