@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+  import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import ControlBar from './ControlBarComponent';
 import Lineup from './LineupComponent';
@@ -81,8 +81,6 @@ class Player extends Component {
   }
 
   componentDidUpdate() {
-    console.log(this.props.currentSong.videoId);
-    console.log(player.getVideoData().video_id);
     if (this.props.currentSong.videoId !== player.getVideoData().video_id) {
       player.cueVideoById(this.props.currentSong.videoId);
       player.playVideo();
@@ -99,7 +97,7 @@ class Player extends Component {
               <a href="/"><img id="logo" src={'/assets/logo.png'}/><p>soundBear.</p></a>
             </div>
           </div>
-          <button className="js-trigger-overlay-about commands" type="button">Commands</button>
+          <button className="js-trigger-overlay-about commands" onClick={ this.displayCommands.bind(this) } data-toggle="modal" data-target="#commandModal" type="button">Commands</button>
           <Scrollchor to="navbar" className="nav-link"><button className="js-trigger-overlay-about" type="button">about</button></Scrollchor>
 
           <hr></hr>
@@ -107,10 +105,7 @@ class Player extends Component {
           <br></br>
 
           <div className="row">
-            <div className="col-md-4">
-              <img id="info" onClick={ this.displayCommands.bind(this) } data-toggle="modal" data-target="#commandModal" src="http://www.tonfly.com/images/defaults/info.png"></img>
-            </div>
-            <div className="col-md-4">
+            <div className="col-md-4 col-md-offset-4">
               <p id="currentTrack"> { this.props.currentSong.artistName } - { this.props.currentSong.songName } </p>
               <p id="currentTrack"> { this.props.currentSong.albumName } </p>
             </div>

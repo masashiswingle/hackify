@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Queue from './QueueComponent';
 import History from './HistoryComponent';
+import $ from 'jquery';
 
 class Lineup extends Component {
 
@@ -12,7 +13,7 @@ class Lineup extends Component {
           <History />
         </div>
         <div className="col-md-2">
-          <img id="currentSong" src={ this.props.currentSong.artwork } ></img>
+          <img id='currentSong' src={ this.props.currentSong.artwork } ></img>
         </div>
         <div className="col-md-5">
           <Queue />
