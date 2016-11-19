@@ -26,7 +26,9 @@ module.exports = {
               })
             }
           })
-        res.send(data.statusCode, data.body);
+          console.log('hello', data.body.tracks.items[0])
+        // res.send(data.statusCode, data.body);
+        res.status(data.statusCode).send(data.body);
       }, function(err) {
         res.send(400, err);
       });

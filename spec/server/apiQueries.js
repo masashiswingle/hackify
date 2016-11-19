@@ -8,12 +8,12 @@ const server = request.agent('http://localhost:8080');
 const app = require('../../server');
 const agent = request.agent(app);
 
-describe('Requesting Audio Data', () => {
+describe('Requesting audio data', () => {
   beforeEach((done) => {
     done();
   });
 
-   describe('Spotify Data', () => {
+   describe('Spotify', () => {
     it('should respond with artis\'s id', (done) => {
       server.post('/getSongs')
       .send({
@@ -22,6 +22,7 @@ describe('Requesting Audio Data', () => {
       .expect(200)
       .end((err, res) => {
         if (err) return done(err);
+             console.log('hello spec', data.body)
         res.body.tracks.items[0].artists[0].id.should.be.type('string');
         done();
       });
@@ -59,7 +60,7 @@ describe('Requesting Audio Data', () => {
     });
   });
 
-  describe('Related Artists', () => {
+  xdescribe('Related Artists', () => {
     it('should respond with array of related artists', (done) => {
       server.post('/relatedArtists')
       .send({
@@ -74,7 +75,7 @@ describe('Requesting Audio Data', () => {
     });
   });
 
-    describe('Lyrics', () => {
+  describe('Lyrics', () => {
     it('should respond with array of related artists', (done) => {
       server.post('/lyrics')
       .send({
