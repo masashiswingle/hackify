@@ -1,6 +1,7 @@
   import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import ControlBar from './ControlBarComponent';
+import MostPopular from './MostPopularComponent';
 import Lineup from './LineupComponent';
 import * as helpers from '../modules/ajax';
 import { annyangCall } from '../annyang';
@@ -101,7 +102,7 @@ class Player extends Component {
           <Scrollchor to="navbar" className="nav-link"><button className="js-trigger-overlay-about" type="button">about</button></Scrollchor>
 
           <hr></hr>
-
+          <MostPopular />
           <br></br>
 
           <div className="row">
