@@ -67,3 +67,9 @@ export function removeFromHistory(songId) {
     songId
   };
 }
+
+export function toggleRestartToFalse() {
+  return {
+    type: 'RESTART_TO_FALSE'
+  };
+}
