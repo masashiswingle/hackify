@@ -102,7 +102,7 @@ class Player extends Component {
           <Scrollchor to="navbar" className="nav-link"><button className="js-trigger-overlay-about" type="button">about</button></Scrollchor>
 
           <hr></hr>
-          <MostPopular />
+          
           <br></br>
 
           <div className="row">
