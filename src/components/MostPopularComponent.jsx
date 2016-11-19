@@ -27,8 +27,13 @@ class MostPopular extends Component {
 
   render() {
     return (
-      <div className="container center">
-        <h1>Top Ten Songs</h1>
+      <div className="container">
+        <h1 id="topten">Top Ten Songs</h1>
+        <div className="row left top">
+          <h3 className="toptennav col-sm-4 col-md-4 col-lg-4">Song</h3>
+          <h3 className="toptennav col-sm-4 col-md-4 col-lg-4">Artist</h3>
+          <h3 className="toptennav col-sm-4 col-md-4 col-lg-4">Views</h3>
+        </div>
         {this.state.result.map(function(champion, index){
           return (
             <div className="row left" key={index}>
