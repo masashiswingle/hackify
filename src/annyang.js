@@ -2,7 +2,7 @@ import * as helpers from './modules/ajax';
 
 module.exports = {
   annyangCall: function() {
-    // Creates query based on passed parame
+    // Creates query based on passed params
     function createQuery(songName, artistName) {
       if (artistName) {
         var query = songName +' by ' + artistName;
@@ -17,20 +17,12 @@ module.exports = {
       $('.spinner-toggle').toggle();
       var query = createQuery(songName, artistName);
       helpers.youTubeGetSongAnnyang(query, songName, artistName);
-        // .then(function () {
-        //   var track = helpers.getSearchItem();
-        //   document.getElementById('conversation').innerHTML = "";
-        //   communicateAction('<div>Playing ' + track.snippet.title + '</div><img width="150" src="' + track.snippet.thumbnails.medium.url + '">');
-        // });
     };
 
     // Adds song to queue to be played later
     function addToQueue (songName, artistName) {
       var query = createQuery(songName, artistName);
       helpers.addSongToQueue(query, songName, artistName);
-      // .then(function () {
-      //   var track = helpers.getSearchItem();
-      // });
     };
 
     // Plays next song in queue
@@ -39,11 +31,22 @@ module.exports = {
       communicateAction('<div>Playing next song in queue...</div>');
     };
 
-    // Shows messages/warning dialog
+    // Shows messages dialog
     function communicateAction(text) {
       var recP = document.getElementById('conversationPlayer');
       if (recP) {
         recP.innerHTML = 'Recognized: '+"'"+ text + "'";
+        setTimeout(function () {
+          document.getElementById('conversationPlayer').innerHTML = '';
+        },4000);
+      }
+    };
+
+    // Show warnings dialog
+    function errorMessage(text) {
+      var recP = document.getElementById('conversationPlayer');
+      if (recP) {
+        recP.innerHTML = text;
         setTimeout(function () {
           document.getElementById('conversationPlayer').innerHTML = '';
         },4000);
@@ -152,8 +155,7 @@ module.exports = {
         },
 
         ':nomatch': function (message) {
-            // communicateAction(message);
-          communicateAction('Sorry, I don\'t understand this action: ' + message);
+          errorMessage('Sorry, I don\'t understand this action: ' + message);
         }
       };
 
@@ -165,7 +167,7 @@ module.exports = {
     }
 
     annyang.addCallback('error', function () {
-      communicateAction('Oops! Something isn\'t right...');
+      errorMessage('Oops! Something isn\'t right...');
     });
   }
 }

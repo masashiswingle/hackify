@@ -21,7 +21,7 @@
 #spinner{
   display: none;
   margin: auto auto;
-  margin-top: -5px;
+  margin-top: 15px;
   width: 40px;
   height: 40px;
 }
