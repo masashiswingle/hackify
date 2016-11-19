@@ -211,15 +211,17 @@ export const addSongToQueue = (query, songName, artistName) => {
 };
 
 export const dequeueSong = () => {
-  const currentSong = store.getState().currentSong;
-  store.dispatch({
-    type: 'ADD_TO_HISTORY',
-    song: currentSong
-  });
-  store.dispatch({
-    type: 'DEQUEUE_SONG',
-    view: 'player'
-  });
+  if (store.getState().songQueue.length > 0) {
+    const currentSong = store.getState().currentSong;
+    store.dispatch({
+      type: 'ADD_TO_HISTORY',
+      song: currentSong
+    });
+    store.dispatch({
+      type: 'DEQUEUE_SONG',
+      view: 'player'
+    });
+  }
 };
 
 export const stopSong = () => {
