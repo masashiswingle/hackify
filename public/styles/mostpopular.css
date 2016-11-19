@@ -1,11 +1,17 @@
-.songName {
-  text-align: left;
+.songName, .artistName, .views, .toptennav {
+  text-align: center;
+  padding-bottom: 20px;
 }
 
-.artistName {
-  text-align: left;
+#topten {
+  color: #d9894f;
 }
 
-.views {
-  text-align: left;
+#toptennav {
+  font-weight: bold;
+}
+
+.top {
+  background-color: #ffe1bd;
+  margin-bottom: 20px;
 }
