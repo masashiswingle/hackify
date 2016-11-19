@@ -93,40 +93,46 @@ class ControlBar extends Component {
 
   render() {
     return(
-      <div className="row controlDiv">
+      <div>
+        <div className="row controlDiv">
 
-        <div className="audio-player-buttons">
-          <img className="buttons" id="fastBackward" src={'/assets/fastBackward.png'} onClick={ this.previous.bind(this) } />
+          <div className="audio-player-buttons col-md-offset-3 col-md-6">
+            <img className="buttons" id="fastBackward" src={'/assets/fastBackward.png'} onClick={ this.previous.bind(this) } />
 
-          <div className="play-button buttons">
-            <img className="fa-play" id="player-play" src={'/assets/play.png'} onClick={ this.state.pause ? this.play.bind(this) : this.pause.bind(this) } />
-            <img className="fa-pause" id='player-pause' src={'/assets/pause.png'} onClick={ this.state.pause ? this.play.bind(this) : this.pause.bind(this) } />
+            <div className="play-button buttons">
+              <img className="fa-play" id="player-play" src={'/assets/play.png'} onClick={ this.state.pause ? this.play.bind(this) : this.pause.bind(this) } />
+              <img className="fa-pause" id='player-pause' src={'/assets/pause.png'} onClick={ this.state.pause ? this.play.bind(this) : this.pause.bind(this) } />
+            </div>
+
+            <img className="buttons" id="stop" src={'/assets/stop.png'} onClick={ this.stop.bind(this) } />
+
+            <img className="buttons" id="fastForward" src={'/assets/fastForward.png'} onClick={ this.next.bind(this) } />
           </div>
 
-          <img className="buttons" id="stop" src={'/assets/stop.png'} onClick={ this.stop.bind(this) } />
+          <div className="col-md-3">
+            <Droppable id="trash" types={ ['song'] } onDrop={ this.onDrop.bind(this) }>
+              <img id="trashImg" src="https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-ios7-trash-outline-128.png"></img>
+            </Droppable>
 
-          <img className="buttons" id="fastForward" src={'/assets/fastForward.png'} onClick={ this.next.bind(this) } />
-
-          <Droppable id="trash" types={ ['song'] } onDrop={ this.onDrop.bind(this) }>
-            <img id="trashImg" src="https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-ios7-trash-outline-128.png"></img>
-          </Droppable>
-
-          <div className="volumeDiv buttons">
-            <img className="buttons mute-control" id="unmute" src={'/assets/unmute.png'} onClick={ this.muteOrUnmute.bind(this) } />
-            <img className="buttons mute-control" id="mute" src={'/assets/mute.png'} onClick={  this.muteOrUnmute.bind(this) } />
-            <input type="range" id="volumebar" onChange={ this.volume.bind(this) } title="Volume" min="0" max="100" step="1"></input>
+            <div className="volumeDiv">
+              <img className="buttons mute-control" id="unmute" src={'/assets/unmute.png'} onClick={ this.muteOrUnmute.bind(this) } />
+              <img className="buttons mute-control" id="mute" src={'/assets/mute.png'} onClick={  this.muteOrUnmute.bind(this) } />
+              <input type="range" id="volumebar" onChange={ this.volume.bind(this) } title="Volume" min="0" max="100" step="1"></input>
+            </div>
           </div>
         </div>
 
-        <div id="conversationPlayer"></div>
+        <div className="row controlBar">
+          <div id="conversationPlayer" className="col-md-offset-3 col-md-6"></div>
+        </div>
 
-        <div className="progress-wrap" onClick={ this.progress.bind(this) }>
+        <div className="row progress-wrap" onClick={ this.progress.bind(this) }>
           <div className="progress-bar"></div>
         </div>
 
         <br></br>
 
-        <div id="navbar">
+        <div id="navbar" className="row controlDiv">
           <Nav />
         </div>
       </div>
