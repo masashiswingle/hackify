@@ -32,7 +32,7 @@ html, body {
 
 .commands {
   float: right;
-  margin-right: 15px;
+  /*margin-right: 25px;*/
 }
 
 #closeModal:hover {

@@ -17,11 +17,15 @@ class Queue extends Component {
   }
 
   animateTrash() {
-    console.log('poop');
     $('#trashImg').animate({
       height: '50px',
       width: 'auto'
     }, 500);
+    setTimeout(() => {
+      console.log('hello');
+      $('#trashImg').height(25);
+      $('#trashImg').width('auto');
+    }, 5000);
   }
 
   render() {

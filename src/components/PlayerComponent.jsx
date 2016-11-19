@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+  import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import ControlBar from './ControlBarComponent';
 import Lineup from './LineupComponent';
@@ -81,8 +81,6 @@ class Player extends Component {
   }
 
   componentDidUpdate() {
-    console.log(this.props.currentSong.videoId);
-    console.log(player.getVideoData().video_id);
     if (this.props.currentSong.videoId !== player.getVideoData().video_id) {
       player.cueVideoById(this.props.currentSong.videoId);
       player.playVideo();
@@ -107,7 +105,7 @@ class Player extends Component {
           <br></br>
 
           <div className="row">
-            <div className="col-md-4">
+            <div className="col-md-4 col-md-offset-4">
               <p id="currentTrack"> { this.props.currentSong.artistName } - { this.props.currentSong.songName } </p>
               <p id="currentTrack"> { this.props.currentSong.albumName } </p>
             </div>
