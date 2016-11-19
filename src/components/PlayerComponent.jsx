@@ -104,7 +104,7 @@ class Player extends Component {
               <a href="/"><img id="logo" src={'/assets/logo.png'}/><p>soundBear.</p></a>
             </div>
           </div>
-          <button className="js-trigger-overlay-about commands" onClick={ this.displayCommands.bind(this) } data-toggle="modal" data-target="#commandModal" type="button">commands</button>
+          <button className="js-trigger-overlay-about commandsBar" onClick={ this.displayCommands.bind(this) } data-toggle="modal" data-target="#commandModal" type="button">commands</button>
           <Scrollchor to="navbar" className="nav-link"><button className="js-trigger-overlay-about" type="button">about</button></Scrollchor>
 
           <hr></hr>
@@ -136,22 +136,59 @@ class Player extends Component {
         <div className="modal fade" id="commandModal" data-backdrop="static">
           <div className="modal-dialog" role="document">
             <div className="modal-content">
+              <br/>
               <h4 className="centerAlign"><b> Voice Commands </b></h4>
               <img id="closeModal" onClick={ this.displayPlayer.bind(this) } data-dismiss="modal" src="https://cdn3.iconfinder.com/data/icons/virtual-notebook/16/button_close-128.png"></img>
               <br></br>
+              <table class="table">
+                <thead>
+                  <tr className='eachRow heading'>
+                    <th className="col-xs-2 heading">What you want to do:</th>
+                    <th className="col-xs-4 heading">What you need to say:</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr className='eachRow first'>
+                    <td className="col-xs-2">Play song</td>
+                    <td className="col-xs-4 descript">"play The Scientist by Coldplay"</td>
+                  </tr>
+                  <tr className='eachRow'>
+                    <td className="col-xs-2">Add song to queue</td>
+                    <td className="col-xs-4 descript">"add to queue Sweet Virgina by The Rolling Stones"</td>
+                  </tr>
+                  <tr className='eachRow'>
+                    <td className="col-xs-2">Play next song</td>
+                    <td className="col-xs-4 descript">"skip" or "play next song"</td>
+                  </tr>
+                  <tr className='eachRow'>
+                    <td className="col-xs-2">Play previous song</td>
+                    <td className="col-xs-4 descript">"play previous song"</td>
+                  </tr>
+                  <tr className='eachRow'>
+                    <td className="col-xs-2">Restart current song</td>
+                    <td className="col-xs-4 descript"> "restart song" </td>
+                  </tr>
+                  <tr className='eachRow'>
+                    <td className="col-xs-2">Pause</td>
+                    <td className="col-xs-4 descript">"stop" or "pause"</td>
+                  </tr>
+                  <tr className='eachRow'>
+                    <td className="col-xs-2">Resume</td>
+                    <td className="col-xs-4 descript">"continue" or "resume"</td>
+                  </tr>
+                  <tr className='eachRow'>
+                    <td className="col-xs-2">Mute volume </td>
+                    <td className="col-xs-4 descript">"mute" or "mute volume"</td>
+                  </tr>
+
+                </tbody>
+
+              </table>
+
+              <h4 className="centerAlign funchead"><b> Other Functionality </b></h4>
               <br></br>
-              <p className="actions"> Play Song <i className="commands"> "Play Hello by Adele" </i></p>
-              <p className="actions"> Add To Queue <i className="commands"> "Add to queue Sweet Virgina by The Rolling Stones" </i></p>
-              <p className="actions"> Next <i className="commands"> "Play next song" </i></p>
-              <p className="actions"> Previous <i className="commands"> "Play previous song" </i></p>
-              <p className="actions"> Pause <i className="commands"> "Stop" </i></p>
-              <p className="actions"> Resume <i className="commands"> "Continue" </i></p>
-              <br></br>
-              <h4 className="centerAlign"><b> Other Functionalities </b></h4>
-              <br></br>
-              <br></br>
-              <p className="actions"> Click on any song in queue or history to play </p>
-              <p className="actions"> Remove songs from queue by dragging to trash </p>
+              <p className="actions"> Click on any song in queue or history to play it</p>
+              <p className="actions"> Remove song from queue by dragging it to trash bin</p>
               <br></br>
               <br></br>
             </div>
