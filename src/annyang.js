@@ -2,7 +2,7 @@ import * as helpers from './modules/ajax';
 
 module.exports = {
   annyangCall: function() {
-    // Creates query based on passed parame
+    // Creates query based on passed params
     function createQuery(songName, artistName) {
       if (artistName) {
         var query = songName +' by ' + artistName;
@@ -17,20 +17,12 @@ module.exports = {
       $('.spinner-toggle').toggle();
       var query = createQuery(songName, artistName);
       helpers.youTubeGetSongAnnyang(query, songName, artistName);
-        // .then(function () {
-        //   var track = helpers.getSearchItem();
-        //   document.getElementById('conversation').innerHTML = "";
-        //   communicateAction('<div>Playing ' + track.snippet.title + '</div><img width="150" src="' + track.snippet.thumbnails.medium.url + '">');
-        // });
     };
 
     // Adds song to queue to be played later
     function addToQueue (songName, artistName) {
       var query = createQuery(songName, artistName);
       helpers.addSongToQueue(query, songName, artistName);
-      // .then(function () {
-      //   var track = helpers.getSearchItem();
-      // });
     };
 
     // Plays next song in queue
@@ -50,7 +42,7 @@ module.exports = {
       }
     };
 
-    //Show warnings dialog
+    // Show warnings dialog
     function errorMessage(text) {
       var recP = document.getElementById('conversationPlayer');
       if (recP) {
@@ -163,7 +155,6 @@ module.exports = {
         },
 
         ':nomatch': function (message) {
-            // communicateAction(message);
           errorMessage('Sorry, I don\'t understand this action: ' + message);
         }
       };
