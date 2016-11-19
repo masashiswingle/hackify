@@ -10,8 +10,12 @@
   display: none;
 }
 
-#playlist:hover #navlyrics {
-  display: block;
+.react-tabs [role=tab][aria-selected=true]:hover #navlyrics {
+  /*display: block;*/
+}
+
+.react-tabs [role=tab][aria-selected=true]:hover #playlist {
+  /*display: none;*/
 }
 
 .react-tabs [role=tablist] {
