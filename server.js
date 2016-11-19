@@ -51,9 +51,6 @@ app.post('/artistInfo', helpers.getArtistInfo);
 app.post('/albumInfo', helpers.getAlbumInfo);
 app.get('/mostPopular', helpers.getMostPopular);
 
-// Authentication required for further routes:
-app.get('/listOfCategories', helpers.getListOfCategories);
-app.get('/newReleases', helpers.getNewReleases);
 
 app.listen(process.env.PORT || 8080, function() {
   console.log('Server started, listening on port:', 8080);
