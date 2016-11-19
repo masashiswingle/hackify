@@ -30,10 +30,8 @@ class MostPopular extends Component {
       <div className="champions">
         {this.state.result.map(function(champion, index){
           return (
-            <div className="champion" key={index}>
-              <div id="mostPopularSong">{champion.songName}</div>
-              <div id="mostPopularArtist">{champion.artistName}</div>
-              <div id="views">{champion.views}</div>
+            <div className="marquee" key={index}>
+              <span>{champion.songName} - {champion.artistName} : {champion.views}</span>
             </div>
           );
         }, this)}

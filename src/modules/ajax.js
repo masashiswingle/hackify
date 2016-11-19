@@ -139,7 +139,7 @@ export const getMostPopular = (cb) => {
     url: '/mostPopular'
   })
   .done((data) => {
-    console.log('got from getMostPopular', data);
+    // console.log('got from getMostPopular', data);
     cb(data);
   });
 };

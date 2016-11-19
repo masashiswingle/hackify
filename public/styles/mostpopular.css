@@ -1,0 +1,28 @@
+/*.champions {
+  display: -webkit-box;
+}
+
+.mostPopularSong {
+  margin-right: 50px;
+}*/
+
+
+.marquee {
+  display: inline-block;
+    width: 1140px;
+    margin: 0 auto;
+    overflow: hidden;
+    white-space: nowrap;
+    box-sizing: border-box;
+    animation: marquee 20s linear infinite;
+}
+
+.marquee:hover {
+    animation-play-state: paused
+}
+
+
+@keyframes marquee {
+    0%   { text-indent: 100% }
+    100% { text-indent: -50% } // depending on text length...
+}
