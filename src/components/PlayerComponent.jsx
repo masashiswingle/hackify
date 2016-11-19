@@ -5,7 +5,7 @@ import MostPopular from './MostPopularComponent';
 import Lineup from './LineupComponent';
 import * as helpers from '../modules/ajax';
 import { annyangCall } from '../annyang';
-import { initiateQueue, initiateHistory, changeCurrentSong, addToQueue, dequeueSong, addToHistory } from '../redux/actions';
+import { initiateQueue, initiateHistory, changeCurrentSong, addToQueue, dequeueSong, addToHistory, toggleRestartToFalse } from '../redux/actions';
 import Song from '../modules/Song';
 import map from '../visualization/map';
 import $ from 'jquery';
@@ -82,6 +82,12 @@ class Player extends Component {
   }
 
   componentDidUpdate() {
+    console.log(this.props);
+    if (this.props.restartSong) {
+      player.stopVideo();
+      this.props.toggleRestartToFalse();
+      player.playVideo();
+    }
     if (this.props.currentSong.videoId !== player.getVideoData().video_id) {
       player.cueVideoById(this.props.currentSong.videoId);
       player.playVideo();
@@ -98,7 +104,7 @@ class Player extends Component {
               <a href="/"><img id="logo" src={'/assets/logo.png'}/><p>soundBear.</p></a>
             </div>
           </div>
-          <button className="js-trigger-overlay-about commands" onClick={ this.displayCommands.bind(this) } data-toggle="modal" data-target="#commandModal" type="button">Commands</button>
+          <button className="js-trigger-overlay-about commands" onClick={ this.displayCommands.bind(this) } data-toggle="modal" data-target="#commandModal" type="button">commands</button>
           <Scrollchor to="navbar" className="nav-link"><button className="js-trigger-overlay-about" type="button">about</button></Scrollchor>
 
           <hr></hr>
@@ -161,13 +167,14 @@ class Player extends Component {
 }
 
 const mapStateToProps = (state) => {
-  console.log(state);
+  // console.log(state);
   return {
     view: state.view,
     currentSong: state.currentSong,
     songQueue: state.songQueue,
-    songHistory: state.songHistory
+    songHistory: state.songHistory,
+    restartSong: state.restartSong
   };
 };
 
-export default connect(mapStateToProps, { initiateQueue: initiateQueue, changeCurrentSong: changeCurrentSong, addToQueue: addToQueue, dequeueSong: dequeueSong, addToHistory: addToHistory })(Player);
+export default connect(mapStateToProps, { initiateQueue: initiateQueue, changeCurrentSong: changeCurrentSong, addToQueue: addToQueue, dequeueSong: dequeueSong, addToHistory: addToHistory, toggleRestartToFalse: toggleRestartToFalse })(Player);

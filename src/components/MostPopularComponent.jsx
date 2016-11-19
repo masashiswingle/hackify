@@ -27,14 +27,20 @@ class MostPopular extends Component {
 
   render() {
     return (
-      <div className="champions">
-        {this.state.result.map(function(champion, index){
-          return (
-            <div className="marquee" key={index}>
-              <span>{champion.songName} - {champion.artistName} : {champion.views}</span>
-            </div>
-          );
-        }, this)}
+      <div>
+        <div className='col-md-offset-2'></div>
+        <div className="champions">
+          {this.state.result.map(function(champion, index){
+            return (
+              <div className="mostPlayedSongs col-md-2">
+                <div>{index + 1}</div>
+                <div>{champion.songName}</div>
+                <div>{champion.artistName}</div>
+                <div>{champion.views}</div>
+              </div>
+            );
+          }, this)}
+        </div>
       </div>
     );
   }

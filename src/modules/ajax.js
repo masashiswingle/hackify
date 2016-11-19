@@ -335,3 +335,9 @@ export const playPrevious = () => {
     });
   }
 };
+
+export const restartSong = () => {
+  store.dispatch({
+    type: 'RESTART_SONG'
+  });
+};
