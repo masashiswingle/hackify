@@ -9,9 +9,9 @@
 
 .nav {
   margin: 30px 30px;
-
 }
 
 #conversationPlayer {
   height: 50px;
+  margin-top: -40px;
 }

@@ -66,18 +66,18 @@ html, body {
   font-size: 20px;
 }
 
-#conversation {
-  display: none;
-}
-
 #currentTrack {
+  display: block;
   text-align: center;
   font-size: 18px;
+  margin: 0 auto;
 }
 
 #currentSong {
+  display: block;
   height: 125px;
   width: auto;
+  margin: 0 auto;
 }
 
 .queue {
@@ -93,6 +93,8 @@ html, body {
 
 #trash {
   display: inline-block;
+  float: left;
+  margin-top: 25px;
 }
 
 #trashImg {
