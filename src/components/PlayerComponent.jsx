@@ -108,7 +108,7 @@ class Player extends Component {
           <Scrollchor to="navbar" className="nav-link"><button className="js-trigger-overlay-about" type="button">about</button></Scrollchor>
 
           <hr></hr>
-          
+
           <br></br>
 
           <div className="row">
@@ -140,7 +140,7 @@ class Player extends Component {
               <h4 className="centerAlign"><b> Voice Commands </b></h4>
               <img id="closeModal" onClick={ this.displayPlayer.bind(this) } data-dismiss="modal" src="https://cdn3.iconfinder.com/data/icons/virtual-notebook/16/button_close-128.png"></img>
               <br></br>
-              <table class="table">
+              <table className="table">
                 <thead>
                   <tr className='eachRow heading'>
                     <th className="col-xs-2 heading">What you want to do:</th>

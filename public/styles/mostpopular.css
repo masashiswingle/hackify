@@ -3,15 +3,15 @@
   padding-bottom: 20px;
 }
 
-#topten {
+.toptennav {
   color: #d9894f;
+  text-shadow: 2px 2px 4px #000000;
 }
 
 #toptennav {
   font-weight: bold;
 }
 
-.top {
-  background-color: #ffe1bd;
-  margin-bottom: 20px;
+#topten {
+  text-shadow: 2px 2px 8px #d9894f;
 }
