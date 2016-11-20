@@ -82,7 +82,6 @@ class Player extends Component {
   }
 
   componentDidUpdate() {
-    // console.log(this.props);
     if (this.props.restartSong) {
       player.stopVideo();
       this.props.toggleRestartToFalse();
@@ -93,6 +92,18 @@ class Player extends Component {
     if (this.props.currentSong.videoId !== player.getVideoData().video_id) {
       player.cueVideoById(this.props.currentSong.videoId);
       player.playVideo();
+    }
+    if (this.props.mute) {
+      console.log('would like to mute');
+      player.mute();
+      $('#volumebar').val(0);
+      $('#unmute').hide();
+      $('#mute').show();
+    } else {
+      player.unMute();
+      $('#volumebar').val(50);
+      $('#mute').hide();
+      $('#unmute').show();
     }
   }
 
@@ -180,7 +191,11 @@ class Player extends Component {
                   </tr>
                   <tr className='eachRow'>
                     <td className="col-xs-2">Mute volume </td>
-                    <td className="col-xs-4 descript">"mute" or "mute volume"</td>
+                    <td className="col-xs-4 descript">"SoundBear mute song"</td>
+                  </tr>
+                  <tr className='eachRow'>
+                    <td className="col-xs-2">Unmute volume </td>
+                    <td className="col-xs-4 descript">"SoundBear unmute song"</td>
                   </tr>
 
                 </tbody>
@@ -212,7 +227,8 @@ const mapStateToProps = (state) => {
     currentSong: state.currentSong,
     songQueue: state.songQueue,
     songHistory: state.songHistory,
-    restartSong: state.restartSong
+    restartSong: state.restartSong,
+    mute: state.mute
   };
 };
 

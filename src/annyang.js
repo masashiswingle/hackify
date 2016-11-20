@@ -63,6 +63,7 @@ module.exports = {
         },
 
         'sound bear': function () {
+          console.log('nooo');
           helpers.decreaseVolume();
         },
 
@@ -90,12 +91,12 @@ module.exports = {
           helpers.backwardSong();
         },
 
-        'mute': function () {
+        'sound bear mute song': function () {
           helpers.muteSong();
         },
 
-        'mute volume': function () {
-          helpers.muteSong();
+        'sound bear unmute song': function () {
+          helpers.unMuteSong();
         },
 
         'skip song': function () {
