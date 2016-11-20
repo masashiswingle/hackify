@@ -82,6 +82,12 @@ const mainReducer = function (state = {}, action) {
     case 'RESTART_TO_FALSE':
       deepEqualState.restartSong = false;
       return deepEqualState;
+    case 'MUTE':
+      deepEqualState.mute = true;
+      return deepEqualState;
+    case 'UNMUTE':
+      deepEqualState.mute = false;
+      return deepEqualState;
     default:
       return state;
   }

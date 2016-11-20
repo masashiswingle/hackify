@@ -229,7 +229,15 @@ export const stopSong = () => {
 };
 
 export const muteSong = () => {
-  document.getElementById('player-volume').click();
+  store.dispatch({
+    type: 'MUTE'
+  });
+};
+
+export const unMuteSong = () => {
+  store.dispatch({
+    type: 'UNMUTE'
+  });
 };
 
 export const pauseSong = () => {
