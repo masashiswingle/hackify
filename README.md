@@ -72,7 +72,7 @@ Navigate to ```http://localhost:8080```
 
 ## Contributing
 
-Please see [CONTRIBUTING](_CONTRIBUTING.md) for guidelines.
+Please see [CONTRIBUTING](CONTRIBUTING.md) for guidelines.
 
 ## License 
 

@@ -142,6 +142,8 @@ class ControlBar extends Component {
         <div id="navbar" className="row controlDiv">
           <Nav />
         </div>
+
+        
       </div>
     );
   }
