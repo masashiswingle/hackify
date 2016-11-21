@@ -4,7 +4,7 @@
 
 1. Fork the repo
 2. Cut a namespaced feature branch from master. The branch name should be a short 1-or-2 word description of what you're working on.
-3. Make commits to your feature branch. See commit message guidelines below.
+3. Make commits to your feature branch. See Commit Message Guidelines below.
 4. When you've finished with your fix or feature, Rebase upstream changes into your branch. submit a [pull request][]
    directly to master. Include a description of your changes. Your pull request will be reviewed by another maintainer.
 5. Fix any issues raised by your code reviwer, and push your fixes as a single
@@ -27,6 +27,7 @@ $ git checkout -b [branch_name]
 ```
 
 ### Pulling from upstream
+
 1. Before pulling down from upstream, make sure that your edits have been staged by using ```git add```.
 
 2. Pull down using rebase
