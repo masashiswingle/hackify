@@ -191,11 +191,31 @@ class Player extends Component {
                   </tr>
                   <tr className='eachRow'>
                     <td className="col-xs-2">Mute volume </td>
-                    <td className="col-xs-4 descript">"SoundBear mute song"</td>
+                    <td className="col-xs-4 descript">"soundBear mute song"</td>
                   </tr>
                   <tr className='eachRow'>
                     <td className="col-xs-2">Unmute volume </td>
-                    <td className="col-xs-4 descript">"SoundBear unmute song"</td>
+                    <td className="col-xs-4 descript">"soundBear unmute song"</td>
+                  </tr>
+                  <tr className='eachRow'>
+                    <td className="col-xs-2">Show lyrics </td>
+                    <td className="col-xs-4 descript">"show lyrics"</td>
+                  </tr>
+                  <tr className='eachRow'>
+                    <td className="col-xs-2">Show soundBear Top Ten </td>
+                    <td className="col-xs-4 descript">"show top ten</td>
+                  </tr>
+                  <tr className='eachRow'>
+                    <td className="col-xs-2">Show popular songs by the artist </td>
+                    <td className="col-xs-4 descript">"show popular"</td>
+                  </tr>
+                  <tr className='eachRow'>
+                    <td className="col-xs-2">Show artist's albums </td>
+                    <td className="col-xs-4 descript">"show albums"</td>
+                  </tr>
+                  <tr className='eachRow'>
+                    <td className="col-xs-2">Show related artists </td>
+                    <td className="col-xs-4 descript">"show related"</td>
                   </tr>
 
                 </tbody>

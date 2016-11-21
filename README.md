@@ -4,12 +4,12 @@ Voice-activated music player, which provides variety of useful information for e
 
 ## Tech Stack
 
-### Frontend
+### Front-End
 * [React](https://facebook.github.io/react/) along with [Redux](https://github.com/reactjs/redux) for rendering page views state container maintenance
 * [D3.js](https://d3js.org/) - library for visualizing data
 * [Bootstrap](http://getbootstrap.com/) - a mobile first front-end framework
 
-### Backend
+### Back-End
 * [Node.js](https://nodejs.org/en/) with [Express](http://expressjs.com/) for serving pages and handling api requests
 * [mySQL](https://www.mysql.com/) as a database
 * [Sequelize](http://sequelizejs.com/) - an ORM for Node.js

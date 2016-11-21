@@ -228,6 +228,7 @@ export const stopSong = () => {
   document.getElementById('player-stop').click();
 };
 
+
 export const muteSong = () => {
   store.dispatch({
     type: 'MUTE'
