@@ -12,26 +12,29 @@ class Nav extends Component {
     super(props);
   }
 
+  componentDidMount() {
+    $('[data-toggle="popover"]').popover();
+  }
+
   render() {
     return(
 
       <Tabs className="navTabs" selectedIndex={this.index}>
 
           <TabList className="navlist">
-            <Tab >
+            <Tab title="Lyrics" data-toggle="popover" data-trigger="hover">
               <img className="nav" id="playlist" src={'/assets/playlist.png'} />
-              <p id="navlyrics">Lyrics</p>
             </Tab>
-            <Tab >
+            <Tab title="soundBear Top" data-toggle="popover" data-trigger="hover">
               <img className="nav" id="worldMap" src={'/assets/heart.png'} />
             </Tab>
-            <Tab>
+            <Tab title="Artist Top" data-toggle="popover" data-trigger="hover">
               <img className="nav" id="audacity" src={'/assets/audacity.png'} />
             </Tab>
-            <Tab>
+            <Tab title="Albums" data-toggle="popover" data-trigger="hover">
               <img className="nav" id="uncheck" src={'/assets/uncheck.png'} />
             </Tab>
-            <Tab>
+            <Tab title="Related Artist" data-toggle="popover" data-trigger="hover">
               <img className="nav" id="tournament" src={'/assets/tournament.png'} />
             </Tab>
           </TabList>
