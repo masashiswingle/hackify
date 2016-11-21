@@ -12,10 +12,6 @@ class Nav extends Component {
     super(props);
   }
 
-  componentDidMount() {
-    $('[data-toggle="popover"]').popover();
-  }
-
   render() {
     return(
 
