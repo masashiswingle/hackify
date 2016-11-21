@@ -12,7 +12,7 @@ Voice activated music player, which also provides variety of useful information 
 ### Backend
 * [Node.js](https://nodejs.org/en/) with [Express](http://expressjs.com/) for serving pages and handling api requests
 * [mySQL](https://www.mysql.com/) as a database
-* [Sequelize](http://sequelizejs.com/) - dialect ORM
+* [Sequelize](http://sequelizejs.com/) - an ORM for Node.js
 * [Annyang](https://talater.com/) - SpeechRecognition library
 
 ### Testing
