@@ -22,7 +22,7 @@ class LandingFeature extends Component {
             <h2>interaction</h2>
             <h4 className='text-mainunderline'>_________</h4>
             <h4 className = 'txt'> soundBear utilizes pin-point voice recognition software to seemlesly transcribe speech into various music player commands. For example, soundBear
-            can play any song if you simply say <i>'play'</i> Song <i>'by'</i> Artist. Go Give it a try!  </h4>
+            can play any song if you simply say <i>"play</i> &nbsp; song_name &nbsp; <i>by</i> &nbsp; artist_name". Go Give it a try!  </h4>
           </div>
         </div>
 
@@ -35,8 +35,8 @@ class LandingFeature extends Component {
             <h2>commands</h2>
             <h4 className='text-mainunderline'>_________</h4>
             <h4 className='txt'> soundBear offers a number of additional commands on top of playing a song. Any command imaginable on a music player
-            can be run effortlessly in voice and soundBear will understand it! For example, adding a song to the song queue or pausing a selected song can be done by commands <i>'add to queue'</i> Song <i>'by'</i> Artist 
-             and <i>'stop'</i>, respectively. 
+            can be run effortlessly in voice and soundBear will understand it! For example, adding a song to the song queue or pausing a selected song can be done by commands <i>"add to queue</i> &nbsp; song_name &nbsp; <i>by</i> &nbsp; artist_name"  
+             and <i>"stop"</i>, respectively. 
 </h4>
           </div>
           <div className="col-sm-6 col-md-6 col-lg-6">
@@ -52,10 +52,10 @@ class LandingFeature extends Component {
             <img className="landingpic" id="infoIcon" src={'/assets/info.jpg'}/>
           </div>
           <div className="col-sm-6 col-md-6 col-lg-6">
-            <h3>ask Bear for any</h3>
-            <h2>information</h2>
+            <h3>explore</h3>
+            <h2>artists and songs</h2>
             <h4 className='text-mainunderline'>_________</h4>
-            <h4 className = 'txt'>For every song that plays, there will also be useful information about the song and the artist presented in the tabs below the music player. 
+            <h4 className = 'txt'>for every song that plays, there will also be useful information about the song and the artist presented in the tabs below the music player. 
             The tabs from left to right represent Lyrics for the currently playing song, Most Popular Songs on soundBear, Top Songs of the Artist, Available Spotify Markets and Artist Albums, and 
             Related Artists</h4>
           </div>
