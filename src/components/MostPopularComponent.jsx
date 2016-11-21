@@ -28,7 +28,7 @@ class MostPopular extends Component {
   render() {
     return (
       <div className="container">
-        <h1 id="topten">soundBear Top Ten</h1>
+        <h1 id="topten">Top Ten on soundBear</h1>
         <div className="row left top">
           <h3 className="toptennav col-sm-4 col-md-4 col-lg-4">Song</h3>
           <h3 className="toptennav col-sm-4 col-md-4 col-lg-4">Artist</h3>
