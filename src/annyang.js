@@ -58,6 +58,21 @@ module.exports = {
     if (annyang) {
 
       var commands = {
+        'show top ten': function () {
+          document.getElementById('react-tabs-2').click();
+        },
+        'show lyrics': function () {
+          document.getElementById('react-tabs-0').click();
+        },
+        'show popular': function () {
+          document.getElementById('react-tabs-4').click();
+        },
+        'show albums': function () {
+          document.getElementById('react-tabs-6').click();
+        },
+        'show related': function () {
+          document.getElementById('react-tabs-8').click();
+        },
         'sound': function () {
           helpers.decreaseVolume();
         },

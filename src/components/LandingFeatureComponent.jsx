@@ -21,7 +21,7 @@ class LandingFeature extends Component {
             <h3>real-time</h3>
             <h2>interaction</h2>
             <h4 className='text-mainunderline'>_________</h4>
-            <h4 className = 'txt'> soundBear utilizes pin-point voice recognition software to seemlesly transcribe speech into various music player commands. For example, soundBear
+            <h4 className = 'txt'> soundBear utilizes pin-point voice recognition software to seamlesly transcribe speech into various music player commands. For example, soundBear
             can play any song if you simply say <i>"play</i> &nbsp; song_name &nbsp; <i>by</i> &nbsp; artist_name". Go give it a try!  </h4>
           </div>
         </div>

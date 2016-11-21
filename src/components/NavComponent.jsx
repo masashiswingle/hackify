@@ -24,19 +24,19 @@ class Nav extends Component {
             <Tab title="soundBear Top" data-toggle="popover" data-trigger="hover">
               <img className="nav" id="worldMap" src={'/assets/heart.png'} />
             </Tab>
-            <Tab title="Artist Top" data-toggle="popover" data-trigger="hover">
+            <Tab title="Artist's Top" data-toggle="popover" data-trigger="hover">
               <img className="nav" id="audacity" src={'/assets/audacity.png'} />
             </Tab>
             <Tab title="Albums" data-toggle="popover" data-trigger="hover">
               <img className="nav" id="uncheck" src={'/assets/uncheck.png'} />
             </Tab>
-            <Tab title="Related Artist" data-toggle="popover" data-trigger="hover">
+            <Tab title="Related Artists" data-toggle="popover" data-trigger="hover">
               <img className="nav" id="tournament" src={'/assets/tournament.png'} />
             </Tab>
           </TabList>
 
-          <TabPanel><Lyrics /></TabPanel>
-          <TabPanel><MostPopular /></TabPanel>
+          <TabPanel ><Lyrics/></TabPanel>
+          <TabPanel><MostPopular id = 'panelPopular'/></TabPanel>
           <TabPanel><Track /></TabPanel>
           <TabPanel><Album /></TabPanel>
           <TabPanel><Tree /></TabPanel>
