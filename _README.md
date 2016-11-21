@@ -67,8 +67,8 @@ $ npm install
 
 ## Starting the App
 
-From the root directory, run `npm start` to start the server
-Navigate to `http://localhost:3000`
+From the root directory, run ```npm start``` to start the server
+Navigate to ```http://localhost:3000```
 
 ## Contributing
 
@@ -77,4 +77,3 @@ Please see [CONTRIBUTING](CONTRIBUTING.md) for guidelines.
 ## License 
 
 MIT
-
