@@ -1,6 +1,6 @@
 # soundBear
 
-Voice activated music player, which also provides variety of useful information for each track played
+Voice activated music player, which provides variety of useful information for each artist and song played.
 
 ## Tech Stack
 
