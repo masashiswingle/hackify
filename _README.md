@@ -1,52 +1,79 @@
-# Project Name
+# soundBear
 
-> Pithy project description
+Voice activated music player, which also provides variety of useful information for each track played
 
-## Team
+# Tech Stack
 
-  - __Product Owner__: teamMember
-  - __Scrum Master__: teamMember
-  - __Development Team Members__: teamMember, teamMember
+## Frontend
+* [React](https://facebook.github.io/react/) along with [Redux](https://github.com/reactjs/redux) for rendering page views state container maintenance
+* [D3.js](https://d3js.org/) - library for visualizing data
+* [Bootstrap](http://getbootstrap.com/) - a mobile first front-end framework
 
-## Table of Contents
+## Backend
+* [Node.js](https://nodejs.org/en/) with [Express](http://expressjs.com/) for serving pages and handling api requests
+* [mySQL](https://www.mysql.com/) as a database
+* [Sequelize](http://sequelizejs.com/) - dialect ORM
+* [Annyang](https://talater.com/) - SpeechRecognition library
 
-1. [Usage](#Usage)
-1. [Requirements](#requirements)
-1. [Development](#development)
-    1. [Installing Dependencies](#installing-dependencies)
-    1. [Tasks](#tasks)
-1. [Team](#team)
-1. [Contributing](#contributing)
+## Testing
+* [Mocha](https://mochajs.org/) - test framework
+* [Shouldjs](https://shouldjs.github.io/) and [Supertest](https://github.com/visionmedia/supertest) for API tests
 
-## Usage
+## Dev/Build Tools
+* [Webpack](https://webpack.github.io/) and [Babel](https://babeljs.io/) for transpiling
 
-> Some usage instructions
+## File Structure
+    hackify/
+    |
+    |--db/
+    |   |--schema
+    |   |
+    |--public/
+    |   |--assets/
+    |   |--styles/
+    |   |
+    |--spec/
+    |   |--client/
+    |   |--server/
+    |   |
+    |--server/
+    |   |--helpers
+    |   |
+    |--src/
+    |   |--components/
+    |   |--modules/
+    |   |--redux/
+    |   |--visualization/
 
-## Requirements
+## Installing Dependencies
 
-- Node 0.10.x
-- Redis 2.6.x
-- Postgresql 9.1.x
-- etc
-- etc
+- Mocha for testing
 
-## Development
-
-### Installing Dependencies
-
-From within the root directory:
-
-```sh
-sudo npm install -g bower
-npm install
-bower install
+```
+$ npm install mocha -g
 ```
 
-### Roadmap
+- Webpack for building
 
-View the project roadmap [here](LINK_TO_PROJECT_ISSUES)
+```
+$ npm install webpack -g
+```
 
+- Dependencies installation
+
+```
+$ npm install
+```
+
+## Starting the App
+
+From the root directory, run ```npm start``` to start the server
+Navigate to ```http://localhost:8080```
 
 ## Contributing
 
-See [CONTRIBUTING.md](CONTRIBUTING.md) for contribution guidelines.
+Please see [CONTRIBUTING](CONTRIBUTING.md) for guidelines.
+
+## License 
+
+MIT

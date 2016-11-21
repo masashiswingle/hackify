@@ -3,7 +3,6 @@ require('babel-register')({
 });
 
 const should = require('should');
-const _ = require('lodash');
 const mainReducer = require('../../src/redux/reducers').default;
 
 let data = require('./data.js');
