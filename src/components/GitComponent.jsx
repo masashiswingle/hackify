@@ -30,7 +30,7 @@ class Git extends Component {
               <p id = 'mainunderline'>_________</p>
             </div>
             <div className="gitdiv col-sm-3 col-md-3 col-lg-3">
-              <a href="https://github.com/masashiswingle"><img className="gitPic" src={'/assets/masashiGit.jpeg'}/></a>
+              <a href="https://github.com/masashiswingle"><img className="gitPic" src={'/assets/masashi.png'}/></a>
               <h3>masashi swingle</h3>
               <p id = 'mainunderline'>_________</p>
             </div>

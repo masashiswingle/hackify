@@ -45,7 +45,7 @@ class Landing extends Component {
           </div>
           <button className="js-trigger-overlay-start" onClick = {this.annyang} type="button">start listening</button>
           <img id="siri" className="spinner-toggle" src={'/assets/siri.gif'}/>
-          <div id="help" className="spinner-toggle">e.g. "play Hello by Adele"</div>
+          <div id="help" className="spinner-toggle">e.g. "play Paradise by Coldplay"</div>
           <img id="spinner" className="spinner-toggle" src={'/assets/89.gif'}/>
         </div>
 
