@@ -15,22 +15,22 @@ class Git extends Component {
 
           <div className="row inner">
             <div className="gitdiv col-sm-3 col-md-3 col-lg-3">
-              <a href="https://github.com/alina7091"><img className="gitPic" src={'/assets/alinaGit.jpeg'}/></a>
+              <a href="https://github.com/alina7091" target="_blank"><img className="gitPic" src={'/assets/alinaGit.jpeg'}/></a>
               <h3>alina lobastova</h3>
                <p id = 'mainunderline'>_________</p>
             </div>
             <div className="gitdiv col-sm-3 col-md-3 col-lg-3">
-              <a href="https://github.com/jemilezzet"><img className="gitPic" src={'/assets/jemilGit.jpeg'}/></a>
+              <a href="https://github.com/jemilezzet" target="_blank"><img className="gitPic" src={'/assets/jemilGit.jpeg'}/></a>
               <h3>jemil ezzet</h3>
               <p id = 'mainunderline'>_________</p>
             </div>
             <div className="gitdiv col-sm-3 col-md-3 col-lg-3">
-              <a href="https://github.com/joannexin"><img className="gitPic" src={'/assets/joanneGit.jpeg'}/></a>
+              <a href="https://github.com/joannexin" target="_blank"><img className="gitPic" src={'/assets/joanneGit.jpeg'}/></a>
               <h3>joanne xin</h3>
               <p id = 'mainunderline'>_________</p>
             </div>
             <div className="gitdiv col-sm-3 col-md-3 col-lg-3">
-              <a href="https://github.com/masashiswingle"><img className="gitPic" src={'/assets/masashi.png'}/></a>
+              <a href="https://github.com/masashiswingle" target="_blank"><img className="gitPic" src={'/assets/masashi.png'}/></a>
               <h3>masashi swingle</h3>
               <p id = 'mainunderline'>_________</p>
             </div>
