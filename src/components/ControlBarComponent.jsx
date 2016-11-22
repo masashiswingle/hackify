@@ -49,7 +49,6 @@ class ControlBar extends Component {
   }
 
   previous() {
-    this.totalDuration();
     this.props.playPrevious();
   }
 
@@ -70,21 +69,19 @@ class ControlBar extends Component {
     if (hr) {
       hr = "00";
     }
-    console.log(min+":"+sec);
     return min + ':' + sec;
   }
 
   totalDuration() {
     var totalSec = this.props.player.getDuration();
     var totalT = this.formatDuration(totalSec);
-    console.log(typeof totalT);
     this.setState({totalTime: totalT});
-    console.log(this.state);
   }
 
   currentDuration() {
     var currentSec = this.props.player.getCurrentTime();
-    this.formatDuration(currentSec);
+    var currentT = this.formatDuration(currentSec);
+    this.setState({currentTime: currentT});
   }
 
   muteOrUnmute() {
@@ -120,20 +117,18 @@ class ControlBar extends Component {
   }
 
   componentDidMount() {
-    // this.totalDuration();
     this.muteOrUnmute.bind(this);
     var that = this;
     setInterval(function () {
       var percentage = that.props.player.getCurrentTime() / that.props.player.getDuration();
       $('.progress-bar').css("width", percentage * 100 + "%")
     }, 1000);
-    console.log("in here", this.state);
-  }
-
-  componentWillReceiveProps() {
-    // this.totalDuration();
-    // this.setState({totalTime: totalT});
-    // console.log(this.state);
+    setTimeout(function() {
+      that.totalDuration();
+      setInterval(function() {
+        that.currentDuration();
+      }, 500);
+    }, 1000);
   }
 
   componentDidUpdate() {
@@ -175,7 +170,10 @@ class ControlBar extends Component {
         </div>
 
         <div className="row controlBar">
-          <div id="conversationPlayer" className="col-md-offset-3 col-md-6">here is the total: {this.state.totalTime}</div>
+          <div id="conversationPlayer" className="col-md-offset-3 col-md-6"></div>
+        </div>
+        <div className="row controlBar">
+          <div className="col-md-offset-3 col-md-6">{this.state.currentTime} / {this.state.totalTime}</div>
         </div>
 
         <div className="row progress-wrap" onClick={ this.progress.bind(this) }>
