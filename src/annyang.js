@@ -58,19 +58,19 @@ module.exports = {
     if (annyang) {
 
       var commands = {
-        'show top ten': function () {
+        'display top ten': function () {
           document.getElementById('react-tabs-2').click();
         },
-        'show lyrics': function () {
+        'display lyrics': function () {
           document.getElementById('react-tabs-0').click();
         },
-        'show popular': function () {
+        'display popular': function () {
           document.getElementById('react-tabs-4').click();
         },
-        'show albums': function () {
+        'display albums': function () {
           document.getElementById('react-tabs-6').click();
         },
-        'show related': function () {
+        'display related': function () {
           document.getElementById('react-tabs-8').click();
         },
         'sound': function () {

@@ -199,23 +199,23 @@ class Player extends Component {
                   </tr>
                   <tr className='eachRow'>
                     <td className="col-xs-2">Show lyrics </td>
-                    <td className="col-xs-4 descript">"show lyrics"</td>
+                    <td className="col-xs-4 descript">"display lyrics"</td>
                   </tr>
                   <tr className='eachRow'>
                     <td className="col-xs-2">Show soundBear Top Ten </td>
-                    <td className="col-xs-4 descript">"show top ten</td>
+                    <td className="col-xs-4 descript">"display top ten</td>
                   </tr>
                   <tr className='eachRow'>
                     <td className="col-xs-2">Show artist's popular songs </td>
-                    <td className="col-xs-4 descript">"show popular"</td>
+                    <td className="col-xs-4 descript">"display popular"</td>
                   </tr>
                   <tr className='eachRow'>
                     <td className="col-xs-2">Show artist's albums </td>
-                    <td className="col-xs-4 descript">"show albums"</td>
+                    <td className="col-xs-4 descript">"display albums"</td>
                   </tr>
                   <tr className='eachRow'>
                     <td className="col-xs-2">Show related artists </td>
-                    <td className="col-xs-4 descript">"show related"</td>
+                    <td className="col-xs-4 descript">"display related"</td>
                   </tr>
 
                 </tbody>
