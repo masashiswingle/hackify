@@ -1,6 +1,8 @@
 #team {
   text-align: center;
   margin-bottom: 30px;
+  letter-spacing: 1px;
+  font-size: 40px;
 }
 
 .gitPic {
@@ -33,7 +35,7 @@
 .footer {
   text-align: center;
   margin-top: 10px;
-  font-size: 16px
+  font-size: 15px
 
 }
 
