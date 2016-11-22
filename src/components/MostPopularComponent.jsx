@@ -5,7 +5,10 @@ import { getMostPopular } from '../modules/ajax';
 class MostPopular extends Component {
   constructor(props) {
     super(props);
-    this.state = { result: [], videoId: this.props.currentSong.videoId }
+    this.state = {
+      result: [],
+      videoId: this.props.currentSong.videoId
+    };
   }
 
   displayMostPopular() {
@@ -28,21 +31,40 @@ class MostPopular extends Component {
   render() {
     return (
       <div className="container">
+        <br></br>
         <h1 id="topten">Top Ten on soundBear</h1>
-        <div className="row left top">
-          <h3 className="toptennav col-sm-4 col-md-4 col-lg-4">Song</h3>
-          <h3 className="toptennav col-sm-4 col-md-4 col-lg-4">Artist</h3>
-          <h3 className="toptennav col-sm-4 col-md-4 col-lg-4">Views</h3>
-        </div>
-        {this.state.result.map(function(champion, index){
-          return (
-            <div className="row left" key={index}>
-              <div className="songName col-sm-4 col-md-4 col-lg-4">{index+1}. {champion.songName}</div>
-              <div className="artistName col-sm-4 col-md-4 col-lg-4">{champion.artistName}</div>
-              <div className="views col-sm-4 col-md-4 col-lg-4">{champion.views}</div>
-            </div>
-          );
-        }, this)}
+        <br></br>
+        <br></br>
+        {
+          this.state.result.map(function(champion, index) {
+            return (
+              <div className="row" key={ index }>
+                <div className="col-md-offset-1 col-md-9">
+                  <div className="rank col-md-2">
+                    { index + 1 }
+                  </div>
+                  <div className="songArtist col-md-6">
+                    <div className="song">
+                      { champion.songName.toLowerCase() }
+                    </div>
+                    <br></br>
+                    <div className="artist">
+                      { champion.artistName.toLowerCase() }
+                    </div>
+                  </div>
+                  <div className="totalViews col-md-1">
+                    <div className="numViews">
+                      { champion.views }
+                    </div>
+                    <div>views</div>
+                  </div>
+                </div>
+                <hr className="topSongSeparator"></hr>
+                <br></br>
+              </div>
+            );
+          }, this)
+        }
       </div>
     );
   }
