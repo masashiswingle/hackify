@@ -36,10 +36,10 @@ class Nav extends Component {
           </TabList>
 
           <TabPanel ><Lyrics/></TabPanel>
-          <TabPanel><MostPopular id = 'panelPopular'/></TabPanel>
-          <TabPanel><Track /></TabPanel>
-          <TabPanel><Album /></TabPanel>
-          <TabPanel><Tree /></TabPanel>
+          <TabPanel><MostPopular/></TabPanel>
+          <TabPanel><Track/></TabPanel>
+          <TabPanel><Album/></TabPanel>
+          <TabPanel><Tree/></TabPanel>
 
       </Tabs>
 
