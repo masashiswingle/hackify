@@ -13,8 +13,8 @@ class ControlBar extends Component {
     this.state = {
       pause: false,
       mute: false,
-      totalTime: "",
-      currentTime: ""
+      totalTime: "00:00",
+      currentTime: "00:00"
     }
   }
 
@@ -173,7 +173,7 @@ class ControlBar extends Component {
           <div id="conversationPlayer" className="col-md-offset-3 col-md-6"></div>
         </div>
         <div className="row controlBar">
-          <div className="col-md-offset-3 col-md-6">{this.state.currentTime} / {this.state.totalTime}</div>
+          <div id="elapsedTime" className="col-md-offset-11 col-md-1">{this.state.currentTime} / {this.state.totalTime}</div>
         </div>
 
         <div className="row progress-wrap" onClick={ this.progress.bind(this) }>

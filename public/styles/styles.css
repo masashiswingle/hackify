@@ -177,3 +177,8 @@ tr.first > td {
   float: right;
 }
 
+#elapsedTime {
+  right: 50px;
+  top: 20px;
+}
+
