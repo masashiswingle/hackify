@@ -59,7 +59,6 @@ class MostPopular extends Component {
                     <div>views</div>
                   </div>
                 </div>
-                <hr className="topSongSeparator"></hr>
                 <br></br>
               </div>
             );
