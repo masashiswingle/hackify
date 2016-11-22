@@ -28,10 +28,10 @@
 
 .controlDiv{
   text-align: center;
+  position: relative;
 }
 
 .controlBar {
-  margin-top: -35px;
   text-align: center;
 }
 
@@ -42,7 +42,6 @@
 
 .audio-player-buttons {
   position: relative;
-  height: 150px;
 }
 
 .volumeDiv {
@@ -81,5 +80,22 @@
 
 #conversationPlayer {
   height: 50px;
-  margin-top: -40px;
+}
+
+.audio-player-side-buttons {
+  width: 190px;
+  display: block;
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  right: 0;
+}
+
+@media (max-width: 768px) {
+  .audio-player-side-buttons {
+    position: static;
+    margin: 0 auto;
+    padding-left: 100px;
+    width: 300px;
+  }
 }

@@ -156,7 +156,7 @@ class ControlBar extends Component {
             <img className="buttons" id="fastForward" src={'/assets/fastForward.png'} onClick={ this.next.bind(this) } />
           </div>
 
-          <div className="col-md-3">
+          <div className="audio-player-side-buttons">
             <Droppable id="trash" types={ ['song'] } onDrop={ this.onDrop.bind(this) }>
               <img id="trashImg" src="https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-ios7-trash-outline-128.png"></img>
             </Droppable>
