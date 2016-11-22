@@ -206,7 +206,7 @@ class Player extends Component {
                     <td className="col-xs-4 descript">"show top ten</td>
                   </tr>
                   <tr className='eachRow'>
-                    <td className="col-xs-2">Show popular songs by the artist </td>
+                    <td className="col-xs-2">Show artist's popular songs </td>
                     <td className="col-xs-4 descript">"show popular"</td>
                   </tr>
                   <tr className='eachRow'>
