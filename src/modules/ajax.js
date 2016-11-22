@@ -3,14 +3,12 @@ import store from '../index';
 
 export const spotifyGetSongs = (params) => {
   return new Promise((resolve, reject) => {
-    // console.log('in spotifyGetSongs');
     $.ajax({
       method: 'POST',
       url: '/getSongs',
       data: { string: params }
     })
     .done((data) => {
-      // console.log('got from spotifyGetSongs', data);
       if (data.tracks.items.length > 0) {
         resolve(data);
       } else {
@@ -21,33 +19,28 @@ export const spotifyGetSongs = (params) => {
 };
 
 export const getLyrics = (track, artist, cb) => {
-  // console.log('in getLyrics', track, artist);
   $.ajax({
     method: 'POST',
     url: '/lyrics',
     data: { artist: artist, track: track }
   })
   .done((data) => {
-    // console.log('got lyrics back', data);
     cb(data);
   });
 };
 
 export const artistTracks = (artist, cb) => {
-  // console.log('in artistTracks');
   $.ajax({
     method: 'POST',
     url: '/artistTracks',
     data: { string: artist }
   })
   .done((data) => {
-    // console.log('got from artistTracks', data);
     cb(data);
   });
 };
 
 export const albumInfo = (id) => {
-  // console.log('inside artistInfo', id);
   return new Promise((resolve, reject) => {
     $.ajax({
       method: 'POST',
@@ -55,15 +48,12 @@ export const albumInfo = (id) => {
       data: { id: id }
     })
     .done((data) => {
-      // console.log('got from artistInfo', data);
       resolve(data);
     });
   });
 };
 
-
 export const artistInfo = (id) => {
-  // console.log('inside artistInfo', id);
   return new Promise((resolve, reject) => {
     $.ajax({
       method: 'POST',
@@ -71,75 +61,41 @@ export const artistInfo = (id) => {
       data: { id: id }
     })
     .done((data) => {
-      // console.log('got from artistInfo', data);
       resolve(data);
     });
   });
 };
 
 export const artistAlbums = (artist, cb) => {
-  // console.log('in artistAlbums');
   $.ajax({
     method: 'POST',
     url: '/artistAlbums',
     data: { string: artist }
   })
   .done((data) => {
-    // console.log('got from artistAlbums', data);
     cb(data);
   });
 };
 
-//AUTHENTICATION REQUIRED FOR THIS CALL
-export const newReleases = () => {
-  // console.log('in newReleases');
-  $.ajax({
-    method: 'GET',
-    url: '/newReleases'
-  })
-  .done((data) => {
-    // console.log('got from newReleases', data);
-    return data;
-  });
-};
-
-
 export const relatedTree = (artistId, excludeList) => {
   return new Promise((resolve, reject) => {
-    // console.log('in relatedTree');
     $.ajax({
       method: 'POST',
       url: '/artistsTree',
       data: { artistId: artistId, excludeList: excludeList}
     })
     .done((data) => {
-      // console.log('got from relatedTree', data);
       resolve(data);
     });
   });
 };
 
-//AUTHENTICATION REQUIRED FOR THIS CALL
-export const listOfCategories = () => {
-  // console.log('in listOfCategories');
-  $.ajax({
-    method: 'GET',
-    url: '/listOfCategories'
-  })
-  .done((data) => {
-    // console.log('got from listOfCategories', data);
-    return data;
-  });
-};
-
 export const getMostPopular = (cb) => {
-  // console.log('in getMostPopular');
   $.ajax({
     method: 'GET',
     url: '/mostPopular'
   })
   .done((data) => {
-    // console.log('got from getMostPopular', data);
     cb(data);
   });
 };
@@ -188,7 +144,6 @@ export const addSongToQueue = (query, songName, artistName) => {
             }
             srchItem = response.result.items[0];
             artistId = songs.tracks.items[0].artists[0].id;
-            // console.log('inside addSongToQueue', srchItem);
             store.dispatch({
               type: 'ADD_TO_QUEUE',
               songQueue: srchItem.id.videoId,
@@ -224,11 +179,6 @@ export const dequeueSong = () => {
   }
 };
 
-export const stopSong = () => {
-  document.getElementById('player-stop').click();
-};
-
-
 export const muteSong = () => {
   store.dispatch({
     type: 'MUTE'
@@ -241,27 +191,11 @@ export const unMuteSong = () => {
   });
 };
 
-export const pauseSong = () => {
-  document.getElementById('player-pause').click();
-};
-
-export const resumeSong = () => {
-  document.getElementById('player-play').click();
-};
-
-export const forwardSong = () => {
-  document.getElementById('player-forward').click();
-};
-
-export const backwardSong = () => {
-  document.getElementById('player-backward').click();
-};
-
 export const increaseVolume = (previousVolume) => {
   var el = document.getElementById('volumebar');
   el.value=previousVolume;
   el.dispatchEvent(new Event('input', {bubbles: true}));
-}
+};
 
 export const decreaseVolume = () => {
   var el = document.getElementById('volumebar');
@@ -269,14 +203,12 @@ export const decreaseVolume = () => {
   console.log(previousVolume)
   el.value='10';
   el.dispatchEvent(new Event('input', {bubbles: true}));
-
   setTimeout(function () {
     increaseVolume(previousVolume) }, 4000);
-}
+};
 
 export const youTubeGetSongAnnyang = (query, songName, artistName) => {
   return new Promise((resolve, reject) => {
-
     var request = gapi.client.youtube.search.list({
       q: query,
       part: 'snippet',
@@ -302,7 +234,6 @@ export const youTubeGetSongAnnyang = (query, songName, artistName) => {
               artistId = '1';
             }
             srchItem = response.result.items[0];
-            // console.log('inside searchYouTube', srchItem);
             store.dispatch({
               type: 'SWITCH_VIEW_TO_PLAYER',
               view: 'player',

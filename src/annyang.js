@@ -53,26 +53,29 @@ module.exports = {
       }
     };
 
-
     // Defines commands
     if (annyang) {
-
       var commands = {
         'display top ten': function () {
           document.getElementById('react-tabs-2').click();
         },
+
         'display lyrics': function () {
           document.getElementById('react-tabs-0').click();
         },
+
         'display popular': function () {
           document.getElementById('react-tabs-4').click();
         },
+
         'display albums': function () {
           document.getElementById('react-tabs-6').click();
         },
+
         'display related': function () {
           document.getElementById('react-tabs-8').click();
         },
+
         'sound': function () {
           helpers.decreaseVolume();
         },
@@ -83,27 +86,27 @@ module.exports = {
         },
 
         'stop': function () {
-          helpers.pauseSong();
+            document.getElementById('player-pause').click();
         },
 
         'pause': function () {
-          helpers.pauseSong();
+            document.getElementById('player-pause').click();
         },
 
         'resume': function () {
-          helpers.resumeSong();
+          document.getElementById('player-play').click();
         },
 
         'continue': function () {
-          helpers.resumeSong();
+          document.getElementById('player-play').click();
         },
 
         'forward': function () {
-          helpers.forwardSong();
+          document.getElementById('player-forward').click();
         },
 
         'backward': function () {
-          helpers.backwardSong();
+          document.getElementById('player-backward').click();
         },
 
         'sound bear mute song': function () {
@@ -175,7 +178,7 @@ module.exports = {
         }
       };
 
-      // Adds our commands to annyang
+      // Adds commands to annyang
       annyang.addCommands(commands);
 
       // Starts listening
@@ -186,4 +189,4 @@ module.exports = {
       errorMessage('Oops! Something isn\'t right...');
     });
   }
-}
+};
