@@ -33,7 +33,9 @@ class Tree extends Component {
 
   render() {
     return(
-      <div id="tree-container"></div>
+      <div id="tree-container"> 
+        <h1 id="topten">Related Artists</h1>
+      </div>
     );
   }
 }
