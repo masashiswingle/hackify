@@ -1,11 +1,12 @@
 #team {
   text-align: center;
-  margin-bottom: 50px;
+  margin-bottom: 30px;
 }
 
 .gitPic {
   height: 168px;
   border-radius: 50%;
+    cursor: pointer;
 }
 
 .gitdiv {
@@ -22,7 +23,7 @@
 .git {
   margin-top: 100px;
   text-align: center;
-  height: 550px;
+  height: 520px;
   background-color: #ffe1bd;
   overflow: hidden;
   width: 500%;
