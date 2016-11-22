@@ -10,7 +10,7 @@ html, body {
 
 .modal-dialog {
   position: relative;
-  top: 100px;
+  /*top: 100px;*/
 }
 
 .centerAlign {
@@ -142,9 +142,38 @@ tr.first > td {
 }
 
 .heading {
-    font-weight: bold;
+  font-weight: bold;
   font-size: 14px;
 }
 
+.rank {
+  float: left;
+  font-size: 25px;
+}
 
+.songArtist {
+  float: left;
+  display: inline-block;
+}
+
+.song {
+  float: left;
+}
+
+.artist {
+  float: left;
+}
+
+.topSongSeparator {
+  color: white;
+}
+
+.totalViews {
+  float: right;
+  margin-right: 50px;
+}
+
+.numViews {
+  float: right;
+}
 
