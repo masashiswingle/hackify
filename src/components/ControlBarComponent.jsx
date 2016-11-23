@@ -1,10 +1,9 @@
+import $ from 'jquery';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Draggable, Droppable } from 'react-drag-and-drop';
+import { Droppable } from 'react-drag-and-drop';
 import Nav from './NavComponent';
 import { addToHistory, dequeueSong, changeCurrentSong, playPrevious, removeFromHistory } from '../redux/actions';
-import $ from 'jquery';
-import Scrollchor from 'react-scrollchor';
 
 class ControlBar extends Component {
 
