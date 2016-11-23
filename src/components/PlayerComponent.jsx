@@ -37,19 +37,13 @@ class Player extends Component {
 
   componentDidMount() {
 
-    // document.body.onkeydown = function(e){
-    //   if(e.keyCode == 32 && e.target == document.body){
-    //     e.stopPropagation();
-    //     e.preventDefault();
-    //       console.log('triggered', e);
-    //       annyangCall();
-    //       return false;
-    //   }
-    // }
-
     document.addEventListener('keydown', function(e) {
       if(e.keyCode === 32) {
         helpers.decreaseVolume();
+        $('#helpBar').css("opacity", "0.6").animate({opacity: 0}, 1200, function(){
+          $('#helpBar').css("visibility", "hidden");
+        });
+         
         annyangCall();
         console.log('what up');
         e.stopPropagation();
@@ -216,11 +210,11 @@ class Player extends Component {
                   </tr>
                   <tr className='eachRow'>
                     <td className="col-xs-2">Mute volume </td>
-                    <td className="col-xs-4 descript">"soundBear mute song"</td>
+                    <td className="col-xs-4 descript">"mute song"</td>
                   </tr>
                   <tr className='eachRow'>
                     <td className="col-xs-2">Unmute volume </td>
-                    <td className="col-xs-4 descript">"soundBear unmute song"</td>
+                    <td className="col-xs-4 descript">"unmute song"</td>
                   </tr>
                   <tr className='eachRow'>
                     <td className="col-xs-2">Show lyrics </td>

@@ -195,6 +195,11 @@ export const increaseVolume = (previousVolume) => {
   var el = document.getElementById('volumebar');
   el.value=previousVolume;
   el.dispatchEvent(new Event('input', {bubbles: true}));
+  setTimeout(function () {
+    $('#helpBar').css({opacity: 0.0, visibility: "visible"}).animate({opacity: 0.6}, 1200);
+  }, 3000)
+
+
 };
 
 export const decreaseVolume = () => {
@@ -204,7 +209,7 @@ export const decreaseVolume = () => {
   el.value='10';
   el.dispatchEvent(new Event('input', {bubbles: true}));
   setTimeout(function () {
-    increaseVolume(previousVolume) }, 5000);
+    increaseVolume(previousVolume) }, 4000);
 };
 
 export const youTubeGetSongAnnyang = (query, songName, artistName) => {

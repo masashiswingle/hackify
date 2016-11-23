@@ -181,3 +181,16 @@ tr.first > td {
   right: 50px;
   top: 20px;
 }
+
+.instructionDiv {
+  color: #e8b895;
+  font-size: 13px;
+}
+
+.firstLine {
+  margin-bottom: 4px
+}
+#helpBar {
+  letter-spacing: 0.3px;
+  opacity: 0.6;
+}
