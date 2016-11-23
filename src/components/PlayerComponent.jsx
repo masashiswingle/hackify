@@ -4,6 +4,7 @@ import ControlBar from './ControlBarComponent';
 import MostPopular from './MostPopularComponent';
 import Lineup from './LineupComponent';
 import * as helpers from '../modules/ajax';
+import * as newHelpers from '../modules/helpers';
 import { annyangCall } from '../annyang';
 import { initiateQueue, initiateHistory, changeCurrentSong, addToQueue, dequeueSong, addToHistory, toggleRestartToFalse } from '../redux/actions';
 import Song from '../modules/Song';
@@ -39,7 +40,7 @@ class Player extends Component {
 
     document.addEventListener('keydown', function(e) {
       if(e.keyCode === 32) {
-        helpers.decreaseVolume();
+        newHelpers.decreaseVolume();
         $('#helpBar').css("opacity", "0.6").animate({opacity: 0}, 1200, function(){
           $('#helpBar').css("visibility", "hidden");
         });
