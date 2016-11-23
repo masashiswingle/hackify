@@ -10,6 +10,7 @@ import Song from '../modules/Song';
 import map from '../visualization/map';
 import $ from 'jquery';
 import Scrollchor from 'react-scrollchor';
+import KeyHandler, {KEYPRESS} from 'react-key-handler';
 
 class Player extends Component {
 
@@ -35,6 +36,17 @@ class Player extends Component {
   }
 
   componentDidMount() {
+
+    document.body.onkeydown = function(e){
+      if(e.keyCode == 32 && e.target == document.body){
+        //e.stopPropagation();
+        e.preventDefault();
+          console.log('triggered', e);
+          annyangCall();
+          return false;
+      }
+    }
+
     player = new YT.Player('player', {
       height: '390',
       width: '640',
@@ -107,8 +119,10 @@ class Player extends Component {
     }
   }
 
+
   render() {
-    annyangCall();
+
+
     return (
       <div className="container">
         <div className="player">
