@@ -83,7 +83,7 @@ module.exports = {
     makeBarWithBar(gauge, 20, 4, 17, true);
 
     gauge.title(true);
-    gauge.title().text('Top songs for ' + songs.tracks[0].artists[0].name + ':').useHtml(true);
+    gauge.title().text('Top ' + songs.tracks[0].artists[0].name + ' songs on Spotify:').useHtml(true);
     gauge.title()
       .hAlign('center')
       .padding(0)

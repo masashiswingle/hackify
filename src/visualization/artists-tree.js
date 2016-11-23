@@ -271,17 +271,17 @@ module.exports = {
                 .text(function(d) {
                     if (isArtist(d)) {
                         // For long names
-                        if (d.artist.name.length > 12 && d.artist.name.indexOf(' ') === -1) {
-                          return d.artist.name.slice(0,10) + '...';
+                        if (d.artist.name.length > 6 && d.artist.name.indexOf(' ') === -1) {
+                          return d.artist.name.slice(0,7) + '...';
 
                         // For long first and last names
-                        } else if (d.artist.name.length > 12 && d.artist.name.indexOf(' ') !== -1 && d.artist.name.split(' ')[0] !== 'The'){
+                        } else if (d.artist.name.length > 6 && d.artist.name.indexOf(' ') !== -1 && d.artist.name.split(' ')[0] !== 'The'){
                           var splitted = d.artist.name.split(' ');
                           return splitted[0] + ' ' + splitted[1].slice(0, 1) + '.';
 
                         // For band names that start with The
-                        } else if (d.artist.name.length > 12 && d.artist.name.indexOf(' ') !== -1 && d.artist.name.split(' ')[0] === 'The') {
-                            return d.artist.name.slice(0,10) + '...';
+                        } else if (d.artist.name.length > 6 && d.artist.name.indexOf(' ') !== -1 && d.artist.name.split(' ')[0] === 'The') {
+                            return d.artist.name.slice(0,7) + '...';
                   
                         } else {
                           return d.artist.name;
