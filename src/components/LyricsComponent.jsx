@@ -17,6 +17,7 @@ class Lyrics extends Component {
 
   componentDidMount() {
     this.displayLyrics();
+
   }
 
   componentDidUpdate() {
@@ -27,7 +28,10 @@ class Lyrics extends Component {
 
   render() {
     return(
+      <div> 
+        <h1 id="topten">Lyrics</h1>
       <pre id="lyrics">{this.state.lyrics}</pre>
+      </div>
     )
   }
 }
