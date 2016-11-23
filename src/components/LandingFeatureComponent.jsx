@@ -15,7 +15,7 @@ class LandingFeature extends Component {
 
         <div className="row">
           <div className="col-sm-6 col-md-6 col-lg-6">
-            <img className="landingpic" id="interaction" src={'/assets/interaction.jpg'}/>
+            <img className="landingpic" id="interaction" src={'/assets/landing1.gif'}/>
           </div>
           <div className="col-sm-6 col-md-6 col-lg-6">
             <h3>real-time</h3>
@@ -38,7 +38,7 @@ class LandingFeature extends Component {
             can be run effortlessly in voice and soundBear will understand it! For example, adding a song to a song queue or pausing a selected song can be done by commands <i>"add to queue *song_name* by *artist_name*"</i> and <i>"stop"</i> respectively.</h4>
           </div>
           <div className="col-sm-6 col-md-6 col-lg-6">
-            <img className="landingpic" id="sound" src={'/assets/sound.jpg'}/>
+            <img className="landingpic" id="sound" src={'/assets/landing2.png'}/>
           </div>
         </div>
 
@@ -47,7 +47,7 @@ class LandingFeature extends Component {
 
         <div className="row">
           <div className="col-sm-6 col-md-6 col-lg-6">
-            <img className="landingpic" id="infoIcon" src={'/assets/info.jpg'}/>
+            <img className="landingpic" id="infoIcon" src={'/assets/landing3.gif'}/>
           </div>
           <div className="col-sm-6 col-md-6 col-lg-6">
             <h3>explore</h3>
