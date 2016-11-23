@@ -38,11 +38,14 @@ class MostPopular extends Component {
         {
           this.state.result.map(function(champion, index) {
             return (
-              <div className="row" key={ index }>
+              <div className="row championrow" key={ index }>
                 <div className="col-md-offset-1 col-md-9">
                   <div className="rank col-md-2">
                     { index + 1 }
+                    &nbsp;
+                    <img id="championPic" src={champion.url}></img>
                   </div>
+
                   <div className="songArtist col-md-6">
                     <div className="song">
                       { champion.songName.toLowerCase() }
