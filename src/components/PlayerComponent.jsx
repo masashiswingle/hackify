@@ -210,11 +210,11 @@ class Player extends Component {
                   </tr>
                   <tr className='eachRow'>
                     <td className="col-xs-2">Mute volume </td>
-                    <td className="col-xs-4 descript">"soundBear mute song"</td>
+                    <td className="col-xs-4 descript">"mute song"</td>
                   </tr>
                   <tr className='eachRow'>
                     <td className="col-xs-2">Unmute volume </td>
-                    <td className="col-xs-4 descript">"soundBear unmute song"</td>
+                    <td className="col-xs-4 descript">"unmute song"</td>
                   </tr>
                   <tr className='eachRow'>
                     <td className="col-xs-2">Show lyrics </td>

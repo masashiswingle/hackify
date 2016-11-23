@@ -130,12 +130,12 @@ module.exports = {
           communicateAction('Backward');
         },
 
-        'sound bear mute song': function () {
+        'mute song': function () {
           helpers.muteSong();
           communicateAction('Mute');
         },
 
-        'sound bear unmute song': function () {
+        'unmute song': function () {
           helpers.unMuteSong();
           communicateAction('Unmute');
         },
