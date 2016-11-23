@@ -15,7 +15,7 @@ class Nav extends Component {
 
   render() {
     return(
-      <div style={{height: "800px"}}>
+      <div style={{height: "1000px"}}>
         <Tabs className="navTabs" selectedIndex={this.index}>
 
 
