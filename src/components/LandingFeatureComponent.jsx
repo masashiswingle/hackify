@@ -22,7 +22,7 @@ class LandingFeature extends Component {
             <h2>interaction</h2>
             <h4 className='text-mainunderline'>_________</h4>
             <h4 className = 'txt'> soundBear utilizes pin-point voice recognition software to seamlesly transcribe speech into various music player commands. For example, soundBear
-            can play any song if you simply say <i>"play</i> &nbsp; song_name &nbsp; <i>by</i> &nbsp; artist_name". Go give it a try!  </h4>
+            can play any song if you simply press <i>space bar</i> and say <i>"play *song_name* by *artist_name*"</i>. Go give it a try!  </h4>
           </div>
         </div>
 
@@ -35,8 +35,7 @@ class LandingFeature extends Component {
             <h2>commands</h2>
             <h4 className='text-mainunderline'>_________</h4>
             <h4 className='txt'> soundBear offers a number of additional commands on top of playing songs. Any command imaginable on a music player
-            can be run effortlessly in voice and soundBear will understand it! For example, adding a song to a song queue or pausing a selected song can be done by commands <i>"add to queue</i> &nbsp; song_name &nbsp; <i>by</i> &nbsp; artist_name"  
-             and <i>"stop"</i> respectively.</h4>
+            can be run effortlessly in voice and soundBear will understand it! For example, adding a song to a song queue or pausing a selected song can be done by commands <i>"add to queue *song_name* by *artist_name*"</i> and <i>"stop"</i> respectively.</h4>
           </div>
           <div className="col-sm-6 col-md-6 col-lg-6">
             <img className="landingpic" id="sound" src={'/assets/sound.jpg'}/>

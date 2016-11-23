@@ -39,8 +39,8 @@ class Landing extends Component {
             <h1 id="soundbear">soundBear</h1>
             <p id="mainunderline">_________</p>
             <div id="description">
-              <h4>hands-free access</h4>
-              <h4>to your favorite music</h4>
+              <h4>your voice-activated</h4>
+              <h4>music player</h4>
             </div>
           </div>
           <button className="js-trigger-overlay-start" onClick = {this.annyang} type="button">start listening</button>
