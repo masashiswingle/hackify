@@ -34,8 +34,8 @@ class LandingFeature extends Component {
             <h3>variety of</h3>
             <h2>commands</h2>
             <h4 className='text-mainunderline'>_________</h4>
-            <h4 className='txt'> soundBear offers a number of additional commands on top of playing songs. Any command imaginable on a music player
-            can be run effortlessly in voice and soundBear will understand it! For example, adding a song to a song queue or pausing a selected song can be done by commands <i>"add to queue *song_name* by *artist_name*"</i> and <i>"stop"</i> respectively.</h4>
+            <h4 className='txt'> soundBear offers a number of additional functionality on top of playing a song. Any command imaginable on a music player can be voiced effortlessly for
+             soundBear to understand it! For example, adding a song to a song queue or pausing a selected song can be done  by commands  <i>"add to queue *song_name* by *artist_name*"</i> and <i>"stop"</i> respectively.</h4>
           </div>
           <div className="col-sm-6 col-md-6 col-lg-6">
             <img className="landingpic" id="sound" src={'/assets/landing2.png'}/>
@@ -53,9 +53,9 @@ class LandingFeature extends Component {
             <h3>explore</h3>
             <h2>artists and songs</h2>
             <h4 className='text-mainunderline'>_________</h4>
-            <h4 className = 'txt'>for every song that plays, there will also be useful information about the song itself and the artist presented in the tabs below the music player. 
-            The tabs from left to right represent Lyrics for the currently playing song, Most Popular Songs on soundBear, Top Songs of current Artist, Available Spotify Markets and Artist Albums, and 
-            Related Artists</h4>
+            <h4 className = 'txt'>For every song that plays, there will also be useful information about the song itself and/or artist available in the tabs below the music player. This information may be accessible through manually 
+            clicking on the tabs or with spoken commands. The tabs from left to right represent Lyrics for the currently playing song, soundBear’s Top Songs, Selected Artist’s Most Popular Songs, Artist Albums with Countries that the 
+            Song can be Listened to on Spotify, and Related Artists</h4>
           </div>
         </div>
 
