@@ -10,14 +10,6 @@
   display: none;
 }
 
-.react-tabs [role=tab][aria-selected=true]:hover #navlyrics {
-  /*display: block;*/
-}
-
-.react-tabs [role=tab][aria-selected=true]:hover #playlist {
-  /*display: none;*/
-}
-
 .react-tabs [role=tablist] {
   border-bottom: 3px solid #ffe1bd;
 }
@@ -31,4 +23,8 @@
 
 .react-tabs [role=tab][aria-selected=true] {
   border-color: #ffe1bd;
+}
+
+.area {
+  height: 722px;
 }
