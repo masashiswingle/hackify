@@ -37,15 +37,25 @@ class Player extends Component {
 
   componentDidMount() {
 
-    document.body.onkeydown = function(e){
-      if(e.keyCode == 32 && e.target == document.body){
-        //e.stopPropagation();
+    // document.body.onkeydown = function(e){
+    //   if(e.keyCode == 32 && e.target == document.body){
+    //     e.stopPropagation();
+    //     e.preventDefault();
+    //       console.log('triggered', e);
+    //       annyangCall();
+    //       return false;
+    //   }
+    // }
+
+    document.addEventListener('keydown', function(e) {
+      if(e.keyCode === 32) {
+        helpers.decreaseVolume();
+        annyangCall();
+        console.log('what up');
+        e.stopPropagation();
         e.preventDefault();
-          console.log('triggered', e);
-          annyangCall();
-          return false;
       }
-    }
+    }, true);
 
     player = new YT.Player('player', {
       height: '390',
@@ -91,6 +101,7 @@ class Player extends Component {
 
   displayPlayer() {
     $('.player').css('filter', 'blur(0px)');
+    $('body').click();
   }
 
   componentDidUpdate() {

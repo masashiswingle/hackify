@@ -172,6 +172,9 @@ class ControlBar extends Component {
         <div className="row controlBar">
           <div id="conversationPlayer" className="col-md-offset-3 col-md-6"></div>
         </div>
+         <div className="row controlBar">
+          <div id="conversationPlayer" className="col-md-offset-3 col-md-6">YO</div>
+        </div>
         <div className="row controlBar">
           <div id="elapsedTime" className="col-md-offset-11 col-md-1">{this.state.currentTime} / {this.state.totalTime}</div>
         </div>
