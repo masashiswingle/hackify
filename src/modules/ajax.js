@@ -204,7 +204,7 @@ export const decreaseVolume = () => {
   el.value='10';
   el.dispatchEvent(new Event('input', {bubbles: true}));
   setTimeout(function () {
-    increaseVolume(previousVolume) }, 4000);
+    increaseVolume(previousVolume) }, 5000);
 };
 
 export const youTubeGetSongAnnyang = (query, songName, artistName) => {
