@@ -100,19 +100,7 @@ export const getMostPopular = (cb) => {
   });
 };
 
-export const youTubeGetSong = (query, callback) => {
-  const request = gapi.client.youtube.search.list({
-    q: query,
-    part: 'snippet',
-    maxResults: 5
-  });
-
-  request.execute((response) => {
-    if (callback) {
-      callback(response);
-    }
-  });
-};
+//////////////////////////
 
 let srchItem;
 let countriesArr;
@@ -165,53 +153,6 @@ export const addSongToQueue = (query, songName, artistName) => {
   });
 };
 
-export const dequeueSong = () => {
-  if (store.getState().songQueue.length > 0) {
-    const currentSong = store.getState().currentSong;
-    store.dispatch({
-      type: 'ADD_TO_HISTORY',
-      song: currentSong
-    });
-    store.dispatch({
-      type: 'DEQUEUE_SONG',
-      view: 'player'
-    });
-  }
-};
-
-export const muteSong = () => {
-  store.dispatch({
-    type: 'MUTE'
-  });
-};
-
-export const unMuteSong = () => {
-  store.dispatch({
-    type: 'UNMUTE'
-  });
-};
-
-export const increaseVolume = (previousVolume) => {
-  var el = document.getElementById('volumebar');
-  el.value=previousVolume;
-  el.dispatchEvent(new Event('input', {bubbles: true}));
-  setTimeout(function () {
-    $('#helpBar').css({opacity: 0.0, visibility: "visible"}).animate({opacity: 0.6}, 1200);
-  }, 3000)
-
-
-};
-
-export const decreaseVolume = () => {
-  var el = document.getElementById('volumebar');
-  var previousVolume = el.value;
-  console.log(previousVolume)
-  el.value='10';
-  el.dispatchEvent(new Event('input', {bubbles: true}));
-  setTimeout(function () {
-    increaseVolume(previousVolume) }, 4000);
-};
-
 export const youTubeGetSongAnnyang = (query, songName, artistName) => {
   return new Promise((resolve, reject) => {
     var request = gapi.client.youtube.search.list({
@@ -262,27 +203,5 @@ export const youTubeGetSongAnnyang = (query, songName, artistName) => {
         resolve();
       });
     });
-  });
-};
-
-export const getSearchItem = () => {
-  return srchItem;
-};
-
-export const getCountries = () => {
-  return countriesArr;
-};
-
-export const playPrevious = () => {
-  if (store.getState().songHistory.length > 0) {
-    store.dispatch({
-      type: 'PLAY_PREVIOUS'
-    });
-  }
-};
-
-export const restartSong = () => {
-  store.dispatch({
-    type: 'RESTART_SONG'
   });
 };
