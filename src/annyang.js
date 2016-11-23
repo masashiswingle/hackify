@@ -182,7 +182,7 @@ module.exports = {
       annyang.addCommands(commands);
 
       // Starts listening
-      annyang.start();
+      annyang.start({ autoRestart: false, continuous: false });
     }
 
     annyang.addCallback('error', function () {

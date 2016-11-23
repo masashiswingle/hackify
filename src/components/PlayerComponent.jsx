@@ -41,7 +41,8 @@ class Player extends Component {
       if(e.keyCode == 32 && e.target == document.body){
         //e.stopPropagation();
         e.preventDefault();
-          console.log('triggered', e)
+          console.log('triggered', e);
+          annyangCall();
           return false;
       }
     }
@@ -121,7 +122,7 @@ class Player extends Component {
 
   render() {
 
-    annyangCall();
+
     return (
       <div className="container">
         <div className="player">
