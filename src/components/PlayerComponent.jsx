@@ -37,19 +37,13 @@ class Player extends Component {
 
   componentDidMount() {
 
-    // document.body.onkeydown = function(e){
-    //   if(e.keyCode == 32 && e.target == document.body){
-    //     e.stopPropagation();
-    //     e.preventDefault();
-    //       console.log('triggered', e);
-    //       annyangCall();
-    //       return false;
-    //   }
-    // }
-
     document.addEventListener('keydown', function(e) {
       if(e.keyCode === 32) {
         helpers.decreaseVolume();
+        $('#helpBar').css("opacity", "0.6").animate({opacity: 0}, 1200, function(){
+          $('#helpBar').css("visibility", "hidden");
+        });
+         
         annyangCall();
         console.log('what up');
         e.stopPropagation();

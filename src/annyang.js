@@ -1,4 +1,5 @@
 import * as helpers from './modules/ajax';
+import $ from 'jquery';
 
 module.exports = {
   annyangCall: function() {
@@ -28,7 +29,7 @@ module.exports = {
     // Plays next song in queue
     function dequeue () {
       helpers.dequeueSong();
-      communicateAction('<div>Playing next song in queue...</div>');
+      errorMessage('Playing next song in queue...');
     };
 
     // Shows messages dialog
@@ -36,9 +37,14 @@ module.exports = {
       var recP = document.getElementById('conversationPlayer');
       if (recP) {
         recP.innerHTML = 'Recognized: '+"'"+ text + "'";
+        $('#conversationPlayer').css({opacity: 0.0, visibility: "visible"}).animate({opacity: 0.6}, 1200); 
+
         setTimeout(function () {
-          document.getElementById('conversationPlayer').innerHTML = '';
-        },4000);
+        $('#conversationPlayer').css("opacity", "0.6").animate({opacity: 0}, 1200, function(){
+          $('#conversationPlayer').css("visibility", "hidden");
+        });
+          //document.getElementById('conversationPlayer').innerHTML = '';
+        },2000);
       }
     };
 
@@ -47,9 +53,14 @@ module.exports = {
       var recP = document.getElementById('conversationPlayer');
       if (recP) {
         recP.innerHTML = text;
+        $('#conversationPlayer').css({opacity: 0.0, visibility: "visible"}).animate({opacity: 0.6}, 1200); 
+
         setTimeout(function () {
-          document.getElementById('conversationPlayer').innerHTML = '';
-        },4000);
+        $('#conversationPlayer').css("opacity", "0.6").animate({opacity: 0}, 1200, function(){
+          $('#conversationPlayer').css("visibility", "hidden");
+        });
+          
+        },2000);
       }
     };
 
@@ -58,22 +69,27 @@ module.exports = {
       var commands = {
         'display top ten': function () {
           document.getElementById('react-tabs-2').click();
+          communicateAction('Display top ten');
         },
 
         'display lyrics': function () {
           document.getElementById('react-tabs-0').click();
+          communicateAction('Display lyrics');
         },
 
         'display popular': function () {
           document.getElementById('react-tabs-4').click();
+          communicateAction('Display popular songs');
         },
 
         'display albums': function () {
           document.getElementById('react-tabs-6').click();
+          communicateAction('Display artist\'s albums');
         },
 
         'display related': function () {
           document.getElementById('react-tabs-8').click();
+          communicateAction('Display related artists');
         },
 
         'sound': function () {
@@ -81,40 +97,47 @@ module.exports = {
         },
 
         'sound bear': function () {
-          console.log('nooo');
           helpers.decreaseVolume();
         },
 
         'stop': function () {
             document.getElementById('player-pause').click();
+            communicateAction('Stop');
         },
 
         'pause': function () {
             document.getElementById('player-pause').click();
+            communicateAction('Pause');
         },
 
         'resume': function () {
           document.getElementById('player-play').click();
+          communicateAction('Resume');
         },
 
         'continue': function () {
           document.getElementById('player-play').click();
+          communicateAction('Continue');
         },
 
         'forward': function () {
           document.getElementById('player-forward').click();
+          communicateAction('Forward');
         },
 
         'backward': function () {
           document.getElementById('player-backward').click();
+          communicateAction('Backward');
         },
 
         'sound bear mute song': function () {
           helpers.muteSong();
+          communicateAction('Mute');
         },
 
         'sound bear unmute song': function () {
           helpers.unMuteSong();
+          communicateAction('Unmute');
         },
 
         'skip song': function () {
@@ -127,10 +150,12 @@ module.exports = {
 
         'play previous song': function () {
           helpers.playPrevious();
+          errorMessage('Restarting previous song...');
         },
 
         'restart song': function() {
           helpers.restartSong();
+          errorMessage('Restarting previous song...');
         },
 
         'play track *song': function (song) {
