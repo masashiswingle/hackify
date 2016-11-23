@@ -51,11 +51,11 @@ class MostPopular extends Component {
 
                   <div className="songArtist col-md-6">
                     <div className="song">
-                      { champion.songName.toLowerCase() }
+                      { champion.songName }
                     </div>
                     <br></br>
                     <div className="artist">
-                      { champion.artistName.toLowerCase() }
+                      { champion.artistName }
                     </div>
                   </div>
                   <div className="totalViews col-md-1">
