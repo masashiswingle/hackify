@@ -41,7 +41,7 @@ class Player extends Component {
     document.addEventListener('keydown', function(e) {
       if(e.keyCode === 32) {
         newHelpers.decreaseVolume();
-        $('#helpBar').css("opacity", "0.6").animate({opacity: 0}, 1200, function(){
+        $('#helpBar').css("opacity", "0.6").animate({opacity: 0}, 400, function(){
           $('#helpBar').css("visibility", "hidden");
         });
          
