@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getMostPopular } from '../modules/ajax';
-import { albumInfo } from '../modules/ajax'
+
 
 class MostPopular extends Component {
   constructor(props) {
@@ -19,6 +19,7 @@ class MostPopular extends Component {
 
     });
   }
+
 
   componentDidMount() {
     this.displayMostPopular();
