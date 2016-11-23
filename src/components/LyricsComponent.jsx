@@ -17,6 +17,7 @@ class Lyrics extends Component {
 
   componentDidMount() {
     this.displayLyrics();
+
   }
 
   componentDidUpdate() {
