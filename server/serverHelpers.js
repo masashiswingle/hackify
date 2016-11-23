@@ -9,9 +9,11 @@ module.exports = {
   getSpotifyData: function(req, res) {
     spotifyApi.searchTracks(req.body.string)
       .then(function(data) {
+        console.log(data.body.tracks.items[0].album.images[2].url);
         var name = data.body.tracks.items[0].name;
         var artist = data.body.tracks.items[0].artists[0].name;
-        Songs.find({ where: { songName: name, artistName: artist } })
+        var pic = data.body.tracks.items[0].album.images[2].url;
+        Songs.find({ where: { songName: name, artistName: artist, url: pic } })
           .then(function (song) {
             if (song) {
               var newViews = song.dataValues.views + 1;
@@ -20,6 +22,7 @@ module.exports = {
               Songs.create({
                 songName: name,
                 artistName: artist,
+                url: pic,
                 views: 1
               })
             }

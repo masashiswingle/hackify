@@ -20,6 +20,9 @@ database
   	artistName: {
   		type: Sequelize.STRING
   	},
+		url: {
+			type: Sequelize.STRING
+		},
     views: {
       type: Sequelize.INTEGER
     }
