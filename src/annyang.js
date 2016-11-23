@@ -1,5 +1,4 @@
 import $ from 'jquery';
-import * as oldHelpers from './modules/ajax';
 import * as helpers from './modules/helpers';
 
 export const annyangCall = () => {
@@ -18,13 +17,13 @@ export const annyangCall = () => {
   const playSong = (songName, artistName) => {
     $('.spinner-toggle').toggle();
     const query = createQuery(songName, artistName);
-    oldHelpers.youTubeGetSongAnnyang(query, songName, artistName, 'playSong');
+    helpers.searchSong(query, songName, artistName, 'playSong');
   };
 
   // Adds song to queue to be played later
   const addToQueue = (songName, artistName) => {
     const query = createQuery(songName, artistName);
-    oldHelpers.addSongToQueue(query, songName, artistName, 'queueSong');
+    helpers.searchSong(query, songName, artistName, 'queueSong');
   };
 
   // Defines commands
